@@ -1,0 +1,88 @@
+"use strict";
+var aUi = aUi || {};
+aUi.tobacco = {
+
+	_laws: function(data) {
+		var html = '<li data-id="' + data.id + '" class="mui-table-view-cell mui-media">' +
+			'<span>' + data.name + '</span>'
+		'	</li>';
+		return html;
+	},
+	lawsList: function(dataList) {
+		var html = "";
+		for(var i = 0; i < dataList.length; i++) {
+			html += this._laws(dataList[i]);
+		}
+		return html;
+	},
+
+	_cigarette: function(data) {
+		var html = '<li data-id="' + data.id + '" class="mui-table-view-cell mui-media">' +
+			'<span>' + data.storefrontName + "   "+data.retailersName+'</span>'
+		'	</li>';
+		return html;
+	},
+	cigaretteList: function(dataList) {
+		var html = "";
+		for(var i = 0; i < dataList.length; i++) {
+			html += this._cigarette(dataList[i]);
+		}
+		return html;
+	},
+
+	_brand: function(data) {
+		var html = '<li data-id="' + data.id + '" class="mui-table-view-cell mui-media">' +
+			'<span>' + data.name + '</span>'
+		'	</li>';
+		return html;
+	},
+	brandList: function(dataList) {
+		var html = "";
+		for(var i = 0; i < dataList.length; i++) {
+			html += this._brand(dataList[i]);
+		}
+		return html;
+	},
+
+	_distinguish: function(data) {
+		var html = '<li data-id="' + data.id + '" class="mui-table-view-cell mui-media">' +
+			'<span>' + data.name + '</span>'
+		'	</li>';
+		return html;
+	},
+	distinguishList: function(dataList) {
+		var html = "";
+		for(var i = 0; i < dataList.length; i++) {
+			html += this._distinguish(dataList[i]);
+		}
+		return html;
+	},
+
+	_files: function(data) {
+		var html = '<li data-id="' + data.id + '" class="mui-table-view-cell mui-media">' +
+			'<span>' + data.name + '</span>'
+		'	</li>';
+		return html;
+	},
+	filesList: function(dataList) {
+		var html = "";
+		for(var i = 0; i < dataList.length; i++) {
+			html += this._files(dataList[i]);
+		}
+		return html;
+	},
+
+	_case: function(data) {
+		var html = '<li data-id="' + data.id + '" class="mui-table-view-cell mui-media">' +
+			'<span>' + data.caseTitle + '</span>'
+		'	</li>';
+		return html;
+	},
+	caseList: function(dataList) {
+		var html = "";
+		for(var i = 0; i < dataList.length; i++) {
+			html += this._case(dataList[i]);
+		}
+		return html;
+	}
+}

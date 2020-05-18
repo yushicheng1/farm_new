@@ -1,0 +1,48 @@
+body {
+	background-color: white;
+}
+
+.mui-bar-nav {
+	background-color: #3B8D00;
+	padding: 0px;
+	/*background: linear-gradient(-30deg, #5F5FF0 40px, #4E4EB1 20px);
+	background: -moz-linear-gradient(-30deg, #5F5FF0 40px, #4E4EB1 20px);
+	background: -webkit-gradient(-30deg, #5F5FF0 40px, #4E4EB1 20px);
+	box-shadow: none;*/
+}
+
+.mui-content {
+	background-color: white;
+}
+
+.mui-bar-nav .mui-title {
+	color: #fff;
+}
+
+.mui-bar-nav .mui-icon {
+	color: #fff;
+}
+
+
+/**
+ * 查询框样式
+ */
+
+.queryDiv {
+	padding: 2px;
+	height: 38px;
+}
+
+.queryInput {
+	/*width: 88% !important;*/
+	margin-bottom: 0px;
+	height: 36px;
+	line-height: 36px;
+}
+
+.queryBtn {
+	position: absolute;
+	right: 0px;
+	width: 40px;
+	line-height: 40px;
+}

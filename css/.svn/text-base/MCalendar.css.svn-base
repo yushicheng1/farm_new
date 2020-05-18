@@ -1,0 +1,81 @@
+.mc-container *{
+	color:#555 ;
+	font-size: 1em;
+}
+.mc-container{
+	width: 294px;
+	margin: 0 auto;
+}
+.mc-toolbar{
+  	width: 100%;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+.mc-toolbar button{
+	color: #333333;
+}
+.mc-toolbar span{
+	color: #333333;
+}
+.mc-table{
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 1em;
+  text-align: center;
+  border-bottom: solid 1px; 
+}
+#mc-table-body{
+	border: none;
+}
+.mc-table-row  {}
+.mc-table-row td{
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    display: block;
+    float: left;
+}
+.mc-table-head {}
+.mc-table-head th{
+    color: #a1a1a1;
+    width: 42px;
+    display: block;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+}
+.mc-table-cell[disabled='disabled'] a  {
+ 	color:#dddddd;
+}
+.mc-cell-selected{
+	background-color: #fd6349;
+	border-radius: 30px;
+}
+.mc-cell-selected a{
+	color:#FFF ;
+	font-size: 1.1em;
+}
+.mc-table-cell-today a {
+    color: #fff;
+}
+.mc-table-sign-today{
+	background: url(../images/icon-right.png) no-repeat center bottom;
+}
+.mc-table-sign-today a {
+ 	color: #ff0000;
+ 	
+}
+
+#mc-btn-previous,
+#mc-btn-next{
+	line-height: 30px;
+	padding: 0 10px;
+	border: none;
+}
+#mc-btn-today{
+	height: 30px;
+	display: none;
+}
+

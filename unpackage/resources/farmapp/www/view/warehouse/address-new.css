@@ -1,0 +1,17 @@
+.mui-scroll {
+	min-height: 100%;
+}
+
+.mui-table-view li {
+	height: 40px;
+}
+
+
+li {
+	background-color: white;
+	margin: 5px 5px 5px 5px;
+}
+
+.mgr1 {
+	margin: -12px 0px -12px -15px !important;
+}

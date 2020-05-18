@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>登录</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="login.css" />
+	</head>
+
+	<body>
+		<div class="mui-content">
+
+			<div class="login_box">
+				<div class="loginTop">
+					<img width="40%" style="margin-bottom: 25px;" src="../../images/logotop.png" />
+				</div>
+				<div class="mui-input-row input_outer">
+					<label><i class="mui-icon mui-icon-person"></i></label>
+					<input id='ipt-login-account' value="" type="text" class="mui-input-clear mui-input" placeholder="请输入帐号">
+				</div>
+				<div class="mui-input-row mui-password input_outer">
+					<label><i class="mui-icon mui-icon-locked"></i></label>
+					<input id='ipt-login-password' value="" type="password" class="mui-input-password" placeholder="请输入密码">
+				</div>
+
+				<div class="mb2">
+					<a style="background-color: #3B8D00; color: white;" class="act-but submit" id='btn-login'>登 &nbsp;&nbsp;录</a>
+				</div>
+				<!--<div style="width: 400px; height: 34px;">
+					<a style="background-color: #3B8D00; color: white;margin: 0px 80px;"  id='btn-register' href="register.html">还没有账号？去注册</a>
+				</div>-->
+				<div id="bdiv">还没有账号?
+					<a href="register.html">去注册</a>
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../server/sys/sys.js"></script>
+	<script type="text/javascript" src="login-variable.js"></script>
+	<script type="text/javascript" src="login-func.js"></script>
+	<script type="text/javascript" src="login.js"></script>
+
+</html>

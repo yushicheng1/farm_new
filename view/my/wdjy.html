@@ -1,0 +1,66 @@
+                                                                                                                                                                                                                                                                      <!DOCTYPE html>
+<html>
+
+	<head>
+		<title>我的交易</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="wdjy.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">我的交易</h1>
+				<!-- <a class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 15px;line-height: 25px;" id="btn_record">购买记录</a> -->
+			</header>
+		</head>
+		<div class="mui-content mui-scroll-wrapper " style="background-color: #F0F0F0;padding-top: 44px;" id="pullrefresh">
+			<div class="mui-scroll" id="box-scroll">
+				<ul class="mui-table-view" id="jy-list" style="background:#F0F0F0;">
+					<!-- <li class="mui-table-view-cell mui-media" style="height: 210px;">
+						<div>
+							<img class="mui-media-object mui-pull-left" src="../../images/homemenu/xhs.jpg" style="max-width: 150px;height: 110px;border-radius: 10px;">
+							<div class="mui-media-body" style="height: 115px;">
+								<p style="text-align: center;"><span style="color: green;font-size: 14px;"><b>（成熟）西红柿—西红柿雄狮</b></span></p>
+								<p style="text-align: center;"><span>种植日期:</span><span id="ipt_plant">2010-02-05</span></p>
+								<p style="text-align: center;"><span>收获日期:</span><span id="ipt_get">2010-02-05</span></p>
+								<p style="text-align: center;"><span>上架日期:</span><span id="ipt_num">2010-02-05</span></p>
+								<p><button type="button" class="mui-btn mui-btn-outlined btn-seed">下架</button></p>
+							</div>
+						</div>
+						<div>
+							<ul class="mui-table-view" style="">
+								<li style="padding: 5px 1px;" class="mui-table-view-cell">
+									<span style="float: left;font-size: 14px;">售卖价格:</span><input style="float: right;width: 60%;text-align: right;border: 0;color: #11872a;"
+									 id="ipt_name" readonly="readonly" value="5" />
+								</li>
+								<li style="padding: 0px 1px;" class="mui-table-view-cell">
+									<span style="float: left;font-size: 14px;">剩余数量:</span><input style="float: right;width: 60%;text-align: right;border: 0;color: #11872a;"
+									 id="ipt_phone" readonly="readonly" value="20" />
+								</li>
+							</ul>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/trading/trading-list-server.js"></script>
+	<script type="text/javascript" src="../../ui/trading/trading-list.js"></script>
+	<script type="text/javascript" src="wdjy-variable.js"></script>
+	<script type="text/javascript" src="wdjy-func.js"></script>
+	<script type="text/javascript" src="wdjy.js"></script>
+
+</html>

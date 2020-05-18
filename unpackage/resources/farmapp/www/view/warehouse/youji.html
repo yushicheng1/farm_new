@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>邮寄</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="youji.css" />
+	</head>
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">邮寄到家</h1>
+			</header>
+		</head>
+		<div class="mui-content" style="background-color: #F0F0F0;">
+			<div style="width: 95% ;margin-left: 2%;">
+				<ul class="mui-table-view" style="margin-top: 8px;border-radius: 8px;">
+					<li class="mui-table-view-cell mui-media" id="btn_choose" hidden="hidden">
+						<a class="mui-navigate-right">
+							<img class="mui-media-object mui-pull-left border" src="../../images/homemenu/address.png" style="height: 30px;width: 24px;">
+							<div class="mui-media-body">
+								<p><span id="ipt_name"></span><span id="ipt_phone"></span></p>
+								<p class="mui-ellipsis top8" id="ipt_address"></p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media" id="btn_choose_new">
+						<a class="mui-navigate-right">
+							<div class="mui-media-body">
+								<p style="text-align: center;"><span>请选择地址</span></p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div style="width: 95% ;margin-left: 2%;">
+				<ul class="mui-table-view" id="list_warp" style="margin-top: 8px;border-radius: 8px;">
+					<li class="mui-table-view-cell mui-media">
+						<div style="height: 122px;">
+							<img class="mui-media-object mui-pull-left" id="ipt_image" src=""  onerror="this.src='../../images/kongbai.jpg'"  style="max-width: 100px;height: 100px;border-radius: 10px;">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;" id="ipt_plant_name"></span></p>
+								<p><span>种植日期:</span><span id="ipt_plant"></span></p>
+								<p><span>收获日期:</span><span id="ipt_get"></span></p>
+								<p><span>剩余量:</span><span id="ipt_sum"></span><span>公斤</span></p>
+							</div>
+						</div>
+						<div class="peoplewarp">
+							<p><span style="font-size: 18px;color: #000000;position: relative;top: 12px;">邮寄数量</span><input style="float: right;width: 60%;text-align: right;border: 0;" id="ipt_num" type="number" placeholder="请填写邮寄数量"/></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<button class="mui-fooder">
+				<p id="btn_youji">确认邮寄</p>
+			</button>
+
+			<script type="text/javascript" src="../../js/mui.js"></script>
+			<script type="text/javascript" src="../../a-core/util/log.js"></script>
+			<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+			<script type="text/javascript" src="../../a-core/util/server.js"></script>
+			<script type="text/javascript" src="../../server/warehouse/warehouse-server.js"></script>
+			<script type="text/javascript" src="../../ui/warehouse.js"></script>
+			<script type="text/javascript" src="youji-variable.js"></script>
+			<script type="text/javascript" src="youji-func.js"></script>
+			<script type="text/javascript" src="youji.js"></script>
+	</body>
+</html>

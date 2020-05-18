@@ -1,0 +1,18 @@
+var aVariable = {
+	webview: {
+		current: null,
+		listComponent: null
+	},
+	box: {
+		scroll: document.getElementById("box-scroll"),
+		logotop: document.getElementById("logotop")
+
+	},
+	ipt: {
+		iptAccount: document.getElementById("ipt-login-account"),
+		iptPassword: document.getElementById("ipt-login-password")
+	},
+	btn: {
+		btnLogin: document.getElementById("btn-login")
+	}
+};

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>注册</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="login.css" />
+		<link rel="stylesheet" type="text/css" href="register.css">
+		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+		<!--		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+-->
+	</head>
+
+	<body>
+		<div class="mui-content">
+
+			<div class="register_box">
+				<div class="loginTop">
+					<img width="40%" style="margin-bottom: 25px;" src="../../images/logotop.png" />
+				</div>
+				<div class="mui-input-row input_outer">
+					<label><i class="mui-icon mui-icon-person"></i></label>
+					<input id='ipt-register-name' value="" type="text" class="mui-input-clear mui-input" placeholder="请输入姓名">
+				</div>
+				<div class="mui-input-row input_outer">
+					<label><i class="mui-icon mui-icon-person"></i></label>
+					<input id='ipt-register-account' value="" type="text" class="mui-input-clear mui-input" placeholder="请输入用户名">
+				</div>
+				<div class="mui-input-row mui-password input_outer">
+					<label><i class="mui-icon mui-icon-locked"></i></label>
+					<input id='ipt-register-passwordOne' value="" type="password" class="mui-input-password" placeholder="请输入密码">
+				</div>
+				<div class="mui-input-row mui-password input_outer">
+					<label><i class="mui-icon mui-icon-locked"></i></label>
+					<input id='ipt-register-passwordTwo' value="" type="password" class="mui-input-password" placeholder="请再次输入密码">
+				</div>
+				<div>
+					<a style="background-color: #ffa800; color: white;" class="act-but submit" id='btn-register'>立即注册</a>
+					<div id="forget"> 注册视为同意
+						<a href="">《中国烟草用户使用协议》</a>
+					</div>
+				</div>
+				<div id="bdiv">已经注册?
+					<a href="login.html">马上登录</a>
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../server/sys/sys.js"></script>
+	<script type="text/javascript" src="register-variable.js"></script>
+	<script type="text/javascript" src="register-func.js"></script>
+	<script type="text/javascript" src="register.js"></script>
+
+</html>

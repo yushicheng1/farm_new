@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>编辑地址</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />		
+		<link href="../../css/mui.picker.css" rel="stylesheet" />
+		<link href="../../css/mui.poppicker.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="address-edit.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">编辑地址</h1>
+			</header>
+		</head>
+		<div class="mui-content" style="background-color: #F0F0F0;">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell ">
+					<label class="mui-col-xs-3 mui-pull-left  ">收货人</label>
+					<div class="mui-col-xs-9 mui-pull-left mgr1 ">
+						<div class="mui-input-row">
+							<input type="text" class=" mui-input-clear" style="border-width:0px ;border-radius: 0;padding-bottom: 7px; "
+							 placeholder="收货人" maxLength="11" id="ipt_name" />
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell ">
+					<label class="mui-col-xs-3 mui-pull-left  ">所在地区</label>
+					<div class="mui-col-xs-9 mui-pull-left mgr1 ">
+						<div class="mui-input-row">
+							<input type="text" class=" mui-input-clear" style="border-width:0px ;border-radius: 0; padding-bottom: 7px; "
+							 placeholder="请选择" maxLength="11" id="ipt_area" />
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell ">
+					<label class="mui-col-xs-3 mui-pull-left  ">详细地址</label>
+					<div class="mui-col-xs-9 mui-pull-left mgr1 ">
+						<div class="mui-input-row">
+							<input type="text" class=" mui-input-clear" style="border-width:0px ;border-radius: 0; padding-bottom: 7px; "
+							 placeholder="请输入您的详细地址" id="ipt_address" />
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell ">
+					<label class="mui-col-xs-3 mui-pull-left ">手机号</label>
+					<div class="mui-col-xs-9 mui-pull-left mgr1 ">
+						<div class="mui-input-row">
+							<input type="number" class=" mui-input-clear" style="border-width:0px ;border-radius: 0; padding-bottom: 7px; "
+							 placeholder="请输入您的手机号" maxLength="11" id="ipt_phone" />
+						</div>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li>
+					<div class="mui-input-row mui-checkbox mui-left">
+						<label>设为默认地址</label>
+						<input name="radio1" type="checkbox" id="ipt_default">
+					</div>
+				</li>
+			</ul>
+			<button type="button" id="btn_save" class="mui-btn" style="width: 84%;margin-top: 2%;padding-top: 10px;padding-bottom: 10px;margin-left: 8%;font-size: 18px;border: 0;">保存</button>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/my/my-server.js"></script>
+	<script src="../../js/mui.picker.js"></script>	
+	<script src="../../js/mui.poppicker.js"></script>
+	<script src="../../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="address-edit-variable.js"></script>
+	<script type="text/javascript" src="address-edit-func.js"></script>
+	<script type="text/javascript" src="address-edit.js"></script>
+	<script>
+		var _getParam = function(obj, param) {	
+			return obj[param] || '';
+		};
+		
+		// 三级联动
+		var cityPicker3 = new mui.PopPicker({
+			layer: 3
+		});
+		cityPicker3.setData(cityData3);
+	</script>
+</html>

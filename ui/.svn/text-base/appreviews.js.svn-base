@@ -1,0 +1,43 @@
+"use strict";
+var aUi = aUi || {};
+aUi.appreviews = {
+	_eval: function(data) {
+		var html = '<li class="mui-table-view-cell mui-media">' +
+			'					<div class="mui-media-body">' +
+			'						<div class="eval-title">' +
+			'							<span>评论人:</span>' +
+			'							<span>' + data.userName + '</span>' +
+			'						</div>' +
+			'						<div class="eval-content">' +
+			'							<p>' + data.message + '</p>' +
+			'                        </div>' +
+			'						<div class="eval-subinfo">' +
+			'							<div class="subinfo-left">' +
+			'									<div class="icons mui-inline" >';
+		var score = data.score;
+		for(var i = 0; i < score; i++) {
+			html += '<i class="mui-icon mui-icon-star-filled star"></i>';
+		}
+		for(var j = 0; j < 5 - score; j++) {
+			html += '<i class="mui-icon mui-icon-star star"></i>';
+		}
+		html += '</div>' +
+			'		                         </div>' +
+			'								<div class="subinfo-right">' +
+			'									<img src="../../images/res/icon_time.png" />' +
+			'									<div>' + data.creationDate + '</div>' +
+			'								</div>' +
+			'							</div>' +
+			'						</div>' +
+			'				</li>';
+		return html;
+	},
+	evalList: function(evalList) {
+		var html = "";
+		for(var i = 0; i < evalList.length; i++) {
+			html += this._eval(evalList[i]);
+		}
+		return html;
+	}
+
+}

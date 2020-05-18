@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="information.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">修改信息</h1>
+				<a class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 15px;line-height: 25px;margin-right: 2px;"
+				 id="btn_save">保存</a>
+			</header>
+		</head>
+		<div class="mui-content" style="background: white;-webkit-user-select:text !important">
+			<ul class="mui-table-view" style="background-color: #F0F0F0;-webkit-user-select:text !important">
+				<input type="file" hidden="hidden" onchange="updateImg(this)" accept="image/*" multiple="multiple"  id="ipt_file"/>
+				<li id="user_img" style="height: 50px;margin-bottom: 1px;padding-top:11px" class="mui-table-view-cell">
+					    <span style="float: left;">头像</span>
+					    <img  id="ipt_img" src=""  onerror="javascript:this.src='../../images/default.png';" style="float: right;position: relative; bottom: 12px;height: 52px;width: 52px;"/>
+				</li>
+				<li style="height: 50px;margin-bottom: 1px;padding-top:11px" class="mui-table-view-cell">
+					<span style="float: left;">昵称</span><input style="float: right;width: 60%;text-align: right;border: 0;" id="ipt_name" />
+				</li>
+				<li style="height: 50px;margin-bottom: 1px;padding-top:14px;border-bottom: 1px solid #F0F0F0;" class="mui-table-view-cell">
+					<span style="float: left;">手机号</span><input style="float: right;width: 60%;text-align: right;border: 0;" id="ipt_phone" readonly="readonly"/>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../../js/exif.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/my/my-server.js"></script>
+	<script type="text/javascript" src="infromation-variable.js"></script>
+	<script type="text/javascript" src="information-func.js"></script>
+	<script type="text/javascript" src="information.js"></script>
+</html>

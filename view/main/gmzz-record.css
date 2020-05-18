@@ -1,0 +1,11 @@
+.mui-scroll {
+	min-height: 100%;
+}
+
+p{
+	color: #000000;
+}
+
+.mui-table-view-cell:after {   
+    height: 0;
+}

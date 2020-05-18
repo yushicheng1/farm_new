@@ -1,0 +1,31 @@
+var aFunc = {
+	initData: function() {
+		var id = aVariable.params.sliderId;
+		sliderServer.getSlider(id, function(data) {
+			if(data.code == 200) {
+				aVariable.ipt.iptTitle.innerHTML = data.body.title || "";
+				aVariable.ipt.iptNum.innerHTML = data.body.readNum || "";
+				aVariable.ipt.iptName.innerHTML = data.body.name || "";
+				aVariable.ipt.iptTime.innerHTML = data.body.publishDate || "";
+				aVariable.ipt.iptContent.innerHTML = data.body.content || "";
+			}
+		}, function() {
+
+		});
+
+	},
+	bindEvent: function() {
+
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+			aVariable.webview.current = plus.webview.currentWebview();
+		}
+
+		aVariable.params.sliderId = aVariable.webview.current.sliderId;
+		aFunc.initData();
+		aFunc.bindEvent();
+	}
+};

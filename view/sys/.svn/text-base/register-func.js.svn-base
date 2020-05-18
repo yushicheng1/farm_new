@@ -1,0 +1,64 @@
+var aFunc = {
+	back: function() {
+		mui.back = function(event) {
+			aVariable.ipt.backButtonPress++;
+			if(aVariable.ipt.backButtonPress > 1) {
+				plus.runtime.quit();
+			} else {
+				plus.nativeUI.toast('再按一次退出应用');
+			}
+			setTimeout(function() {
+				aVariable.ipt.backButtonPress = 0;
+			}, 1000);
+			return false;
+		};
+	},
+	bindEvent: function() {
+		mui("#btn-register")[0].addEventListener('tap', function(event) {
+			console.log('2222');
+			$("#btn-register").attr("disabled", true);
+			var name = $("#ipt-register-name").val();
+			var account = $("#ipt-register-account").val();
+			var passwordOne = $("#ipt-register-passwordOne").val();
+			var passwordTwo = $("#ipt-register-passwordTwo").val();
+			if(name == "") {
+				mui.toast("姓名不能为空");
+				$("#btn-register").attr("disabled", false);
+				return;
+			} else if(account == "") {
+				mui.toast("用户名不能为空");
+				$("#btn-register").attr("disabled", false);
+				return;
+			} else if(passwordOne == "" || passwordTwo == "") {
+				mui.toast("密码不能为空");
+				$("#btn-register").attr("disabled", false);
+				return;
+			} else if(passwordOne != passwordTwo) {
+				mui.toast("两次输入的密码不一致");
+				$("#btn-register").attr("disabled", false);
+			} else {
+				sysServer.register(name, account, passwordOne, function(data) {
+					console.log("data=" + JSON.stringify(data));
+					if(data.code == "200") {
+						mui.toast("注册成功");
+						mui.back();
+					} else {
+						mui.toast(data.msg);
+						$("#btn-register").attr("disabled", false);
+					}
+				});
+			}
+		}, false);
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+			aVariable.webview.current = plus.webview.currentWebview();
+		}
+		//		aFunc.initData();
+		// 绑定事件
+		aFunc.bindEvent();
+		aFunc.back();
+	}
+};

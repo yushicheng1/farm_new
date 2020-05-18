@@ -1,0 +1,18 @@
+.mui-scroll {
+	min-height: 100%;
+}
+
+.mui-table-view li {
+/* 	height: 126px; */
+	background-color: white;
+	margin: 5px 5px 5px 5px;
+}
+
+
+
+#btn-enter {}
+
+img {
+	height: 100%;
+}
+

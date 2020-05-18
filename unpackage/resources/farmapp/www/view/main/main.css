@@ -1,0 +1,51 @@
+.mui-content {
+	/* padding: 5px 10px 8px 10px; */
+	/* overflow-x: visible; */
+	
+}
+
+
+.manearea {
+	width: 100%;
+	padding: 1%;
+	height: 90px;
+}
+
+.mainmenu {
+	float: left;
+	width: 25%;
+	padding: 3%;
+	padding-left: 7%;
+}
+
+.mainmenu img {
+	width: 85%;
+	height: 60px;
+}
+
+.navig img {
+	width: 85%;
+	height: auto;
+}
+
+.navig {
+	padding: 24px 0 7px 0;
+	background: #fff;
+}
+
+.navig p {
+	color: #686868;
+	font-size: 12px;
+}
+
+.mainmenu_nc {
+	float: left;
+	width: 25%;
+	padding: 3%;
+	/* padding-left: 7%; */
+}
+
+.mainmenu_nc img {
+	width: 100%;
+	height: 60px;
+}

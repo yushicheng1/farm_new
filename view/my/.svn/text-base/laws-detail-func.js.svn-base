@@ -1,0 +1,49 @@
+var aFunc = {
+	initData: function() {
+		var id = aVariable.params.lawsId;
+		tobaccoServer.getLawsAndRegulationsInfo(id, function(data) {
+			if(data.code == 200) {
+				aVariable.ipt.iptHeader.innerHTML = data.body.name;
+				aVariable.ipt.iptContent.innerHTML = data.body.content || "";
+
+				var content = aVariable.ipt.iptContent.innerHTML;
+				var regExp = new RegExp(aVariable.params.keyWord, 'g');
+				if(aVariable.params.keyWord) {
+					$('#ipt-content p').each(function() {
+						var html = $(this).html();
+						var _time = $(this).parent().find("strong").text();
+						var newHtml = html.replace(regExp, '<span class="highlight">' + aVariable.params.keyWord + '</span>');
+						$(this).html(newHtml);
+						flag = 1;
+					})
+					if(flag) {
+						if($(".highlight").size() > 1) {
+							var _top = $(".highlight").eq(0).offset().top;
+							$("html,body").animate({
+								"scrollTop": _top
+							}, 500)
+						}
+					}
+				}
+
+			}
+		}, function() {
+
+		});
+	},
+	bindEvent: function() {
+
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+		}
+		aVariable.webview.current = plus.webview.currentWebview();
+		aVariable.params.lawsId = aVariable.webview.current.lawsId;
+		aVariable.params.keyWord = aVariable.webview.current.keyWord;
+		console.log(aVariable.params.title);
+		aFunc.initData();
+		aFunc.bindEvent();
+	}
+};

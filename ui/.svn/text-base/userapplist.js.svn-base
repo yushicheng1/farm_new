@@ -1,0 +1,20 @@
+"use strict";
+var aUi = aUi || {};
+aUi.appinfo = {
+
+	initAPPData: function(html, data) {
+		for(var i = 0; i < data.body.length; i++) {
+			html += '<li class="mui-table-view-cell myAppList" data-href="' + data.body[i].url + '">' +
+				'<div class="index-myapp-box">' +
+				'<div class="myapp-img">' +
+				'<img src="' + aServer.ServiceUrl + data.body[i].icon + '" onerror="aFunc.nofind(this);" />' +
+				'</div>' +
+				'<div class="myapp-nameinfo">' +
+				'<span>' + data.body[i].name + '</span>' +
+				'</div>' +
+				'</div>' +
+				'</li>';
+		}
+		return html;
+	}
+}

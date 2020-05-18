@@ -1,0 +1,93 @@
+.mui-content {
+	padding: 5px 10px 8px 10px;
+}
+
+
+/*标题样式*/
+
+.notie-title {
+	padding-left: 10px;
+	height: 40px;
+	margin-top: 10px;
+}
+
+.notie-title span {
+	font-size: 24px;
+	line-height: 40px;
+}
+
+.info-subinfo {
+	height: 34px;
+	padding-top: 2px;
+	width: 100%;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+}
+
+.subinfo-left {
+	width: 40%;
+	float: left;
+	padding-top: 3px;
+}
+
+.subinfo-left img {
+	height: 22px;
+	float: left;
+	margin: 0px 8px 0px 5px;
+}
+
+.subinfo-left span {
+	color: #13227a;
+	font-size: 15px;
+}
+
+.subinfo-right {
+	width: 60%;
+	float: left;
+	padding-top: 3px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.subinfo-right img {
+	height: 20px;
+	margin: 0px 8px 0px 5px;
+}
+
+.subinfo-right div {
+	float: right;
+	color: #707070;
+	font-size: 14px;
+}
+
+.notice-content {
+	margin-top: 15px;
+	min-height: 400px;
+	margin-bottom: 40px;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.notice-publicer {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	border-top: 1px solid lightgray;
+	width: 100%;
+	height: 40px;
+	text-align: right;
+	padding-top: 10px;
+	padding-right: 20px;
+	background-color: #F6F6F4;
+}
+
+.notice-publicer div {
+	float: right;
+	font-size: 16px;
+	color: #76756F;
+}
+
+.notice-content img {
+	width: 96%;
+	margin: auto;
+}

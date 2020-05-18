@@ -1,0 +1,187 @@
+"use strict";
+var aUi = aUi || {};
+aUi.index = {
+
+	//滚动APP信息
+	sliderAPPInfo: function(list4APPInfo) {
+		var html4Item = "";
+		var html4Indicator = "";
+		html4Item += '<div class="mui-slider-item mui-slider-item-duplicate"><a class="c-href" data-href="' + list4APPInfo[list4APPInfo.length - 1].Url + '"><img src="images/static/top.png" /></a></div>';
+		for(var i = 0; i < list4APPInfo.length; i++) {
+			html4Item += this._sliderAPPInfoItem(list4APPInfo[i]);
+			html4Indicator += '<div class="mui-indicator' + (i == 0 ? ' mui-active' : '') + '"></div>';
+		}
+		html4Item += '<div class="mui-slider-item mui-slider-item-duplicate"><a class="c-href" data-href="' + list4APPInfo[0].Url + '"><img src="images/static/top.png"  /></a></div>';
+		return {
+			item: html4Item,
+			indicator: html4Indicator
+		};
+	},
+	_sliderAPPInfoItem: function(data) {
+		var emptyImg = "images/static/top.png";
+		var htmlVal = '<div class="mui-slider-item">' +
+			'				<a class="c-href" data-href="1">' +
+			'					<img src="images/static/top.png" onerror="javascript:this.src=' + emptyImg + ';" />' +
+			'				</a>' +
+			'			</div>';
+		return htmlVal;
+	},
+	//个人应用
+	myAPPInfoHtml: function(list4MyAPP) {
+		var html4Item = "";
+		for(var i = 0; i < list4MyAPP.length; i++) {
+			html4Item += this._myAPPInfoHtml(list4MyAPP[i]);
+		}
+		if(list4MyAPP.length >= 1) {
+			html4Item += '<li class="mui-table-view-cell myAppList" id="btn-more">' +
+				'<div class="index-myapp-box" >' +
+				'<div class="myapp-img">' +
+				'<img src="images/homemenu/menu_app.png" />' +
+				'</div>' +
+				'<div class="myapp-nameinfo">' +
+				'<span>更多</span>' +
+				'</div>' +
+				'</div>' +
+				'</li>';
+		}
+		return html4Item;
+	},
+	_myAPPInfoHtml: function(data) {
+		var htmlVal = '<li class="mui-table-view-cell myAppList" data-href="' + data.url + '">' +
+			'<div class="index-myapp-box">' +
+			'<div class="myapp-img">' +
+			'<img src="' + aServer.ServiceUrl + data.icon + '" onerror="aFunc.nofind(this);" />' +
+			'</div>' +
+			'<div class="myapp-nameinfo">' +
+			'<span>' + data.name + '</span>' +
+			'</div>' +
+			'</div>' +
+			'</li>';
+		return htmlVal;
+	},
+
+	//推荐应用
+	appInfoHtml: function(list4MyAPP) {
+		var html4Item = "";
+		for(var i = 0; i < list4MyAPP.length; i++) {
+			html4Item += this._appInfoHtml(list4MyAPP[i]);
+		}
+		if(list4MyAPP.length >= 8) {
+			html4Item += '<li class="mui-table-view-cell mui-media mui-col-xs-4" >' +
+				'		<div class="index-app-box">' +
+				'			<a >' +
+				'				<div class="p-img">' +
+				'					<img id="btn-mores" src="images/homemenu/menu_app.png" onerror="aFunc.nofind(this);" />' +
+				'					<span>更多</span>' +
+				'				</div>' +
+				'				<div class="sub-info">' +
+				'					<div class="sub-info-bottom">' +
+				'						<span></span>' +
+				'					</div>' +
+				'				</div>' +
+				'				<div class="sub-info">' +
+				'					<button class="btn-appinstall" onclick="aFunc.openMore()">查看</button>' +
+				'				</div>' +
+				'			</a>' +
+				'		</div>' +
+				'	</li>';
+		}
+		return html4Item;
+	},
+	_appInfoHtml: function(data) {
+		var btnText = "安装";
+		var onclick = ' onclick="aFunc.installAPP(\'' + data.id + '\')" ';
+		if(data.userId != null && data.userId != '') {
+			btnText = "打开";
+			onclick = 'onclick="aFunc.openAPP(\'' + data.id + '\',\'' + data.url + '\')"';
+		}
+		var htmlVal = '<li class="mui-table-view-cell mui-media mui-col-xs-4">' +
+			'		<div class="index-app-box">' +
+			'			<a >' +
+			'				<div class="p-img"  >' +
+			'					<img data-id="' + data.id + '" src="' + aServer.ServiceUrl + data.icon + '" onerror="aFunc.nofind(this);" />' +
+			'					<span>' + data.name + '</span>' +
+			'				</div>' +
+			'				<div class="sub-info">' +
+			'					<div class="sub-info-top">' +
+			'						<div class="star-info">5.0</div>' +
+			'					</div>' +
+			'					<div class="sub-info-bottom">' +
+			'						<span>' + data.installNum + '</span>' +
+			'					</div>' +
+			'				</div>' +
+			'				<div class="sub-info">' +
+			'					<button class="btn-appinstall"' + onclick + ' >' + btnText + '</button>' +
+			'				</div>' +
+			'			</a>' +
+			'		</div>' +
+			'	</li>';
+		return htmlVal;
+	},
+	//个人分组
+	groupHtml: function(listGroup) {
+		var html4Item = this._groupHtml(listGroup);
+		return html4Item;
+	},
+	_groupHtml: function(data) {
+		var htmlVal = '<div>' +
+			'<div class="officepage-group">' +
+			'<span>' + data.name + '</span>' +
+			'</div>' +
+			'<div class="button-more" onclick="aFunc.openGroup(\'' + data.id + '\',\'' + data.name + '\')">' +
+			'<span class="span-more">...</span>' +
+			'</div>' +
+			'<ul class="mui-table-view mui-grid-view index-group">';
+		var applist = data.appList;
+		
+		if(applist.length > 0) {
+			for(var i = 0; i < applist.length; i++) {
+				if(i < 4) {
+					htmlVal += this._groupAppHtml(applist[i]);
+				}
+			}
+		}
+
+		var htmlEnd = '<li class="mui-table-view-cell myGroupList" data-id="' + data.id + '">' +
+			'	<div class="index-myapp-box">' +
+			'		<div class="myapp-img">' +
+			'			<img src="images/static/add.png" />' +
+			'		</div>' +
+			'		<div class="myapp-nameinfo">' +
+			'			<span>添加</span>' +
+			'		</div>' +
+			'	</div>' +
+			'</li>' +
+			'</ul>' +
+			'</div>';
+		if(applist.length < 4 && data.id != "0") {
+			htmlVal += htmlEnd;
+		} else {
+			htmlVal += '</ul>' +
+				'</div>';
+		}
+		return htmlVal;
+	},
+	//个人分组应用
+	groupAppHtml: function(listGroupApp) {
+		var html4Item = "";
+		for(var i = 0; i < listGroupApp.length; i++) {
+			html4Item += this._groupAppHtml(listGroupApp[i]);
+		}
+		return html4Item;
+	},
+	_groupAppHtml: function(data) {
+		var htmlVal = '<li class="mui-table-view-cell myGroupList" data-href="' + data.url + '">' +
+			'	<div class="index-myapp-box">' +
+			'		<div class="myapp-img">' +
+			'			<img src="' + aServer.ServiceUrl + data.icon + '" onerror="aFunc.nofind(this);" />' +
+			'		</div>' +
+			'		<div class="myapp-nameinfo">' +
+			'			<span>' + data.name + '</span>' +
+			'		</div>' +
+			'	</div>' +
+			'</li>';
+		return htmlVal;
+	}
+
+}

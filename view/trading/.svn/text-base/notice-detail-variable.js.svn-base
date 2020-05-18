@@ -1,0 +1,22 @@
+var aVariable = {
+	webview: {
+		current: null,
+	},
+	box: {
+
+	},
+	btn: {
+
+	},
+	ipt: {
+		iptHeader: document.getElementById("ipt-header"),
+		iptTitle: document.getElementById("ipt-title"),
+		iptName: document.getElementById("ipt-name"),
+		iptTime: document.getElementById("ipt-time"),
+		iptNum: document.getElementById("ipt-num"),
+		iptContent: document.getElementById("ipt-content")
+	},
+	params: {
+		noticeId: ''
+	}
+};

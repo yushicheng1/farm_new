@@ -1,0 +1,51 @@
+
+p{
+	margin: 0;
+}
+.fl{
+	float: left;
+	}
+.fr{
+	float: right;
+}
+.mui-sect{
+	margin-top: 20px;
+	background: #FFFFFF;
+}
+		
+.mui-record{
+	width: 100%;
+	height: 80px;
+	border-bottom: 1px solid #F4F4F4;	
+}
+.mui-record div{
+	width: 100%;
+	height:50%;
+}
+.mui-record p{
+	font-size: 18px;
+	line-height:39px;
+}
+.mui-record .mui-data{
+	font-size: 13px;
+}
+.mui-record .mui-money{
+	font-size: 15px;
+	color: #45D9A8;
+}
+.mui-scroll {
+	min-height: 100%;
+}
+			
+
+
+ 
+
+
+
+
+
+
+
+
+

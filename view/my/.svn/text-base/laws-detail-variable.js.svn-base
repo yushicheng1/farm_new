@@ -1,0 +1,19 @@
+var aVariable = {
+	webview: {
+		current: null,
+	},
+	box: {
+
+	},
+	btn: {
+
+	},
+	ipt: {
+		iptHeader: document.getElementById("ipt-header"),
+		iptContent: document.getElementById("ipt-content")
+	},
+	params: {
+		lawsId: '',
+		keyWord:''
+	}
+};

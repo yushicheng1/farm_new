@@ -1,0 +1,32 @@
+var aVariable = {
+	webview: {
+		current: null,
+	},
+	box: {
+		employer: document.getElementById("box-employer"),
+        minimumMarket: document.getElementById("box-minimumMarket"),
+        investigationDept: document.getElementById("box-investigationDept"),
+        caseNum: document.getElementById("box-caseNum"),
+        caseTitle: document.getElementById("box-caseTitle"),
+        timeOfCrime: document.getElementById("box-timeOfCrime"),
+        caseSource: document.getElementById("box-caseSource"),
+        caseNature: document.getElementById("box-caseNature"), 
+        transferStatus: document.getElementById("box-transferStatus"),
+        registrationNum: document.getElementById("box-registrationNum"),
+        party: document.getElementById("box-party"),
+        licence: document.getElementById("box-licence"),
+        tobaccoNum: document.getElementById("box-tobaccoNum"),
+        tabaccoWeight: document.getElementById("box-tabaccoWeight"),
+        caseWorth: document.getElementById("box-caseWorth")
+	},
+	btn: {
+
+	},
+	ipt: {
+		iptHeader: document.getElementById("ipt-header"),
+		iptContent: document.getElementById("ipt-content")
+	},
+	params: {
+		caseId: ''
+	}
+};

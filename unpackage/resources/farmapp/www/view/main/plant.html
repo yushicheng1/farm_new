@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="plant.css" />
+	</head>
+	<body>
+		<div class="mui-content" style="height: 100%;">
+			<div class="mui-portrait">
+				<div style="width: 10.25rem;height: 7.5rem;float: left;padding: 0.825rem;">
+					<img id="ipt_tx" src="" onerror="javascript:this.src='../../images/default.png';" style="width: 5.25rem;height: 5.25rem;border: solid 2px #000000;" />
+				</div>
+				<div style="width: 5rem;height: 100%;float: left;margin-top: 0.825rem;">
+					<div style="width:8.3rem;height: 2.3rem;background-image: url(../../images/nongchang/jifen.png); background-size: 100% 100%;
+				background-repeat: no-repeat;">
+						<p style="text-align: center;font-size: 1.05rem;line-height: 2.5rem;margin-left: 0.9rem;" id="ipt_ji">0</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="mui-popover" id="popover" style="width: 100px;height: 50px;background-color:rgba(0,0,0,0);margin-left: 3%;margin-top: 5%;-webkit-pointer-events: none;-moz-pointer-events: none;-ms-pointer-events: none;-o-pointer-events: none;pointer-events: none;">
+				<p style="font-size: 14px;color: #366e0c;text-align:center;margin-bottom: 0;font-weight: 900;text-shadow:-1px 0 white,0 1px white,1px 0 white,0 -1px white;"
+				 id="ipt-plant-name"></p>
+				<p style="text-align: center;margin-bottom: 0;color: #5c290d;text-shadow:-1px 0 white,0 1px white,1px 0 white,0 -1px white; "><span>成熟还需</span><span
+					 id="ipt-plant-day"></span><span>天</span></p>
+			</div>
+
+			<div id="box_jc">
+				<a href="javascript:void(0)">
+					<img src="../../images/nongchang/jiancai_new.png" style="width: 40%;height: 17%;position: absolute;top: 20%;left: 35%;"
+					 id="btn_toucai">
+					<!-- <img src="../../images/scl/jchl.png" style="width: 32%;height: 17%;position: absolute;top: 18%;left: 44%;visibility:hidden;"
+					 id="btn_huishou"> -->
+				</a>
+			</div>
+			
+			<div class="mui-plant" id="div_pland1">
+				<div class="mui-plant1" style="width: 100%;height: 100%;" id="div_pland">
+				<!-- <div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div> -->
+				</div>
+			</div>
+     
+			<!-- <div class="mui-plant" id="div_pland"> -->
+				<!-- <div class="mui-plant-land" id="div_land">
+					<a href="#popover" style="display: block;">
+						<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+					</a>
+				</div>
+				<div class="mui-plant-land">
+					<a href="#popover">
+						<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+					</a>
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<a href="#popover" style="display: block;">
+						<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+					</a>
+				</div>
+				<div class="mui-plant-land">
+					<a href="#popover">
+						<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+					</a>
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land" id="div_land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div>
+				<div class="mui-plant-land">
+					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
+				</div> -->
+			<!-- </div> -->
+
+			<div class="mui-Onekey">
+				<!-- <div>
+					<a href="javascript:void(0)" id="lise" onclick="lise()">
+						<img src="../../images/nongchang/paihamhbang.png" style="width: 5rem;height: 5rem;">
+					</a>
+				</div>
+ -->
+				<!-- 	<div>
+					<a href="javascript:void(0)" id="btn_zhongzi">
+						<img src="../../images/nongchang/cangku.png">
+					</a>
+				</div>
+				<div>
+					<a href="javascript:void(0)" id="btn_td">
+						<img src="../../images/cangku/tdan.png">
+					</a>
+				</div> -->
+				<!-- <div>
+					<a href="javascript:void(0)" id="btn_eradicate" >
+						<img src="../../images/nongchang/renwu.png">
+					</a>
+				</div> -->
+
+			</div>
+			<div class=" mui-fooder ">
+				<ul class="text">
+					<li>
+						<a href="javascript:void(0)" id="btn_shouye">
+							<img src="../../images/nongchang/fanhui.png">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" id="btn_watering">
+							<img src="../../images/nongchang/jiaoshui.png">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" id="btn_task">
+							<img src="../../images/nongchang/shifei.png">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" id="btn_one_water">
+							<img src="../../images/nongchang/yjjs.png">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" id="btn_one_task">
+							<img src="../../images/nongchang/yjsf.png">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/mui.my.js"></script>
+		<script type="text/javascript" src="../../a-core/util/log.js"></script>
+		<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+		<script type="text/javascript" src="../../a-core/util/server.js"></script>
+		<script type="text/javascript" src="../../server/main/plant-server.js"></script>
+		<script type="text/javascript" src="../../server/my/my-server.js"></script>
+		<script type="text/javascript" src="../../ui/main/plant-list.js"></script>
+		<script type="text/javascript" src="plant-variable.js"></script>
+		<script type="text/javascript" src="plant-func.js"></script>
+		<script type="text/javascript" src="plant.js"></script>
+		<script src="../../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+
+		</script>
+	</body>
+</html>

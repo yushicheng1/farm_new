@@ -1,0 +1,35 @@
+.mui-scroll {
+	min-height: 100%;
+}
+
+.mui-btn-outlined{
+	color:white;
+	background-color: #ff7272;
+}
+
+.btn-seed{
+	line-height: 0.8;
+	padding: 6px 15px;
+	float: right;	
+}
+span{
+	
+}
+
+.mui-table-view li {
+	height: 260px;
+	width:47%;
+	background-color: white;
+	margin: 5px 5px 5px 5px;
+}
+
+.mui-table-view-cell:after {
+	height: 0;
+}
+
+#btn-enter {}
+
+.img_seed{
+	width: 100%;
+	height: 130px;
+}

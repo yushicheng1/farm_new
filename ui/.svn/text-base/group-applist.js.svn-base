@@ -1,0 +1,27 @@
+"use strict";
+var aUi = aUi || {};
+aUi.groupList = {
+
+	_groupList: function(data) {
+		var html =  '<li data-id="'+data.appId+'" class="mui-table-view-cell">'+
+					'	<div style="float: left">'+
+					'		<img src="' + aServer.ServiceUrl + data.icon + '" onerror="aFunc.nofind(this);"/>'+
+					'	</div>'+
+					'	<div style="float: left">'+
+					'		<span class="title">'+data.appName+'</span></br>'+
+					'		<span class="type">'+data.categoryName+'</span>'+
+					'	</div>'+
+					'	<div style="float: right">'+
+					'		<button>添加</button>'+
+					'	</div>'+
+					'</li>';
+		return html;
+	},
+	groupList: function(listGroup) {
+		var html = "";
+		for(var i = 0; i < listGroup.length; i++) {
+			html += this._groupList(listGroup[i]);
+		}
+		return html;
+	}
+}

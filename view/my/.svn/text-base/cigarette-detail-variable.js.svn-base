@@ -1,0 +1,30 @@
+var aVariable = {
+	webview: {
+		current: null,
+	},
+	box: {
+		accountManager: document.getElementById("box-accountManager"),
+		businessAddress: document.getElementById("box-businessAddress"),
+		cityAdmin: document.getElementById("box-cityAdmin"),
+		auditTeam: document.getElementById("box-auditTeam"),
+		idNumber: document.getElementById("box-idNumber"),
+		licence: document.getElementById("box-licence"),
+		manageType: document.getElementById("box-manageType"),
+		minimumMarket: document.getElementById("box-minimumMarket"),
+		monopolyBureau: document.getElementById("box-monopolyBureau"),
+		orderPhone: document.getElementById("box-orderPhone"),
+		phone: document.getElementById("box-phone"),
+		retailersName: document.getElementById("box-retailersName"),
+		storefrontName: document.getElementById("box-storefrontName")
+	},
+	btn: {
+
+	},
+	ipt: {
+		iptHeader: document.getElementById("ipt-header"),
+		iptContent: document.getElementById("ipt-content")
+	},
+	params: {
+		cigaretteId: ''
+	}
+};

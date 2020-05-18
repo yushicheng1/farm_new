@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="searchfriends.css" />
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav title">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+			<a id="link_submit_search" class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 16px;line-height: 25px;">搜索</a>
+			<h1 class="mui-title title-color">添加好友</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="mui-input-row">
+				<input id="txt_friend_username" type="text" class="mui-input-speech mui-input-clear" placeholder="搜索朋友">
+			</div>
+
+		</div>
+
+
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../a-core/util/log.js"></script>
+		<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+		<script type="text/javascript" src="../../a-core/util/server.js"></script>
+		<script src="../../server/friend/friend-server.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			mui.plusReady(function() {
+				// var user = app.getUserGlobalInfo();
+
+				var txt_friend_username = document.getElementById("txt_friend_username");
+
+				// 提交事件，搜索朋友
+				var link_submit_search = document.getElementById("link_submit_search");
+				link_submit_search.addEventListener("tap", function() {
+
+					var phone = txt_friend_username.value;
+
+					// plus.nativeUI.showWaiting("请稍后...");
+					// plus.nativeUI.closeWaiting();
+					friendServer.searchFriend(phone, function(data) {
+						console.log(JSON.stringify(data))
+						if (data.status == 200) {
+							mui.openWindow({
+								url: "searchfriendsResult.html",
+								id: "searchfriendsResult",
+								extras: {
+									willBeFriend: data.data
+								}
+							});
+						} else {
+							plus.nativeUI.toast(data.msg, {
+								verticalAlign: "center"
+							})
+						}
+					}, function() {});
+
+
+					// 与后端联调
+					// mui.ajax(app.serverUrl + "/friends/search?myUserId=" + user.id
+					//  		+ "&friendUsername=" + youFriendUsername,{
+					// 	data:{},
+					// 	dataType: 'json',	// 服务器返回json格式数据
+					// 	type: 'post', 	// HTTP请求类型
+					// 	timeout: 10000, 	// 超时时间设置为10秒
+					// 	headers:{'Content-Type': 'application/json'},
+					// 	success:function(data) {
+					// 		plus.nativeUI.closeWaiting();
+
+					// 		if (data.status == 200) {
+					// 			mui.openWindow({
+					// 				url: "searchfriendsResult.html",
+					// 				id: "searchfriendsResult.html",
+					// 				styles: {},
+					// 				extras: {
+					// 					willBeFriend: data.data
+					// 				}
+					// 			});
+					// 		} else {
+					// 			app.showToast(data.msg, "error");
+					// 		}
+					// 	}
+					// });
+				});
+			});
+		</script>
+
+
+	</body>
+
+</html>

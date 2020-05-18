@@ -1,0 +1,13 @@
+body{
+	background-color: white;
+}
+
+#btn-feedback{
+	position: relative;
+    right: 10px;
+}
+
+.content{
+	padding: 10px;
+}
+

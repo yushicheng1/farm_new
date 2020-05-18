@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>我的仓库</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/pull-refresh.css" />
+		<link rel="stylesheet" type="text/css" href="warehouse.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<!-- <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a> -->
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">我的仓库</h1>
+				<a class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 15px;line-height: 25px;margin-right: 10px;" id="warehouse_record">仓库记录</a>
+			</header>
+		</head>
+		<div class="mui-content mui-scroll-wrapper " style="background-color: #F0F0F0;padding-top: 45px;" id="pullrefresh">
+			<div class="mui-scroll" id="box-scroll">
+				<ul class="mui-table-view" style="background:#F0F0F0;" id="box-warehouse">
+					<!-- <li class="mui-table-view-cell mui-collapse">
+						<div class="detail">
+							<img class="mui-media-object mui-pull-left" src="../../images/homemenu/xhs.jpg" style="max-width: 80px;height: 80px;border-radius: 10px;" data-type="0">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;"><b>西红柿</b></span></p>
+								<p style="font-size: 13px;"><span>种植日期:</span><span>2019-12-07</span></p>
+								<p style="font-size: 13px;"><span>收获日期:</span><span>2020-04-07</span></p>
+								<p style="font-size: 13px;"><span>剩余量:</span><span></span>50<span>斤</span></p>
+							</div>
+						</div>
+						<span style="font-size: 14px;">剩余12小时24分54秒</span>
+						<a class="mui-navigate-right" style="width: 120px;float: right;font-size: 13px;">查看更多</a>
+						<div class="mui-collapse-content">
+							<div class="mui-row mui-text-center navig">
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<img src="../../images/homemenu/yjdj.png" data-type="1"/>
+									<p>邮寄到家</p>
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<img src="../../images/homemenu/gdjydt.png" data-type="2"/>
+									<p>挂到交易大厅</p>
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3 ckecklogin">
+									<img src="../../images/homemenu/xths.png" data-type="3"/>
+									<p>系统回收</p>
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<img src="../../images/homemenu/dq.png" data-type="4"/>
+									<p>丢弃</p>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse mui-media">
+						<div class="detail">
+							<img class="mui-media-object mui-pull-left" src="../../images/homemenu/xhs.jpg" style="max-width: 80px;height: 80px;border-radius: 10px;">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;"><b>西红柿</b></span></p>
+								<p style="font-size: 13px;"><span>种植日期:</span><span>2019-12-07</span></p>
+								<p style="font-size: 13px;"><span>收获日期:</span><span>2020-04-07</span></p>
+								<p style="font-size: 13px;"><span>剩余量:</span><span></span>50<span>斤</span></p>
+							</div>
+						</div>
+						<span style="font-size: 14px;">剩余12小时24分54秒</span>
+						<a class="mui-navigate-right" style="width: 120px;float: right;font-size: 13px;">查看更多</a>
+						<div class="mui-collapse-content">
+							<div class="mui-row mui-text-center navig">
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<img src="../../images/homemenu/yjdj.png" />
+									<p>邮寄到家</p>
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<img src="../../images/homemenu/gdjydt.png" />
+									<p>挂到交易大厅</p>
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3 ckecklogin">
+									<img src="../../images/homemenu/xths.png" />
+									<p>系统回收</p>
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<img src="../../images/homemenu/dq.png" />
+									<p>丢弃</p>
+								</div>
+							</div>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../js/mui.pullToRefresh.js"></script>
+	<script type="text/javascript" src="../../js/mui.pullToRefresh.material.js"></script>
+	<script type="text/javascript" src="../../server/warehouse/warehouse-server.js"></script>
+	<script type="text/javascript" src="../../ui/warehouse/warehouse.js"></script>
+	<script type="text/javascript" src="warehouse-variable.js"></script>
+	<script type="text/javascript" src="warehouse-func.js"></script>
+	<script type="text/javascript" src="warehouse.js"></script>
+</html>

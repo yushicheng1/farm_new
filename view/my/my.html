@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>首页</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="my.css" />
+	</head>
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">我的</h1>
+			</header>
+		</head>
+		<div class="mui-content" style="">
+			<div class="app-head">
+				<div class="app-head-left">
+					<img id="ipt_image" src="" onerror="javascript:this.src='../../images/default.png';" style="height:80px;width: 80px;"/>
+				</div>
+				<div class="app-head-right">
+					<div class="app-head-name">
+						<span id="app_name"></span>
+						<p><input value="新用户"  style="max-width: 107px;border: 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"  class="ipt-n" readonly="true" id="ipt-name"/></p>
+						<!-- <img src="../../images/homemenu/xg.png" style="height: 16px;position: relative;top: 2px;left: 5px;" id="btn-name"/> -->
+						<p><input value=""  style="max-width: 127px;border: 0;" maxlength="11"  class="ipt-n" readonly="true" id="ipt-phone"/>
+						<!-- <span style="color: #5bc2fd;font-size: 16px;" id="btn-phone">修改</span></p> -->
+					</div>
+				</div>
+			</div>
+			<!-- <div style="background-color: white;">
+				<p style="margin-bottom: 1px;height: 40px;">
+					<span style="font-size: 15px;float: left;padding-top: 10px;padding-left: 10px;">我的订单</span>
+					<img id="more_one" src="../../images/homemenu/qbdd.png" style="height: 10px;float: right;margin-top: 15px;margin-right: 10px;"/>
+					<span style="font-size: 15px;float: right;padding-top: 10px;padding-right: 5px;" id="all_order">全部订单</span>
+				</p>
+			</div> -->
+			<!-- <div class="mui-row mui-text-center navig" style="margin-bottom: 10px;">
+				<div class="mui-col-sm-3 mui-col-xs-3" id="newslist" style="width: 20%;">
+					<img src="../../images/homemenu/dfk.png" id="btn-dfk" />
+					<p>待付款</p>
+				</div>
+				<div class="mui-col-sm-3 mui-col-xs-3" style="width: 20%;">
+					<img src="../../images/homemenu/yfk.png"  id="btn-yfk"/>
+					<p>已付款</p>
+				</div>
+			</div> -->
+			<div style="background-color: white;">
+				<p style="margin-bottom: 1px;height: 40px;">
+					<span style="font-size: 15px;float: left;padding-top: 10px;padding-left: 10px;">常用工具</span>
+				</p>
+			</div>
+			<div id="slider_two">
+				<div class="mui-row mui-text-center navig" style="padding-top: 50px;padding-bottom: 50px;">
+					<div class="mui-col-sm-3  mui-col-xs-3 " id="btn-wdjf">
+						<img src="../../images/homemenu/wdjf.png" />
+						<p>我的积分</p>
+					</div>
+					<div class="mui-col-sm-3  mui-col-xs-3 " id="btn-wdqb">
+						<img src="../../images/homemenu/wdqb.png" />
+						<p>我的钱包</p>
+					</div>
+					<div class="mui-col-sm-3  mui-col-xs-3 " id="btn-wdjy">
+						<img src="../../images/homemenu/wdjy.png" />
+						<p>我的交易</p>
+					</div>
+					<div class="mui-col-sm-3 mui-col-xs-3 " id="btn-wddz">
+						<img src="../../images/homemenu/wddz.png" />
+						<p>我的地址</p>
+					</div>
+					<div class="mui-col-sm-3 mui-col-xs-3 " style="padding-top: 18px;" id="btn-yjdj">
+						<img src="../../images/homemenu/youji.png" />
+						<p>邮寄到家</p>
+					</div>
+					<div class="mui-col-sm-3 mui-col-xs-3 " style="padding-top: 18px;" id="btn-bzzx">
+						<img src="../../images/homemenu/bzzx.png" />
+						<p>帮助中心</p>
+					</div>
+					<div class="mui-col-sm-3 mui-col-xs-3 " style="padding-top: 18px;" id="btn-kfzx">
+						<img src="../../images/homemenu/kfzx.png" />
+						<p>客服中心</p>
+					</div>
+					<div class="mui-col-sm-3 mui-col-xs-3 " style="padding-top: 18px;" id="btn-yjfk">
+						<img src="../../images/homemenu/yjfk.png" />
+						<p>意见反馈</p>
+					</div>
+					<!-- <div class="mui-col-sm-3 mui-col-xs-3 " style="padding-top: 18px;" id="btn-bbsj">
+						<img src="../../images/homemenu/xtsj.png" />
+						<p>版本升级</p>
+					</div> -->					
+					<div class="mui-col-sm-3 mui-col-xs-3 " style="    padding-top: 18px;" id="btn-xgmm">
+						<img src="../../images/homemenu/xgmm.png" />
+						<p>修改密码</p>
+					</div>
+					<div class="mui-col-sm-3 mui-col-xs-3 " style="    padding-top: 18px;" id="btn-zxdl">
+						<img src="../../images/homemenu/tcdl.png" />
+						<p>退出登录</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/my/my-server.js"></script>
+	<script type="text/javascript" src="my-variable.js"></script>
+	<script type="text/javascript" src="my-func.js"></script>
+	<script type="text/javascript" src="my.js"></script>
+
+</html>

@@ -1,0 +1,22 @@
+"use strict";
+var aUi = aUi || {};
+aUi.groupDetail = {
+
+	initAPPData: function(html, data) {
+		for(var i = 0; i < data.body.length; i++) {
+			html += '<li data-li="' + data.body[i].appId + '" data-href="' + data.body[i].url + '" class="myAppList">' +
+				'              <div class="img-father index-myapp-box" data-li="' + data.body[i].appId + '">' +
+				'			<div class="img-container drag-handle">' +
+				'				<img class="item" src="' + aServer.ServiceUrl + data.body[i].icon + '" onerror="aFunc.nofind(this);" />' +
+				'		    </div>' +
+				'			<div class="img-content">' +
+				'				<p style="text-align:center;">' + data.body[i].appName + '</p>' +
+				'			</div>' +
+				'			<i class="img-remove">×</i>' +
+				'		</div>' +
+				'	</li>';
+		}
+		return html;
+	}
+
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>邮寄到家</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="yjdj.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">邮寄到家</h1>
+		</header>
+		<nav class="mui-nav mui-bar-tab " style="top: 44px;background-color: white;border: none;">
+			<div style="width: 100%;margin: 0 auto;">
+				<a class="mui-tab-item mui-active" data-href="warehouse/weifahuo.html" id="bbbsChannel_wfh">
+					<span class="mui-tab-label">未发货<i></i></span>
+				</a>
+				<a class="mui-tab-item" data-href="warehouse/yifahuo.html" id="bbbsChannel_yfh">
+					<span class="mui-tab-label">已发货<i></i></span>
+				</a>
+				<a class="mui-tab-item" data-href="warehouse/youshouhuo.html" id="bbsChannel_ysh">
+					<span class="mui-tab-label">已收货<i></i></span>
+				</a>
+			</div>
+		</nav>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/notice-list-server.js"></script>
+	<script type="text/javascript" src="../../js/mui.pullToRefresh.js"></script>
+	<script type="text/javascript" src="../../js/mui.pullToRefresh.material.js"></script>
+	<script type="text/javascript" src="yjdj-variable.js"></script>
+	<script type="text/javascript" src="yjdj-func.js"></script>
+	<script type="text/javascript" src="yjdj.js"></script>
+</html>

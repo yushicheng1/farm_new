@@ -1,0 +1,393 @@
+var aFunc = {
+	initData: function() {
+
+	},
+	bindEvent: function() {
+		//查看详情
+		mui(aVariable.box.scroll).on("tap", "li", function(e) {
+			var keyWord = aVariable.ipt.iptSearch.value;
+			var card = this;
+			console.log("this=" + this);
+			var infoId = card.getAttribute("data-id");
+			if(aVariable.params.title == "烟草法律法规") {
+				mui.openWindow({
+					id: "lawsDetail",
+					url: '/view/tobacco/laws-detail.html',
+					extras: {
+						lawsId: infoId,
+						keyWord:keyWord
+					}
+
+				});
+			} else if(aVariable.params.title == "涉烟信息查询") {
+				mui.openWindow({
+					id: "cigaretteDetail",
+					url: '/view/tobacco/cigarette-detail.html',
+					extras: {
+						cigaretteId: infoId
+					}
+
+				});
+			} else if(aVariable.params.title == "品牌信息查询") {
+				mui.openWindow({
+					id: "brandDetail",
+					url: '/view/tobacco/brand-detail.html',
+					extras: {
+						brandId: infoId
+					}
+
+				});
+			} else if(aVariable.params.title == "真假烟鉴别") {
+				mui.openWindow({
+					id: "distinguishDetail",
+					url: '/view/tobacco/distinguish-detail.html',
+					extras: {
+						distinguishId: infoId
+					}
+
+				});
+			} else if(aVariable.params.title == "案卷文书制作") {
+				mui.openWindow({
+					id: "filesDetail",
+					url: '/view/tobacco/files-detail.html',
+					extras: {
+						filesId: infoId
+					}
+
+				});
+			} else if(aVariable.params.title == "案件信息查询") {
+				mui.openWindow({
+					id: "caseDetail",
+					url: '/view/tobacco/case-detail.html',
+					extras: {
+						caseId: infoId
+					}
+
+				});
+			}
+		});
+		//搜索框绑定事件
+		aVariable.ipt.iptSearch.addEventListener("keypress", function(event) {
+			if(event.keyCode == "13") {
+				document.activeElement.blur(); //收起虚拟键盘
+				aFunc.toSearch(); //完成搜索事件
+				event.preventDefault(); // 阻止默认事件---阻止页面刷新
+			}
+		});
+		//搜索框失去焦点
+		aVariable.box.main.addEventListener("tap", function(event) {
+			if(event.target != aVariable.ipt.iptSearch) {
+				document.activeElement.blur(); //收起虚拟键盘
+			}
+		});
+
+	},
+	up2Refresh: function(refreshComponent) {
+		setTimeout(function() {
+			aVariable.webview.listComponent = refreshComponent;
+			var pages = aVariable.list.page.item_page;
+			var size = aVariable.list.page.item_num;
+			var keyWord = aVariable.ipt.iptSearch.value;
+			console.log("keyWord===" + keyWord);
+			if(aVariable.params.title == "烟草法律法规") {
+				tobaccoServer.getLawsAndRegulationsTitleList(pages, size, keyWord, function(data) {
+					console.log("data===" + JSON.stringify(data));
+					if(data.code == 200) {
+						aVariable.box.tobaccoList.innerHTML += aUi.tobacco.lawsList(data.body);
+						aVariable.list.page.item_sum += data.body.length;
+						aVariable.list.page.item_page += 1;
+						refreshComponent.endPullUpToRefresh(data.body.length <= 0);
+					} else {
+						refreshComponent.endPullUpToRefresh();
+					}
+				}, function() {
+
+				});
+			} else if(aVariable.params.title == "涉烟信息查询") {
+				tobaccoServer.getInterveneTobaccoInfoList(pages, size,keyWord,function(data) {
+					if(data.code == 200) {
+						aVariable.box.tobaccoList.innerHTML += aUi.tobacco.cigaretteList(data.body);
+						aVariable.list.page.item_sum += data.body.length;
+						aVariable.list.page.item_page += 1;
+						refreshComponent.endPullUpToRefresh(data.body.length <= 0);
+					} else {
+						refreshComponent.endPullUpToRefresh();
+					}
+				}, function() {
+
+				});
+			} else if(aVariable.params.title == "品牌信息查询") {
+				tobaccoServer.getTobaccoBrandInfo(pages, size, keyWord, function(data) {
+					console.log("dat11111111111111111111111a==" + JSON.stringify(data));
+					if(data.code == 200) {
+						aVariable.box.tobaccoList.innerHTML += aUi.tobacco.brandList(data.body);
+						aVariable.list.page.item_sum += data.body.length;
+						aVariable.list.page.item_page += 1;
+						refreshComponent.endPullUpToRefresh(data.body.length <= 0);
+					} else {
+						refreshComponent.endPullUpToRefresh();
+					}
+				}, function() {
+
+				});
+			} else if(aVariable.params.title == "真假烟鉴别") {
+				tobaccoServer.getTrueAndFalseIdentifyList(pages, size, keyWord, function(data) {
+					if(data.code == 200) {
+						aVariable.box.tobaccoList.innerHTML += aUi.tobacco.distinguishList(data.body);
+						aVariable.list.page.item_sum += data.body.length;
+						aVariable.list.page.item_page += 1;
+						refreshComponent.endPullUpToRefresh(data.body.length <= 0);
+					} else {
+						refreshComponent.endPullUpToRefresh();
+					}
+				}, function() {
+
+				});
+			} else if(aVariable.params.title == "案卷文书制作") {
+				tobaccoServer.getArchivesWritList(pages, size, keyWord, function(data) {
+					if(data.code == 200) {
+						aVariable.box.tobaccoList.innerHTML += aUi.tobacco.filesList(data.body);
+						aVariable.list.page.item_sum += data.body.length;
+						aVariable.list.page.item_page += 1;
+						refreshComponent.endPullUpToRefresh(data.body.length <= 0);
+					} else {
+						refreshComponent.endPullUpToRefresh();
+					}
+				}, function() {
+
+				});
+			} else if(aVariable.params.title == "案件信息查询") {
+				tobaccoServer.getCaseInfoList(pages, size, keyWord, function(data) {
+					if(data.code == 200) {
+						aVariable.box.tobaccoList.innerHTML += aUi.tobacco.caseList(data.body);
+						aVariable.list.page.item_sum += data.body.length;
+						aVariable.list.page.item_page += 1;
+						refreshComponent.endPullUpToRefresh(data.body.length <= 0);
+					} else {
+						refreshComponent.endPullUpToRefresh();
+					}
+				}, function() {
+
+				});
+			}
+		}, 1000);
+	},
+	down2Refresh: function(refreshComponent) {
+		aVariable.list.page.item_sum = 0;
+		aVariable.list.page.item_page = 1;
+		aVariable.box.tobaccoList.innerHTML = "";
+		var pages = aVariable.list.page.item_page;
+		var size = aVariable.list.page.item_num;
+		var keyWord = aVariable.ipt.iptSearch.value;
+		setTimeout(function() {
+			if(aVariable.params.title == "烟草法律法规") {
+				tobaccoServer.getLawsAndRegulationsTitleList(pages, size, keyWord, function(data) {
+					if(data.code == 200) {
+						refreshComponent.refresh(true);
+						aVariable.box.tobaccoList.innerHTML = aUi.tobacco.lawsList(data.body);
+						aVariable.list.page.item_sum = data.body.length;
+						aVariable.list.page.item_page += 1;
+						refreshComponent.endPullDownToRefresh();
+					} else {
+						refreshComponent.endPullDownToRefresh();
+					}
+
+				}, function() {
+
+				});
+			} else if(aVariable.params.title == "涉烟信息查询") {
+				tobaccoServer.getInterveneTobaccoInfoList(pages, size,keyWord,function(data) {
+					console.log("1111111="+JSON.stringify(data));
+						if(data.code == 200) {
+							refreshComponent.refresh(true);
+							refreshComponent.endPullDownToRefresh();
+							aVariable.box.tobaccoList.innerHTML = aUi.tobacco.cigaretteList(data.body);
+							aVariable.list.page.item_sum = data.body.length;
+							aVariable.list.page.item_page += 1;
+						} else {
+							refreshComponent.endPullDownToRefresh();
+						}
+
+					},
+					function() {
+
+					});
+			} else if(aVariable.params.title == "品牌信息查询") {
+				tobaccoServer.getTobaccoBrandInfo(pages, size, keyWord, function(data) {
+					if(data.code == 200) {
+						refreshComponent.refresh(true);
+						refreshComponent.endPullDownToRefresh();
+						aVariable.box.tobaccoList.innerHTML = aUi.tobacco.brandList(data.body);
+						aVariable.list.page.item_sum = data.body.length;
+						aVariable.list.page.item_page += 1;
+					} else {
+						refreshComponent.endPullDownToRefresh();
+					}
+
+				}, function() {
+
+				});
+			} else if(aVariable.params.title == "真假烟鉴别") {
+				tobaccoServer.getTrueAndFalseIdentifyList(pages, size, keyWord, function(data) {
+					if(data.code == 200) {
+						refreshComponent.refresh(true);
+						refreshComponent.endPullDownToRefresh();
+						aVariable.box.tobaccoList.innerHTML = aUi.tobacco.distinguishList(data.body);
+						aVariable.list.page.item_sum = data.body.length;
+						aVariable.list.page.item_page += 1;
+					} else {
+						refreshComponent.endPullDownToRefresh();
+					}
+
+				}, function() {
+
+				});
+			} else if(aVariable.params.title == "案卷文书制作") {
+				tobaccoServer.getArchivesWritList(pages, size, keyWord, function(data) {
+					if(data.code == 200) {
+						refreshComponent.refresh(true);
+						refreshComponent.endPullDownToRefresh();
+						aVariable.box.tobaccoList.innerHTML = aUi.tobacco.filesList(data.body);
+						aVariable.list.page.item_sum = data.body.length;
+						aVariable.list.page.item_page += 1;
+					} else {
+						refreshComponent.endPullDownToRefresh();
+					}
+
+				}, function() {
+
+				});
+			} else if(aVariable.params.title == "案件信息查询") {
+				tobaccoServer.getCaseInfoList(pages, size, keyWord, function(data) {
+					if(data.code == 200) {
+						refreshComponent.refresh(true);
+						refreshComponent.endPullDownToRefresh();
+						aVariable.box.tobaccoList.innerHTML = aUi.tobacco.caseList(data.body);
+						aVariable.list.page.item_sum = data.body.length;
+						aVariable.list.page.item_page += 1;
+					} else {
+						refreshComponent.endPullDownToRefresh();
+					}
+
+				}, function() {
+
+				});
+			}
+
+		}, 1000);
+	},
+	toSearch: function() {
+		aVariable.list.page.item_sum = 0;
+		aVariable.list.page.item_page = 1;
+		aVariable.box.tobaccoList.innerHTML = "";
+		var pages = aVariable.list.page.item_page;
+		var size = aVariable.list.page.item_num;
+		var keyWord = aVariable.ipt.iptSearch.value;
+		if(aVariable.params.title == "烟草法律法规") {
+			tobaccoServer.getLawsAndRegulationsTitleList(pages, size, keyWord, function(data) {
+				if(data.code == 200) {
+					aVariable.box.tobaccoList.innerHTML = aUi.tobacco.lawsList(data.body);
+					aVariable.list.page.item_sum = data.body.length;
+					aVariable.list.page.item_page += 1;
+				} else {
+
+				}
+
+			}, function() {
+
+			});
+		} else if(aVariable.params.title == "涉烟信息查询") {
+			tobaccoServer.getInterveneTobaccoInfoList(pages, size,keyWord, function(data) {
+					if(data.code == 200) {
+						aVariable.box.tobaccoList.innerHTML = aUi.tobacco.cigaretteList(data.body);
+						aVariable.list.page.item_sum = data.body.length;
+						aVariable.list.page.item_page += 1;
+					} else {
+						
+					}
+
+				},
+				function() {
+
+				});
+		} else if(aVariable.params.title == "品牌信息查询") {
+			tobaccoServer.getTobaccoBrandInfo(pages, size, keyWord, function(data) {
+				if(data.code == 200) {
+					aVariable.box.tobaccoList.innerHTML = aUi.tobacco.brandList(data.body);
+					aVariable.list.page.item_sum = data.body.length;
+					aVariable.list.page.item_page += 1;
+				} else {
+
+				}
+
+			}, function() {
+
+			});
+		} else if(aVariable.params.title == "真假烟鉴别") {
+			tobaccoServer.getTrueAndFalseIdentifyList(pages, size, keyWord, function(data) {
+				if(data.code == 200) {
+					aVariable.box.tobaccoList.innerHTML = aUi.tobacco.distinguishList(data.body);
+					aVariable.list.page.item_sum = data.body.length;
+					aVariable.list.page.item_page += 1;
+				} else {
+
+				}
+
+			}, function() {
+
+			});
+		} else if(aVariable.params.title == "案卷文书制作") {
+			tobaccoServer.getArchivesWritList(pages, size, keyWord, function(data) {
+				if(data.code == 200) {
+					aVariable.box.tobaccoList.innerHTML = aUi.tobacco.filesList(data.body);
+					aVariable.list.page.item_sum = data.body.length;
+					aVariable.list.page.item_page += 1;
+				} else {}
+
+			}, function() {
+
+			});
+		} else if(aVariable.params.title == "案件信息查询") {
+			tobaccoServer.getCaseInfoList(pages, size, keyWord, function(data) {
+				if(data.code == 200) {
+					aVariable.box.tobaccoList.innerHTML = aUi.tobacco.caseList(data.body);
+					aVariable.list.page.item_sum = data.body.length;
+					aVariable.list.page.item_page += 1;
+				} else {
+
+				}
+
+			}, function() {
+
+			});
+		}
+
+	},
+	initView: function() {
+		mui(aVariable.box.scroll).pullToRefresh({
+			up: {
+				callback: function() {
+					aFunc.up2Refresh(this);
+				}
+			},
+			down: {
+				callback: function() {
+					aFunc.down2Refresh(this);
+				}
+			}
+		}).pullUpLoading();
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+		}
+
+		aVariable.webview.current = plus.webview.currentWebview();
+		aVariable.params.title = aVariable.webview.current.title;
+		aVariable.ipt.iptTitle.innerHTML = aVariable.params.title;
+		aFunc.initView();
+		aFunc.initData();
+		aFunc.bindEvent();
+	}
+};

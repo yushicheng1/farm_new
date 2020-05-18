@@ -1,0 +1,132 @@
+var aFunc = {
+	initData: function() {
+		var pages = 1;
+		var size = 5;
+		noticeServer.getSliderList(pages, size, function(data) {
+				if(data.code == 200) {
+					var imgLen = data.body.length;
+					if(imgLen > 1) {
+						var sliderInfo = aUi.notice.sliderInfo(data.body);
+						//轮播图  ---动态生成
+						var outputimg = sliderInfo.item;
+						var outputright = sliderInfo.indicator;
+						aVariable.box.sliderImg.innerHTML = outputimg;
+						aVariable.box.sliderIndicator.innerHTML = outputright;
+
+						mui('#box-slider-notice').slider({
+							interval: 3000
+						});
+
+					} else {
+
+					}
+				}
+			},
+			function() {
+
+			});
+
+	},
+	bindEvent: function() {
+
+		//查看详情
+		mui(aVariable.box.scroll).on("tap", "li", function(e) {
+			var card = this;
+			var noticeId = card.getAttribute("data-id");
+			mui.openWindow({
+				id: "noticeDetail",
+				url: '/view/notice/notice-detail.html',
+				extras: {
+					noticeId: noticeId
+				}
+
+			});
+		});
+
+		//轮播查看详情
+		mui('#sliderImg').on("tap", "a", function(e) {
+			var card = this;
+			var sliderId = card.getAttribute("data-id");
+			mui.openWindow({
+				id: "sliderDetail",
+				url: '/view/notice/slider-detail.html',
+				extras: {
+					sliderId: sliderId
+				}
+
+			});
+		});
+
+	},
+
+	up2Refresh: function(refreshComponent) {
+		setTimeout(function() {
+			aVariable.webview.listComponent = refreshComponent;
+			var pages = aVariable.list.page.item_page;
+			var size = aVariable.list.page.item_num;
+			noticeServer.getNoticeList(pages, size, function(data) {
+				if(data.code == 200) {
+					aVariable.box.noticeList.innerHTML += aUi.notice.noticeList(data.body);
+					aVariable.list.page.item_sum += data.body.length;
+					aVariable.list.page.item_page += 1;
+					refreshComponent.endPullUpToRefresh(data.body.length <= 0);
+				} else {
+					refreshComponent.endPullUpToRefresh();
+				}
+			}, function() {
+
+			});
+		}, 1000);
+	},
+	down2Refresh: function(refreshComponent) {
+		aVariable.list.page.item_sum = 0;
+		aVariable.list.page.item_page = 1;
+		aVariable.box.noticeList.innerHTML = "";
+		var pages = aVariable.list.page.item_page;
+		var size = aVariable.list.page.item_num;
+		setTimeout(function() {
+			noticeServer.getNoticeList(pages, size, function(data) {
+				if(data.code == 200) {
+					refreshComponent.refresh(true);
+					refreshComponent.endPullDownToRefresh();
+					aVariable.box.noticeList.innerHTML = aUi.notice.noticeList(data.body);
+					aVariable.list.page.item_sum = data.body.length;
+					aVariable.list.page.item_page += 1;
+				} else {
+					refreshComponent.endPullDownToRefresh();
+				}
+
+			}, function() {
+
+			});
+		}, 1000);
+	},
+	nofind: function(item) {
+		item.src = "../../images/res/slider.png";
+	},
+	initView: function() {
+		mui(aVariable.box.scroll).pullToRefresh({
+			up: {
+				callback: function() {
+					aFunc.up2Refresh(this);
+				}
+			},
+			down: {
+				callback: function() {
+					aFunc.down2Refresh(this);
+				}
+			}
+		}).pullUpLoading();
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+		}
+
+		aVariable.webview.current = plus.webview.currentWebview();
+		aFunc.initView();
+		aFunc.initData();
+		aFunc.bindEvent();
+	}
+};

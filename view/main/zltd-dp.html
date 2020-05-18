@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>大棚</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="zltd-dp.css" />
+	</head>
+	<body>
+		<div class="mui-content mui-scroll-wrapper " style="background-color:#F4F4F4;">
+			<ul class="mui-table-view" id="dp-list" style="background:white;margin-top: 0;padding-top: 30px;">
+				<!-- <li style="width: 100%; " data-price="30">
+					<div class="li-wxz">
+						<div class="wxz-left" style=" width: 50%;display: inline-block; margin: 0;">
+							<img src="../../images/qietu/wg.png" style="float: left; width: 15%; height: 50%; margin-left: 5%; margin-top: 15%;">
+							<p style="font-size: 20px;margin-top: 10%;"><span style="margin-left: 10px;">套餐一</span></p>
+							<p style="font-size: 15px;  color: #757474;margin-top: 5%;margin-left: 20%; "><span>有效期</span><span>3</span><span>个月</span></p>
+						</div>
+						<div style="float:right;width: 45%; height:60px;" class="wxz-right">
+							<img src="../../images/qietu/rx.png" style="width: 50%;height:100%;float: right; ">
+							<p style="margin-top: 10%;"><span style="color: #0ad397; font-size: 20px; ">100.00</span><span
+								 style="font-size: 15px;">元</span></p>
+							<p style="font-size: 15px;  color: #757474;"><span>100.00</span><span>m²</span></p>
+						</div>
+					</div>
+				</li>
+				<li style="width: 100%; height: 50%;" data-price="260">
+					<div class="li-wxz">
+						<div class="wxz-left" style=" width: 50%;display: inline-block; margin: 0;">
+							<img src="../../images/qietu/wg.png" style="float: left; width: 15%; height: 50%; margin-left: 5%; margin-top: 15%;">
+							<p style="font-size: 20px;margin-top: 10%; "><span style="margin-left: 10px;">套餐二</span></p>
+							<p style="font-size: 15px;  color: #757474;margin-top: 5%;margin-left: 20%; "><span>有效期</span><span>3</span><span>个月</span></p>
+						</div>
+
+						<div style="float:right;width: 45%; height:60px;" class="wxz-right">
+							<img src="../../images/qietu/rx.png" style="width: 50%;height:100%;float: right; ">
+							<p style="margin-top: 10%;"><span style="color: #0ad397; font-size: 20px; ">260</span><span
+								 style="font-size: 15px;">元</span></p>
+							<p style="font-size: 15px;color: #757474;"><span>1.00</span><span>m²</span></p>
+						</div>
+					</div>
+				</li>
+				<li style="width: 100%; height: 50%;" data-price="300">
+					<div class="li-wxz">
+						<div class="wxz-left" style=" width: 50%;display: inline-block; margin: 0;">
+							<img src="../../images/qietu/wg.png" style="float: left; width: 15%; height: 50%; margin-left: 5%; margin-top: 15%;">
+							<p style="font-size: 20px;margin-top: 10%; "><span style="margin-left: 10px;">套餐三</span></p>
+							<p style="font-size: 15px;  color: #757474;margin-top: 5%;margin-left: 20%; "><span>有效期</span><span>3</span><span>个月</span></p>
+						</div>
+
+						<div style="float:right;width: 45%; height:60px;" class="wxz-right">
+							<img src="../../images/qietu/rx.png" style="width: 50%;height:100%;float: right; ">
+							<p style="margin-top: 10%;"><span style="color: #0ad397; font-size: 20px; ">260</span><span
+								 style="font-size: 15px;">元</span></p>
+							<p style="font-size: 15px;color: #757474;"><span>1.00</span><span>m²</span></p>
+						</div>
+					</div>
+				</li> -->
+			</ul>
+			<div style="width: 50%;margin-left: 50%; margin-top: 20px;">
+				<p class="number " style="float: left;font-size: 16px;color: #757474;margin-right: 10px;line-height: 40px; ">数量</p>
+				<div class="mui-numbox" data-numbox-step='1' data-numbox-min='1'>
+					<button class="mui-btn mui-numbox-btn-minus" type="button" id="btn_subtract">-</button>
+					<input class="mui-numbox-input" type="number" id="ipt_number" readonly="readonly"/>
+					<button class="mui-btn mui-numbox-btn-plus" type="button" id="btn_add">+</button>
+				</div>
+			</div>
+		</div>
+
+		<nav style="background-color: white;" class="mui-bar mui-bar-tab">
+			<span style="margin-left: 8px;position: relative;top: 15px;">合计:</span><span style="color: red;position: relative;top: 15px;font-size: 21px;"
+			 id="ipt_total">0</span><span style="color: red;position: relative;top: 15px;font-size: 21px;"></span>
+			<img src="../../images/homemenu/zhifu.png" style="width: 144px;height: auto;float: right;" id="btn_buy" />
+		</nav>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/main/gmtd-server.js"></script>
+	<script type="text/javascript" src="../../ui/main/gmtd-list.js"></script>
+	<script type="text/javascript" src="zltd-dp-variable.js"></script>
+	<script type="text/javascript" src="zltd-dp-func.js"></script>
+	<script type="text/javascript" src="zltd-dp.js"></script>
+</html>

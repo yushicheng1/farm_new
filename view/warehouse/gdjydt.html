@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>我的仓库</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="gdjydt.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">挂到交易大厅</h1>
+		</header>
+		<div class="mui-sec">
+			<img class="mui-media-object " id="ipt_image" src=""  onerror="this.src='../../images/kongbai.jpg'" style="max-width: 80px;height: 80px;border-radius: 10px;">
+			<p><span style="color: green;font-size: 18px;width:100%;
+	height: 30px;"><b id="ipt_name"></b></span>			
+			</p>
+			<p><span style="font-size: 13px;"><span>剩余量:</span><span id="ipt_sum"></span><span>公斤</span></span></p>
+			<p style="font-size: 13px; border-bottom: 1px solid #f4f4f4;width: 100%;
+	height: 30px;"><span>种植日期:</span><span id="ipt_plant"></span></p>
+			<p style="font-size: 13px;border-bottom: 1px solid #f4f4f4;width: 100%;
+	height: 30px;"><span>收获日期:</span><span id="ipt_get"></span></p>
+			<p style="border-bottom:1px solid #F4F4F4;width: 100%;
+	height: 30px;"><span>建议零售价:</span><span
+				 class="fr" id="ipt_price"><span style="color: #000000;">元/斤</span></span></p>
+				<p><span style="font-size: 18px;color: #000000;position: relative;top: 9px;">售卖价格</span><input style="float: right;width: 60%;text-align: right;border: 0;" id="ipt_price_real" type="number" placeholder="请填写售卖价格"/></p>
+			<p><span style="font-size: 18px;color: #000000;position: relative;top: 35px;">售卖数量</span><input style="float: right;width: 60%;text-align: right;border: 0;" id="ipt_num" type="number" placeholder="请填写售卖数量"/></p>
+			<!-- <div class="mui-numbox fr" data-numbox-min='1'>
+				<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+				<input class="mui-input-numbox" type="number" id="ipt_num"/>
+				<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+			</div> -->
+		</div>
+		<button class="mui-fooder" id="btn_submit">
+			<p>确认售卖</p>
+		</button>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../a-core/util/log.js"></script>
+		<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+		<script type="text/javascript" src="../../a-core/util/server.js"></script>
+		<script type="text/javascript" src="../../server/warehouse/warehouse-server.js"></script>
+		<script type="text/javascript" src="../../ui/warehouse.js"></script>
+		<script type="text/javascript" src="gdjydt-variable.js"></script>
+		<script type="text/javascript" src="gdjydt-func.js"></script>
+		<script type="text/javascript" src="gdjydt.js"></script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+var aFunc = {
+	initData: function() {
+		var id = aVariable.params.brandId;
+		tobaccoServer.getTobaccoBrandInfoById(id, function(data) {
+			if(data.code == 200) {
+				var myImage = aVariable.ipt.iptImage;
+				console.log("data==="+JSON.stringify(data));
+				myImage.src = aServer.ServiceUrl + data.body.image;
+				aVariable.ipt.iptHeader.innerHTML = data.body.name;
+				aVariable.box.name.innerHTML = data.body.name;
+				aVariable.box.price.innerHTML = data.body.price;
+				aVariable.box.standard.innerHTML = data.body.standard;
+			}
+		}, function() {
+
+		});
+
+	},
+	bindEvent: function() {
+
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+		}
+		aVariable.webview.current = plus.webview.currentWebview();
+		aVariable.params.brandId = aVariable.webview.current.brandId;
+		if(aVariable.params.brandId == null || aVariable.params.brandId == "") {
+			aVariable.params.name = aVariable.webview.current.name;
+			aVariable.params.standard = aVariable.webview.current.standard;
+			aVariable.params.price = aVariable.webview.current.price;
+			aVariable.params.image = aVariable.webview.current.image;
+			
+			var myImage = aVariable.ipt.iptImage;
+				myImage.src = aServer.ServiceUrl + aVariable.params.image;
+				aVariable.ipt.iptHeader.innerHTML = aVariable.params.name;
+				aVariable.box.name.innerHTML = aVariable.params.name;
+				aVariable.box.price.innerHTML = aVariable.params.price;
+				aVariable.box.standard.innerHTML = aVariable.params.standard;
+			
+		}else{
+			aFunc.initData();
+		}		
+		aFunc.bindEvent();
+	}
+};

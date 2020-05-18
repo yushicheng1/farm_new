@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>未付款</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/pull-refresh.css" />
+		<link rel="stylesheet" type="text/css" href="order-wfk.css" />
+	</head>
+
+	<body>
+		<head>
+
+		</head>
+		<div class="mui-content mui-scroll-wrapper " style="background-color: #F0F0F0;" id="pullrefresh">
+			<div class="mui-scroll" id="box-scroll">
+				<ul class="mui-table-view" id="notice-list" style="background:#F0F0F0;">
+					<li class="mui-table-view-cell mui-media">
+						<div class="detail">
+							<img class="mui-media-object mui-pull-left" src="../../images/homemenu/xhs.jpg" style="max-width: 80px;height: 80px;border-radius: 10px;">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;">西红柿</span><span style="float: right;color: red;">待支付</span></p>
+								<p><span>种植日期:</span><span>2018-6-10</span></p>
+								<p><span>2018-6-10</span></p>
+								<p><span>价格:</span><span>2</span><span>元/斤</span></p>
+							</div>
+						</div>
+						<div class="peoplewarp">
+							<p>
+								<span>数量:</span>
+								<span>2</span>
+								<span>总计金额:</span>
+								<span>50</span>
+								<span>￥</span>
+							</p>
+							<p>   
+								<a style="color: black;border: 1px solid #F0F0F0;padding: 6px 12px 6px 12px;border-radius: 5px;">修改地址</a>
+								<a style="color: black;border: 1px solid #F0F0F0;padding: 6px 12px 6px 12px;border-radius: 5px;">取消付款</a>
+								<a style="color: red;border: 1px solid red;padding: 6px 12px 6px 12px;border-radius: 5px;">继续付款</a>
+							</p>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<div class="detail">
+							<img class="mui-media-object mui-pull-left" src="../../images/homemenu/xhs1.jpg" style="max-width: 80px;height: 80px;border-radius: 10px;">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;">西红柿</span><span style="float: right;color: red;">待支付</span></p>
+								<p><span>种植日期:</span><span>2018-6-10</span></p>
+								<p><span>2018-6-10</span></p>
+								<p><span>价格:</span><span>2</span><span>元/斤</span></p>
+							</div>
+						</div>
+						<div class="peoplewarp">
+							<p>
+								<span>数量:</span>
+								<span>2</span>
+								<span>总计金额:</span>
+								<span>50</span>
+								<span>￥</span>
+							</p>
+							<p>
+								<a style="color: black;border: 1px solid #F0F0F0;padding: 6px 12px 6px 12px;border-radius: 5px;">修改地址</a>
+								<a style="color: black;border: 1px solid #F0F0F0;padding: 6px 12px 6px 12px;border-radius: 5px;">取消付款</a>
+								<a style="color: red;border: 1px solid red;padding: 6px 12px 6px 12px;border-radius: 5px;">继续付款</a>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/notice-list-server.js"></script>
+	<script type="text/javascript" src="../../js/mui.pullToRefresh.js"></script>
+	<script type="text/javascript" src="../../js/mui.pullToRefresh.material.js"></script>
+	<script type="text/javascript" src="../../ui/notice-list.js"></script>
+	<script type="text/javascript" src="order-wfk-variable.js"></script>
+	<script type="text/javascript" src="order-wfk-func.js"></script>
+	<script type="text/javascript" src="order-wfk.js"></script>
+</html>

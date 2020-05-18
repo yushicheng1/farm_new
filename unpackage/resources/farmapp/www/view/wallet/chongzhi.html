@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>充值</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="chongzhi.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">充值</h1>
+			</header>
+		</head>
+		<div class="mui-content" style="background-color: #F0F0F0;">
+			<ul class="mui-table-view" style="margin-left: 7px;margin-right: 7px;background-color: #F0F0F0;">
+					<li  style="height: 50px;padding-top:5px" >
+					<span style="float: left;">充值金额(￥)</span>				
+					</li>
+					<li  style="height: 70px;text-align: center;margin-bottom: 1px;" >
+					<input style="width: 30%;border: 0;border-radius: 0; border-bottom: 1px solid;text-align: center;font-size: 22px;" type="number" id="ipt_money" />			
+					</li>
+					<!-- <li  style="height: 50px;margin-bottom: 1px;padding-top:11px" >
+					<span style="float: left;">支付宝账号</span><input style="float: right;width: 60%;text-align: right;border: 0;" id="ipt_number"/>			
+					</li>
+					<li  style="height: 40px;margin-bottom: 1px;padding-top:11px" >
+					<span style="float: left;">姓名</span><input style="float: right;width: 60%;text-align: right;border: 0;" id="ipt_name"/>		
+					</li> -->
+					<li  style="height: 60px;padding-top:11px" >			
+					<a style="background-color: #f65c53; color: white;width: 280px;margin:0 auto" class="act-but submit" id='btn_chongzhi'>立即充值</a>
+					</li>
+				</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/my/my-server.js"></script>
+	<script type="text/javascript" src="../../server/wallet/wallet-server.js"></script>
+	<script type="text/javascript" src="chongzhi-variable.js"></script>
+	<script type="text/javascript" src="chongzhi-func.js"></script>
+	<script type="text/javascript" src="chongzhi.js"></script>
+</html>

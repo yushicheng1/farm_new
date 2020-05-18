@@ -1,0 +1,24 @@
+var aVariable = {
+	webview: {
+		current: null,
+	},
+	box: {
+		name: document.getElementById("box-name"),
+		price: document.getElementById("box-price"),
+		standard: document.getElementById("box-standard")
+	},
+	btn: {
+
+	},
+	ipt: {
+		iptHeader: document.getElementById("ipt-header"),
+		iptImage: document.getElementById("ipt-image")
+	},
+	params: {
+		brandId: '',
+		name: '',
+		standard: '',
+		price: '',
+		image: ''
+	}
+};

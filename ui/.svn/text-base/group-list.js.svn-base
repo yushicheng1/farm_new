@@ -1,0 +1,23 @@
+"use strict";
+var aUi = aUi || {};
+aUi.group = {
+
+	_group: function(data) {
+		var html =  '<li data-id="'+data.id+'" data-name="'+data.name+'" class="mui-table-view-cell">'+
+					'	<div class="mui-slider-right mui-disabled">'+
+					'		<a class="mui-btn mui-btn-red"><span style="font-size: 20px;">删除</span></a>'+
+					'	</div>'+
+					'	<div class="mui-slider-handle">'+
+					'		<span class="title">'+data.name+'</span>'+					
+					'	</div>'+
+					'</li>';
+		return html;
+	},
+	groupList: function(listGroup) {
+		var html = "";
+		for(var i = 0; i < listGroup.length; i++) {
+			html += this._group(listGroup[i]);
+		}
+		return html;
+	}
+}

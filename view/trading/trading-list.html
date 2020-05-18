@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>交易大厅</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/pull-refresh.css" /> -->
+		<link rel="stylesheet" type="text/css" href="trading-list.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav" style="height: 78px;">
+				<img src="../../images/homemenu/shouye.png" id="btn_back" style="float: left;width: 26%;margin-top: 10px;padding: 5%;">
+				<div class="mui-input-row mui-search" id="searchForm" style="width:49%;float: left;margin-top: 19px;">
+					<input type="search" id="ipt-search" onkeyup="enterSearch(event)" class="mui-input-clear" placeholder="搜索">
+				</div>
+				<!-- <span style="float: right;margin-top: 30px;margin-right: 8px;" id="all_order">全部订单</span> -->
+			</header>
+		</head>
+		<div class="mui-content mui-scroll-wrapper " style="background-color: #F0F0F0;padding-top: 78px;" id="pullrefresh">
+			<img src="../../images/homemenu/banner.jpg" style="width: 100%;height: 170px;padding: 1%;border-radius: 20px; " />
+			<div class="mui-scroll" id="pullrefresh">
+				<ul class="mui-table-view" id="trading-list" style="background:#F0F0F0;">
+					<!-- <li class="mui-table-view-cell mui-media" style="float: left;">
+						<div>
+							<img class="img_seed" src="../../images/homemenu/xhs.jpg" style="">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;"><b>西红柿</b></span></p>
+								<p style="color: black;font-size: 11px;"><span>种植日期:</span><span>2019-12-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>收获日期:</span><span>2020-04-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>剩余量:</span><span></span>50<span>斤</span>
+									<p style="color: #FF5053;font-size: 11px;"><span>2</span><span>元/斤</span><button type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-media" style="float:left">
+						<div>
+							<img class="img_seed" src="../../images/homemenu/xhs1.jpg" style="">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;"><b>西红柿</b></span></p>
+								<p style="color: black;font-size: 11px;"><span>种植日期:</span><span>2019-12-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>收获日期:</span><span>2020-04-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>剩余量:</span><span></span>50<span>斤</span>
+									<p style="color: #FF5053;font-size: 11px;"><span>2</span><span>元/斤</span><button type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-media" style="float: left;">
+						<div>
+							<img class="img_seed" src="../../images/homemenu/xhs.jpg" style="">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;"><b>西红柿</b></span></p>
+								<p style="color: black;font-size: 11px;"><span>种植日期:</span><span>2019-12-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>收获日期:</span><span>2020-04-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>剩余量:</span><span></span>50<span>斤</span>
+									<p style="color: #FF5053;font-size: 11px;"><span>2</span><span>元/斤</span><button type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-media" style="float:left">
+						<div>
+							<img class="img_seed" src="../../images/homemenu/xhs1.jpg" style="">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;"><b>西红柿</b></span></p>
+								<p style="color: black;font-size: 11px;"><span>种植日期:</span><span>2019-12-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>收获日期:</span><span>2020-04-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>剩余量:</span><span></span>50<span>斤</span>
+									<p style="color: #FF5053;font-size: 11px;"><span>2</span><span>元/斤</span><button type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-media" style="float: left;">
+						<div>
+							<img class="img_seed" src="../../images/homemenu/xhs.jpg" style="">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;"><b>西红柿</b></span></p>
+								<p style="color: black;font-size: 11px;"><span>种植日期:</span><span>2019-12-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>收获日期:</span><span>2020-04-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>剩余量:</span><span></span>50<span>斤</span>
+									<p style="color: #FF5053;font-size: 11px;"><span>2</span><span>元/斤</span><button type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-media" style="float:left">
+						<div>
+							<img class="img_seed" src="../../images/homemenu/xhs1.jpg" style="">
+							<div class="mui-media-body">
+								<p><span style="color: green;font-size: 18px;"><b>西红柿</b></span></p>
+								<p style="color: black;font-size: 11px;"><span>种植日期:</span><span>2019-12-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>收获日期:</span><span>2020-04-07</span></p>
+								<p style="color: black;font-size: 11px;"><span>剩余量:</span><span></span>50<span>斤</span>
+									<p style="color: #FF5053;font-size: 11px;"><span>2</span><span>元/斤</span><button type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>
+							</div>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/trading/trading-list-server.js"></script>
+	<!-- <script type="text/javascript" src="../../js/mui.pullToRefresh.js"></script> -->
+	<!-- <script type="text/javascript" src="../../js/mui.pullToRefresh.material.js"></script> -->
+	<script type="text/javascript" src="../../ui/trading/trading-list.js"></script>
+	<script type="text/javascript" src="trading-list-variable.js"></script>
+	<script type="text/javascript" src="trading-list-func.js"></script>
+	<script type="text/javascript" src="trading-list.js"></script>
+
+</html>

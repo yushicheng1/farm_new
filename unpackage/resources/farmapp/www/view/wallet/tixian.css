@@ -1,0 +1,25 @@
+/* .mui-scroll {
+	min-height: 100%;
+} */
+
+li{
+	background-color: white;
+/* 	margin: 0px 15px 0px 15px; */
+}
+.submit {
+	padding: 15px;
+	margin-top: 20px;
+	display: block;
+}
+
+.act-but {
+	line-height: 10px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 50px;
+	background: #63aeff;
+}
+
+.mui-table-view-cell:after{
+	height: 0;
+}

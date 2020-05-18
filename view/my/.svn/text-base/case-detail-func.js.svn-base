@@ -1,0 +1,46 @@
+var aFunc = {
+	initData: function() {
+		var id = aVariable.params.caseId;
+		tobaccoServer.getCaseInfo(id, function(data) {
+			console.log("data="+JSON.stringify(data));
+			if(data.code == 200) {
+				aVariable.ipt.iptHeader.innerHTML = data.body.caseTitle;
+				aVariable.box.caseNature.innerHTML = data.body.caseNature;
+				//aVariable.box.caseTitle.innerHTML = data.body.caseTitle;
+                aVariable.box.caseNum.innerHTML = data.body.caseNum;
+                aVariable.box.timeOfCrime.innerHTML = data.body.timeOfCrime;
+                if(data.body.caseSource == '0'){
+                	 aVariable.box.caseSource.innerHTML = "自查案件";
+                }else{
+                	 aVariable.box.caseSource.innerHTML = "举报案件";
+                }
+                aVariable.box.party.innerHTML = data.body.party;
+                aVariable.box.employer.innerHTML = data.body.employer;
+                aVariable.box.minimumMarket.innerHTML = data.body.minimumMarket;
+                aVariable.box.investigationDept.innerHTML = data.body.investigationDept;
+                aVariable.box.registrationNum.innerHTML = data.body.registrationNum;
+                aVariable.box.licence.innerHTML = data.body.licence;
+                aVariable.box.tobaccoNum.innerHTML = data.body.tobaccoNum;
+                aVariable.box.tabaccoWeight.innerHTML = data.body.tabaccoWeight;
+                aVariable.box.caseWorth.innerHTML = data.body.caseWorth;
+                aVariable.box.transferStatus.innerHTML = data.body.transferStatus;
+			}
+		}, function() {
+
+		});
+
+	},
+	bindEvent: function() {
+
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+		}
+		aVariable.webview.current = plus.webview.currentWebview();
+		aVariable.params.caseId = aVariable.webview.current.caseId;
+		aFunc.initData();
+		aFunc.bindEvent();
+	}
+};

@@ -1,0 +1,100 @@
+var aFunc = {
+	verifyValue: function() {
+		//@TODO 增加校验内容
+		return true;
+	},
+	back: function() {
+		mui.back = function(event) {
+			aVariable.ipt.backButtonPress++;
+			if(aVariable.ipt.backButtonPress > 1) {
+				plus.runtime.quit();
+			} else {
+				plus.nativeUI.toast('再按一次退出应用');
+			}
+			setTimeout(function() {
+				aVariable.ipt.backButtonPress = 0;
+			}, 1000);
+			return false;
+		};
+	},
+	bindEvent: function() {
+//		aVariable.ipt.iptAccount.addEventListener('tap', function() {
+//			//aVariable.box.logotop;
+//		});
+//  aVariable.ipt.iptAccount.addEventListener('tap',function(){
+////          aVariable.ipt.iptAccount.scrollIntoView(true);
+////          aVariable.ipt.iptPassword.scrollIntoView(true);
+//          aVariable.box.logotop.scrollIntoView(true);
+//          window.scrollBy(0,-200);
+////          console.log($(window).scrollTop());
+//  });
+		aVariable.btn.btnLogin.addEventListener('tap', function(event) {
+			console.log("11111111111111111111111”");
+			//			LocalStorage.setItem(LocalStorage.keys.Auth_Token, "1");
+			//
+			//			LocalStorage.setItem(LocalStorage.keys.User_Account, "1");
+			//			LocalStorage.setItem(LocalStorage.keys.User_Password, "1");
+			//
+			//			mui.openWindow({
+			//				id: 'index',
+			//				url: '../../index.html'
+			//			});
+
+			aVariable.btn.btnLogin.disabled = "disabled";
+			var account = aVariable.ipt.iptAccount.value;
+			var password = aVariable.ipt.iptPassword.value;
+			if(account == "") {
+				mui.toast("账号不能为空");
+				aVariable.btn.btnLogin.disabled = "";
+				return;
+			}
+			if(password == "") {
+				mui.toast("密码不能为空");
+				aVariable.btn.btnLogin.disabled = "";
+				return;
+			}
+
+			sysServer.login(account, password, function(data) {
+				if(data.code == "200") {
+					LocalStorage.clearAll();
+					//添加登录后的token本地保存
+					if(data.body.access_token != null) {
+						LocalStorage.setItem(LocalStorage.keys.Auth_Token, data.body.access_token);
+					}
+					LocalStorage.setItem(LocalStorage.keys.User_Account, account);
+					LocalStorage.setItem(LocalStorage.keys.User_Password, password);
+					aVariable.btn.btnLogin.disabled = "";
+					mui.openWindow({
+						id: 'index',
+						url: '../../index.html'
+					});
+				} else {
+					mui.toast(data.msg);
+					aVariable.btn.btnLogin.disabled = "";
+				}
+			}, function() {
+				aVariable.btn.btnLogin.disabled = "";
+				mui.toast("登录失败");
+			});
+		}, false);
+	},
+	initData: function() {
+		var account = LocalStorage.getItem(LocalStorage.keys.account);
+		var password = LocalStorage.getItem(LocalStorage.keys.password);
+		if(account && password) {
+			aVariable.ipt.account.value = account;
+			aVariable.ipt.password.value = password;
+		}
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+			aVariable.webview.current = plus.webview.currentWebview();
+		}
+		//		aFunc.initData();
+		// 绑定事件
+		aFunc.bindEvent();
+		aFunc.back();
+	}
+};

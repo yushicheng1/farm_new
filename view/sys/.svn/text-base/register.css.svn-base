@@ -1,0 +1,92 @@
+@charset "UTF-8";
+body {
+	/* border: 3px solid green; */
+	/*去掉默认外边距*/
+	margin: 0;
+	font-size: 12px;
+	font-family: verdana, Arial, "Lucida Grande", "Microsoft Yahei", "Hiragino Sans GB", "Hiragino Sans GB W3", SimSun, STHeiti;
+}
+
+#forget {
+	width: 320px;
+	margin: 0 25px;
+	padding-top: 12px;
+	color: #ccc;
+	line-height: 1em;
+	font-size: 12px;
+}
+
+#forget>a {
+	color: #999;
+	font-size: 12px;
+	margin-left: 2px;
+	text-decoration: none;
+}
+
+
+#error1 {
+	width: 300px;
+	height: 17px;
+	padding: 0 0 4px 56px;
+	font-size: 12px;
+	color: #ff3c00;
+	position: absolute;
+	top: 0;
+	background-image: url("../image/error.png");
+	background-repeat: no-repeat;
+	background-size: 22px 22px;
+	background-color: #fff;
+	margin-top: 10px;
+	background-position: 8% 90%;
+	text-align: left;
+	display: none;
+	line-height: 20px;
+}
+
+#error2 {
+	width: 300px;
+	height: 17px;
+	padding: 0 0 4px 56px;
+	font-size: 12px;
+	color: #ff3c00;
+	position: absolute;
+	top: 0;
+	background-image: url("../image/error.png");
+	background-repeat: no-repeat;
+	background-size: 22px 22px;
+	background-color: #fff;
+	margin-top: 10px;
+	background-position: 8% 90%;
+	text-align: left;
+	display: none;
+	line-height: 20px;
+}
+
+#bdiv {
+	width: 150px;
+	height: 23px;
+	margin: 20px 65px 0px;
+	padding: 4px 0;
+	border-radius: 15px;
+	background-color: rgba(0, 0, 0, .4);
+	font-size: 12px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+	text-align: center;
+}
+
+#bdiv>a {
+	color: #ffa800;
+	margin-left: 6px;
+	text-decoration: none;
+}
+.register_box {
+	width: 84%;
+	position: absolute;
+	top: 8%;
+	left: 8%;
+	right: 0px;
+	bottom: 0px;
+	padding: 0;
+	margin: 0;
+}

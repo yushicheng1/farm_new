@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>通知</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="notice-detail.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav a-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ipt-header">通知详情</h1>
+		</header>
+		<div class="mui-content">
+			<div class="notie-title">
+				<span id="ipt-title"></span>
+			</div>
+			<div class="info-subinfo">
+				<div class="subinfo-left">
+					<img src="../../images/res/icon_eye.png" />
+					<span id="ipt-num"></span>
+				</div>
+				<div class="subinfo-right">
+					<img src="../../images/res/icon_time.png" />
+					<div id="ipt-time"></div>
+				</div>
+			</div>
+
+			<div class="notice-content" id="ipt-content">
+
+			</div>
+			<div class="notice-publicer">
+				<div id="ipt-name"></div>
+				<div>作者：</div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/notice-detail-server.js"></script>
+	<script type="text/javascript" src="notice-detail-variable.js"></script>
+	<script type="text/javascript" src="notice-detail-func.js"></script>
+	<script type="text/javascript" src="notice-detail.js"></script>
+
+</html>

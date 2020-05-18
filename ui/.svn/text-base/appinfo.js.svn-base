@@ -1,0 +1,115 @@
+"use strict";
+var aUi = aUi || {};
+aUi.appinfo = {
+
+	initAPPData: function(html, data) {
+
+		for(var i = 0; i < data.body.length; i++) {
+			var btnText = "安装";
+			var onclick = 'onclick="aFunc.installAPP(\'' + data.body[i].id + '\')"';
+			if(data.body[i].userId != null && data.body[i].userId != '') {
+				btnText = "打开";
+				onclick = 'onclick="aFunc.openAPP(\'' + data.body[i].id + '\',\'' + data.body[i].url + '\')"';
+			}
+
+			html += '<li class="mui-table-view-cell mui-media mui-col-xs-4">' +
+				'		<div class="index-app-box">' +
+				'			<a >' +
+				'				<div class="p-img" style="background:url(\'' + aServer.ServiceUrl + data.body[i].icon + '\') center no-repeat;background-size:50px ;">' +
+				'					<b data-id="' + data.body[i].id + '" ></b>' +
+				'					<span>' + data.body[i].name + '</span>' +
+				'				</div>' +
+				'				<div class="sub-info">' +
+				'					<div class="sub-info-top">' +
+				'						<div class="star-info">4.5</div>' +
+				'					</div>' +
+				'					<div class="sub-info-bottom">' +
+				'						<span>' + data.body[i].installNum + '</span>' +
+				'					</div>' +
+				'				</div>' +
+				'				<div class="sub-info">' +
+				'					<button class="btn-appinstall"' + onclick + ' >' + btnText + '</button>' +
+				'				</div>' +
+				'			</a>' +
+				'		</div>' +
+				'	</li>';
+
+		}
+		return html;
+	},
+
+	//滚动APP附件
+	sliderInfo: function(list4APPInfo) {
+		var html4Item = "";
+		var html4Indicator = "";
+		html4Item += '<div class="mui-slider-item mui-slider-item-duplicate"><a  data-id="' + list4APPInfo[list4APPInfo.length - 1].id + '"><img  src="' + aServer.ServiceUrl + list4APPInfo[list4APPInfo.length - 1].image + '" /></a></div>';
+		for(var i = 0; i < list4APPInfo.length; i++) {
+			html4Item += this._sliderInfoItem(list4APPInfo[i]);
+			html4Indicator += '<div class="mui-indicator' + (i == 0 ? ' mui-active' : '') + '"></div>';
+		}
+		html4Item += '<div class="mui-slider-item mui-slider-item-duplicate" ><a data-id="' + list4APPInfo[0].id + '"><img src="' + aServer.ServiceUrl + list4APPInfo[0].image + '"  /></a></div>';
+
+		return {
+			item: html4Item,
+			indicator: html4Indicator
+		};
+	},
+	_sliderInfoItem: function(data) {
+		var htmlVal = '<div class="mui-slider-item"><a  href="#" data-id="' + data.id + '"><img src="' + aServer.ServiceUrl + data.image + '" /></a></div>';
+		return htmlVal;
+	},
+	//滚动APP附件
+	sliderImageInfo: function(list4APPInfo) {
+		var html4Item = "";
+		for(var i = 0; i < list4APPInfo.length; i++) {
+			html4Item += this._sliderImageInfoItem(list4APPInfo[i]);
+		}
+		return html4Item;
+	},
+	_sliderImageInfoItem: function(data) {
+		var htmlVal = '<li>' +
+			'				<img src="' + aServer.ServiceUrl + data.image + '" onerror="aFunc.nofind(this);">' +
+			'		</li>'
+		return htmlVal;
+	},
+	
+	_eval: function(data) {
+		var html = '<li class="mui-table-view-cell mui-media">'+
+			'					<div class="mui-media-body">'+
+			'						<div class="eval-title">'+
+			'							<span>评论人:</span>'+
+			'							<span>'+data.userName+'</span>'+
+			'						</div>'+
+			'						<div class="eval-content">'+
+			'							<p>'+data.message+'</p>'+
+			'                        </div>'+
+			'						<div class="eval-subinfo">'+
+			'							<div class="subinfo-left">'+					
+			'									<div class="icons mui-inline" >';
+			var score=data.score;
+			for(var i=0;i<score;i++){
+				html += '<i class="mui-icon mui-icon-star-filled star"></i>';			
+			}
+			for(var j=0;j<5-score;j++){
+				html += '<i class="mui-icon mui-icon-star star"></i>';
+			}
+			html+='</div>'+
+			'		                         </div>'+
+			'								<div class="subinfo-right">'+
+			'									<img src="../../images/res/icon_time.png" />'+
+			'									<div>'+data.creationDate+'</div>'+
+			'								</div>'+
+			'							</div>'+
+			'						</div>'+
+			'				</li>';
+		return html;
+	},
+	evalList: function(evalList) {
+		var html = "";
+		for(var i = 0; i < evalList.length; i++) {
+			html += this._eval(evalList[i]);
+		}
+		return html;
+	}
+
+}

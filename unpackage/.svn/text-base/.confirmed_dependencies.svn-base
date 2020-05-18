@@ -1,0 +1,225 @@
+{
+  "index.html": {
+    "refer": [
+      "view/sys/welcome.html",
+      "view/website/website.html",
+      "view/demo/test.html",
+      "view/demo/sort.html",
+      "view/sys/login.html",
+      "view/category/category.html",
+      "view/user/userapp.html",
+      "view/notice/notice-list.html",
+      "view/appinfo/appdetail.html",
+      "view/user/userapps.html",
+      "view/sys/aboutus.html",
+      "view/user/userapplist.html",
+      "view/user/my-calendar.html",
+      "view/group/group-applist.html",
+      "view/scan/scan.html"
+    ],
+    "resources": [
+      "images/homemenu/menu_office.png",
+      "images/res/info.png",
+      "images/homemenu/menu_im_selected.png",
+      "images/res/border.png",
+      "images/index/notice.png",
+      "images/res/slider.png",
+      "css/common.css",
+      "js/mui.min.js",
+      "server/sys/sys.js",
+      "css/iconfont.css",
+      "images/homemenu/menu_app_selected.png",
+      "index.js",
+      "a-core/util/local-storage.js",
+      "images/homemenu/menu_im.png",
+      "js/delayimg.min.js",
+      "index-variable.js",
+      "images/homemenu/menu_office_selected.png",
+      "images/homemenu/menu_mine.png",
+      "index.css",
+      "images/index/20didichuxing.png",
+      "index-func.js",
+      "images/index/personal.png",
+      "images/index/sign.png",
+      "css/mui.min.css",
+      "a-core/util/server.js",
+      "a-core/util/log.js",
+      "images/homemenu/menu_app.png",
+      "images/homemenu/menu_mine_selected.png",
+      "fonts/mui.ttf",
+      "images/index/more.png",
+      "js/mui.picker.min.js",
+      "js/mui.poppicker.js",
+      "server/index-server.js",
+      "ui/index.js",
+      "images/static/top.png",
+      "images/static/add.png",
+      "images/default.png",
+      "js/jquery-3.2.1.min.js",
+      "js/app.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.min.css",
+      "images/static/icon_back.png",
+      "images/static/icon_message.png",
+      "images/static/icon_plus.png",
+      "images/static/icon_scan.png"
+    ]
+  },
+  "view/sys/welcome.html": {
+    "refer": [
+      "view/sys/login.html"
+    ],
+    "resources": []
+  },
+  "view/sys/login.html": {
+    "refer": [
+      "index.html",
+      "view/demo/test.html",
+      "view/website/website.html"
+    ],
+    "resources": [
+      "js/mui.min.js",
+      "a-core/util/log.js",
+      "a-core/util/server.js",
+      "a-core/util/local-storage.js",
+      "server/sys/sys.js",
+      "view/sys/login-variable.js",
+      "view/sys/login-func.js",
+      "view/sys/login.js",
+      "css/mui.css",
+      "css/iconfont.css",
+      "view/sys/login.css"
+    ]
+  },
+  "view/website/website.html": {
+    "resources": [
+      "view/website/website-variable.js",
+      "view/website/website.js",
+      "view/website/website-func.js",
+      "css/common.css",
+      "fonts/mui.ttf",
+      "a-core/util/server.js",
+      "css/mui.css",
+      "view/website/website.css",
+      "js/mui.min.js",
+      "/view/demo/test.html",
+      "images/res/mune.png",
+      "view/website/website-operation.html"
+    ],
+    "refer": [
+      "index.html",
+      "view/sys/login.html",
+      "view/website/website-operation.html"
+    ]
+  },
+  "view/demo/sort.html": {
+    "resources": [
+      "css/preview.css",
+      "fonts/mui.ttf",
+      "css/mui.css",
+      "view/demo/sort.css",
+      "view/demo/sort-variable.js",
+      "view/demo/sort-func.js",
+      "view/demo/sort.js",
+      "js/template-native.js",
+      "js/Sortable-edit.js",
+      "js/mui.js"
+    ],
+    "refer": []
+  },
+  "view/notice/notice-list.html": {
+    "refer": [
+      "view/notice/notice-detail.html",
+      "view/notice/slider-detail.html"
+    ],
+    "resources": []
+  },
+  "view/appinfo/appdetail.html": {
+    "refer": [
+      "view/website/website.html",
+      "view/sys/login.html"
+    ],
+    "resources": []
+  },
+  "view/user/userapplist.html": {
+    "refer": [
+      "view/user/userapps.html",
+      "view/website/website.html"
+    ],
+    "resources": []
+  },
+  "view/user/userapps.html": {
+    "refer": [
+      "view/website/website.html"
+    ],
+    "resources": []
+  },
+  "view/sys/aboutus.html": {
+    "refer": [
+      "view/sys/feedback.html"
+    ],
+    "resources": [
+      "js/mui.min.js",
+      "a-core/util/log.js",
+      "a-core/util/local-storage.js",
+      "a-core/util/server.js",
+      "server/sys/aboutus-server.js",
+      "view/sys/aboutus-variable.js",
+      "view/sys/aboutus-func.js",
+      "view/sys/aboutus.js",
+      "css/mui.min.css",
+      "css/common.css",
+      "view/sys/aboutus.css"
+    ]
+  },
+  "view/category/category.html": {
+    "refer": [
+      "view/appinfo/appinfo.html"
+    ],
+    "resources": []
+  },
+  "view/appinfo/appinfo.html": {
+    "refer": [
+      "view/appinfo/appdetail.html",
+      "view/website/website.html"
+    ],
+    "resources": []
+  },
+  "view/scan/validate.html": {
+    "href": "view/scan/validate.html",
+    "resources": [
+      "js/mui.min.js",
+      "a-core/util/log.js",
+      "a-core/util/local-storage.js",
+      "a-core/util/server.js",
+      "server/scan/validate-server.js",
+      "view/scan/validate-variable.js",
+      "view/scan/validate-func.js",
+      "view/scan/validate.js",
+      "css/mui.min.css",
+      "css/common.css",
+      "view/scan/validate.css",
+      "images/logo.png"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "view/scan/scan.html": {
+    "href": "view/scan/scan.html",
+    "resources": [
+      "js/mui.min.js",
+      "a-core/util/log.js",
+      "a-core/util/local-storage.js",
+      "view/scan/scan-variable.js",
+      "view/scan/scan-func.js",
+      "view/scan/scan.js",
+      "css/mui.min.css",
+      "css/common.css",
+      "view/scan/scan.css"
+    ],
+    "refer": [
+      "view/scan/validate.html"
+    ],
+    "priority": 0
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>仓库记录</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/pull-refresh.css" />
+		<link rel="stylesheet" type="text/css" href="warehouse-record.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">仓库记录</h1>
+			</header>
+		</head>
+		<div class="mui-content mui-scroll-wrapper " style="background-color: #F0F0F0;" id="pullrefresh" >
+			<div class="mui-scroll" id="box-scroll" >
+				<ul class="mui-table-view" id="record-list" style="background:#F0F0F0;margin-top: 10px;">					
+					<!-- <li class="mui-table-view-cell" style="margin-bottom: 5px;background-image: url(../../images/cangku/bgm_0.png);background-size: 100% 100%;">
+						<div class="detail">
+							<img class="mui-media-object mui-pull-left" src="../../images/homemenu/xhs.jpg" style="max-width: 80px;height: 80px;border-radius: 50%;">
+							<div class="mui-media-body">
+								<p style="margin-top: 8px;"><span style="color: #1e910e;font-size: 18px;">西红柿</span></p>
+								<p style="font-size: 13px;"><span>数量:</span><span>1</span></p>
+								<p style="font-size: 13px;"><span>操作时间:</span><span>2020-05-11</span></p>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell" style="margin-bottom: 5px;background-image: url(../../images/cangku/bgm_0.png);background-size: 100% 100%;">
+						<div class="detail">
+							<img class="mui-media-object mui-pull-left" src="../../images/homemenu/xhs.jpg" style="max-width: 80px;height: 80px;border-radius: 50%;">
+							<div class="mui-media-body">
+								<p style="margin-top: 8px;"><span style="color: #1e910e;font-size: 18px;">西红柿</span></p>
+								<p style="font-size: 13px;"><span>数量:</span><span>1</span></p>
+								<p style="font-size: 13px;"><span>操作时间:</span><span>2020-05-11</span></p>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell" style="margin-bottom: 5px;background-image: url(../../images/cangku/bgm_0.png);background-size: 100% 100%;">
+						<div class="detail">
+							<img class="mui-media-object mui-pull-left" src="../../images/homemenu/xhs.jpg" style="max-width: 80px;height: 80px;border-radius: 50%;">
+							<div class="mui-media-body">
+								<p style="margin-top: 8px;"><span style="color: #1e910e;font-size: 18px;">西红柿</span></p>
+								<p style="font-size: 13px;"><span>数量:</span><span>1</span></p>
+								<p style="font-size: 13px;"><span>操作时间:</span><span>2020-05-11</span></p>
+							</div>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/warehouse/warehouse-server.js"></script>
+	<script type="text/javascript" src="../../js/mui.pullToRefresh.js"></script>
+	<script type="text/javascript" src="../../js/mui.pullToRefresh.material.js"></script>
+	<script type="text/javascript" src="../../ui/warehouse/warehouse.js"></script>
+	<script type="text/javascript" src="warehouse-record-variable.js"></script>
+	<script type="text/javascript" src="warehouse-record-func.js"></script>
+	<script type="text/javascript" src="warehouse-record.js"></script>
+
+</html>

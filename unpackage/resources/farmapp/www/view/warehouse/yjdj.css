@@ -1,0 +1,101 @@
+.mui-scroll {
+	min-height: 100%;
+}
+
+.mui-table-view li {
+	height: 180px;
+}
+
+.info-title {
+	height: 32px;
+	line-height: 32px;
+	letter-spacing: 1.5px;
+	font: 19px/1.5 Tahoma;
+}
+
+.info-content {
+	height: 46px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-family: 'microsoft yahei';
+	color: gray;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
+
+.info-content p {
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	letter-spacing: 0.8px;
+}
+
+.info-subinfo {
+	height: 30px;
+	width: 100%;
+}
+
+.subinfo-left {
+	width: 40%;
+	float: left;
+	padding-top: 3px;
+}
+
+.subinfo-left img {
+	height: 22px;
+	float: left;
+	margin: 0px 8px 0px 5px;
+}
+
+.subinfo-left span {
+	color: #13227a;
+	font-size: 15px;
+}
+
+.subinfo-right {
+	width: 60%;
+	float: left;
+	padding-top: 3px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.subinfo-right img {
+	height: 20px;
+	margin: 0px 8px 0px 5px;
+}
+
+.subinfo-right div {
+	float: right;
+	color: #707070;
+	font-size: 14px;
+}
+
+#btn-enter {}
+
+img {
+	height: 100%;
+}
+
+.jydt_head{
+	position: fixed;
+	    z-index: 10;
+	    right: 0;
+	    left: 0;
+	    height: 130px;
+	    padding-right: 10px;
+	    padding-left: 10px;
+	    border-bottom: 0;
+	    background-color: white;
+	   /* -webkit-box-shadow: 0 0 1px rgba(0,0,0,.85);
+	    box-shadow: 0 0 1px rgba(0,0,0,.85);
+	    -webkit-backface-visibility: hidden;
+	    backface-visibility: hidden; */
+}
+.mui-nav{
+	width: 100%;
+	height: 32px;
+	margin-top: 42px;
+	line-height: 30px;
+}

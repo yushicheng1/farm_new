@@ -1,0 +1,57 @@
+"use strict";
+var aUi = aUi || {};
+aUi.notice = {
+
+	_notice: function(data) {
+		var html = '<li data-id="' + data.id + '" class="mui-table-view-cell mui-media">' +
+			'		<div class="mui-media-body">' +
+			'			<div class="info-title">' +
+			'				<span>' + data.title + '</span>' +
+			'			</div>' +
+			'			<div class="info-content">' +
+			'				<p>' + data.content + '</p>' +
+			'			</div>' +
+			'			<div class="info-subinfo">' +
+			'				<div class="subinfo-left">' +
+			'					<img src="../../images/res/icon_eye.png" />' +
+			'					<span>' + data.readNum + '</span>' +
+			'				</div>' +
+			'				<div class="subinfo-right">' +
+			'					<img src="../../images/res/icon_time.png" />' +
+			'					<div>' + data.publishDate + '</div>' +
+			'				</div>' +
+			'			</div>' +
+			'		</div>' +
+			'	</li>';
+		return html;
+	},
+	noticeList: function(list4Notice) {
+		var html = "";
+		for(var i = 0; i < list4Notice.length; i++) {
+			html += this._notice(list4Notice[i]);
+		}
+		return html;
+	},
+
+	//滚动APP信息
+	sliderInfo: function(list4APPInfo) {
+		var html4Item = "";
+		var html4Indicator = "";
+		html4Item += '<div class="mui-slider-item mui-slider-item-duplicate" style="height:165px;"><a  data-id="' + list4APPInfo[list4APPInfo.length - 1].id + '"><img  src="' + aServer.ServiceUrl + list4APPInfo[list4APPInfo.length - 1].image + '" onerror="aFunc.nofind(this);" /></a></div>';
+		for(var i = 0; i < list4APPInfo.length; i++) {
+			html4Item += this._sliderInfoItem(list4APPInfo[i]);
+			html4Indicator += '<div class="mui-indicator' + (i == 0 ? ' mui-active' : '') + '"></div>';
+		}
+		html4Item += '<div class="mui-slider-item mui-slider-item-duplicate" style="height:165px;"><a  data-id="' + list4APPInfo[0].id + '"><img src="' + aServer.ServiceUrl + list4APPInfo[0].image + '" onerror="aFunc.nofind(this);" /></a></div>';
+
+		return {
+			item: html4Item,
+			indicator: html4Indicator
+		};
+	},
+	_sliderInfoItem: function(data) {
+		var htmlVal = '<div class="mui-slider-item" style="height:165px;"><a  href="#" data-id="' + data.id + '"><img style="height:165px;" src="' + aServer.ServiceUrl + data.image + '" onerror="aFunc.nofind(this);" /></a></div>';
+		return htmlVal;
+	}
+
+}

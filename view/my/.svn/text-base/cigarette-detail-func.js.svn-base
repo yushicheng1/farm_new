@@ -1,0 +1,55 @@
+var aFunc = {
+	initData: function() {
+		var id = aVariable.params.cigaretteId;
+		tobaccoServer.getInterveneTobaccoInfo(id, function(data) {
+			if(data.code == 200) {
+				console.log("dat11111111111111111111111a==" + JSON.stringify(data));
+
+				console.log("222222222222==" + data.body.storefrontName);
+
+				aVariable.ipt.iptHeader.innerHTML = data.body.storefrontName + "   " + data.body.retailersName;
+
+				aVariable.box.accountManager.innerHTML = data.body.accountManager;
+
+				aVariable.box.auditTeam.innerHTML = data.body.auditTeam;
+
+				aVariable.box.businessAddress.innerHTML = data.body.businessAddress;
+
+				aVariable.box.cityAdmin.innerHTML = data.body.cityAdmin;
+
+				aVariable.box.idNumber.innerHTML = data.body.idNumber;
+
+				aVariable.box.licence.innerHTML = data.body.licence;
+
+				aVariable.box.manageType.innerHTML = data.body.manageType;
+
+				aVariable.box.minimumMarket.innerHTML = data.body.minimumMarket;
+
+				aVariable.box.monopolyBureau.innerHTML = data.body.monopolyBureau;
+
+				aVariable.box.orderPhone.innerHTML = data.body.orderPhone;
+
+				aVariable.box.phone.innerHTML = data.body.phone;
+
+				aVariable.box.retailersName.innerHTML = data.body.retailersName;
+
+				aVariable.box.storefrontName.innerHTML = data.body.storefrontName;
+			}
+		}, function() {
+
+		});
+	},
+	bindEvent: function() {
+
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+		}
+		aVariable.webview.current = plus.webview.currentWebview();
+		aVariable.params.cigaretteId = aVariable.webview.current.cigaretteId;
+		aFunc.initData();
+		aFunc.bindEvent();
+	}
+};

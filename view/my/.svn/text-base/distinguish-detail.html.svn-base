@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>详情</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="distinguish-detail.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav a-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ipt-header"></h1>
+		</header>
+		<div class="mui-content">
+			<div class="notice-content" id="ipt-content">
+
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/tobacco/tobacco.js"></script>
+	<script type="text/javascript" src="distinguish-detail-variable.js"></script>
+	<script type="text/javascript" src="distinguish-detail-func.js"></script>
+	<script type="text/javascript" src="distinguish-detail.js"></script>
+
+</html>

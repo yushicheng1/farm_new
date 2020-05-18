@@ -1,0 +1,14 @@
+var aVariable = {
+	webview: {
+		current: null,
+	},
+	box: {
+		
+	},
+	btn: {
+		btnFeedback : document.getElementById("btn-feedback")
+	},
+	ipt: {
+        iptContent : document.getElementById("ipt-content")
+	}
+};

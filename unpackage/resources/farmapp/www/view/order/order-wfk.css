@@ -1,0 +1,34 @@
+.mui-scroll {
+	min-height: 100%;
+}
+
+.mui-table-view li {
+	height: 190px;
+	background-color: white;
+	margin: 5px 5px 5px 5px;
+}
+
+.detail {
+	padding: 7px 1px;
+}
+
+.peoplewarp {
+	border-top: 1px solid #eee;
+	line-height: 37px;
+}
+
+.peoplewarp .imgbox {
+	display: flex;
+	padding: 0 15px;
+	width: 100%;
+	height: 35px;
+	background: #dce7fd;
+}
+
+.mui-table-view-cell:after {
+	height: 0;
+}
+
+.mui-table-view-cell.mui-active {
+	background-color: white;
+}

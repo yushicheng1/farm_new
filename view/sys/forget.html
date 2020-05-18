@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>忘记密码</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="forget.css" />
+	</head>
+
+	<body onresize="windowSizeChange();">
+		<div class="mui-content">
+			<div style="background-image: url(../../images/logotop.png);  background-size:100% 100%; background-repeat: no-repeat; width: 100%; height: 200px;">
+				<!-- <img id="btn-back" src="../../images/homemenu/back.png" style="width: 10px;margin: 5%; "/> -->
+		
+			</div>
+			<!-- <div class="mui-content-padded">
+				<div style="position: relative;left: 30px;">
+				<a id="btn-three" href="#item3" style="color:#1c1b1b;font-size: 20px" class="tab">忘记密码</a>
+				</div>
+			</div> -->
+			<div id="itemThree" style="height: 30%;">
+				<div style="height: 100%;">
+					<ul>
+						<li>
+							<p style="color: #0062CC;" id="btn-back">返回登录页面</p>
+						</li>
+						<li>
+							<img src="../../images/mobile.png" height="25px" />
+							<input style="width: 200px;border: 0;background-color: #F0F0F0;margin-left: 26px;-webkit-user-select:text !important " placeholder="填写手机号"
+							 id="ipt-account"  oninput="value=value.replace(/[^\d]/g,'')" maxlength="11"/>
+						</li>
+						<li>
+							<img src="../../images/message.png" height="20px" width="20px" />
+							<input id="ipt-code" style="width: 100px;border: 0;background-color: #F0F0F0;margin-left: 26px;" class="mui-input-clear" placeholder="手机验证码" />
+							<a style="background-color: #ffeff0; color: #f1404b;width: 120px;float: right;" class="register" id='btn-code'>验证码</a>
+						</li>
+						<li>
+							<img src="../../images/password.png" height="25px" />
+							<input id="ipt-passwordOne" type="password" style="width: 200px;border: 0;background-color: #F0F0F0;margin-left: 26px;" class="mui-input-clear" placeholder="6-20位登录密码" onpaste="return false"/>
+						</li>
+						<li>
+							<img src="../../images/password.png" height="25px" />
+							<input id="ipt-passwordTwo" type="password" style="width: 200px;border: 0;background-color: #F0F0F0;margin-left: 26px;" class="mui-input-clear" placeholder="再次确认密码" onpaste="return false"/>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="mb2"  id="div-edit">
+				<a style="background-color: #f65c53; color: white;width: 280px;margin:0 auto" class="act-but submit" id='btn_edit'>确认修改</a>
+			</div>
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../server/sys/sys.js"></script>
+	<script type="text/javascript" src="forget-variable.js"></script>
+	<script type="text/javascript" src="forget-func.js"></script>
+	<script type="text/javascript" src="forget.js"></script>
+	<script type="text/javascript">
+		//获取原始窗口的高度
+		
+		var originalHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		window.onresize = function() {
+			//软键盘弹起与隐藏  都会引起窗口的高度发生变化
+			var resizeHeight = document.documentElement.clientHeight || document.body.clientHeight;
+			if(resizeHeight * 1 < originalHeight * 1) { //resizeHeight<originalHeight证明窗口被挤压了
+				plus.webview.currentWebview().setStyle({
+					height: originalHeight
+				});
+			}
+		}
+		
+	</script>
+
+</html>

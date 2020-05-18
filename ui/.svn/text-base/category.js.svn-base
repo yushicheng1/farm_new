@@ -1,0 +1,45 @@
+"use strict";
+var aUi = aUi || {};
+aUi.category = {
+
+
+	/**
+	 * 分类构造UI
+	 * @param {Object} list4Category
+	 */
+	categoryList: function(list4Category) {
+		var category1 = "";
+		var category2 = "";
+		if(list4Category.body.length > 0) {
+			for(var i = 0; i < list4Category.body.length; i++) {
+				if(i == 0)
+					category1 += '<li class="cur">' + list4Category.body[0].name + '</li>';
+				else
+					category1 += '<li>' + list4Category.body[i].name + '</li>';
+			}
+
+			for(var i = 0; i < list4Category.body[0].childList.length; i++) {
+				category2 += '<dt>' + list4Category.body[0].childList[i].name + '</dt>' +
+					'<dd class="mui-clearfix">';
+				for(var j = 0; j < list4Category.body[0].childList[i].childList.length; j++) {
+					if(list4Category.body[0].childList[i].childList[j].Image == '') {
+						category2 += '<a data-id="' + list4Category.body[0].childList[i].childList[j].id + '">' +
+							'<img style="opacity:1 !important" src="../../images/default.png">';
+					} else {
+						category2 += '<a data-id="' + list4Category.body[0].childList[i].childList[j].id + '" style="background:url('+aServer.ServiceUrl+list4Category.body[0].childList[i].childList[j].icon+') center no-repeat;background-size:45px ">' +
+							'<img src="'+aServer.ServiceUrl+list4Category.body[0].childList[i].childList[j].icon+'" data-delay="' + list4Category.body[0].childList[i].childList[j].icon + '">';
+					}
+					category2 += '<span>' + list4Category.body[0].childList[i].childList[j].name + '</span>' +
+						'</a>';
+				}
+				category2 += '</dd>';
+			}
+		}
+		return {
+			one: category1,
+			two: category2
+		};
+
+	}
+
+}

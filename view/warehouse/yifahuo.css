@@ -1,0 +1,52 @@
+.mui-scroll {
+	min-height: 100%;
+}
+
+.mui-nav {
+	width: 100%;
+	height: 32px;
+	margin-top: 42px;
+	line-height: 30px;
+}
+
+.mui-btn-outlined{
+	color:#ff7272;
+	background-color: white;
+	border: 1px solid #ff7272;
+	border-radius: 5px;
+}
+
+.btn-seed{
+	line-height: 0.8;
+	padding: 7px 15px;
+	margin-right: 5px;
+	float: right;	
+}
+
+.mui-table-view li {
+	height: 150px;
+}
+
+.mui-Received {
+	width: 95%;
+	height: 7.95rem;
+	background-color: #FFFFFF;
+	margin-left: 2%;
+	border-radius: 1.25rem;
+	padding-left: 3%;
+	padding-top: 2%;
+}
+
+.mui-Received .mui-media-body {
+	width: 67%;
+	height: 80px;
+	margin-left: 30%;
+}
+
+.mui-media-body p {
+	margin: 0;
+}
+
+.mui-table-view-cell:after {
+	height: 0;
+}

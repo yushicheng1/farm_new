@@ -1,0 +1,84 @@
+.mui-scroll {
+	min-height: 100%;
+}
+.mui-table-view li {
+	background-color: white;
+	margin: 5px 5px 5px 5px;
+}
+
+.mui-table-view-cell.mui-active{
+	background-color: white
+}
+
+.mui-table-view-cell > a:not(.mui-btn).mui-active {
+    background-color: #fff;
+}
+
+.navig img {
+	width: 73%;
+	height: auto;
+}
+
+.navig {
+	padding: 10px 0 0 0;
+	background: #fff;
+}
+
+.navig p {
+	color: #686868;
+	font-size: 12px;
+}
+
+.list_two{
+	width: 25%;
+	height: 95px;
+	box-shadow: 8px 8px 10px #ECEDEF;
+	border-radius: 3px;
+}
+
+.list_two .list_two_div{
+	background-color: white;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.list_two .list_two_div_two{
+	text-align: center;
+}
+
+.list_two .list_two_div_two img {
+	width: 60%;
+	margin-top: 10px;
+	margin-right: 14%;
+	/*margin-left: 10%;*/
+}
+
+.list_two .list_two_div_three {
+	margin-right: 10px;
+}
+
+.list_two .list_two_div_three span {
+	white-space: nowrap;
+	font-size: 13px;
+	/*强制span不换行*/
+	display: inline-block;
+	/*将span当做块级元素对待*/
+	width: 100%;
+	/*限制宽度*/
+	overflow: hidden;
+	/*超出宽度部分隐藏*/
+	text-overflow: ellipsis;
+	/*超出部分以点号代替*/
+}
+
+.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell {
+    padding-left: 1px;
+    background-position: 31px 100%;
+}
+.mui-table-view-cell:after{
+	height: 0;
+}
+
+

@@ -1,0 +1,45 @@
+/* .mui-scroll {
+	min-height: 100%;
+} */
+.mui-bar{
+	    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0,0);
+	    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.mui-table-view li {
+	height: 150px;
+	width:32%;
+	background-color: white;
+	margin: 5px 5px 5px 5px;	
+}
+
+.li-wxz{
+	background-image: url(../../images/chongzhi/bgm_2.png);
+	background-size: 100% 100%;
+}
+
+.li-xz{
+	background-image: url(../../images/chongzhi/bgm_1.png);
+	background-size: 100% 100%;
+}
+
+.mui-table-view-cell:after {
+	height: 0;
+}
+.submit {
+	padding: 15px;
+	margin-top: 20px;
+	display: block;
+}
+
+.act-but {
+	line-height: 10px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 50px;
+	background: #63aeff;
+}
+
+.mui-table-view-cell:after{
+	height: 0;
+}

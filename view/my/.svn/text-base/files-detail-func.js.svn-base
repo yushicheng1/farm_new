@@ -1,0 +1,26 @@
+var aFunc = {
+	initData: function() {
+		var id = aVariable.params.filesId;
+		tobaccoServer.getArchivesWritInfo(id, function(data) {
+			if(data.code == 200) {
+				aVariable.ipt.iptHeader.innerHTML = data.body.name;
+				aVariable.ipt.iptContent.innerHTML = data.body.content || "";
+			}
+		}, function() {
+
+		});
+	},
+	bindEvent: function() {
+
+	},
+	plusReady: function() {
+		if(mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			plus.screen.lockOrientation("portrait-primary");
+		}
+		aVariable.webview.current = plus.webview.currentWebview();
+		aVariable.params.filesId = aVariable.webview.current.filesId;
+		aFunc.initData();
+		aFunc.bindEvent();
+	}
+};

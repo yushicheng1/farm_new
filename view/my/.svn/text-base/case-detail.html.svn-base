@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>详情</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="case-detail.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav a-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ipt-header"></h1>
+		</header>
+		<div class="mui-content">
+			<div class="notice-content" id="ipt-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<span>案件性质:</span>
+						<span id="box-caseNature" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>案件编号:</span>
+						<span id="box-caseNum" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>案发时间:</span>
+						<span id="box-timeOfCrime" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>案件来源:</span>
+						<!--0：自查案件  1：举报案件-->
+						<span id="box-caseSource" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>当事人:</span>
+						<span id="box-party" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>工作单位:</span>
+						<span id="box-employer" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>最小市场:</span>
+						<span id="box-minimumMarket" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>查办部门:</span>
+						<span id="box-investigationDept" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>登记保存单:</span>
+						<span id="box-registrationNum" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>许可证:</span>
+						<span id="box-licence" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>卷烟(条):</span>
+						<span id="box-tobaccoNum" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>烟丝烟叶(公斤 kg):</span>
+						<span id="box-tabaccoWeight" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>案值(元):</span>
+						<span id="box-caseWorth" style="float: right;"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						<span>移送情况:</span>
+						<span id="box-transferStatus" style="float: right;"></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/tobacco/tobacco.js"></script>
+	<script type="text/javascript" src="case-detail-variable.js"></script>
+	<script type="text/javascript" src="case-detail-func.js"></script>
+	<script type="text/javascript" src="case-detail.js"></script>
+
+</html>
