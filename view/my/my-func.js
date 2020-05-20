@@ -143,6 +143,13 @@ var aFunc = {
 				url: '/view/sys/xgmm.html'
 			});
 		})
+		//关于
+		aVariable.btn.btnXtsj.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "xtsj",
+				url: '/view/sys/update.html'
+			});
+		})
 		//帮助中心
 		aVariable.btn.btnBzzx.addEventListener("tap", function() {
 			mui.toast("暂未开放")

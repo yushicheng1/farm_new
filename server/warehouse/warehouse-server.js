@@ -13,11 +13,10 @@ var warehouseServer = mui.extend(aServer || {}, {
 	},
 	
 	//邮寄到家
-	sendToHmoe: function(vegetables_id,address_id,num,success, error) {
+	sendToHmoe: function(vegetables,address_id,success, error) {
 		var data = {
-			vegetables_id:vegetables_id,
+			vegetables:vegetables,
 			address_id:address_id,
-			num:num,
 			payType:'yue'
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/my/post", "邮寄失败", data, success, error);

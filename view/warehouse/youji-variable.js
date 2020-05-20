@@ -4,7 +4,7 @@ var aVariable = {
 		listComponent: null
 	},
 	box: {
-
+         recordList: document.getElementById("record_list")
 	},
 	btn: {
 		btnChoose: document.getElementById("btn_choose"),
@@ -29,6 +29,7 @@ var aVariable = {
 		sum:'',
 		plant:'',
 		get:'',
-		image:''
+		image:'',
+		sendList:[]
 	},
 };

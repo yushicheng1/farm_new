@@ -44,7 +44,11 @@ var aFunc = {
 
 		//返回
 		aVariable.btn.btnBack.addEventListener("tap", function() {
-			mui.back()
+			// mui.back()
+			mui.openWindow({
+				id: 'plant',
+				url: '../../view/main/plant.html'
+			});
 		})
 		
 		window.addEventListener('refreshTrading', function(e) {

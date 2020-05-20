@@ -19,8 +19,8 @@ var aVariable = {
 		btnKfzx:document.getElementById("btn-kfzx"),
 		btnZxdl:document.getElementById("btn-zxdl"),
 		btnXgmm:document.getElementById("btn-xgmm"),
-		btnWdjy:document.getElementById("btn-wdjy")
-		// btnName:document.getElementById("btn-name"),
+		btnWdjy:document.getElementById("btn-wdjy"),
+		btnXtsj:document.getElementById("btn-xtsj")
 		// btnPhone:document.getElementById("btn-phone")
 	},
 	ipt: {

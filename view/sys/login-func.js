@@ -185,6 +185,7 @@ var aFunc = {
 						//添加登录后的token本地保存
 						if (data.data.token != null) {
 							LocalStorage.setItem(LocalStorage.keys.Auth_Token, data.data.token);
+							console.log(data.data.token)
 						}
 						if (check.checked) { //判断记住密码项是否勾选，是则记住密码到本地缓存
 							LocalStorage.setItem(LocalStorage.keys.Auto_Save, '1');
@@ -258,9 +259,13 @@ var aFunc = {
 				});
 			}
 			}else{
-				mui.alert(' ', "版本更新", "确定", function() {
-					plus.runtime.openURL(aVariable.value.url);
-				});
+				if(aVariable.value.version_new==''||aVariable.value.version_new==null){
+					// mui.toast('')
+				}else{
+					mui.alert(' ', "版本更新", "确定", function() {
+						plus.runtime.openURL(aVariable.value.url);
+					});
+				}		
 			}
 
 		});
@@ -375,11 +380,11 @@ var aFunc = {
 		}
 	},
 	plusReady: function() {
-		if (mui.os.plus) {
-			plus.navigator.closeSplashscreen();
-			plus.screen.lockOrientation("portrait-primary");
-			aVariable.webview.current = plus.webview.currentWebview();
-		}
+		// if (mui.os.plus) {
+		// 	plus.navigator.closeSplashscreen();
+		// 	plus.screen.lockOrientation("portrait-primary");
+		// 	aVariable.webview.current = plus.webview.currentWebview();
+		// }
 		aFunc.initData();
 		// 绑定事件
 		aFunc.bindEvent();

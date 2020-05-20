@@ -242,6 +242,9 @@ var aFunc = {
 					contentnomore: '没有更多土地了',
 					callback: aFunc.up2Refresh
 				}
+			},
+			beforeback:function(){
+				return false;
 			}
 		});
 		aFunc.initData();
