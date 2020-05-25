@@ -66,6 +66,7 @@ var aFunc = {
 				if (data.status == 200) {
 					if (data.data.status == 'SUCCESS') {
 						mui.toast('邮寄成功');
+						mui.back();
 						aVariable.params.sendList=[];					
 					} else {
 						aVariable.params.sendList=[];						

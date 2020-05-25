@@ -32,6 +32,14 @@ var warehouseServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServerGET(this.isDebug, "api/order/post_order", "获取记录失败", data, success, error);
 	},
 	
+	//获取邮寄详情
+	getPostDetail: function(id,success, error) {
+		var data = {
+			
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/order/post_details/"+id, "获取失败", data, success, error);
+	},
+	
 	//挂到交易大厅
 	sale: function(vegetablesId,num,price,success, error) {
 		var data = {

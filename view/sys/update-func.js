@@ -3,9 +3,9 @@ var aFunc = {
 
 	},
 	bindEvent: function() {
-		aVariable.btn.btnUpdate.addEventListener("tap", function() {
-			mui.toast("当前已是最新版本")
-		}, false);
+		// aVariable.btn.btnUpdate.addEventListener("tap", function() {
+		// 	mui.toast("当前已是最新版本")
+		// }, false);
 		aVariable.btn.btnService.addEventListener("tap",function(){
 			mui.openWindow({
 				id: 'service-agreement',

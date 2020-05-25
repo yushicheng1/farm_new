@@ -5,7 +5,7 @@
     /*"fullscreen":true,*/
     "name" : "大农主", /*应用名称，程序桌面图标名称*/
     "version" : {
-        "name" : "1.0.5", /*应用版本名称*/
+        "name" : "1.1.0", /*应用版本名称*/
         "code" : "83"
     },
     "description" : "", /*应用描述信息*/
@@ -103,10 +103,22 @@
         "Payment" : {}
     },
     "plus" : {
+        /*
+				弹窗提示同意隐私协议,使用协议  
+				*/
+        "privacy" : {
+            "prompt" : "template",
+            "template" : {
+                "title" : "服务协议和隐私政策",
+                "message" : "请你务必审慎阅读、充分理解“服务协议”和“隐私政策”各条款，包括但不限于：为了更好的向你提供服务，我们需要收集你的设备标识、操作日志等信息用于分析、优化应用性能。<br/>　　你可阅读<a href='http://farmapi.yiqianyun.com/service-agreement.html'>《服务协议》</a>和<a href='http://farmapi.yiqianyun.com/privacy-agreement.html'>《隐私政策》</a>了解详细信息。如果你同意，请点击下面按钮开始接受我们的服务。",
+                "buttonAccept" : "我知道了",
+                "buttonRefuse" : "暂不同意"
+            }
+        },
         "splashscreen" : {
             "autoclose" : true, /*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
             "waiting" : false,
-            "delay" : 3
+            "delay" : 2000
         },
         "runmode" : "liberate", /*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
         "signature" : "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==", /*可选，保留给应用签名，暂不使用*/

@@ -2,31 +2,66 @@
 var aUi = aUi || {};
 aUi.yfh = {
 	_yfh: function(data) {
-		//种植时间
-		var plantTime=formatTime(data.plant_time,'Y-M-D');
-		//收货时间
-		var getTime=formatTime(data.get_time,'Y-M-D');
-		var html = '<li class="mui-table-view-cell mui-media">'+
-						'<div class="mui-Received">'+
-							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 80px;height: 80px;border-radius: 10px;" onerror="nofind(this)">'+
+		var name='';
+		var vegetables=data.vegetables_detail;
+		var img=vegetables[0].img;
+		for(var i=0;i<vegetables.length;i++){
+			if(i==vegetables.length-1){
+				name+=vegetables[i].vegetable_name;
+			}else{
+				name+=vegetables[i].vegetable_name+'+';
+			}			
+		}
+		var html = '<li class="mui-table-view-cell mui-media mui-collapse-content">'+
+						'<div class="mui-Received" data-name="'+data.realname+'" data-phone="'+data.phone+'" data-address="'+data.address+'" data-id="'+data.id+'" data-total="'+data.total_num+'">'+
+							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+img+'" style="max-width: 80px;height: 80px;border-radius: 10px;"'+
+							 'onerror="nofind(this)">'+
 							'<div class="mui-media-body">'+
-								'<p><span style="color: green;font-size: 14px;"><b>'+data.vegetable_name+'</b></span><span style="float: right;">已发货</span></p>'+
-								'<p style="font-size: 13px;"><span>种植日期:</span><span>'+plantTime+'</span></p>'+
-								'<p style="font-size: 13px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
-								'<p style="font-size: 13px;"><span>邮寄数量:</span><span></span><span>'+data.num+'公斤</span></p>'+
-								'<p><span>顺丰快递</span>:<span>1234567890123445</span></p>'+
-							'</div>'+
-							'<div style="margin-top:5px">'+
-								'<p><span>'+data.sms_name+'</span>:<span>'+data.sms_code+'</span><button type="button" class="mui-btn mui-btn-outlined btn-seed" data-id="'+data.id+'">确认收货</button></p>'+
+								'<div style="height: 43px;">'+
+									'<p style="overflow: hidden;height: 40px;color: #11872a;">'+name+'</p>'+
+								'</div>'+
+								'<p style="font-size: 13px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">公斤</span><span style="float: right;font-size: 15px;">'+data.total_num+'</span></p>'+
+								'<p style="font-size: 13px;color: #000000;"><span>配送方式:</span><span style="float:right">快递包邮</span></p>'+
 							'</div>'+
 						'</div>'+
-					'</li>';		
+						'<div>'+
+							'<p><img src="../../images/cangku/ztkd.png" style="height: 14px;padding-top: 2px;margin-right: 4px;"><span style="color: #000000;">'+data.sms_code+'</span><img'+
+								' src="../../images/cangku/copy.png" data-num="123456" style="height: 13px;padding-top: 2px;margin-left: 10px;"><button'+
+								' type="button" class="mui-btn mui-btn-outlined btn-seed" data-id="'+data.id+'">确认收货</button></p>'+
+						'</div>'+
+					'</li>'
 		return html;
 	},
 	yfhList: function(list4Yfh) {
 		var html = "";
 		for(var i = 0; i < list4Yfh.length; i++) {
 			html += this._yfh(list4Yfh[i]);
+		}
+		return html;
+	},
+	_detail: function(data) {
+		//种植时间
+		var plantTime=formatTime(data.plant_time,'Y-M-D');
+		//收获时间
+		var getTime=formatTime(data.get_time,'Y-M-D');
+		var html = '<li class="mui-table-view-cell mui-media mui-collapse-content">'+
+						'<div class="mui-Received">'+
+							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 80px;height: 80px;border-radius: 10px;" onerror="nofind(this)">'+
+							'<div class="mui-media-body">'+		
+									'<p style="overflow: hidden;color: #11872a;font-size: 18px;">'+data.vegetable_name+'</p>'+
+									'<p style="color: #8f8f94;font-size: 12px;margin-top: 5px;"><span>种植日期:</span><span>'+plantTime+'</span></p>'+
+									'<p style="color: #8f8f94;font-size: 12px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
+								'<p style="font-size: 12px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">公斤</span><span style="float: right;font-size: 15px;">'+data.num+'</span></p>'+
+								'<p style="font-size: 12px;color: #000000;margin-top: 3px;"><span>配送方式:</span><span style="float:right">快递包邮</span></p>'+
+							'</div>'+
+						'</div>'+
+					'</li>'
+		return html;
+	},
+	detailList: function(list4Detail) {
+		var html = "";
+		for(var i = 0; i < list4Detail.length; i++) {
+			html += this._detail(list4Detail[i]);
 		}
 		return html;
 	}

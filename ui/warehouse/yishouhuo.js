@@ -2,21 +2,29 @@
 var aUi = aUi || {};
 aUi.ysh = {
 	_ysh: function(data) {
-		//种植时间
-		var plantTime=formatTime(data.plant_time,'Y-M-D');
-		//收货时间
-		var getTime=formatTime(data.get_time,'Y-M-D');
-		var html = '<li class="mui-table-view-cell mui-media">'+
+		var name='';
+		var vegetables=data.vegetables_detail;
+		var img=vegetables[0].img;
+		for(var i=0;i<vegetables.length;i++){
+			if(i==vegetables.length-1){
+				name+=vegetables[i].vegetable_name;
+			}else{
+				name+=vegetables[i].vegetable_name+'+';
+			}			
+		}
+		var html = '<li class="mui-table-view-cell mui-media mui-collapse-content" data-name="'+data.realname+'" data-phone="'+data.phone+'" data-address="'+data.address+'" data-id="'+data.id+'" data-total="'+data.total_num+'">'+
 						'<div class="mui-Received">'+
-							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 80px;height: 80px;border-radius: 10px;" onerror="nofind(this)">'+
+							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+img+'" style="max-width: 80px;height: 80px;border-radius: 10px;"'+
+							 'onerror="nofind(this)">'+
 							'<div class="mui-media-body">'+
-								'<p><span style="color: green;font-size: 14px;"><b>'+data.vegetable_name+'</b></span><span style="float: right;">已收货</span></p>'+
-								'<p style="font-size: 13px;"><span>种植日期:</span><span>'+plantTime+'</span></p>'+
-								'<p style="font-size: 13px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
-								'<p style="font-size: 13px;"><span>邮寄数量:</span><span></span><span>'+data.num+'公斤</span></p>'+
+								'<div style="height: 43px;">'+
+									'<p style="overflow: hidden;height: 40px;color: #11872a;">'+name+'</p>'+
+								'</div>'+
+								'<p style="font-size: 13px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">公斤</span><span style="float: right;font-size: 15px;">'+data.total_num+'</span></p>'+
+								'<p style="font-size: 13px;color: #000000;"><span>配送方式:</span><span style="float:right">快递包邮</span></p>'+
 							'</div>'+
 						'</div>'+
-					'</li>';		
+					'</li>'
 		return html;
 	},
 	yshList: function(list4Ysh) {
