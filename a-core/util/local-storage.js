@@ -13,7 +13,8 @@ var LocalStorage = {
 		Auto_Message: "Auto_Message", //自动接受消息
 		Auto_Version: "Auto_Version", //自动检测更新
 		Group_List:"Group_List",
-		ContactList:"ContactList" 
+		ContactList:"ContactList",
+		launchFlag:"launchFlag"
 	},
 	setItem: function(itemKey, itemValue) {
 		plus.storage.setItem(itemKey, itemValue + "");

@@ -1,5 +1,6 @@
 var aFunc = {
 	initData: function() {
+		document.getElementById('div-content').style.backgroundImage='url(../../images/nongchang/yxbg.gif)';
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
 				aVariable.ipt.iptTx.src = aServer.ApiUrl + data.data.avatar;

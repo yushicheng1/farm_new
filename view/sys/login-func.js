@@ -197,19 +197,23 @@ var aFunc = {
 								aVariable.ipt.iptPassword.value = '';
 							}
 
-							plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+							
 								if (mui.os.android) {
-
+console.log('android')
 								} else {
 									var payObject = plus.ios.newObject("PayObject");
 									plus.ios.invoke(payObject, "iniSSS:", data.data.token);
 								}
-							});
+							
 							// aVariable.btn.btnLogin.disabled = "";
 							// window.location.reload();
 							mui.openWindow({
 								id: 'plant',
-								url: '../../view/main/plant.html'
+								url: '../../view/main/plant.html',
+								waiting:{
+									autoShow:true,
+									title:'正在加载...'
+								}
 							});
 
 						} else {
@@ -262,7 +266,7 @@ var aFunc = {
 				if (aVariable.value.version_new == '' || aVariable.value.version_new == null) {
 					// mui.toast('')
 				} else {
-					mui.alert(' ', "版本更新", "确定", function() {
+					mui.alert(' ', "发现新版本，请更新到最新版app", "确定", function() {
 						plus.runtime.openURL(aVariable.value.url);
 					});
 				}
@@ -342,7 +346,7 @@ var aFunc = {
 				aVariable.value.url = data.data.url;
 				// aVariable.value.desc=data.desc;
 				if (parseInt(aVariable.value.version) < parseInt(android_version)) {
-					mui.alert(' ', "版本更新", "确定", function() {
+					mui.alert(' ', "发现新版本，请更新到最新版app", "确定", function() {
 						plus.runtime.openURL(data.data.url);
 					});
 				}
@@ -355,7 +359,7 @@ var aFunc = {
 				aVariable.value.url = data.data.url;
 				// var ios_desc = data.data.newFeatures;
 				if (parseInt(aVariable.value.version) < parseInt(ios_version)) {
-					mui.alert(' ', "版本更新", "确定", function() {
+					mui.alert(' ', "发现新版本,请更新到最新版app", "确定", function() {
 						plus.runtime.openURL(data.data.url);
 					});
 				}

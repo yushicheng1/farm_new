@@ -2,6 +2,7 @@
 var aUi = aUi || {};
 aUi.seed = {
 	_seedYm: function(data) {
+		var chanLiang=parseFloat(data.ending_day*data.yield).toFixed(2);
 		var html = 
 		'<li class="mui-table-view-cell mui-media" style="float: left;">'+
 			'<div>'+
@@ -10,7 +11,7 @@ aUi.seed = {
 					'<p><span style="color: green;font-size: 13px;"><b>'+data.name+'</b></span></p>'+
 					'<p style="color: black;font-size: 11px;"><span>生长周期:</span><span>'+data.ripe_day+'</span></p>'+
 					'<p style="color: black;font-size: 11px;"><span>结果周期:</span><span>'+data.ending_day+'</span></p>'+
-					'<p style="color: black;font-size: 11px;"><span>预计产量:</span><span>'+data.yield+'</span></p>'+
+					'<p style="color: black;font-size: 11px;"><span>预计产量:</span><span>'+chanLiang+'</span></p>'+
 					'<p><span style="color: #FF7272;">'+data.price+'积分</span><button type="button" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" class="mui-btn mui-btn-outlined btn-seed" style="float: right;">购买</button></p>'+
 				'</div>'+
 			'</div>'+
@@ -26,6 +27,7 @@ aUi.seed = {
 		return html;
 	},
 	_seedCs: function(data) {
+		var chanLiang=parseFloat(data.ending_day*data.yield).toFixed(2);
 		var html = 
 		'<li class="mui-table-view-cell mui-media" style="float: left;">'+
 			'<div>'+
@@ -34,7 +36,7 @@ aUi.seed = {
 					'<p><span style="color: green;font-size: 13px;"><b>'+data.name+'</b></span></p>'+
 					'<p style="color: black;font-size: 11px;"><span>生长周期:</span><span>'+data.ripe_day+'</span></p>'+
 					'<p style="color: black;font-size: 11px;"><span>结果周期:</span><span>'+data.ending_day+'</span></p>'+
-					'<p style="color: black;font-size: 11px;"><span>预计产量:</span><span>'+data.yield+'</span></p>'+
+					'<p style="color: black;font-size: 11px;"><span>预计产量:</span><span>'+chanLiang+'</span></p>'+
 					'<p><span style="color: #FF7272;">'+data.price+'积分</span><button type="button" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" class="mui-btn mui-btn-outlined btn-seed" style="float: right;">购买</button></p>'+
 				'</div>'+
 			'</div>'+
