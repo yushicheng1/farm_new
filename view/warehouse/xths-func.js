@@ -9,6 +9,7 @@ var aFunc = {
 	},
 	bindEvent: function() {
 		aVariable.btn.btnSubmit.addEventListener("tap", function() {
+			aVariable.btn.btnSubmit.disabled=true;
 			var sum = aVariable.params.sum;
 			warehouseServer.recycle(aVariable.params.vegetablesId, sum, function(data) {
 					if (data.status == 200) {
@@ -17,6 +18,7 @@ var aFunc = {
 						mui.fire(main, 'refreshWarehouse', {});
 						mui.back();
 					} else {
+						aVariable.btn.btnSubmit.disabled=false;
 						mui.toast(data.msg);
 					}
 				},

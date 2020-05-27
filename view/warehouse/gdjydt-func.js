@@ -9,6 +9,7 @@ var aFunc = {
 	},
 	bindEvent: function() {
 		aVariable.btn.btnSubmit.addEventListener("tap", function() {
+			aVariable.btn.btnSubmit.disabled=true;
 			var sum = aVariable.params.sum;
 			var price = aVariable.ipt.iptPriceReal.value;
 			if (price == 0 || price == null) {
@@ -22,6 +23,7 @@ var aFunc = {
 						mui.fire(main, 'refreshWarehouse', {});
 						mui.back();
 					} else {
+						aVariable.btn.btnSubmit.disabled=false;
 						mui.toast(data.msg);
 					}
 				},

@@ -12,6 +12,7 @@ var aFunc = {
 	},
 	bindEvent: function() {
 		aVariable.btn.btnPay.addEventListener("tap", function() {
+			aVariable.btn.btnPay.disabled=true;
 			var id = aVariable.params.exchange_info_id;
 			var num = aVariable.params.num;
 			tradingListServer.tradingBuy(id, num, function(data) {
@@ -22,9 +23,11 @@ var aFunc = {
 						mui.fire(main, 'refreshTrading', {});
 						mui.back();
 					} else {
+						aVariable.btn.btnPay.disabled=false;
 						mui.toast(data.msg)
 					}
 				} else {
+					aVariable.btn.btnPay.disabled=false;
 					mui.toast(data.msg)
 				}
 			}, function() {

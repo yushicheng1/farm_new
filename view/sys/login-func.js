@@ -62,25 +62,25 @@ var aFunc = {
 			aVariable.div.divRegister.hidden = '';
 		})
 		aVariable.btn.btnForgetPsw.addEventListener('tap', function(event) {
-		// 	//    aVariable.btn.btnOne.hidden="hidden";
-		// 	// aVariable.btn.btnTwo.hidden="hidden";
-		// 	// aVariable.btn.btnThree.hidden=""; 
-		// 	// aVariable.btn.btnOne.style.fontSize='20px';
-		// 	// aVariable.btn.btnTwo.style.fontSize='16px';
-		// 	// aVariable.btn.btnOne.style.color='#1c1b1b';
-		// 	// aVariable.btn.btnTwo.style.color='#9fb2c7';
-		// 	// aVariable.div.itemOne.hidden='hidden';
-		// 	// aVariable.div.itemTwo.hidden='hidden';
-		// 	// aVariable.div.itemThree.hidden='';
-		// 	// aVariable.div.divLogin.hidden='hidden';
-		// 	// aVariable.div.divRegister.hidden='hidden';
-		// 	// aVariable.div.divEdit.hidden='';
+			// 	//    aVariable.btn.btnOne.hidden="hidden";
+			// 	// aVariable.btn.btnTwo.hidden="hidden";
+			// 	// aVariable.btn.btnThree.hidden=""; 
+			// 	// aVariable.btn.btnOne.style.fontSize='20px';
+			// 	// aVariable.btn.btnTwo.style.fontSize='16px';
+			// 	// aVariable.btn.btnOne.style.color='#1c1b1b';
+			// 	// aVariable.btn.btnTwo.style.color='#9fb2c7';
+			// 	// aVariable.div.itemOne.hidden='hidden';
+			// 	// aVariable.div.itemTwo.hidden='hidden';
+			// 	// aVariable.div.itemThree.hidden='';
+			// 	// aVariable.div.divLogin.hidden='hidden';
+			// 	// aVariable.div.divRegister.hidden='hidden';
+			// 	// aVariable.div.divEdit.hidden='';
 			mui.openWindow({
 				id: 'forget',
 				url: 'forget.html'
 			});
 		})
-		
+
 		aVariable.btn.btnAgreement.addEventListener('tap', function(event) {
 			mui.openWindow({
 				id: 'agreement',
@@ -95,7 +95,7 @@ var aFunc = {
 					mui.toast("请填写手机号!");
 					return;
 				}
-				
+
 				if (!(/^1[3456789]\d{9}$/.test(phone))) {
 					alert("请输入正确的手机号码");
 					return;
@@ -123,12 +123,12 @@ var aFunc = {
 					mui.toast("请填写手机号!");
 					return;
 				}
-				
+
 				if (!(/^1[3456789]\d{9}$/.test(phone))) {
 					alert("请输入正确的手机号码");
 					return;
 				}
-				
+
 				sysServer.getVerify(phone, 'register', function(data) {
 					console.log(JSON.stringify(data))
 					if (data.status == "400") {
@@ -153,215 +153,217 @@ var aFunc = {
 		})
 		//登录按钮
 		aVariable.btn.btnLogin.addEventListener('tap', function(event) {
-			if(aVariable.value.version==aVariable.value.version_new){
-			if (aVariable.value.loginWay == 'psw') {
-				var check = document.getElementById("ipt-chkRem");
-				// aVariable.btn.btnLogin.disabled = "disabled";
-				var phone = aVariable.ipt.iptAccount.value;
-				var password = aVariable.ipt.iptPassword.value;
-				if (phone == "") {
-					mui.toast("手机号不能为空");
-					return;
-				}
+			if (parseInt(aVariable.value.version) >= parseInt(aVariable.value.version_new)) {
+				if (aVariable.value.loginWay == 'psw') {
+					var check = document.getElementById("ipt-chkRem");
+					// aVariable.btn.btnLogin.disabled = "disabled";
+					var phone = aVariable.ipt.iptAccount.value;
+					var password = aVariable.ipt.iptPassword.value;
+					if (phone == "") {
+						mui.toast("手机号不能为空");
+						return;
+					}
 
-				if (!(/^1[3456789]\d{9}$/.test(phone))) {
-					alert("请输入正确的手机号码");
-					return;
-				}
+					if (!(/^1[3456789]\d{9}$/.test(phone))) {
+						alert("请输入正确的手机号码");
+						return;
+					}
 
-				if (password == ""||password.trim().length<1) {
-					mui.toast("密码不能为空");
-					return;
-				}
-				
-				if (password.trim().length<6||password.trim().length>20) {
-					mui.toast("请输入6-20位的密码");
-					return;
-				}
-				
-				sysServer.login(phone, password.trim(), 'password', function(data) {
-					if (data.status == "200") {
-						LocalStorage.clearAll();
-						//添加登录后的token本地保存
-						if (data.data.token != null) {
-							LocalStorage.setItem(LocalStorage.keys.Auth_Token, data.data.token);
-							console.log(data.data.token)
-						}
-						if (check.checked) { //判断记住密码项是否勾选，是则记住密码到本地缓存
-							LocalStorage.setItem(LocalStorage.keys.Auto_Save, '1');
-							LocalStorage.setItem(LocalStorage.keys.User_Account, phone);
-							LocalStorage.setItem(LocalStorage.keys.User_Password, password);
-						} else {
-							LocalStorage.setItem(LocalStorage.keys.Auto_Save, '0');
-							aVariable.ipt.iptAccount.value = '';
-							aVariable.ipt.iptPassword.value = '';
-						}
-						
-						plus.runtime.getProperty(plus.runtime.appid, function(inf) {
-							if (mui.os.android) {			
-								
+					if (password == "" || password.trim().length < 1) {
+						mui.toast("密码不能为空");
+						return;
+					}
+
+					if (password.trim().length < 6 || password.trim().length > 20) {
+						mui.toast("请输入6-20位的密码");
+						return;
+					}
+
+					sysServer.login(phone, password.trim(), 'password', function(data) {
+						if (data.status == "200") {
+							LocalStorage.clearAll();
+							//添加登录后的token本地保存
+							if (data.data.token != null) {
+								LocalStorage.setItem(LocalStorage.keys.Auth_Token, data.data.token);
+								console.log(data.data.token)
+							}
+							if (check.checked) { //判断记住密码项是否勾选，是则记住密码到本地缓存
+								LocalStorage.setItem(LocalStorage.keys.Auto_Save, '1');
+								LocalStorage.setItem(LocalStorage.keys.User_Account, phone);
+								LocalStorage.setItem(LocalStorage.keys.User_Password, password);
 							} else {
-								var payObject = plus.ios.newObject("PayObject");
-								plus.ios.invoke(payObject, "iniSSS:", data.data.token);
-							}						
-						});
-						// aVariable.btn.btnLogin.disabled = "";
-						// window.location.reload();
-						mui.openWindow({
-							id: 'plant',
-							url: '../../view/main/plant.html'
-						});
+								LocalStorage.setItem(LocalStorage.keys.Auto_Save, '0');
+								aVariable.ipt.iptAccount.value = '';
+								aVariable.ipt.iptPassword.value = '';
+							}
 
-					} else {
-						mui.toast(data.msg);
-						aVariable.btn.btnLogin.disabled = "";
-					}
-				}, function() {
-					aVariable.btn.btnLogin.disabled = "";
-					mui.toast("登录失败");
-				});
-			} else {
-				var phone = aVariable.ipt.iptAccountNew.value;
-				var password = aVariable.ipt.iptLoginCode.value;
-				if (phone == "") {
-					mui.toast("手机号不能为空");
-					return;
-				}
+							plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+								if (mui.os.android) {
 
-				if (!(/^1[3456789]\d{9}$/.test(phone))) {
-					alert("请输入正确的手机号码");
-					return false;
-				}
+								} else {
+									var payObject = plus.ios.newObject("PayObject");
+									plus.ios.invoke(payObject, "iniSSS:", data.data.token);
+								}
+							});
+							// aVariable.btn.btnLogin.disabled = "";
+							// window.location.reload();
+							mui.openWindow({
+								id: 'plant',
+								url: '../../view/main/plant.html'
+							});
 
-				if (password == "") {
-					mui.toast("验证码不能为空");
-					return;
-				}
-				sysServer.login(phone, password, 'code', function(data) {
-					if (data.status == "200") {
-						LocalStorage.clearAll();
-						//添加登录后的token本地保存
-						if (data.data.token != null) {
-							LocalStorage.setItem(LocalStorage.keys.Auth_Token, data.data.token);
+						} else {
+							mui.toast(data.msg);
+							aVariable.btn.btnLogin.disabled = "";
 						}
-						mui.openWindow({
-							id: 'index',
-							url: '../../index.html'
-						});
-
-					} else {
-						mui.toast(data.msg);
+					}, function() {
 						aVariable.btn.btnLogin.disabled = "";
+						mui.toast("登录失败");
+					});
+				} else {
+					var phone = aVariable.ipt.iptAccountNew.value;
+					var password = aVariable.ipt.iptLoginCode.value;
+					if (phone == "") {
+						mui.toast("手机号不能为空");
+						return;
 					}
-				}, function() {
-					aVariable.btn.btnLogin.disabled = "";
-					mui.toast("登录失败");
-				});
-			}
-			}else{
-				if(aVariable.value.version_new==''||aVariable.value.version_new==null){
+
+					if (!(/^1[3456789]\d{9}$/.test(phone))) {
+						alert("请输入正确的手机号码");
+						return false;
+					}
+
+					if (password == "") {
+						mui.toast("验证码不能为空");
+						return;
+					}
+					sysServer.login(phone, password, 'code', function(data) {
+						if (data.status == "200") {
+							LocalStorage.clearAll();
+							//添加登录后的token本地保存
+							if (data.data.token != null) {
+								LocalStorage.setItem(LocalStorage.keys.Auth_Token, data.data.token);
+							}
+							mui.openWindow({
+								id: 'index',
+								url: '../../index.html'
+							});
+
+						} else {
+							mui.toast(data.msg);
+							aVariable.btn.btnLogin.disabled = "";
+						}
+					}, function() {
+						aVariable.btn.btnLogin.disabled = "";
+						mui.toast("登录失败");
+					});
+				}
+			} else {
+				if (aVariable.value.version_new == '' || aVariable.value.version_new == null) {
 					// mui.toast('')
-				}else{
+				} else {
 					mui.alert(' ', "版本更新", "确定", function() {
 						plus.runtime.openURL(aVariable.value.url);
 					});
-				}		
+				}
 			}
 
 		});
 
 		//注册按钮
 		aVariable.btn.btnRegister.addEventListener('tap', function(event) {
-			var agree=aVariable.ipt.iptAgree.checked;
-			if(agree){
-			var phone = aVariable.ipt.iptRegisterAccount.value;
-			var name = aVariable.ipt.iptRegisterName.value;
-			var verify = aVariable.ipt.iptRegisterCode.value;
-			var passwordOne = aVariable.ipt.iptRegisterPasswordOne.value;
-			var passwordTwo = aVariable.ipt.iptRegisterPasswordTwo.value;
-			var invite = aVariable.ipt.iptInvite.value;
-			if (phone == "" || phone.trim().length < 1) {
-				mui.toast("手机号不能为空");
-				return;
-			}
-			if (!(/^1[3456789]\d{9}$/.test(phone))) {
-				alert("请输入正确的手机号码");
-				return false;
-			}
-			if (name == "" || name.trim().length < 1) {
-				mui.toast("昵称不能为空");
-				return;
-			}
-			if (verify == "") {
-				mui.toast("验证码不能为空");
-				return;
-			}
-			if (passwordOne == "" || passwordOne.trim().length < 1) {
-				mui.toast("密码不能为空");
-				return;
-			}
-			if (passwordOne.trim().length<6||passwordOne.trim().length>20) {
-				mui.toast("请输入6-20位的密码");
-				return;
-			}
-			if (passwordTwo == "" || passwordTwo.trim().length < 1) {
-				mui.toast("确认密码不能为空");
-				return;
-			}
-			if (passwordOne != passwordTwo) {
-				mui.toast("两次输入密码不一致");
-				return;
-			}
-			sysServer.register(phone, name.trim(), verify, passwordOne.trim(),invite,function(data) {
-				if (data.status == "200") {
-					mui.toast("注册成功");
-					window.location.reload();
-				} else {
-					mui.toast(data.msg);
+			var agree = aVariable.ipt.iptAgree.checked;
+			if (agree) {
+				var phone = aVariable.ipt.iptRegisterAccount.value;
+				var name = aVariable.ipt.iptRegisterName.value;
+				var verify = aVariable.ipt.iptRegisterCode.value;
+				var passwordOne = aVariable.ipt.iptRegisterPasswordOne.value;
+				var passwordTwo = aVariable.ipt.iptRegisterPasswordTwo.value;
+				var invite = aVariable.ipt.iptInvite.value;
+				if (phone == "" || phone.trim().length < 1) {
+					mui.toast("手机号不能为空");
+					return;
 				}
-			}, function() {
-				mui.toast("注册失败");
-			});
-			}else{
+				if (!(/^1[3456789]\d{9}$/.test(phone))) {
+					alert("请输入正确的手机号码");
+					return false;
+				}
+				if (name == "" || name.trim().length < 1) {
+					mui.toast("昵称不能为空");
+					return;
+				}
+				if (verify == "") {
+					mui.toast("验证码不能为空");
+					return;
+				}
+				if (passwordOne == "" || passwordOne.trim().length < 1) {
+					mui.toast("密码不能为空");
+					return;
+				}
+				if (passwordOne.trim().length < 6 || passwordOne.trim().length > 20) {
+					mui.toast("请输入6-20位的密码");
+					return;
+				}
+				if (passwordTwo == "" || passwordTwo.trim().length < 1) {
+					mui.toast("确认密码不能为空");
+					return;
+				}
+				if (passwordOne != passwordTwo) {
+					mui.toast("两次输入密码不一致");
+					return;
+				}
+				sysServer.register(phone, name.trim(), verify, passwordOne.trim(), invite, function(data) {
+					if (data.status == "200") {
+						mui.toast("注册成功");
+						window.location.reload();
+					} else {
+						mui.toast(data.msg);
+					}
+				}, function() {
+					mui.toast("注册失败");
+				});
+			} else {
 				mui.toast('请先阅读并同意农场注册协议')
 			}
 		});
 	},
 	initData: function() {
 		var type;
-		plus.runtime.getProperty(plus.runtime.appid, function(inf) {
-			aVariable.value.version = inf.version;
-			if (mui.os.android) {			
-				type = 0;
-				sysServer.checkVersion(type, function(data) {
-					var android_version = data.data.version;
-					// var android_desc = data.newFeatures;
-					aVariable.value.version_new=data.data.version;
-					aVariable.value.url=data.data.url;
-					// aVariable.value.desc=data.desc;
-					if (aVariable.value.version != android_version) {
-						mui.alert(' ', "版本更新", "确定", function() {
-							plus.runtime.openURL(data.data.url);
-						});
-					}
-				}, function() {});
-			} else {
-				type = 1;
-				sysServer.checkVersion(type, function(data) {
-					var ios_version = data.data.version;
-					aVariable.value.version_new=data.data.version;
-					aVariable.value.url=data.data.url;
-					// var ios_desc = data.data.newFeatures;
-					if (aVariable.value.version != ios_version) {
-						mui.alert(' ', "版本更新", "确定", function() {
-							plus.runtime.openURL(data.data.url);
-						});
-					}
-				}, function() {});
-		
-			}
-		
+		mui.getJSON("../../manifest.json", null, function(manifest) {
+			aVariable.value.version  = Number(manifest.version.code);
 		});
+		console.log(aVariable.value.version);
+		if (mui.os.android) {
+			type = 0;
+			sysServer.checkVersion(type, function(data) {
+				var android_version = data.data.version;
+				// var android_desc = data.newFeatures;
+				aVariable.value.version_new = data.data.version;
+				aVariable.value.url = data.data.url;
+				// aVariable.value.desc=data.desc;
+				if (parseInt(aVariable.value.version) < parseInt(android_version)) {
+					mui.alert(' ', "版本更新", "确定", function() {
+						plus.runtime.openURL(data.data.url);
+					});
+				}
+			}, function() {});
+		} else {
+			type = 1;
+			sysServer.checkVersion(type, function(data) {
+				var ios_version = data.data.version;
+				aVariable.value.version_new = data.data.version;
+				aVariable.value.url = data.data.url;
+				// var ios_desc = data.data.newFeatures;
+				if (parseInt(aVariable.value.version) < parseInt(ios_version)) {
+					mui.alert(' ', "版本更新", "确定", function() {
+						plus.runtime.openURL(data.data.url);
+					});
+				}
+			}, function() {});
+
+		}
+
+
 		//判断是否记住密码
 		var auto_save = LocalStorage.getItem(LocalStorage.keys.Auto_Save);
 		if (auto_save == '1') {

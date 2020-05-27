@@ -43,10 +43,12 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnYouji.addEventListener("tap", function() {
+			aVariable.btn.btnYouji.disabled=true;
 			var a=document.querySelectorAll("li[data-choose='1']");
 			var number = a.length;
 			if (number==0) {
 				mui.toast('请选择需要邮寄的果实');
+				aVariable.btn.btnYouji.disabled=false;
 				return;
 			}
 			for(var i=0;i<a.length;i++){
@@ -60,19 +62,24 @@ var aFunc = {
 			var addressId = aVariable.params.addressId;
 			if (addressId == '' || addressId == null) {
 				mui.toast('请选择地址');
+				aVariable.btn.btnYouji.disabled=false;
 				return;
 			}
 			warehouseServer.sendToHmoe(JSON.stringify(aVariable.params.sendList), addressId, function(data) {
 				if (data.status == 200) {
 					if (data.data.status == 'SUCCESS') {
 						mui.toast('邮寄成功');
+						aVariable.params.sendList=[];
+						var main = plus.webview.currentWebview().opener();
+						mui.fire(main, 'refreshWarehouse', {});
 						mui.back();
-						aVariable.params.sendList=[];					
 					} else {
+						aVariable.btn.btnYouji.disabled=false;
 						aVariable.params.sendList=[];						
 						mui.toast(data.msg);
 					}
 				} else {
+					aVariable.btn.btnYouji.disabled=false;
 					aVariable.params.sendList=[];					
 					mui.toast(data.msg);
 				}
