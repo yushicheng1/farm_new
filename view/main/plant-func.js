@@ -169,12 +169,24 @@ var aFunc = {
 		});
 
 		window.addEventListener('refreshJifen', function(e) {
+			
 			myServer.getUserInfo(function(data) {
 				if (data.status == 200) {
 					aVariable.ipt.iptJf.innerText = data.data.money;
 				}
 			}, function() {
 
+			});
+		});
+		window.addEventListener('refreshJifenAndPlant', function(e) {
+			aFunc.initData();
+			aFunc.down2Refresh();
+			myServer.getUserInfo(function(data) {
+				if (data.status == 200) {
+					aVariable.ipt.iptJf.innerText = data.data.money;
+				}
+			}, function() {
+		
 			});
 		});
 	},
@@ -212,6 +224,44 @@ var aFunc = {
 				},
 				function() {
 
+				});
+		}, 200);
+	},
+	down2Refresh: function() {
+		setTimeout(function() {
+			var pages = 0;
+			var size = 9;
+			aVariable.div.divPland.innerHTML = '';
+			plantServer.tuDi(pages, size, function(data) {
+					if (data.status == 200) {
+						aVariable.list.page.item_page += 1;
+						
+						aVariable.div.divPland.innerHTML += aUi.seed.tuDiList(data.data);
+						mui('#div_pland1').pullRefresh().endPullupToRefresh(data.data.length < 9)
+						mui(aVariable.div.divPland).on("tap", "div", function(e) {
+							if (document.getElementsByClassName('mui-plant-land').length > 0) {
+								var length = document.getElementsByClassName('mui-plant-land').length;
+								for (var i = 0; i < length; i++) {
+									document.getElementsByClassName('mui-plant-land')[i].style.border = '0';
+								}
+							}
+							var landId = this.getAttribute('data-landId');
+							var seedId = this.getAttribute('data-seedId');
+							var name = this.getAttribute('data-name');
+							var day = this.getAttribute('data-day');
+							aVariable.ipt.iptPlantName.innerText = name;
+							aVariable.ipt.iptPlantDay.innerText = day;
+							aVariable.params.landId = landId;
+							aVariable.params.seedId = seedId;
+							this.style.border = 'solid 3px greenyellow';
+							mui("#popover").popover('hide')
+							mui("#popover").popover('toggle', this)
+						});
+					} else {
+					}
+				},
+				function() {
+	
 				});
 		}, 200);
 	},

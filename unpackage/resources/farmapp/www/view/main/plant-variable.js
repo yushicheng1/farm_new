@@ -17,14 +17,17 @@ var aVariable = {
 		btnHar: document.getElementById("btn_har"),
 		btnEradicate: document.getElementById("btn_eradicate"),
 		btnShouye: document.getElementById("btn_shouye"),
-		btnWatering: document.getElementById("btn_watering"),
+		btnWater: document.getElementById("btn_water"),
 		btnTask: document.getElementById("btn_task"),
 		btnFert: document.getElementById("btn_fert"),
 		btnBroad: document.getElementById("btn_broad"),
 		btnToucai: document.getElementById("btn_toucai"),
 		btnHuishou: document.getElementById("btn_huishou"),
 		btnOneWater: document.getElementById("btn_one_water"),
-		btnOneTask: document.getElementById("btn_one_task")
+		btnOneTask: document.getElementById("btn_one_task"),
+		btnShangcheng: document.getElementById("btn_shangcheng"),
+		btnCangku: document.getElementById("btn_cangku"),
+		btnJishi: document.getElementById("btn_jishi")
 	},
 	div: {
 		divZhongzi: document.getElementById("div_zhongzi"),
@@ -45,14 +48,15 @@ var aVariable = {
 		iptLevel: document.getElementById("ipt_level"),
 		iptPlantName: document.getElementById("ipt-plant-name"),
 		iptPlantDay: document.getElementById("ipt-plant-day"),
-		iptFarmCount: document.getElementById("ipt-farm-count")
+		iptFarmCount: document.getElementById("ipt-farm-count"),
+		iptName:document.getElementById("ipt_name")
 	},
 	params: {
 		unique: '',
 		size: '',
-		num:0,
-		landId:'',
-		seedId:''
+		num: 0,
+		landId: '',
+		seedId: ''
 	},
 	list: {
 		page: {

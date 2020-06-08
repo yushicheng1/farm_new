@@ -96,7 +96,36 @@ aUi.warehouse = {
 			html += this._record(list4Warehouse[i]);
 		}
 		return html;
-	}
+	},
+	_youJi: function(data) {
+		//种植时间
+		var plantTime=formatTime(data.plant_time,'Y-M-D');
+		//收获时间
+		var getTime=formatTime(data.get_time,'Y-M-D');
+		//剩余时间
+		var remaindTime=formatSeconds(data.remaind_time);
+	
+		var html = '<li class="mui-table-view-cell mui-collapse" style="background-image: url(../../images/nongchang/wxz.png);background-size: 100% 100%;" data-id="'+data.id+'" data-num="'+data.num+'" data-choose="0">'+
+						'<div class="detail">'+
+							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 100px;height: 80px;border-radius: 10px;" data-type="0" onerror="nofind(this)">'+
+							'<div class="mui-media-body">'+
+								'<p><span style="color: green;font-size: 15px;"><b>'+data.name+'</b></span></p>'+
+								'<p style="font-size: 13px;"><span>种植日期:</span><span>'+plantTime+'</span></p>'+
+								'<p style="font-size: 13px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
+								'<p style="font-size: 13px;"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span></p>'+
+							'</div>'+
+						'</div>'+
+					'</li>';
+		
+		return html;
+	},
+	youJiList: function(list4Warehouse) {
+		var html = "";
+		for(var i = 0; i < list4Warehouse.length; i++) {
+			html += this._youJi(list4Warehouse[i]);
+		}
+		return html;
+	},
 }
 
 /** 

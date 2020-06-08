@@ -63,11 +63,26 @@ var aFunc = {
 									console.log(JSON.stringify(data));
 									mui.toast('购买成功');
 									var plant=plus.webview.getWebviewById('plant');
-									mui.fire(plant, 'refreshJifen', {});
+									mui.fire(plant, 'refreshJifenAndPlant', {});
 									mui.back();
 									}else{
 										aVariable.btn.btnBuy.disabled=false;
+										
 										mui.toast(data.msg);
+										
+										plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+											if (mui.os.android) {			
+												mui.openWindow({
+													id: "chongzhi",
+													url: '/view/wallet/wallet_android.html'
+												});
+											} else {
+												mui.openWindow({
+													id: "chongzhi",
+													url: '/view/wallet/wallet_android.html'
+												});				
+											}						
+										});
 									}
 								}else{
 									aVariable.btn.btnBuy.disabled=false;
@@ -76,11 +91,17 @@ var aFunc = {
 							}, function() {
 
 							});
-						}
+						}else{
+									aVariable.btn.btnBuy.disabled=false;
+									mui.toast(data.msg);
+								}
 					}, function() {
 
 					});
-				}
+				}else{
+									aVariable.btn.btnBuy.disabled=false;
+									mui.toast(data.msg);
+								}
 			}, function() {
 
 			});

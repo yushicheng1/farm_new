@@ -4,7 +4,7 @@ aUi.tradingList = {
 	_tradingList: function(data) {
 		//种植时间
 		var plantTime=formatTime(data.plant_time,'Y-M-D');
-		//收货时间
+		//收获时间
 		var getTime=formatTime(data.get_time,'Y-M-D');
 		// var html=  '<li class="mui-table-view-cell mui-media">'+
 		// 				'<div>'+

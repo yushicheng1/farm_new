@@ -44,8 +44,8 @@ var aVariable = {
 		code:true,
 		codeNew:true,
 		loginWay:'psw',
-		version:'',
-		version_new:'',
+		version:0,
+		version_new:0,
 		url:'',
 		desc:''
 	}

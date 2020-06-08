@@ -5,6 +5,7 @@ var LocalStorage = {
 	isDebug: false, //是否为调试
 	keys: {
 		Auth_Token: "Auth_Token", //Auth_Token
+		Expires_Time: "Expires_Time", //过期时间
 		User_Account: "User_Account", //帐号
 		User_Password: "User_Password", //密码
 		Auto_Save:"Auto_Save",//记住密码0:不记住 1:记住

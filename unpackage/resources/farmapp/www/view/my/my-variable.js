@@ -15,12 +15,12 @@ var aVariable = {
 		btnYjdj:document.getElementById("btn-yjdj"),
 		btnYjfk:document.getElementById("btn-yjfk"),
 		btnBbsj:document.getElementById("btn-bbsj"),
-		btnBzzx:document.getElementById("btn-bzzx"),
+		// btnBzzx:document.getElementById("btn-bzzx"),
 		btnKfzx:document.getElementById("btn-kfzx"),
 		btnZxdl:document.getElementById("btn-zxdl"),
 		btnXgmm:document.getElementById("btn-xgmm"),
-		btnWdjy:document.getElementById("btn-wdjy")
-		// btnName:document.getElementById("btn-name"),
+		btnWdjy:document.getElementById("btn-wdjy"),
+		btnXtsj:document.getElementById("btn-xtsj")
 		// btnPhone:document.getElementById("btn-phone")
 	},
 	ipt: {

@@ -6,6 +6,7 @@ var aFunc = {
 		aVariable.ipt.iptGet.innerText = aVariable.params.get;
 		aVariable.ipt.iptPrice.innerText = aVariable.params.price;
 		aVariable.ipt.iptImage.src = aServer.ApiUrl + aVariable.params.image;
+		aVariable.ipt.iptcount.innerText = aVariable.params.count;
 	},
 	bindEvent: function() {
 		aVariable.btn.btnSubmit.addEventListener("tap", function() {
@@ -45,6 +46,7 @@ var aFunc = {
 		aVariable.params.get = aVariable.webview.current.get;
 		aVariable.params.price = aVariable.webview.current.price;
 		aVariable.params.image = aVariable.webview.current.image;
+		aVariable.params.count = aVariable.webview.current.count;
 		aFunc.initData();
 		aFunc.bindEvent();
 	}

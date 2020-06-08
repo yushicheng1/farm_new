@@ -53,6 +53,18 @@ var aFunc = {
 				url: 'information.html'
 			});
 		})
+		aVariable.ipt.iptImage.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "editInfo",
+				url: 'information.html'
+			});
+		})
+		aVariable.ipt.iptImage.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "editInfo",
+				url: 'information.html'
+			});
+		})
 
 		window.addEventListener('infomation', function(e) {
 			aFunc.initData();
@@ -150,13 +162,22 @@ var aFunc = {
 				url: '/view/sys/update.html'
 			});
 		})
-		//帮助中心
-		aVariable.btn.btnBzzx.addEventListener("tap", function() {
-			mui.toast("暂未开放")
-		})
+		// //帮助中心
+		// aVariable.btn.btnBzzx.addEventListener("tap", function() {
+		// 	mui.toast("暂未开放")
+		// })
 		//客服中心
 		aVariable.btn.btnKfzx.addEventListener("tap", function() {
-			mui.toast("暂未开放")
+		var btnArray = [{
+				title: "客服电话:400-9997815"
+			}, {
+				title: "微信：18663604825"
+			}];
+			plus.nativeUI.actionSheet({
+				cancel: "取消",
+				buttons: btnArray
+			}, function(event) {
+			});
 		})
 		//注销登录
 		aVariable.btn.btnZxdl.addEventListener("tap", function() {

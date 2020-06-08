@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>邮寄详情</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="youji-detail.css" />
+	</head>
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">邮寄到家</h1>
+			</header>
+		</head>
+		<div class="mui-content" style="background-color: #F0F0F0;">
+			<div style="width: 95% ;margin-left: 2%;margin-bottom: 8px;">
+				<ul class="mui-table-view" style="margin-top: 8px;border-radius: 8px;">
+					<li class="mui-table-view-cell mui-media mui-collapse-content" id="btn_choose">
+						<a>
+							<img class="mui-media-object mui-pull-left border" src="../../images/homemenu/address.png" style="height: 30px;width: 24px;">
+							<div class="mui-media-body">
+								<p><span id="ipt_name"></span><span id="ipt_phone" style="margin-left: 5px;"></span></p>
+								<p class="mui-ellipsis top8" id="ipt_address"></p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div style="height: 30px;width: 120px;background-image: url(../../images/cangku/gongji.png);background-size: 100% 100%;float: right;margin-right: 20px;">
+				<p style="text-align: center;color: #000000;margin-top: 5px;"><span>共计</span><span id="ipt_total"></span><span>公斤</span></p>
+			</div>
+			<div style="width: 95% ;margin-left: 2%;margin-top: 40px;">
+				<ul class="mui-table-view" id="record_list" style="margin-top: 8px;border-radius: 8px;">
+					<li class="mui-table-view-cell mui-media mui-collapse-content">
+						<div class="mui-Received">
+							<img class="mui-media-object mui-pull-left" src="../../images/homemenu/huanggua.png" style="max-width: 80px;height: 80px;border-radius: 10px;" onerror="nofind(this)">
+							<div class="mui-media-body">			
+									<p style="overflow: hidden;color: #11872a;font-size: 18px;">黄瓜</p>
+									<p style="color: #8f8f94;font-size: 12px;margin-top: 5px;"><span>种植日期:</span><span>2019-12-07</span></p>
+									<p style="color: #8f8f94;font-size: 12px;"><span>收获日期:</span><span>2019-12-07</span></p>
+								<p style="font-size: 12px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">公斤</span><span
+									 style="float: right;font-size: 15px;"></span></p>
+								<p style="font-size: 12px;color: #000000;margin-top: 3px;"><span>配送方式:</span><span style="float:right">快递包邮</span></p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<script type="text/javascript" src="../../js/mui.js"></script>
+			<script type="text/javascript" src="../../a-core/util/log.js"></script>
+			<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+			<script type="text/javascript" src="../../a-core/util/server.js"></script>
+			<script type="text/javascript" src="../../server/warehouse/warehouse-server.js"></script>
+			<script type="text/javascript" src="../../ui/warehouse/yifahuo.js"></script>
+			<script type="text/javascript" src="youji-detail-variable.js"></script>
+			<script type="text/javascript" src="youji-detail-func.js"></script>
+			<script type="text/javascript" src="youji-detail.js"></script>
+	</body>
+</html>

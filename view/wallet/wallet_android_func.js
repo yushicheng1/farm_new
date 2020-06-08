@@ -68,6 +68,10 @@ function pay_new() {
 		var zhifu=data.data
 		plus.payment.request(channel, zhifu.toString(), function(result) {
 			plus.nativeUI.alert("支付成功！", function() {
+				//刷新土地界面的积分
+				var plant=plus.webview.getWebviewById('plant');
+				mui.fire(plant, 'refreshJifen', {});
+				//刷新积分界面
 				var main = plus.webview.currentWebview().opener();
 				mui.fire(main, 'getMoney', {});
 				mui.back();

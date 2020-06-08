@@ -13,10 +13,11 @@ var myServer = mui.extend(aServer || {}, {
 	},
 
 	//修改用户信息
-	updateUserInfo: function(name, phone, success, error) {
+	updateUserInfo: function(name, phone, spread_code,success, error) {
 		var data = {
 			nick_name: name,
-			phone: phone
+			phone: phone,
+			spread_code:spread_code
 		}
 		aServer.executeActionOfServerPOST(this.isDebug, "api/my/update", "修改失败", data, success, error);
 	},

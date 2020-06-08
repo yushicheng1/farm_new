@@ -35,7 +35,7 @@ aUi.warehouse = {
 								'</div>'+
 								'<div class="mui-col-sm-3 mui-col-xs-3 ckecklogin">'+
 									'<img src="../../images/homemenu/xths.png" data-type="3" data-id="'+data.id+'" data-price="'+data.recycle_price+
-									'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
+									'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'" data-count="'+data.recycle_count+'"/>'+
 									'<p>系统回收</p>'+
 								'</div>'+
 								'<div class="mui-col-sm-3 mui-col-xs-3">'+

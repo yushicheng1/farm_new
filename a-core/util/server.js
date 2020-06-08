@@ -74,6 +74,7 @@ var aServer = {
 				if (result.status && (result.status == "200" || result.status == "409" || result.status == "405" || result.status ==
 						'400')) //200 成功  409资源冲突  405不允许删除
 				{
+					serverError(result);
 					success(result);
 				} else {
 					if (error) error(errMsg);
@@ -110,6 +111,7 @@ var aServer = {
 				aUtil.aLog.deb(isDebug, methodName + " return is " + JSON.stringify(result));
 				if (result.status && (result.status == "200" || result.status == "409" || result.status == "405")) //200 成功  409资源冲突  405不允许删除
 				{
+					serverError(result);
 					success(result);
 				} else {
 					if (error) error(errMsg);
@@ -147,6 +149,7 @@ var aServer = {
 			} else {
 				aUtil.aLog.deb(isDebug, methodName + " return is " + JSON.stringify(result));
 				if (success) {
+					serverError(result);
 					success(result);
 				} else {
 					aUtil.aLog.err(isDebug, errMsg + ":" + result.message);
@@ -227,4 +230,19 @@ var aServer = {
 		});
 	}
 
+}
+function serverError(result){
+	if (result.status == 100000){
+		mui.toast("登录失效,请重新登录");
+		var wvs = plus.webview.all();
+		
+		for (var i = 0,
+				len = wvs.length; i < len; i++) {
+			if (wvs[i].getURL() != null) {
+				if (wvs[i].getURL().indexOf("login") == -1) {
+					plus.webview.close(wvs[i]);
+				}
+			}
+		}
+	}
 }

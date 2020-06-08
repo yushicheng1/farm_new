@@ -1,3 +1,4 @@
+var isnew=1;
 var aFunc = {
 	verifyValue: function() {
 		//@TODO 增加校验内容
@@ -186,6 +187,8 @@ var aFunc = {
 							if (data.data.token != null) {
 								LocalStorage.setItem(LocalStorage.keys.Auth_Token, data.data.token);
 								console.log(data.data.token)
+								console.log(data.data.expires_time);
+								LocalStorage.setItem(LocalStorage.keys.Expires_Time, data.data.expires_time);
 							}
 							if (check.checked) { //判断记住密码项是否勾选，是则记住密码到本地缓存
 								LocalStorage.setItem(LocalStorage.keys.Auto_Save, '1');
@@ -266,9 +269,8 @@ console.log('android')
 				if (aVariable.value.version_new == '' || aVariable.value.version_new == null) {
 					// mui.toast('')
 				} else {
-					mui.alert(' ', "发现新版本，请更新到最新版app", "确定", function() {
-						plus.runtime.openURL(aVariable.value.url);
-					});
+					mui.toast("发现新版本，请到应用商店更新");
+					return;
 				}
 			}
 
@@ -337,6 +339,7 @@ console.log('android')
 			aVariable.value.version  = Number(manifest.version.code);
 		});
 		console.log(aVariable.value.version);
+		
 		if (mui.os.android) {
 			type = 0;
 			sysServer.checkVersion(type, function(data) {
@@ -346,9 +349,11 @@ console.log('android')
 				aVariable.value.url = data.data.url;
 				// aVariable.value.desc=data.desc;
 				if (parseInt(aVariable.value.version) < parseInt(android_version)) {
-					mui.alert(' ', "发现新版本，请更新到最新版app", "确定", function() {
-						plus.runtime.openURL(data.data.url);
-					});
+					//isnew = 0;
+					mui.toast('发现新版本，请到应用商店更新');
+				}else{
+					//自动登录 本地时间与token过期时间比较,  需在版本判断之后
+					autoLogin();
 				}
 			}, function() {});
 		} else {
@@ -359,13 +364,19 @@ console.log('android')
 				aVariable.value.url = data.data.url;
 				// var ios_desc = data.data.newFeatures;
 				if (parseInt(aVariable.value.version) < parseInt(ios_version)) {
-					mui.alert(' ', "发现新版本,请更新到最新版app", "确定", function() {
-						plus.runtime.openURL(data.data.url);
-					});
+					//isnew = 0;
+					mui.toast('发现新版本，请到应用商店更新');
+				}else{
+					//自动登录 本地时间与token过期时间比较,  需在版本判断之后
+					autoLogin();
 				}
 			}, function() {});
 
 		}
+
+
+
+		
 
 
 		//判断是否记住密码
@@ -460,3 +471,23 @@ console.log('android')
 //     }
 //     setTimeout("freshBtnNew("+num+")",1000);
 // }
+function autoLogin(){
+	var time = Date.parse(new Date())/1000;
+	var outTime = LocalStorage.getItem(LocalStorage.keys.Expires_Time);
+	console.log(outTime);
+	console.log(time);
+	if (outTime){
+		if (time<outTime){
+			mui.openWindow({
+				id: 'plant',
+				url: '../../view/main/plant.html',
+				waiting:{
+					autoShow:true,
+					title:'正在加载...'
+				}
+			});
+		}else{
+			mui.toast("自动登录已过期,请重新登录");
+		}
+	}
+}

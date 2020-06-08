@@ -4,7 +4,7 @@ var aVariable = {
 		listComponent : null
 	},
 	box: {
-		scroll: document.getElementById("box-scroll"),
+		scroll: document.getElementById("pullrefresh"),
 		yfhList: document.getElementById("yfh_list"),
 	},
 	btn: {

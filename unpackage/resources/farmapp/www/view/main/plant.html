@@ -9,17 +9,21 @@
 		<link rel="stylesheet" type="text/css" href="plant.css" />
 	</head>
 	<body>
-		<div class="mui-content" style="height: 100%;">
+		<div class="mui-content" style="height: 100%;" id="div-content">
 			<div class="mui-portrait">
-				<div style="width: 10.25rem;height: 7.5rem;float: left;padding: 0.825rem;">
-					<img id="ipt_tx" src="" onerror="javascript:this.src='../../images/default.png';" style="width: 5.25rem;height: 5.25rem;border: solid 2px #000000;" />
+				<div style="width: 16.0rem;height: 5.2rem;float: right;margin-top: 2rem;margin-right: 1.2rem;background-image: url(../../images/nongchang/kuang.png);background-size: 100% 100%;">
+					<div style="width: 64%;height: 100%;float: left;">
+						<p style="margin-top: 0.7rem;margin-left: 2rem;margin-bottom: 0.1rem;font-weight: 700;font-size: 1.3rem;color: #652a01;" id="ipt_name"> </p>
+						<p style="margin-left: 2rem;color: #652a01;"><span>积分 :</span><span id="ipt_ji"></span></p>
+					</div>
+					<img id="ipt_tx" src="" onerror="javascript:this.src='../../images/default.png';" style="width: 5.25rem;height: 5.25rem;border-radius: 50%;float: right;" />
 				</div>
-				<div style="width: 5rem;height: 100%;float: left;margin-top: 0.825rem;">
+				<!-- <div style="width: 5rem;height: 100%;float: right;margin-top: 1.325rem;margin-right: 5rem;">
 					<div style="width:8.3rem;height: 2.3rem;background-image: url(../../images/nongchang/jifen.png); background-size: 100% 100%;
 				background-repeat: no-repeat;">
 						<p style="text-align: center;font-size: 1.05rem;line-height: 2.5rem;margin-left: 0.9rem;" id="ipt_ji">0</p>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			<div class="mui-popover" id="popover" style="width: 100px;height: 50px;background-color:rgba(0,0,0,0);margin-left: 3%;margin-top: 5%;-webkit-pointer-events: none;-moz-pointer-events: none;-ms-pointer-events: none;-o-pointer-events: none;pointer-events: none;">
@@ -31,29 +35,62 @@
 
 			<div id="box_jc">
 				<a href="javascript:void(0)">
-					<img src="../../images/nongchang/jiancai_new.png" style="width: 40%;height: 17%;position: absolute;top: 20%;left: 35%;"
+					<img src="../../images/nongchang/jiancai_new.png" style="width: 40%;height: 17%;position: absolute;top: 31%;left: 35%;"
 					 id="btn_toucai">
 					<!-- <img src="../../images/scl/jchl.png" style="width: 32%;height: 17%;position: absolute;top: 18%;left: 44%;visibility:hidden;"
 					 id="btn_huishou"> -->
 				</a>
 			</div>
-			
+
 			<div class="mui-plant" id="div_pland1">
 				<div class="mui-plant1" style="width: 100%;height: 100%;" id="div_pland">
-				<!-- <div class="mui-plant-land" id="div_land">
-					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
-				</div>
-				<div class="mui-plant-land">
-					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
-				</div>
-				<div class="mui-plant-land" id="div_land">
-					<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
-				</div> -->
+				
 				</div>
 			</div>
-     
+
+			<!-- <div class="mui-plant mui-scroll-wrapper" id="div_pland11">
+				<div class="mui-scroll">
+					<div class="mui-plant1"  id="div_pland">
+						<div class="mui-plant-land" style="background-image: url(../../images/nongchang/tu2.png);" data-day="27"
+						 data-name="（幼苗）小番茄-黄" data-landId="13268" data-seedId="44"><a href="#popover" style="display: block;width:100%;height:100%"><img
+								 src="http://39.106.109.129:8000//uploads/seed_status/20200407/46f42ae3474f7f65c25c3390214a83c4.png" class="image1"
+								 onerror="nofindZz(this)"></a></div>
+						<div class="mui-plant-land" style="background-image: url(../../images/nongchang/tu2.png);" data-day="0" data-name="（成熟）小番茄-黄"
+						 data-landId="13269" data-seedId="26"><a href="#popover" style="display: block;width:100%;height:100%"><img src="http://39.106.109.129:8000//uploads/seed_status/20200406/107e9662e992b611d866f5412965e4e1.png"
+								 class="image1" onerror="nofindZz(this)"></a></div>
+						<div class="mui-plant-land" style="background-image: url(../../images/nongchang/tu2.png);" data-day="0" data-name="（成熟）小番茄-黄"
+						 data-landId="13270" data-seedId="26"><a href="#popover" style="display: block;width:100%;height:100%"><img src="http://39.106.109.129:8000//uploads/seed_status/20200406/107e9662e992b611d866f5412965e4e1.png"
+								 class="image1" onerror="nofindZz(this)"></a></div>
+						<div class="mui-plant-land" style="background-image: url(../../images/nongchang/tu2.png);" data-day="27"
+						 data-name="（幼苗）小番茄-黄" data-landId="13617" data-seedId="44"><a href="#popover" style="display: block;width:100%;height:100%"><img
+								 src="http://39.106.109.129:8000//uploads/seed_status/20200407/46f42ae3474f7f65c25c3390214a83c4.png" class="image1"
+								 onerror="nofindZz(this)"></a></div>
+						<div class="mui-plant-land" style="background-image: url(../../images/nongchang/tu2.png);" data-day="27"
+						 data-name="（幼苗）大番茄-口感番茄" data-landId="13657" data-seedId="47"><a href="#popover" style="display: block;width:100%;height:100%"><img
+								 src="http://39.106.109.129:8000//uploads/seed_status/20200407/58def422b5f79fb3e5963170c80f2b31.png" class="image1"
+								 onerror="nofindZz(this)"></a></div>
+						<div class="mui-plant-land" style="background-image: url(../../images/nongchang/tu2.png);" data-day="27"
+						 data-name="（幼苗）小番茄-绿" data-landId="13658" data-seedId="51"><a href="#popover" style="display: block;width:100%;height:100%"><img
+								 src="http://39.106.109.129:8000//uploads/seed_status/20200407/375a53f82975de2f4fd1f04b5fc60323.png" class="image1"
+								 onerror="nofindZz(this)"></a></div>
+						<div class="mui-plant-land" style="background-image: url(../../images/nongchang/tu2.png);" data-day="27"
+						 data-name="（幼苗）大番茄916" data-landId="13685" data-seedId="48"><a href="#popover" style="display: block;width:100%;height:100%"><img
+								 src="http://39.106.109.129:8000//uploads/seed_status/20200407/a060974d3859ae9ec6a880c2d8b92b0d.png" class="image1"
+								 onerror="nofindZz(this)"></a></div>
+						<div class="mui-plant-land" style="background-image: url(../../images/nongchang/tu2.png);" data-day="27"
+						 data-name="（幼苗）小番茄-千禧" data-landId="18458" data-seedId="45"><a href="#popover" style="display: block;width:100%;height:100%"><img
+								 src="http://39.106.109.129:8000//uploads/seed_status/20200407/7ae319b23a3e95fec548d3198c347e71.png" class="image1"
+								 onerror="nofindZz(this)"></a></div>
+						<div class="mui-plant-land" style="background-image: url(../../images/nongchang/tu2.png);" data-day="27"
+						 data-name="（幼苗）小番茄-千禧" data-landId="18459" data-seedId="45"><a href="#popover" style="display: block;width:100%;height:100%"><img
+								 src="http://39.106.109.129:8000//uploads/seed_status/20200407/7ae319b23a3e95fec548d3198c347e71.png" class="image1"
+								 onerror="nofindZz(this)"></a></div>
+					</div>
+				</div>
+			</div>
+ -->
 			<!-- <div class="mui-plant" id="div_pland"> -->
-				<!-- <div class="mui-plant-land" id="div_land">
+			<!-- <div class="mui-plant-land" id="div_land">
 					<a href="#popover" style="display: block;">
 						<img src="../../images/cangku/zhiwu.png" class="image1" id="ipt_img">
 					</a>
@@ -136,55 +173,55 @@
 			<!-- </div> -->
 
 			<div class="mui-Onekey">
-				<!-- <div>
-					<a href="javascript:void(0)" id="lise" onclick="lise()">
-						<img src="../../images/nongchang/paihamhbang.png" style="width: 5rem;height: 5rem;">
-					</a>
-				</div>
- -->
-				<!-- 	<div>
-					<a href="javascript:void(0)" id="btn_zhongzi">
-						<img src="../../images/nongchang/cangku.png">
-					</a>
-				</div>
 				<div>
-					<a href="javascript:void(0)" id="btn_td">
-						<img src="../../images/cangku/tdan.png">
+					<a href="javascript:void(0)" id="btn_one_water" onclick="lise()">
+						<img src="../../images/nongchang/yjjs.png" style="width: 3.5rem;height: 3.5rem;">
 					</a>
-				</div> -->
-				<!-- <div>
-					<a href="javascript:void(0)" id="btn_eradicate" >
-						<img src="../../images/nongchang/renwu.png">
-					</a>
-				</div> -->
+				</div>
 
+				<div>
+					<a href="javascript:void(0)" id="btn_one_task" onclick="lise()">
+						<img src="../../images/nongchang/yjsf.png" style="width: 3.5rem;height: 3.5rem;">
+					</a>
+				</div>
+				
+				<div>
+					<a href="javascript:void(0)" id="btn_water" onclick="lise()">
+						<img src="../../images/nongchang/jiaoshui.png" style="width: 3.5rem;height: 3.5rem;">
+					</a>
+				</div>
+				
+				<div>
+					<a href="javascript:void(0)" id="btn_task" onclick="lise()">
+						<img src="../../images/nongchang/shifei.png" style="width: 3.5rem;height: 3.5rem;">
+					</a>
+				</div>
 			</div>
 			<div class=" mui-fooder ">
 				<ul class="text">
 					<li>
 						<a href="javascript:void(0)" id="btn_shouye">
-							<img src="../../images/nongchang/fanhui.png">
+							<img src="../../images/nongchang/jiance.png">
 						</a>
+						
 					</li>
 					<li>
-						<a href="javascript:void(0)" id="btn_watering">
-							<img src="../../images/nongchang/jiaoshui.png">
+						<a href="javascript:void(0)" id="btn_shangcheng">
+							<img src="../../images/nongchang/shangcheng.png">
 						</a>
+						
 					</li>
 					<li>
-						<a href="javascript:void(0)" id="btn_task">
-							<img src="../../images/nongchang/shifei.png">
+						<a href="javascript:void(0)" id="btn_jishi">
+							<img src="../../images/nongchang/jishi.png">
 						</a>
+						
 					</li>
 					<li>
-						<a href="javascript:void(0)" id="btn_one_water">
-							<img src="../../images/nongchang/yjjs.png">
+						<a href="javascript:void(0)" id="btn_cangku">
+							<img src="../../images/nongchang/cangku.png">
 						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)" id="btn_one_task">
-							<img src="../../images/nongchang/yjsf.png">
-						</a>
+						
 					</li>
 				</ul>
 			</div>

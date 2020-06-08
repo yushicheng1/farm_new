@@ -42,6 +42,7 @@ var aFunc = {
 			aVariable.ipt.iptTotal.innerText = accMul(num,price);
 		})
 		aVariable.btn.btnBuy.addEventListener("tap", function() {
+			aVariable.btn.btnBuy.disabled=true;
 			var id = aVariable.params.seedId;
 			var num = aVariable.ipt.iptNumber.value;
 			var unique = aVariable.params.uniqueId;
@@ -65,8 +66,27 @@ var aFunc = {
 									mui.fire(plant, 'refreshJifen', {});
 									mui.back();
 									}else{
-										mui.toast(data.msg)
+										aVariable.btn.btnBuy.disabled=false;
+										
+										mui.toast(data.msg);
+										
+										plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+											if (mui.os.android) {			
+												mui.openWindow({
+													id: "chongzhi",
+													url: '/view/wallet/wallet_android.html'
+												});
+											} else {
+												mui.openWindow({
+													id: "chongzhi",
+													url: '/view/wallet/wallet_android.html'
+												});				
+											}						
+										});
 									}
+								}else{
+									aVariable.btn.btnBuy.disabled=false;
+									mui.toast(data.msg);
 								}
 							}, function() {
 

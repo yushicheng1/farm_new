@@ -68,7 +68,28 @@ var aFunc = {
 		aVariable.btn.btnTgm.addEventListener("tap", function() {
 			sysServer.getSpreadCode(function(data) {
 					if (data.status == 200) {
-						mui.alert(data.msg,'我的邀请码','确定',function(){},'div')
+						mui.alert(data.msg,'我的邀请码','复制',function(){
+							if(mui.os.ios){
+							//ios
+							var UIPasteboard = plus.ios.importClass("UIPasteboard");
+							    var generalPasteboard = UIPasteboard.generalPasteboard();
+							    //设置/获取文本内容:
+							    generalPasteboard.plusCallMethod({
+							        setValue:data.msg,
+							        forPasteboardType: "public.utf8-plain-text"
+							    });
+							    generalPasteboard.plusCallMethod({
+							        valueForPasteboardType: "public.utf8-plain-text"
+							    });
+							}else{
+							//安卓
+							var context = plus.android.importClass("android.content.Context");
+							  var main = plus.android.runtimeMainActivity();
+							  var clip = main.getSystemService(context.CLIPBOARD_SERVICE);
+							  plus.android.invoke(clip,"setText",data.msg);
+							  mui.toast('复制成功');
+							}
+						},'div')
 					} else {
                         mui.toast('获取失败')
 					}

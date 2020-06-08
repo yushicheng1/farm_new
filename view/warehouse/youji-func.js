@@ -51,41 +51,63 @@ var aFunc = {
 				aVariable.btn.btnYouji.disabled=false;
 				return;
 			}
-			for(var i=0;i<a.length;i++){
-				var id=a[i].getAttribute("data-id");
-				var num=a[i].getAttribute("data-num");
-				var data={}
-				data['id']=id;
-				data['num']=num;
-				aVariable.params.sendList.push(data);
-			}
 			var addressId = aVariable.params.addressId;
 			if (addressId == '' || addressId == null) {
 				mui.toast('请选择地址');
 				aVariable.btn.btnYouji.disabled=false;
 				return;
 			}
-			warehouseServer.sendToHmoe(JSON.stringify(aVariable.params.sendList), addressId, function(data) {
-				if (data.status == 200) {
-					if (data.data.status == 'SUCCESS') {
-						mui.toast('邮寄成功');
-						aVariable.params.sendList=[];
-						var main = plus.webview.currentWebview().opener();
-						mui.fire(main, 'refreshWarehouse', {});
-						mui.back();
-					} else {
-						aVariable.btn.btnYouji.disabled=false;
-						aVariable.params.sendList=[];						
-						mui.toast(data.msg);
+			var allnum = 0;
+			aVariable.params.sendList=[];
+			
+			for(var i=0;i<a.length;i++){
+				var id=a[i].getAttribute("data-id");
+				var num=a[i].getAttribute("data-num");
+				var data={};
+				data['id']=id;
+				data['num']=num;
+				allnum = allnum+parseFloat(num);
+				aVariable.params.sendList.push(data);
+			}
+			
+			if (allnum<2){
+				mui.toast('还差'+(2-allnum).toFixed(2)+'公斤起送');
+				aVariable.btn.btnYouji.disabled=false;
+			}else if(allnum>3){
+				mui.toast('已超出'+(allnum-3).toFixed(2)+'公斤');
+				aVariable.btn.btnYouji.disabled=false;
+			}else{
+				var bts=["是","取消"];
+				plus.nativeUI.confirm("当前邮寄"+allnum.toFixed(2)+"公斤\n邮寄不可取消，请您确认",function(e){
+					var i=e.index;
+					if (i==0){
+						warehouseServer.sendToHmoe(JSON.stringify(aVariable.params.sendList), addressId, function(data) {
+							if (data.status == 200) {
+								if (data.data.status == 'SUCCESS') {
+									mui.toast('邮寄成功');
+									aVariable.params.sendList=[];
+									var main = plus.webview.currentWebview().opener();
+									mui.fire(main, 'refreshWarehouse', {});
+									mui.back();
+								} else {
+									aVariable.btn.btnYouji.disabled=false;
+									aVariable.params.sendList=[];						
+									mui.toast(data.msg);
+								}
+							} else {
+								aVariable.btn.btnYouji.disabled=false;
+								aVariable.params.sendList=[];					
+								mui.toast(data.msg);
+							}
+						}, function() {
+						
+						});
+					}else{
+						
 					}
-				} else {
-					aVariable.btn.btnYouji.disabled=false;
-					aVariable.params.sendList=[];					
-					mui.toast(data.msg);
-				}
-			}, function() {
-
-			});
+				},"邮寄到家",bts);
+				aVariable.btn.btnYouji.disabled=false;
+			}
 		})
 
 		window.addEventListener('wchoose', function(e) {

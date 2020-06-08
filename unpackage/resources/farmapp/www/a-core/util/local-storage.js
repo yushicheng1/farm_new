@@ -5,6 +5,7 @@ var LocalStorage = {
 	isDebug: false, //是否为调试
 	keys: {
 		Auth_Token: "Auth_Token", //Auth_Token
+		Expires_Time: "Expires_Time", //过期时间
 		User_Account: "User_Account", //帐号
 		User_Password: "User_Password", //密码
 		Auto_Save:"Auto_Save",//记住密码0:不记住 1:记住
@@ -13,7 +14,8 @@ var LocalStorage = {
 		Auto_Message: "Auto_Message", //自动接受消息
 		Auto_Version: "Auto_Version", //自动检测更新
 		Group_List:"Group_List",
-		ContactList:"ContactList" 
+		ContactList:"ContactList",
+		launchFlag:"launchFlag"
 	},
 	setItem: function(itemKey, itemValue) {
 		plus.storage.setItem(itemKey, itemValue + "");

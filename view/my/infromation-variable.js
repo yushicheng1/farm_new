@@ -13,7 +13,8 @@ var aVariable = {
 	ipt: {
 		iptName: document.getElementById("ipt_name"),
 		iptPhone: document.getElementById("ipt_phone"),
-		iptImg:document.getElementById("ipt_img")
+		iptImg:document.getElementById("ipt_img"),
+		iptCode:document.getElementById("ipt_code"),
 	},
 	params: {
        name:'',
