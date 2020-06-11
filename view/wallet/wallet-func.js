@@ -13,12 +13,12 @@ var aFunc = {
 
 	},
 	bindEvent: function() {
-		// aVariable.btn.btnRecord.addEventListener("tap", function() {
-		// 	mui.openWindow({
-		// 		id: "walletRecotd",
-		// 		url: '/view/wallet/wallet-record.html'
-		// 	});
-		// })
+		aVariable.btn.btnRecord.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "walletRecord",
+				url: '/view/wallet/wallet-record.html'
+			});
+		})
 
 		aVariable.btn.btnChongzhi.addEventListener("tap", function() {
 			plus.runtime.getProperty(plus.runtime.appid, function(inf) {

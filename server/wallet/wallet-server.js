@@ -5,12 +5,13 @@ var walletServer = mui.extend(aServer || {}, {
 	isDebug: true,
 
 	//获取账单记录
-	getRecordList: function(pages, size, success, error) {
+	getRecordList: function(type,pages, size, success, error) {
 		var data = {
+			"type":type,
 			"page": pages,
 			"rows": size
 		};
-		aServer.executeActionOfServerGET(this.isDebug, "api/wallet/moneylog", "获取账单记录失败", data, success, error);
+		aServer.executeActionOfServerGET(this.isDebug, "api/wallet/moneylog", "获取记录失败", data, success, error);
 	},
 
 	//提现

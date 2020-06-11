@@ -12,12 +12,12 @@ var aFunc = {
 
 	},
 	bindEvent: function() {
-		// aVariable.btn.btnRecord.addEventListener("tap", function() {
-		// 	mui.openWindow({
-		// 		id: "walletRecotd",
-		// 		url: '/view/wallet/wallet-record.html'
-		// 	});
-		// })
+		aVariable.btn.btnRecord.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "moneyRecord",
+				url: '/view/wallet/money-record.html'
+			});
+		})
 
 		aVariable.btn.btnTixian.addEventListener("tap", function() {
 			mui.toast('暂未开放')

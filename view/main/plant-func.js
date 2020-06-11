@@ -211,7 +211,14 @@ var aFunc = {
 							var name = this.getAttribute('data-name');
 							var day = this.getAttribute('data-day');
 							aVariable.ipt.iptPlantName.innerText = name;
-							aVariable.ipt.iptPlantDay.innerText = day;
+							if(day<0){
+								day=0;
+							}
+							if(day==0){
+								aVariable.ipt.iptPlantDay.innerText = '下周一收获';
+							}else{
+								aVariable.ipt.iptPlantDay.innerText = '成熟还需'+day+'天';
+							}							
 							aVariable.params.landId = landId;
 							aVariable.params.seedId = seedId;
 							this.style.border = 'solid 3px greenyellow';

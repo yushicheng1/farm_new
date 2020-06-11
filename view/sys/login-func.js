@@ -202,7 +202,7 @@ var aFunc = {
 
 							
 								if (mui.os.android) {
-console.log('android')
+
 								} else {
 									var payObject = plus.ios.newObject("PayObject");
 									plus.ios.invoke(payObject, "iniSSS:", data.data.token);
@@ -210,15 +210,27 @@ console.log('android')
 							
 							// aVariable.btn.btnLogin.disabled = "";
 							// window.location.reload();
-							mui.openWindow({
-								id: 'plant',
-								url: '../../view/main/plant.html',
-								waiting:{
-									autoShow:true,
-									title:'正在加载...'
-								}
-							});
-
+							var guideFlag = LocalStorage.getItem(LocalStorage.keys.guideFlag);
+							console.log(guideFlag)
+							if(guideFlag){
+								mui.openWindow({
+									id: 'plant',
+									url: '../../view/main/plant.html',
+									waiting:{
+										autoShow:true,
+										title:'正在加载...'
+									}
+								});
+							}else{								
+								mui.openWindow({
+									id: 'newhand',
+									url: '../../view/sys/newhand.html',
+									waiting:{
+										autoShow:true,
+										title:'正在加载...'
+									}
+								});
+							}
 						} else {
 							mui.toast(data.msg);
 							aVariable.btn.btnLogin.disabled = "";

@@ -14,7 +14,7 @@ var aFunc = {
 				if(data.status == 200) {
 					aVariable.box.recordList.innerHTML += aUi.warehouse.recordList(data.data);
 					aVariable.list.page.item_page += 1;
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh(data.data.length <10)
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(data.data.length <10);
 				} else {
 			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 				}
