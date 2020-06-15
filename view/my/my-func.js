@@ -148,6 +148,44 @@ var aFunc = {
 			});
 		})
 		
+		//我的银行卡
+		aVariable.btn.btnWdyhk.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "wdyhk",
+				url: '/view/my/wdyhk.html'
+			});
+		})
+		
+		//电子协议
+		aVariable.btn.btnDzxy.addEventListener("tap", function() {
+			// bankServer.unlock(function(data) {
+			// 	console.log(JSON.stringify(data));
+			// 	if (data.status == 200) {
+			         
+			// 	} else {
+					
+			// 	}
+			// }, function() {
+			
+			// });			
+			bankServer.signContract(function(data) {
+				console.log(JSON.stringify(data));
+				if (data.status == 200) {
+			           mui.openWindow({
+			           	id: "xieyi",
+			           	url: '/view/my/xieyi.html',
+						extras:{
+							url:data.msg
+						}
+			           });
+				} else {
+					
+				}
+			}, function() {
+			
+			});			
+		})
+		
 		//修改密码
 		aVariable.btn.btnXgmm.addEventListener("tap", function() {
 			mui.openWindow({

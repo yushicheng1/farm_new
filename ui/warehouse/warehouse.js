@@ -76,6 +76,8 @@ aUi.warehouse = {
 			bgm='../../images/cangku/bgm_6.png'
 		}else if(type==7){
 			bgm='../../images/cangku/bgm_7.png'
+		}else if(type==8){
+			bgm='../../images/cangku/bgm_8.jpg'
 		}
 	
 		var html = '<li class="mui-table-view-cell" style="margin-bottom: 5px;background-image: url('+bgm+');background-size: 100% 100%;">'+

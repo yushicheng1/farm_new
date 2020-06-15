@@ -20,8 +20,9 @@ var aVariable = {
 		btnZxdl:document.getElementById("btn-zxdl"),
 		btnXgmm:document.getElementById("btn-xgmm"),
 		btnWdjy:document.getElementById("btn-wdjy"),
-		btnXtsj:document.getElementById("btn-xtsj")
-		// btnPhone:document.getElementById("btn-phone")
+		btnXtsj:document.getElementById("btn-xtsj"),
+		btnWdyhk:document.getElementById("btn-wdyhk"),
+		btnDzxy:document.getElementById("btn-dzxy")
 	},
 	ipt: {
 		iptName: document.getElementById("ipt-name"),
