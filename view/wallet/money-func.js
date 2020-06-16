@@ -20,11 +20,11 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnTixian.addEventListener("tap", function() {
-			mui.toast('暂未开放')
-			// mui.openWindow({
-			// 	id: "tixian",
-			// 	url: '/view/wallet/tixian.html'
-			// });
+			// mui.toast('暂未开放')
+			mui.openWindow({
+				id: "tixian",
+				url: '/view/wallet/tixian.html'
+			});
 		})
 
 		// aVariable.btn.btnTixian.addEventListener("tap", function() {

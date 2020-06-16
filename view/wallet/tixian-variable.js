@@ -8,7 +8,8 @@ var aVariable = {
 	},
 	btn: {
         btnRecord:document.getElementById("btn_record"),
-		btnExtract:document.getElementById("btn_extract")
+		btnExtract:document.getElementById("btn_extract"),
+		btnChoose:document.getElementById("btn_choose")
 	},
 	ipt: {
         iptMoney:document.getElementById("ipt_money"),

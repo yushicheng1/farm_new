@@ -11,40 +11,45 @@ var aFunc = {
 		});
 	},
 	bindEvent: function() {
-		aVariable.btn.btnExtract.addEventListener("tap", function() {
-			var money = aVariable.ipt.iptExtract.value;
-			var number = aVariable.ipt.iptNumber.value;
-			var name = aVariable.ipt.iptName.value;
-			if (money == '' || money == undefined || money == 0) {
-				mui.toast('提现金额不能为零');
-				return;
-			}
+		//为选择单选选项添加监听事件
+		document.querySelector('.mui-table-view.mui-table-view-radio').addEventListener('selected',function(e){
+		     console.log("当前选中的文本值为："+e.detail.el.innerText);
+		});
+	
+		// aVariable.btn.btnExtract.addEventListener("tap", function() {
+		// 	var money = aVariable.ipt.iptExtract.value;
+		// 	var number = aVariable.ipt.iptNumber.value;
+		// 	var name = aVariable.ipt.iptName.value;
+		// 	if (money == '' || money == undefined || money == 0) {
+		// 		mui.toast('提现金额不能为零');
+		// 		return;
+		// 	}
 
-			if (number == '' || number == undefined) {
-				mui.toast('支付宝账号不能为空');
-				return;
-			}
+		// 	if (number == '' || number == undefined) {
+		// 		mui.toast('支付宝账号不能为空');
+		// 		return;
+		// 	}
 
-			if (name == '' || name == undefined) {
-				mui.toast('姓名不能为空');
-				return;
-			}
-			var type = 'alipay';
-			var bankAddress = '';
-			walletServer.extract(money, type, number, bankAddress, name, function(data) {
-					if (data.status == 200) {
-						location.reload();
-						var main = plus.webview.currentWebview().opener();
-						mui.fire(main, 'getMoney', {});					
-						mui.toast('提现成功');
-					} else {
-						mui.toast('提现失败');
-					}
-				},
-				function() {
+		// 	if (name == '' || name == undefined) {
+		// 		mui.toast('姓名不能为空');
+		// 		return;
+		// 	}
+		// 	var type = 'alipay';
+		// 	var bankAddress = '';
+		// 	walletServer.extract(money, type, number, bankAddress, name, function(data) {
+		// 			if (data.status == 200) {
+		// 				location.reload();
+		// 				var main = plus.webview.currentWebview().opener();
+		// 				mui.fire(main, 'getMoney', {});					
+		// 				mui.toast('提现成功');
+		// 			} else {
+		// 				mui.toast('提现失败');
+		// 			}
+		// 		},
+		// 		function() {
 
-				});
-		})
+		// 		});
+		// })
 	},
 
 	initView: function() {
