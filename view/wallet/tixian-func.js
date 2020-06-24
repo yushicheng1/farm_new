@@ -3,18 +3,50 @@ var aFunc = {
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
 				LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);
+				aVariable.ipt.iptTixian.innerText="您有"+data.data.real_money+"元可提现";
+				aVariable.params.money=data.data.real_money;
 			} else {
 
 			}
 		}, function() {
 
 		});
+		
+		bankServer.getBankList(function(data) {
+					if (data.status == 200) {
+		aVariable.box.bankList.innerHTML += aUi.bank.bankOneList(data.data);
+					} else {
+		
+					}
+				}, function() {
+		
+				});
 	},
 	bindEvent: function() {
 		//为选择单选选项添加监听事件
 		document.querySelector('.mui-table-view.mui-table-view-radio').addEventListener('selected',function(e){
-		     console.log("当前选中的文本值为："+e.detail.el.innerText);
+		     // console.log("当前选中的文本值为："+e.detail.el.innerText);
+		
 		});
+		
+		//绑定支付方式选择事件
+		mui(aVariable.box.bankList).on("tap", "li", function(e) {
+			aVariable.params.cardId = this.getAttribute("data-cardId");
+			aVariable.params.no = this.getAttribute("data-no");
+			aVariable.params.name = this.getAttribute("data-name");
+		});
+		
+		
+		aVariable.btn.btnPay.addEventListener("tap", function() {
+			mui('#popover').popover('hide');
+			aVariable.ipt.iptName.innerText=aVariable.params.name;
+			aVariable.ipt.iptNo.innerText=aVariable.params.no;
+			
+		})
+		
+		aVariable.btn.btnQuanbu.addEventListener("tap", function() {
+			aVariable.ipt.iptTxje.value=aVariable.params.money;
+		})
 	
 		// aVariable.btn.btnExtract.addEventListener("tap", function() {
 		// 	var money = aVariable.ipt.iptExtract.value;

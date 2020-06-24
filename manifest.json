@@ -5,8 +5,8 @@
     /*"fullscreen":true,*/
     "name" : "大农主", /*应用名称，程序桌面图标名称*/
     "version" : {
-        "name" : "1.1.4", /*应用版本名称*/
-        "code" : 11
+        "name" : "1.1.7", /*应用版本名称*/
+        "code" : 14
     },
     "description" : "", /*应用描述信息*/
     "icons" : {
@@ -117,6 +117,7 @@
             "waiting" : false,
             "delay" : 1000
         },
+        "ramcachemode" : "enable",
         "runmode" : "liberate", /*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
         "signature" : "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==", /*可选，保留给应用签名，暂不使用*/
         "distribute" : {

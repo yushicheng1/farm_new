@@ -78,9 +78,11 @@ aUi.warehouse = {
 			bgm='../../images/cangku/bgm_7.png'
 		}else if(type==8){
 			bgm='../../images/cangku/bgm_8.jpg'
+		}else{
+			bgm='../../images/cangku/bgm_9.png'
 		}
 	
-		var html = '<li class="mui-table-view-cell" style="margin-bottom: 5px;background-image: url('+bgm+');background-size: 100% 100%;">'+
+		var html = '<li class="mui-table-view-cell" style="background-image: url('+bgm+');background-size: 100% 100%;">'+
 						'<div class="detail">'+
 							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 80px;height: 80px;border-radius: 50%;" onerror="nofind(this)">'+
 							'<div class="mui-media-body">'+

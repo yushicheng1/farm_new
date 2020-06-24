@@ -179,8 +179,11 @@ var aFunc = {
 			});
 		});
 		window.addEventListener('refreshJifenAndPlant', function(e) {
-			aFunc.initData();
-			aFunc.down2Refresh();
+			aVariable.div.divPland.innerHTML = '';
+			aVariable.list.page.item_page=1;
+			aVariable.list.page.item_num=9;
+			mui('#div_pland1').pullRefresh().refresh(true);
+			aFunc.up2Refresh();
 			myServer.getUserInfo(function(data) {
 				if (data.status == 200) {
 					aVariable.ipt.iptJf.innerText = data.data.money;
@@ -215,9 +218,9 @@ var aFunc = {
 								day=0;
 							}
 							if(day==0){
-								aVariable.ipt.iptPlantDay.innerText = '下周一收获';
+								aVariable.ipt.iptPlantDay.innerText = '收获还需5天';
 							}else{
-								aVariable.ipt.iptPlantDay.innerText = '成熟还需'+day+'天';
+								aVariable.ipt.iptPlantDay.innerText = '收获还需'+day+'天';
 							}							
 							aVariable.params.landId = landId;
 							aVariable.params.seedId = seedId;

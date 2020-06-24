@@ -22,12 +22,14 @@ var aVariable = {
 		btnWdjy:document.getElementById("btn-wdjy"),
 		btnXtsj:document.getElementById("btn-xtsj"),
 		btnWdyhk:document.getElementById("btn-wdyhk"),
-		btnDzxy:document.getElementById("btn-dzxy")
+		btnDzxy:document.getElementById("btn-dzxy"),
+		btnZzmx:document.getElementById("btn-zzmx")
 	},
 	ipt: {
 		iptName: document.getElementById("ipt-name"),
-		iptPhone: document.getElementById("ipt-phone"),
-		iptImage:document.getElementById("ipt_image")
+		iptImage:document.getElementById("ipt-img"),
+		iptJifen:document.getElementById("ipt-jifen"),
+		iptYue:document.getElementById("ipt-yue")
 	},
 	params: {
 		noticeId: ''

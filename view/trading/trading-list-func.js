@@ -44,11 +44,11 @@ var aFunc = {
 
 		//返回
 		aVariable.btn.btnBack.addEventListener("tap", function() {
-			// mui.back()
-			mui.openWindow({
-				id: 'plant',
-				url: '../../view/main/plant.html'
-			});
+			mui.back();
+			// mui.openWindow({
+			// 	id: 'plant',
+			// 	url: '../../view/main/gmzz-new.html'
+			// });
 		})
 		
 		window.addEventListener('refreshTrading', function(e) {
@@ -74,7 +74,7 @@ var aFunc = {
 			}, function() {
 
 			});
-		}, 400);
+		}, 100);
 	},
 	down2Refresh: function() {
 		aVariable.list.page.item_page = 1;
@@ -97,7 +97,7 @@ var aFunc = {
 			}, function() {
 
 			});
-		}, 400);
+		}, 100);
 	},
 	nofind: function(item) {
 		item.src = "../../images/res/slider.png";
@@ -123,6 +123,7 @@ var aFunc = {
 				up: {
 					auto: true,
 					contentrefresh: '正在加载...',
+					contentdown:' ',
 					callback: aFunc.up2Refresh
 				}
 			}

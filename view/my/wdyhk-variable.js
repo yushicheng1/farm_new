@@ -21,4 +21,7 @@ var aVariable = {
 			item_page: 1 //页数
 		}
 	},
+	value:{
+		qianding:0//未签订协议
+	}
 };

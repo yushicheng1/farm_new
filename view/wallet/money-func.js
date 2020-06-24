@@ -9,6 +9,16 @@ var aFunc = {
 		}, function() {
 
 		});
+		
+		bankServer.getMoney(function(data) {
+			if (data.status == 200) {
+				aVariable.ipt.iptYue.innerHTML =data.msg;
+			} else {
+		
+			}
+		}, function() {
+		
+		});
 
 	},
 	bindEvent: function() {
@@ -20,19 +30,19 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnTixian.addEventListener("tap", function() {
-			// mui.toast('暂未开放')
+			// mui.toast('暂未开放');
 			mui.openWindow({
-				id: "tixian",
-				url: '/view/wallet/tixian.html'
+				id: "tixian_before",
+				url: 'tixian-before.html'
 			});
 		})
 
-		// aVariable.btn.btnTixian.addEventListener("tap", function() {
-		// 	mui.openWindow({
-		// 		id: "tixian",
-		// 		url: '/view/wallet/tixian.html'
-		// 	});
-		// })
+		aVariable.btn.btnYhk.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "tixian",
+				url: 'tixian.html'
+			});
+		})
 
 		window.addEventListener('getMoney', function(e) {
 			aFunc.initData();

@@ -4,8 +4,10 @@ var aFunc = {
 			if (data.status == 200) {
 				console.log(JSON.stringify(data.data))
 				LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);
-				aVariable.ipt.iptName.value = data.data.nick_name;
-				aVariable.ipt.iptPhone.value = data.data.phone;
+				aVariable.ipt.iptName.innerText = data.data.nick_name;
+				aVariable.ipt.iptJifen.innerText = data.data.money;
+				aVariable.ipt.iptYue.innerText = data.data.real_money;
+				// aVariable.ipt.iptPhone.value = data.data.phone;
 				aVariable.ipt.iptImage.src = aServer.ApiUrl + data.data.avatar;
 			}
 		}, function() {
@@ -47,18 +49,7 @@ var aFunc = {
 				url: 'information.html'
 			});
 		})
-		aVariable.ipt.iptPhone.addEventListener("tap", function() {
-			mui.openWindow({
-				id: "editInfo",
-				url: 'information.html'
-			});
-		})
-		aVariable.ipt.iptImage.addEventListener("tap", function() {
-			mui.openWindow({
-				id: "editInfo",
-				url: 'information.html'
-			});
-		})
+
 		aVariable.ipt.iptImage.addEventListener("tap", function() {
 			mui.openWindow({
 				id: "editInfo",
@@ -66,8 +57,14 @@ var aFunc = {
 			});
 		})
 
-		window.addEventListener('infomation', function(e) {
-			aFunc.initData();
+		window.addEventListener('refreshJf', function(e) {
+			myServer.getUserInfo(function(data) {
+				if (data.status == 200) {
+					aVariable.ipt.iptJifen.innerText = data.data.money;
+				}
+			}, function() {
+			
+			});
 		});
 		//全部订单
 		// aVariable.btn.btnAllOrder.addEventListener("tap", function() {
@@ -148,42 +145,49 @@ var aFunc = {
 			});
 		})
 		
-		//我的银行卡
-		aVariable.btn.btnWdyhk.addEventListener("tap", function() {
-			mui.openWindow({
-				id: "wdyhk",
-				url: '/view/my/wdyhk.html'
-			});
-		})
+		// //我的银行卡
+		// aVariable.btn.btnWdyhk.addEventListener("tap", function() {
+		// 	mui.openWindow({
+		// 		id: "wdyhk",
+		// 		url: '/view/my/wdyhk.html'
+		// 	});
+		// })
 		
-		//电子协议
-		aVariable.btn.btnDzxy.addEventListener("tap", function() {
-			// bankServer.unlock(function(data) {
-			// 	console.log(JSON.stringify(data));
-			// 	if (data.status == 200) {
+		// //电子协议
+		// aVariable.btn.btnDzxy.addEventListener("tap", function() {
+		// 	// bankServer.unlock(function(data) {
+		// 	// 	console.log(JSON.stringify(data));
+		// 	// 	if (data.status == 200) {
 			         
-			// 	} else {
+		// 	// 	} else {
 					
-			// 	}
-			// }, function() {
+		// 	// 	}
+		// 	// }, function() {
 			
-			// });			
-			bankServer.signContract(function(data) {
-				console.log(JSON.stringify(data));
-				if (data.status == 200) {
-			           mui.openWindow({
-			           	id: "xieyi",
-			           	url: '/view/my/xieyi.html',
-						extras:{
-							url:data.msg
-						}
-			           });
-				} else {
+		// 	// });			
+		// 	bankServer.signContract(function(data) {
+		// 		if (data.status == 200) {
+		// 	           mui.openWindow({
+		// 	           	id: "xieyi",
+		// 	           	url: '/view/my/xieyi.html',
+		// 				extras:{
+		// 					url:data.msg
+		// 				}
+		// 	           });
+		// 		} else {
 					
-				}
-			}, function() {
+		// 		}
+		// 	}, function() {
 			
-			});			
+		// 	});			
+		// })
+		
+		//种植明细
+		aVariable.btn.btnZzmx.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "zzmx",
+				url: '/view/plant/plant-record.html'
+			});
 		})
 		
 		//修改密码
@@ -210,6 +214,8 @@ var aFunc = {
 				title: "客服电话:400-9997815"
 			}, {
 				title: "微信：18663604825"
+			},{
+				title: "QQ：1039860457"
 			}];
 			plus.nativeUI.actionSheet({
 				cancel: "取消",
@@ -220,7 +226,7 @@ var aFunc = {
 		//注销登录
 		aVariable.btn.btnZxdl.addEventListener("tap", function() {
 			var btnArray = [{
-				title: "注销当前账号"
+				title: "退出当前账号"
 			}, {
 				title: "直接关闭应用"
 			}];

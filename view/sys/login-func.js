@@ -214,8 +214,8 @@ var aFunc = {
 							console.log(guideFlag)
 							if(guideFlag){
 								mui.openWindow({
-									id: 'plant',
-									url: '../../view/main/plant.html',
+									id: 'main',
+									url: '../../view/main/main.html',
 									waiting:{
 										autoShow:true,
 										title:'正在加载...'
@@ -491,8 +491,8 @@ function autoLogin(){
 	if (outTime){
 		if (time<outTime){
 			mui.openWindow({
-				id: 'plant',
-				url: '../../view/main/plant.html',
+				id: 'main',
+				url: '../../view/main/main.html',
 				waiting:{
 					autoShow:true,
 					title:'正在加载...'

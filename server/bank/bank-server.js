@@ -52,6 +52,16 @@ var bankServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServerPOST(this.isDebug, "api/user/applyBindBankCard", "绑定失败", data, success, error);
 	},
 	
+	//确认绑定银行卡
+	agreeBind: function(phone,tranceNum,code, success, error) {
+		var data = {
+			phone: phone,
+			tranceNum: tranceNum,
+			code:code
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/user/bindBankCard", "绑定失败", data, success, error);
+	},
+	
 	//电子协议
 	signContract: function(success, error) {
 		var data = {};
@@ -62,5 +72,19 @@ var bankServer = mui.extend(aServer || {}, {
 	unlock: function(success, error) {
 		var data = {};
 		aServer.executeActionOfServerGET(this.isDebug, "api/user/unlock", "解锁失败", data, success, error);
+	},
+	
+	//获取可到账金额
+	getMoney: function(success, error) {
+		var data = {};
+		aServer.executeActionOfServerGET(this.isDebug, "api/user/thirdBalance", "获取失败", data, success, error);
+	},
+	
+	//发起第三方支付提现
+	withDraw: function(money,success, error) {
+		var data = {
+			amount:money
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/user/withDraw", "发起失败", data, success, error);
 	}
 })

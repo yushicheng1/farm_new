@@ -73,8 +73,8 @@ var aFunc = {
 			if (allnum<2){
 				mui.toast('还差'+(2-allnum).toFixed(2)+'公斤起送');
 				aVariable.btn.btnYouji.disabled=false;
-			}else if(allnum>3){
-				mui.toast('已超出'+(allnum-3).toFixed(2)+'公斤');
+			}else if(allnum>2.8){
+				mui.toast('已超出'+(allnum-2.8).toFixed(2)+'公斤');
 				aVariable.btn.btnYouji.disabled=false;
 			}else{
 				var bts=["是","取消"];

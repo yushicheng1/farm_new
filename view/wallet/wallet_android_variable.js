@@ -4,7 +4,8 @@ var aVariable = {
 		listComponent : null
 	},
 	box: {
-		moneyList: document.getElementById("chongzhi-list")
+		moneyList: document.getElementById("chongzhi-list"),
+		bankList: document.getElementById("bank-list")
 	},
 	btn: {
         btnPay:document.getElementById("btn_pay")
@@ -14,6 +15,9 @@ var aVariable = {
 		iptJiFen:document.getElementById("ipt_jifen")
 	},
 	params:{
-		apple_id:''
+		apple_id:'',
+		phone:'',
+		cardId:'',
+		type:1
 	}
 };

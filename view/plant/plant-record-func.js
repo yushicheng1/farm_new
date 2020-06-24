@@ -1,4 +1,4 @@
-var subPages = ["gmzz-zz.html", "gmzz-ym.html"];
+var subPages = ["now.html", "past.html"];
 var subPageStyle = {
 	top: '96px',
 	bottom: '0'
@@ -39,13 +39,13 @@ var aFunc = {
 		if (page == 2) {
 			plus.webview.show(subPages[1]);
 			 activeTab = subPages[1];
-			document.getElementById("bbbsChannel_zhongzi").classList.remove('mui-active');
-			document.getElementById("bbbsChannel_youmiao").classList.add('mui-active');
+			document.getElementById("bbbsChannel_xianyou").classList.remove('mui-active');
+			document.getElementById("bbbsChannel_guoqi").classList.add('mui-active');
 		} else {
 			plus.webview.show(subPages[0]);
 			activeTab = subPages[0];
-			document.getElementById("bbbsChannel_zhongzi").classList.add('mui-active');
-			document.getElementById("bbbsChannel_youmiao").classList.remove('mui-active');
+			document.getElementById("bbbsChannel_xianyou").classList.add('mui-active');
+			document.getElementById("bbbsChannel_guoqi").classList.remove('mui-active');
 		}
 		mui('.mui-bar-tab').on('tap', 'a', function(e) {
 			targetTab = this.dataset.href;

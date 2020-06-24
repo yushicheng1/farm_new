@@ -2,7 +2,29 @@
 var aUi = aUi || {};
 aUi.seed = {
 	_tuDi: function(data) {
-		var day=data.seed.ripe_day-data.level;
+		//当前时间戳减去种植时间
+		var time=parseInt(new Date().getTime()/1000)-data.plant_time;
+		var time1=(time/86400)-data.seed.ripe_day;
+		var time2;
+		var day;		
+		if(data.seed.ripe_day==1&&time1<0){
+			day=6
+		}else if(data.seed.ripe_day==1&&time1>0){
+			//向下取整取余
+			 time2=Math.floor(time1)%5;
+			 day=5-time2;
+		}else if(data.seed.ripe_day>1&&time1<0){
+			if(time<0){
+				day=data.seed.ripe_day;
+			}else{
+				day=Math.ceil(Math.abs(time1));
+			}						
+		}else if(data.seed.ripe_day>1&&time1>0){
+			//向下取整取余
+			 time2=Math.floor(time1)%5;
+			 day=5-time2;
+		}
+		
 		var status=data.option_status;
 		var url;
 		if(status==0){

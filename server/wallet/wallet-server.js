@@ -9,7 +9,7 @@ var walletServer = mui.extend(aServer || {}, {
 		var data = {
 			"type":type,
 			"page": pages,
-			"rows": size
+			"limit": size
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/wallet/moneylog", "获取记录失败", data, success, error);
 	},
@@ -27,13 +27,24 @@ var walletServer = mui.extend(aServer || {}, {
 	},
 
 	//充值
-	charge: function(money, success, error) {
+	charge: function(money, type,cardId,success, error) {
 		var data = {
 			'pay_number': money,
-			'pay_type': 'alipay'
+			'pay_type': type,
+			'card_id':cardId
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/charge", "充值失败", data, success, error);
 	},
+	
+	//确认充值
+	ConfirmCharge: function(bizOrderNo, code,success, error) {
+		var data = {
+			'bizOrderNo': bizOrderNo,
+			'verificationCode': code
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/confirmPay", "充值失败", data, success, error);
+	},
+	
 	//充值(apple)
 	chargeApple: function(data, success, error) {
 		var data = {
