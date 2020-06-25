@@ -2,7 +2,7 @@
 <html>
 
 	<head>
-		<title>提现</title>
+		<title>转到银行卡</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,7 +17,7 @@
 		<head>
 			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
 				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
-				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">提现</h1>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">转到银行卡</h1>
 				<!-- <a class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 15px;line-height: 25px;" id="btn_record">账单记录</a> -->
 			</header>
 		</head>
@@ -51,26 +51,26 @@
 						<li>
 							<!-- <img src="../../images/mobile.png" height="25px" /> -->
 							<span style="font-size: 30px;color: grey">¥ </span>
-							<input style="width: 150px;border: 0;background-color: #F0F0F0;margin-left: 26px;-webkit-user-select:text !important;font-size: 23px;"
-							 placeholder="输入提现金额" id="ipt_txje" oninput="value=value.replace(/[^\d]/g,'')" maxlength="11" />
+							<input style="width: 170px;border: 0;background-color: #F0F0F0;margin-left: 10px;-webkit-user-select:text !important;font-size: 23px;"
+							 placeholder="输入提现金额" id="ipt_txje"  maxlength="11" type="number"/>
 							<span style="float: right;color: #13BA01;" id="btn_quanbu">全部提现</span>
 						</li>
 					</ul>
 					<span style="float: right;margin-right: 45px;color: #8f8f94;" id="ipt_tixian">您有0元可提现</span>
 				</div>
 			</div>
-			<div style="height: 220px;">
-				<div style="height: 80px;background-color: white;margin-left: 30px;margin-right: 36px;border-radius: 5px;">
+			<div style="height: 220px;margin-top: 20px;">
+				<!-- <div style="height: 80px;background-color: white;margin-left: 30px;margin-right: 36px;border-radius: 5px;">
 					<p style="color: #000000;font-size: 17px;padding-top: 15px;margin-left: 15px;">手续费用</p>
 					<p style="margin-left: 15px;">0.2%的手续费用为<span>12</span>元</p>
-				</div>
+				</div> -->
 				<div style="height: 80px;background-color: white;margin-top: 5px;margin-left: 30px;margin-right: 36px;border-radius: 5px;">
 					<p style="color: #000000;font-size: 17px;padding-top: 15px;margin-left: 15px;">到账时间</p>
-					<p style="margin-left: 15px;"><span>预计</span><span style="color: red;">2小时</span><span>内到账,每日限额2万元</span></p>
+					<p style="margin-left: 15px;"><span>预计</span><span style="color: red;">2小时</span><span>内到账</span></p>
 				</div>
 			</div>
 			<div class="mb2" id="div_login">
-				<a style="background-color: #0cd398; color: white;width: 280px;margin:0 auto;" class="act-but submit" id='btn_login'>确认提现</a>
+				<a style="background-color: #0cd398; color: white;width: 280px;margin:0 auto;" class="act-but submit" id='btn_submit'>确认提现</a>
 			</div>
 			<!-- <ul class="mui-table-view" style="margin-left: 7px;margin-right: 7px;background-color: #F0F0F0;"> -->
 			<!-- <li style="height: 50px;padding-top:5px">

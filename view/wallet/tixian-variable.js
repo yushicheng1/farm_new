@@ -9,7 +9,7 @@ var aVariable = {
 	},
 	btn: {
         btnRecord:document.getElementById("btn_record"),
-		btnExtract:document.getElementById("btn_extract"),
+		btnSubmit:document.getElementById("btn_submit"),
 		btnChoose:document.getElementById("btn_choose"),
 		btnPay:document.getElementById("btn_pay"),
 		btnQuanbu:document.getElementById("btn_quanbu")
@@ -27,6 +27,7 @@ var aVariable = {
 		cardId:'',
 		no:'',
 		name:'',
-		money:''
+		money:'',
+		phone:''
 	}
 };

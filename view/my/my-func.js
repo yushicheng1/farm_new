@@ -61,6 +61,7 @@ var aFunc = {
 			myServer.getUserInfo(function(data) {
 				if (data.status == 200) {
 					aVariable.ipt.iptJifen.innerText = data.data.money;
+					aVariable.ipt.iptYue.innerText=data.data.real_money;
 				}
 			}, function() {
 			
@@ -145,42 +146,50 @@ var aFunc = {
 			});
 		})
 		
-		// //我的银行卡
-		// aVariable.btn.btnWdyhk.addEventListener("tap", function() {
-		// 	mui.openWindow({
-		// 		id: "wdyhk",
-		// 		url: '/view/my/wdyhk.html'
-		// 	});
-		// })
+		//我的银行卡
+		aVariable.btn.btnWdyhk.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "wdyhk",
+				url: '/view/my/wdyhk.html'
+			});
+		})
 		
-		// //电子协议
-		// aVariable.btn.btnDzxy.addEventListener("tap", function() {
-		// 	// bankServer.unlock(function(data) {
-		// 	// 	console.log(JSON.stringify(data));
-		// 	// 	if (data.status == 200) {
+		//绑定手机号
+		aVariable.btn.btnBdsjh.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "bdsjh",
+				url: '/view/my/phone.html'
+			});
+		})
+		
+		//电子协议
+		aVariable.btn.btnDzxy.addEventListener("tap", function() {
+			// bankServer.unlock(function(data) {
+			// 	console.log(JSON.stringify(data));
+			// 	if (data.status == 200) {
 			         
-		// 	// 	} else {
+			// 	} else {
 					
-		// 	// 	}
-		// 	// }, function() {
+			// 	}
+			// }, function() {
 			
-		// 	// });			
-		// 	bankServer.signContract(function(data) {
-		// 		if (data.status == 200) {
-		// 	           mui.openWindow({
-		// 	           	id: "xieyi",
-		// 	           	url: '/view/my/xieyi.html',
-		// 				extras:{
-		// 					url:data.msg
-		// 				}
-		// 	           });
-		// 		} else {
+			// });			
+			bankServer.signContract(function(data) {
+				if (data.status == 200) {
+			           mui.openWindow({
+			           	id: "xieyi",
+			           	url: '/view/my/xieyi.html',
+						extras:{
+							url:data.msg
+						}
+			           });
+				} else {
 					
-		// 		}
-		// 	}, function() {
+				}
+			}, function() {
 			
-		// 	});			
-		// })
+			});			
+		})
 		
 		//种植明细
 		aVariable.btn.btnZzmx.addEventListener("tap", function() {

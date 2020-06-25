@@ -38,10 +38,44 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnYhk.addEventListener("tap", function() {
-			mui.openWindow({
-				id: "tixian",
-				url: 'tixian.html'
+			bankServer.getThirdInfo(function(data) {
+				if (data.status == 200) {
+					if(data.data.isSignContract){
+						mui.openWindow({
+							id: "tixian",
+							url: 'tixian.html'
+						});
+					}else{
+						mui.toast('请前往个人中心签订电子协议');
+					}
+				} else {
+			
+				}
+			}, function() {
+			
 			});
+			
+			bankServer.getBankList(function(data) {
+				if (data.status == 200) {
+					if(data.data.length>0){
+						mui.openWindow({
+							id: "tixian",
+							url: 'tixian.html'
+						});
+					}else{
+						mui.toast('请前往个人中心绑定银行卡');
+					}
+				} else {
+			
+				}
+			}, function() {
+			
+			});
+			
+			// mui.openWindow({
+			// 	id: "tixian",
+			// 	url: 'tixian.html'
+			// });
 		})
 
 		window.addEventListener('getMoney', function(e) {

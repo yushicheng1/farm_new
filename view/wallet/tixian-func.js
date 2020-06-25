@@ -1,15 +1,26 @@
 var aFunc = {
 	initData: function() {
-		myServer.getUserInfo(function(data) {
+		bankServer.getMoney(function(data) {
 			if (data.status == 200) {
-				LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);
-				aVariable.ipt.iptTixian.innerText="您有"+data.data.real_money+"元可提现";
-				aVariable.params.money=data.data.real_money;
+				aVariable.ipt.iptTixian.innerText ="您有"+data.msg+"元可提现";
 			} else {
-
+		
 			}
 		}, function() {
-
+		
+		});
+		
+		bankServer.defaultBank(function(data) {
+			if (data.status == 200) {
+				aVariable.ipt.iptName.innerText =data.data.bankname;
+				aVariable.ipt.iptNo.innerText =data.data.cardnumber;
+				aVariable.params.phone=data.data.phone;
+				aVariable.params.cardId =data.data.id;
+			} else {
+		
+			}
+		}, function() {
+		
 		});
 		
 		bankServer.getBankList(function(data) {
@@ -22,13 +33,7 @@ var aFunc = {
 		
 				});
 	},
-	bindEvent: function() {
-		//为选择单选选项添加监听事件
-		document.querySelector('.mui-table-view.mui-table-view-radio').addEventListener('selected',function(e){
-		     // console.log("当前选中的文本值为："+e.detail.el.innerText);
-		
-		});
-		
+	bindEvent: function() {		
 		//绑定支付方式选择事件
 		mui(aVariable.box.bankList).on("tap", "li", function(e) {
 			aVariable.params.cardId = this.getAttribute("data-cardId");
@@ -39,49 +44,61 @@ var aFunc = {
 		
 		aVariable.btn.btnPay.addEventListener("tap", function() {
 			mui('#popover').popover('hide');
-			aVariable.ipt.iptName.innerText=aVariable.params.name;
-			aVariable.ipt.iptNo.innerText=aVariable.params.no;
-			
+			if(aVariable.params.name==''||aVariable.params.name==null||aVariable.params.no==''||aVariable.params.no==null){
+				
+			}else{
+				aVariable.ipt.iptName.innerText=aVariable.params.name;
+				aVariable.ipt.iptNo.innerText=aVariable.params.no;
+			}		
 		})
 		
 		aVariable.btn.btnQuanbu.addEventListener("tap", function() {
 			aVariable.ipt.iptTxje.value=aVariable.params.money;
 		})
 	
-		// aVariable.btn.btnExtract.addEventListener("tap", function() {
-		// 	var money = aVariable.ipt.iptExtract.value;
-		// 	var number = aVariable.ipt.iptNumber.value;
-		// 	var name = aVariable.ipt.iptName.value;
-		// 	if (money == '' || money == undefined || money == 0) {
-		// 		mui.toast('提现金额不能为零');
-		// 		return;
-		// 	}
+		aVariable.btn.btnSubmit.addEventListener("tap", function() {
+			var money =parseFloat(aVariable.ipt.iptTxje.value).toFixed(2);
+			var bankId=aVariable.params.cardId;
+			var phone=aVariable.params.phone;
+			bankServer.withDraw(money, bankId, function(data) {
+					if (data.status == 200) {
+						var zhifu = data.data.bizOrderNo;
+						var a = mui.prompt('已发送至' + phone, '','验证码' , ['取消', '确认'], function(e) {
+							if (e.index == 1) {
+								var agreeCode = document.getElementById("ipt-agree-code").value;
+								bankServer.confirmDraw(zhifu, agreeCode, function(data) {
+									if (data.status == 200) {
+										plus.nativeUI.alert("提现成功！", function() {
+											//刷新我的界面的积分
+											var my = plus.webview.getWebviewById('my');
+											mui.fire(my,'refreshJf', {});
+											//刷新积分界面
+											var main = plus.webview.currentWebview().opener();
+											mui.fire(main, 'getMoney', {});
+											mui.back();
+										});
+									} else {
+										mui.toast(data.msg);
+									}
+								}, function() {
+						
+								});
+						
+							} else {
+								console.log('取消');
+							}
+						}, 'div');
+						var lihh = document.querySelector('.mui-popup-input');
+						lihh.innerHTML =
+							'<input  id="ipt-agree-code" type="number" style="height:40px;text-align: center;width: 50%;"></input>';
+					} else {
+						mui.toast(data.msg);
+					}
+				},
+				function() {
 
-		// 	if (number == '' || number == undefined) {
-		// 		mui.toast('支付宝账号不能为空');
-		// 		return;
-		// 	}
-
-		// 	if (name == '' || name == undefined) {
-		// 		mui.toast('姓名不能为空');
-		// 		return;
-		// 	}
-		// 	var type = 'alipay';
-		// 	var bankAddress = '';
-		// 	walletServer.extract(money, type, number, bankAddress, name, function(data) {
-		// 			if (data.status == 200) {
-		// 				location.reload();
-		// 				var main = plus.webview.currentWebview().opener();
-		// 				mui.fire(main, 'getMoney', {});					
-		// 				mui.toast('提现成功');
-		// 			} else {
-		// 				mui.toast('提现失败');
-		// 			}
-		// 		},
-		// 		function() {
-
-		// 		});
-		// })
+				});
+		})
 	},
 
 	initView: function() {

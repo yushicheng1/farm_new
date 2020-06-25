@@ -80,11 +80,42 @@ var bankServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServerGET(this.isDebug, "api/user/thirdBalance", "获取失败", data, success, error);
 	},
 	
-	//发起第三方支付提现
-	withDraw: function(money,success, error) {
+	//获取默认银行
+	defaultBank: function(success, error) {
+		var data = {};
+		aServer.executeActionOfServerGET(this.isDebug, "api/user/defaultBank", "获取失败", data, success, error);
+	},
+	
+	//提现
+	extract: function(money,type,success, error) {
 		var data = {
-			amount:money
+			extract_money:money,
+			type:type
 		};
-		aServer.executeActionOfServerPOST(this.isDebug, "api/user/withDraw", "发起失败", data, success, error);
+		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/extract", "提现失败", data, success, error);
+	},
+	
+	//第三方支付提现
+	withDraw: function(money,bankId,success, error) {
+		var data = {
+			amount:money,
+			bank_id:bankId
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/user/withDraw", "提现失败", data, success, error);
+	},
+	
+	//第三方支付提现
+	confirmDraw: function(bizOrderNo,verificationCode,success, error) {
+		var data = {
+			bizOrderNo:bizOrderNo,
+			verificationCode:verificationCode
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/user/confirmDraw", "提现失败", data, success, error);
+	},
+	
+	//查询第三方支付信息
+	getThirdInfo: function(success, error) {
+		var data = {};
+		aServer.executeActionOfServerGET(this.isDebug, "api/user/getThirdInfo", "获取失败", data, success, error);
 	}
 })
