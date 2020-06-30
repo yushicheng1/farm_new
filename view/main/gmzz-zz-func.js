@@ -10,13 +10,19 @@ var aFunc = {
 			var seedId = card.getAttribute("data-id");
 			var seedName = card.getAttribute("data-name");
 			var seedImg = card.getAttribute("data-img");
+			var shengzhang = card.getAttribute("data-shengzhang");
+			var jieguo = card.getAttribute("data-jieguo");
+			var chanliang = card.getAttribute("data-chanliang");
 			mui.openWindow({
 				id: "gmzz_detail",
 				url: 'gmzz-detail.html',
 				extras: {
 			       seedId:seedId,
 				   seedName:seedName,
-				   seedImg:seedImg
+				   seedImg:seedImg,
+				   shengzhang:shengzhang,
+				   jieguo:jieguo,
+				   chanliang:chanliang
 				}
 			});
 		});

@@ -1,10 +1,10 @@
 var aFunc = {
 	initData: function() {
-		document.getElementById('div-content').style.backgroundImage='url(../../images/nongchang/yxbg.gif)';
+		document.getElementById('div-content').style.backgroundImage = 'url(../../images/nongchang/yxbg.gif)';
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
 				aVariable.ipt.iptTx.src = aServer.ApiUrl + data.data.avatar;
-				aVariable.ipt.iptJf.innerText = ' '+data.data.money;
+				aVariable.ipt.iptJf.innerText = ' ' + data.data.money;
 				aVariable.ipt.iptName.innerText = data.data.nick_name;
 			}
 		}, function() {
@@ -13,16 +13,16 @@ var aFunc = {
 		aVariable.params.landId = '';
 		aVariable.params.seedId = '';
 	},
-	bindEvent: function() {		
+	bindEvent: function() {
 		//我的
 		aVariable.ipt.iptTx.addEventListener("tap", function() {
 			mui.openWindow({
 				id: "my",
 				url: '/view/my/my.html',
 				extras: {
-			
+
 				}
-			
+
 			});
 		})
 		//首页
@@ -31,9 +31,9 @@ var aFunc = {
 				id: "main",
 				url: '/view/main/main.html',
 				extras: {
-			
+
 				}
-			
+
 			});
 		})
 		//商城
@@ -42,9 +42,9 @@ var aFunc = {
 				id: "gmzz",
 				url: '/view/main/gmzz-new.html',
 				extras: {
-			
+
 				}
-			
+
 			});
 		})
 		//集市
@@ -53,9 +53,9 @@ var aFunc = {
 				id: "jishi",
 				url: '/view/trading/trading-list.html',
 				extras: {
-			
+
 				}
-			
+
 			});
 		})
 		//仓库
@@ -64,9 +64,9 @@ var aFunc = {
 				id: "cangku",
 				url: '/view/warehouse/warehouse.html',
 				extras: {
-			
+
 				}
-			
+
 			});
 		})
 
@@ -117,42 +117,51 @@ var aFunc = {
 				});
 		})
 		aVariable.btn.btnOneWater.addEventListener("tap", function() {
-			plantServer.JiaoShuiALL(function(data) {
-					console.log(JSON.stringify(data))
-					if (data.status == 200) {
-						mui.toast(data.msg);
-						aVariable.list.page.item_page = 1;
-						aVariable.div.divPland.innerHTML = '';
-						aFunc.initData();
-						document.getElementById('popover').style.display = 'none';
-						aFunc.up2Refresh();
-						mui('#div_pland1').pullRefresh().refresh(true);
-					} else {
+			if (aVariable.params.isWater) {
+				aVariable.params.isWater = false;
+				plantServer.JiaoShuiALL(function(data) {
+						console.log(JSON.stringify(data))
+						if (data.status == 200) {
+							mui.toast(data.msg);
+							aVariable.list.page.item_page = 1;
+							aVariable.div.divPland.innerHTML = '';
+							aFunc.initData();
+							document.getElementById('popover').style.display = 'none';
+							aFunc.up2Refresh();
+							mui('#div_pland1').pullRefresh().refresh(true);
+							aVariable.params.isWater = true;
+						} else {
+							aVariable.params.isWater = true;
+						}
+					},
+					function() {
+						aVariable.params.isWater = true;
+					});
+			}
 
-					}
-				},
-				function() {
-
-				});
 		})
 		aVariable.btn.btnOneTask.addEventListener("tap", function() {
-			plantServer.ShiFeiAll(function(data) {
-					console.log(JSON.stringify(data))
-					if (data.status == 200) {
-						mui.toast(data.msg);
-						aVariable.list.page.item_page = 1;
-						aFunc.initData();
-						aVariable.div.divPland.innerHTML = '';
-						document.getElementById('popover').style.display = 'none';
-						aFunc.up2Refresh();
-						mui('#div_pland1').pullRefresh().refresh(true);
-					} else {
-
-					}
-				},
-				function() {
-
-				});
+			if (aVariable.params.isTask) {
+				aVariable.params.isTask = false;
+				plantServer.ShiFeiAll(function(data) {
+						console.log(JSON.stringify(data))
+						if (data.status == 200) {
+							mui.toast(data.msg);
+							aVariable.list.page.item_page = 1;
+							aFunc.initData();
+							aVariable.div.divPland.innerHTML = '';
+							document.getElementById('popover').style.display = 'none';
+							aFunc.up2Refresh();
+							mui('#div_pland1').pullRefresh().refresh(true);
+							aVariable.params.isTask = true;
+						} else {
+							aVariable.params.isTask = true;
+						}
+					},
+					function() {
+						aVariable.params.isTask = true;
+					});
+			}
 		})
 
 		aVariable.btn.btnToucai.addEventListener("tap", function() {
@@ -169,7 +178,7 @@ var aFunc = {
 		});
 
 		window.addEventListener('refreshJifen', function(e) {
-			
+
 			myServer.getUserInfo(function(data) {
 				if (data.status == 200) {
 					aVariable.ipt.iptJf.innerText = data.data.money;
@@ -180,8 +189,8 @@ var aFunc = {
 		});
 		window.addEventListener('refreshJifenAndPlant', function(e) {
 			aVariable.div.divPland.innerHTML = '';
-			aVariable.list.page.item_page=1;
-			aVariable.list.page.item_num=9;
+			aVariable.list.page.item_page = 1;
+			aVariable.list.page.item_num = 9;
 			mui('#div_pland1').pullRefresh().refresh(true);
 			aFunc.up2Refresh();
 			myServer.getUserInfo(function(data) {
@@ -189,7 +198,7 @@ var aFunc = {
 					aVariable.ipt.iptJf.innerText = data.data.money;
 				}
 			}, function() {
-		
+
 			});
 		});
 	},
@@ -214,14 +223,14 @@ var aFunc = {
 							var name = this.getAttribute('data-name');
 							var day = this.getAttribute('data-day');
 							aVariable.ipt.iptPlantName.innerText = name;
-							if(day<0){
-								day=0;
+							if (day < 0) {
+								day = 0;
 							}
-							if(day==0){
+							if (day == 0) {
 								aVariable.ipt.iptPlantDay.innerText = '收获还需5天';
-							}else{
-								aVariable.ipt.iptPlantDay.innerText = '收获还需'+day+'天';
-							}							
+							} else {
+								aVariable.ipt.iptPlantDay.innerText = '收获还需' + day + '天';
+							}
 							aVariable.params.landId = landId;
 							aVariable.params.seedId = seedId;
 							this.style.border = 'solid 3px greenyellow';
@@ -245,7 +254,7 @@ var aFunc = {
 			plantServer.tuDi(pages, size, function(data) {
 					if (data.status == 200) {
 						aVariable.list.page.item_page += 1;
-						
+
 						aVariable.div.divPland.innerHTML += aUi.seed.tuDiList(data.data);
 						mui('#div_pland1').pullRefresh().endPullupToRefresh(data.data.length < 9)
 						mui(aVariable.div.divPland).on("tap", "div", function(e) {
@@ -267,11 +276,10 @@ var aFunc = {
 							mui("#popover").popover('hide')
 							mui("#popover").popover('toggle', this)
 						});
-					} else {
-					}
+					} else {}
 				},
 				function() {
-	
+
 				});
 		}, 200);
 	},
@@ -304,7 +312,7 @@ var aFunc = {
 					callback: aFunc.up2Refresh
 				}
 			},
-			beforeback:function(){
+			beforeback: function() {
 				return false;
 			}
 		});
@@ -312,4 +320,3 @@ var aFunc = {
 		aFunc.bindEvent();
 	}
 };
-

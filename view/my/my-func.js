@@ -107,10 +107,10 @@ var aFunc = {
 		
 		//我的钱包
 		aVariable.btn.btnwdqb.addEventListener("tap", function() {
-			mui.openWindow({
-				id: "wdqb",
-				url: '/view/wallet/money.html'
-			});
+			// mui.openWindow({
+			// 	id: "wdqb",
+			// 	url: '/view/wallet/money.html'
+			// });
 		})
 		
 		//我的交易

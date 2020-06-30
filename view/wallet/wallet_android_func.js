@@ -29,6 +29,16 @@ var aFunc = {
 		}, function() {
 
 		});
+		
+		bankServer.createMember(function(data) {
+			if (data.status == 200) {
+		
+			} else {
+		
+			}
+		}, function() {
+		
+		});
 
 	},
 	bindEvent: function() {
@@ -112,8 +122,12 @@ function pay_new() {
 
 					});
 
-				} else {
-					mui.toast('请前往个人中心绑定手机号');
+				} else {					
+					mui.toast('请先绑定手机号');
+					mui.openWindow({
+						id: "bdsjh",
+						url: '/view/my/phone.html'
+					});
 				}
 			} else {
 

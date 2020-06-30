@@ -14,6 +14,9 @@ function accMul(num1, num2) {
 var aFunc = {
 	initData: function() {
 		aVariable.ipt.iptName.innerHTML = aVariable.params.seedName;
+		aVariable.ipt.iptShengzhang.innerHTML = aVariable.params.shengzhang;
+		aVariable.ipt.iptJieguo.innerHTML = aVariable.params.jieguo;
+		aVariable.ipt.iptChanliang.innerHTML = aVariable.params.chanliang;
 		aVariable.ipt.iptImage.src = aServer.ApiUrl + aVariable.params.seedImg;
 		var id = aVariable.params.seedId;
 		gmzzServer.getSeedDetail(id, function(data) {
@@ -113,6 +116,9 @@ var aFunc = {
 		aVariable.params.seedId = aVariable.webview.current.seedId;
 		aVariable.params.seedName = aVariable.webview.current.seedName;
 		aVariable.params.seedImg = aVariable.webview.current.seedImg;
+		aVariable.params.shengzhang = aVariable.webview.current.shengzhang;
+		aVariable.params.jieguo = aVariable.webview.current.jieguo;
+		aVariable.params.chanliang = aVariable.webview.current.chanliang;
 		aFunc.initData();
 		aFunc.bindEvent();
 	}

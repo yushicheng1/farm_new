@@ -53,7 +53,7 @@ aUi.tradingList = {
 			'<div>'+
 				'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 150px;height: 110px;border-radius: 10px;" onerror="nofind(this)">'+
 				'<div class="mui-media-body" style="height: 120px;">'+
-					'<p style="text-align: center;style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="color: green;font-size: 14px;"><b>'+data.name+'</b></span></p>'+
+					'<p style="text-align: center;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="color: green;font-size: 14px;"><b>'+data.name+'</b></span></p>'+
 					'<p style="text-align: center;"><span>种植日期:</span><span id="ipt_plant">'+plantTime+'</span></p>'+
 					'<p style="text-align: center;"><span>收获日期:</span><span id="ipt_get">'+getTime+'</span></p>'+
 					'<p style="text-align: center;"><span>上架时间 :</span><span id="ipt_num">'+upTime+'</span></p>'+

@@ -3,6 +3,7 @@ var aFunc = {
 		bankServer.getMoney(function(data) {
 			if (data.status == 200) {
 				aVariable.ipt.iptTixian.innerText ="您有"+data.msg+"元可提现";
+				aVariable.params.money=data.msg;
 			} else {
 		
 			}

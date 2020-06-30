@@ -201,13 +201,6 @@ var aFunc = {
 							}
 
 							
-								if (mui.os.android) {
-
-								} else {
-									var payObject = plus.ios.newObject("PayObject");
-									plus.ios.invoke(payObject, "iniSSS:", data.data.token);
-								}
-							
 							// aVariable.btn.btnLogin.disabled = "";
 							// window.location.reload();
 							var guideFlag = LocalStorage.getItem(LocalStorage.keys.guideFlag);

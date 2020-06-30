@@ -16,13 +16,19 @@ var aVariable = {
 		iptStock: document.getElementById("ipt_stock"),
 		iptNumber: document.getElementById("ipt_number"),
 		iptTotal: document.getElementById("ipt_total"),
-		iptPrice: document.getElementById("ipt_price")
+		iptPrice: document.getElementById("ipt_price"),
+		iptShengzhang: document.getElementById("ipt_shengzhang"),
+		iptJieguo: document.getElementById("ipt_jieguo"),
+		iptChanliang: document.getElementById("ipt_chanliang")
 	},
 	params: {
 		seedId:'',
 		seedName:'',
 		seedImg:'',
 		size:'',
-		uniqueId:''
+		uniqueId:'',
+		shengzhang:'',
+		jieguo:'',
+		chanliang:''
 	}
 };
