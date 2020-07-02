@@ -5,8 +5,8 @@
     /*"fullscreen":true,*/
     "name" : "大农主", /*应用名称，程序桌面图标名称*/
     "version" : {
-        "name" : "1.1.7", /*应用版本名称*/
-        "code" : 14
+        "name" : "1.1.9", /*应用版本名称*/
+        "code" : 16
     },
     "description" : "", /*应用描述信息*/
     "icons" : {
@@ -436,5 +436,10 @@
             ]
         }
     },
-    "screenOrientation" : [ "portrait-primary" ]
+    "screenOrientation" : [
+        "portrait-primary",
+        "portrait-secondary",
+        "landscape-primary",
+        "landscape-secondary"
+    ]
 }

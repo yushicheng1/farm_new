@@ -21,19 +21,36 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnChongzhi.addEventListener("tap", function() {
-			plus.runtime.getProperty(plus.runtime.appid, function(inf) {
-				if (mui.os.android) {			
-					mui.openWindow({
-						id: "chongzhi",
-						url: '/view/wallet/wallet_android.html'
-					});
+			bankServer.getBankList(function(data) {
+				if (data.status == 200) {
+					if(data.data.length>0){
+						plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+							if (mui.os.android) {			
+								mui.openWindow({
+									id: "chongzhi",
+									url: '/view/wallet/wallet_android.html'
+								});
+							} else {
+								mui.openWindow({
+									id: "chongzhi",
+									url: '/view/wallet/wallet_android.html'
+								});				
+							}						
+						});
+					}else{
+						mui.toast('请先绑定银行卡')
+						mui.openWindow({
+							id: "wdyhk",
+							url: '/view/my/wdyhk.html'
+						});	
+					}
 				} else {
-					mui.openWindow({
-						id: "chongzhi",
-						url: '/view/wallet/wallet_android.html'
-					});				
-				}						
+			
+				}
+			}, function() {
+			
 			});
+			
 		})
 
 		// aVariable.btn.btnTixian.addEventListener("tap", function() {

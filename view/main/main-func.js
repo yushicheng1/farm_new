@@ -61,9 +61,13 @@ var aFunc = {
 		aVariable.btn.btnJydt.addEventListener("tap", function() {
 			// mui.toast('暂未开放')
 			mui.openWindow({
-				id: "jytt",
-				url: '../trading/trading-list.html'
+				id: "jiankong",
+				url: '../sys/jiankong.html'
 			});
+			// mui.openWindow({
+			// 	id: "my",
+			// 	url: '../my/my.html'
+			// });
 		});
 		aVariable.btn.btnTgm.addEventListener("tap", function() {
 			sysServer.getSpreadCode(function(data) {
@@ -106,13 +110,19 @@ var aFunc = {
 			var seedId = card.getAttribute("data-id");
 			var seedName = card.getAttribute("data-name");
 			var seedImg = card.getAttribute("data-image");
+			var shengzhang = card.getAttribute("data-shengzhang");
+			var jieguo = card.getAttribute("data-jieguo");
+			var chanliang = card.getAttribute("data-chanliang");
 			mui.openWindow({
 				id: "gmzz_detail",
 				url: 'gmzz-detail.html',
 				extras: {
 			       seedId:seedId,
 				   seedName:seedName,
-				   seedImg:seedImg
+				   seedImg:seedImg,
+				   shengzhang:shengzhang,
+				   jieguo:jieguo,
+				   chanliang:chanliang
 				}
 			});
 		});

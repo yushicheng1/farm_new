@@ -69,10 +69,10 @@ var aFunc = {
 				allnum = allnum + parseFloat(num);
 				aVariable.params.sendList.push(data);
 			}
-			if (allnum < 2 || allnum > 2.7) {
-				mui.toast('邮寄范围在2到2.7公斤');
-				aVariable.btn.btnYouji.disabled = false;
-			} else {
+			// if (allnum < 2 || allnum > 2.7) {
+			// 	mui.toast('邮寄范围在2到2.7公斤');
+			// 	aVariable.btn.btnYouji.disabled = false;
+			// } else {
 				var bts = ["是", "取消"];
 				plus.nativeUI.confirm("当前邮寄" + allnum.toFixed(2) + "公斤\n邮寄不可取消，请您确认", function(e) {
 					var i = e.index;
@@ -103,7 +103,7 @@ var aFunc = {
 					}
 				}, "邮寄到家", bts);
 				aVariable.btn.btnYouji.disabled = false;
-			}
+			// }
 		})
 
 		window.addEventListener('wchoose', function(e) {

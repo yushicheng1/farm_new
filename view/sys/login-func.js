@@ -363,19 +363,27 @@ var aFunc = {
 			}, function() {});
 		} else {
 			type = 1;
-			sysServer.checkVersion(type, function(data) {
-				var ios_version = data.data.version;
-				aVariable.value.version_new = data.data.version;
-				aVariable.value.url = data.data.url;
-				// var ios_desc = data.data.newFeatures;
-				if (parseInt(aVariable.value.version) < parseInt(ios_version)) {
-					//isnew = 0;
-					mui.toast('发现新版本，请到应用商店更新');
-				}else{
-					//自动登录 本地时间与token过期时间比较,  需在版本判断之后
-					autoLogin();
-				}
-			}, function() {});
+			   sysServer.checkVersion(type, function(data) {
+			    var ios_version = data.data.version;
+			    aVariable.value.version_new = data.data.version;
+			    aVariable.value.url = data.data.url;
+			    // var ios_desc = data.data.newFeatures;
+			    aVariable.value.version = 14;
+			    if (aVariable.value.version < parseInt(ios_version)) {
+			     
+			     var bts=["确定","取消"];
+			     plus.nativeUI.confirm("请到AppStore进行更新",function(e){
+			      var i=e.index;
+			      if (i==0){
+			       plus.runtime.openURL("https://apps.apple.com/cn/app/%E5%A4%A7%E5%86%9C%E4%B8%BB/id1494099375");
+			      }else{
+			       
+			      }
+			     },"版本更新",bts);
+			    }else{
+			     autoLogin();
+			    }
+			   }, function() {});
 
 		}
 

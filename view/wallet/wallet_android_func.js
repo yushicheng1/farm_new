@@ -22,22 +22,22 @@ var aFunc = {
 
 		bankServer.getBankList(function(data) {
 			if (data.status == 200) {
-				aVariable.box.bankList.innerHTML += aUi.bank.bankOneList(data.data);
+				aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data);
 			} else {
 
 			}
 		}, function() {
 
 		});
-		
+
 		bankServer.createMember(function(data) {
 			if (data.status == 200) {
-		
+
 			} else {
-		
+
 			}
 		}, function() {
-		
+
 		});
 
 	},
@@ -60,7 +60,6 @@ var aFunc = {
 		});
 
 		aVariable.btn.btnPay.addEventListener("tap", function() {
-			mui('#popover').popover('hide');
 			var money = aVariable.ipt.iptMoney.innerText;
 			if (money == '' || money == undefined || money == 0) {
 				mui.toast('充值金额不能为零');
@@ -70,6 +69,25 @@ var aFunc = {
 			total = parseFloat(money);
 			pay_new();
 		})
+		
+		aVariable.btn.btnNew.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "newcard",
+				url: '/view/my/bangding.html'
+			});
+		})
+		
+		window.addEventListener('refreshBank', function(e) {
+			bankServer.getBankList(function(data) {
+				if (data.status == 200) {
+					aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data);
+				} else {
+			
+				}
+			}, function() {
+			
+			});
+		});
 	},
 	plusReady: function() {
 		if (mui.os.plus) {
@@ -94,11 +112,12 @@ function pay_new() {
 	var phone = aVariable.params.phone;
 	var cardId = aVariable.params.cardId;
 	if (type == 1) {
+		mui('#popover').popover('hide');
 		bankServer.getThirdInfo(function(data) {
 			if (data.status == 200) {
 				if (data.data.isPhoneChecked) {
-					//正式环境参数传alipay
-					walletServer.charge(total, 'alipayThird', '', function(data) {
+					//正式环境参数传alipay  测试环境参数传alipayThird
+					walletServer.charge(total, 'alipay', '', function(data) {
 						// console.log(data.data)
 						var zhifu = data.data;
 
@@ -122,7 +141,7 @@ function pay_new() {
 
 					});
 
-				} else {					
+				} else {
 					mui.toast('请先绑定手机号');
 					mui.openWindow({
 						id: "bdsjh",
@@ -136,46 +155,62 @@ function pay_new() {
 
 		});
 	} else if (type == 3) {
-		walletServer.charge(total, 'bank', cardId, function(data) {
-			var zhifu = data.data;
-			console.log(zhifu)
-			var a = mui.prompt('已发送至' + phone, '', '验证码', ['取消', '确认'], function(e) {
-				if (e.index == 1) {
-					var agreeCode = document.getElementById("ipt-agree-code").value;
-					walletServer.ConfirmCharge(zhifu[0], agreeCode, function(data) {
-						if (data.status == 200) {
-							plus.nativeUI.alert("支付成功！", function() {
-								//刷新土地界面的积分
-								var plant = plus.webview.getWebviewById('plant');
-								mui.fire(plant, 'refreshJifen', {});
-								//刷新我的界面的积分
-								var my = plus.webview.getWebviewById('my');
-								mui.fire(my, 'refreshJf', {});
-								//刷新积分界面
-								var main = plus.webview.currentWebview().opener();
-								mui.fire(main, 'getMoney', {});
-								mui.back();
-							});
-						} else {
-							mui.toast(data.msg);
-						}
+		mui('#popover').popover('hide');
+		bankServer.getThirdInfo(function(data) {
+			if (data.status == 200) {
+				if (data.data.isPhoneChecked) {
+					walletServer.charge(total, 'bank', cardId, function(data) {
+						var zhifu = data.data;
+						console.log(zhifu)
+						var a = mui.prompt('已发送至' + phone, '', '验证码', ['取消', '确认'], function(e) {
+							if (e.index == 1) {
+								var agreeCode = document.getElementById("ipt-agree-code").value;
+								walletServer.ConfirmCharge(zhifu[0], agreeCode, function(data) {
+									if (data.status == 200) {
+										plus.nativeUI.alert("支付成功！", function() {
+											//刷新土地界面的积分
+											var plant = plus.webview.getWebviewById('plant');
+											mui.fire(plant, 'refreshJifen', {});
+											//刷新我的界面的积分
+											var my = plus.webview.getWebviewById('my');
+											mui.fire(my, 'refreshJf', {});
+											//刷新积分界面
+											var main = plus.webview.currentWebview().opener();
+											mui.fire(main, 'getMoney', {});
+											mui.back();
+										});
+									} else {
+										mui.toast(data.msg);
+									}
+								}, function() {
+
+								});
+
+							} else {
+								console.log('取消');
+							}
+						}, 'div');
+						var lihh = document.querySelector('.mui-popup-input');
+						lihh.innerHTML =
+							'<input  id="ipt-agree-code" type="number" style="height:40px;text-align: center;width: 50%;"></input>';
+
 					}, function() {
 
 					});
-
 				} else {
-					console.log('取消');
+					mui.toast('请先绑定手机号');
+					mui.openWindow({
+						id: "bdsjh",
+						url: '/view/my/phone.html'
+					});
 				}
-			}, 'div');
-			var lihh = document.querySelector('.mui-popup-input');
-			lihh.innerHTML =
-				'<input  id="ipt-agree-code" type="number" style="height:40px;text-align: center;width: 50%;"></input>';
+			} else {
 
+			}
 		}, function() {
 
 		});
-
-
+	}else if(type==0){
+		mui.toast('请选择银行卡');
 	}
-
 }

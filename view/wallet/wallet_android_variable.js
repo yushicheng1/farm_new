@@ -8,7 +8,8 @@ var aVariable = {
 		bankList: document.getElementById("bank-list")
 	},
 	btn: {
-        btnPay:document.getElementById("btn_pay")
+        btnPay:document.getElementById("btn_pay"),
+		btnNew:document.getElementById("btn_new")
 	},
 	ipt: {
         iptMoney:document.getElementById("ipt_money"),
@@ -18,6 +19,6 @@ var aVariable = {
 		apple_id:'',
 		phone:'',
 		cardId:'',
-		type:1
+		type:0
 	}
 };

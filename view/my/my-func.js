@@ -114,12 +114,12 @@ var aFunc = {
 		})
 		
 		//我的交易
-		aVariable.btn.btnWdjy.addEventListener("tap", function() {
-			mui.openWindow({
-				id: "wdjy",
-				url: 'wdjy.html'
-			});
-		})
+		// aVariable.btn.btnWdjy.addEventListener("tap", function() {
+		// 	mui.openWindow({
+		// 		id: "wdjy",
+		// 		url: 'wdjy.html'
+		// 	});
+		// })
 		
 		//我的地址
 		aVariable.btn.btnWddz.addEventListener("tap", function() {
@@ -148,17 +148,37 @@ var aFunc = {
 		
 		//我的银行卡
 		aVariable.btn.btnWdyhk.addEventListener("tap", function() {
-			mui.openWindow({
-				id: "wdyhk",
-				url: '/view/my/wdyhk.html'
-			});
+			bankServer.getThirdInfo(function(data) {
+				if(data.data.isPhoneChecked){
+					mui.openWindow({
+						id: "wdyhk",
+						url: '/view/my/wdyhk.html'
+					});
+				}else{
+					mui.toast('请先绑定手机号');
+					mui.openWindow({
+						id: "bdsjh",
+						url: '/view/my/phone.html'
+					});
+				}		
+			}, function() {
+			
+			});			
 		})
 		
 		//绑定手机号
 		aVariable.btn.btnBdsjh.addEventListener("tap", function() {
-			mui.openWindow({
-				id: "bdsjh",
-				url: '/view/my/phone.html'
+			bankServer.getThirdInfo(function(data) {
+				if(data.data.isPhoneChecked){
+					mui.toast('您已绑定过手机号');
+				}else{
+					mui.openWindow({
+						id: "bdsjh",
+						url: '/view/my/phone.html'
+					});
+				}		
+			}, function() {
+			
 			});
 		})
 		

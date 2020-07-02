@@ -20,7 +20,22 @@ aUi.main = {
 	_sliderInfoItem: function(data) {
 		var htmlVal = '<div class="mui-slider-item" style="height:190px;"><img style="height:190px;" src="' + aServer.ApiUrl + data.url + '" onerror="nofind(this);" /></div>';
 		return htmlVal;
-	}
+	},
+	//监控
+	_jiankong: function(data) {	
+		var html = 
+		'<li class="mui-table-view-cell mui-media" style="float: left;" data-url="'+data.url+'">'+
+				'<img src="'+aServer.ApiUrl+data.img+'" >'+			
+		'</li>';		
+		return html;
+	},
+	jiankongList: function(list4Jiankong) {
+		var html = ""; 
+		for (var i = 0; i < list4Jiankong.length; i++) {
+			html += this._jiankong(list4Jiankong[i]);
+		}
+		return html;
+	},
 }
 
 function nofind(item) {

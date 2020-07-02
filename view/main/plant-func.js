@@ -47,11 +47,11 @@ var aFunc = {
 
 			});
 		})
-		//集市
-		aVariable.btn.btnJishi.addEventListener("tap", function() {
+		//土地直播
+		aVariable.btn.btnTdzb.addEventListener("tap", function() {
 			mui.openWindow({
-				id: "jishi",
-				url: '/view/trading/trading-list.html',
+				id: "tdzb",
+				url: '/view/sys/jiankong.html',
 				extras: {
 
 				}
@@ -295,6 +295,9 @@ var aFunc = {
 
 		});
 	},
+	pulldownRefresh: function() {
+	    mui('#div_pland1').pullRefresh().endPulldown();
+	  },
 	plusReady: function() {
 		// if (mui.os.plus) {
 		// 	plus.navigator.closeSplashscreen();
@@ -305,6 +308,10 @@ var aFunc = {
 		mui.init({
 			pullRefresh: {
 				container: '#div_pland1',
+				down: {
+				        style:'circle',
+				        callback: aFunc.pulldownRefresh
+				       },
 				up: {
 					auto: true,
 					contentrefresh: '正在加载...',
@@ -320,3 +327,5 @@ var aFunc = {
 		aFunc.bindEvent();
 	}
 };
+
+

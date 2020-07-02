@@ -47,13 +47,18 @@ li:after {
 }
 
 input{
-	-webkit-user-select:text !important 
+	-webkit-user-select:text !important ;
+	font-size: 15px;
+}
+
+label{
+	top: 3px;
 }
 
 .code {
 	    line-height: 28px;
 	    text-align: center;
-	    font-size: 15px;
+	    font-size: 14px;
 	    margin-right: 10%;
 	    border-radius: 50px;
 	    display: block;

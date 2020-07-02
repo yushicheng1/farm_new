@@ -63,8 +63,9 @@ aUi.seed = {
 		return html;
 	},
 	_hot: function(data) {
+		var chanLiang=parseFloat(data.ending_day*data.yield).toFixed(2);
 		var html = 
-		 '<div class="mui-col-sm-3  mui-col-xs-3 " data-id="'+data.id+'" data-name="'+data.name+'" data-image="'+data.img+'">'+
+		 '<div class="mui-col-sm-3  mui-col-xs-3 " data-id="'+data.id+'" data-name="'+data.name+'" data-image="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" data-chanliang="'+chanLiang+'">'+
 			'<img src="'+aServer.ApiUrl+data.img+'" />'+
 			'<p>'+data.name+'</p>'+
 		'</div>';

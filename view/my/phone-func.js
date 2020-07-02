@@ -1,6 +1,14 @@
 var aFunc = {
 	initData: function() {
+		bankServer.createMember(function(data) {
+			if (data.status == 200) {
 
+			} else {
+
+			}
+		}, function() {
+
+		});
 	},
 	bindEvent: function() {
 		//登录验证码
