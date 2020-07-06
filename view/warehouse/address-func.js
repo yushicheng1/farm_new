@@ -2,7 +2,7 @@ var aFunc = {
 	initData: function() {
 		myServer.getAddressList(function(data) {
 				if (data.status == 200) {
-					aVariable.box.addressList.innerHTML = aUi.address.addressList(data.data);
+					aVariable.box.addressList.innerHTML = aUi.address.addressListNew(data.data);
 				} else {
 
 				}

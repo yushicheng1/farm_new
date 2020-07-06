@@ -1,43 +1,47 @@
 var aFunc = {
 	initData: function() {
-		 // var slider = mui("#slider_one");
-		 //        slider.slider({
-		 //            interval: 1500
-		 //        });
-				
-				$('#countdown17').ClassyCountdown({
-					theme: "flat-colors-very-wide",
-					end: '1'
-				});
-		// var id = aVariable.params.noticeId;
+		$('#countdown17').ClassyCountdown({
+			theme: "flat-colors-very-wide",
+			end: '1'
+		});
+		sysServer.getNotice(function(data) {
+			if (data.status == 200) {
+				aVariable.params.number=data.data.length;
+				if(data.data.length>0){
+					alertTwo(data.data);
+				}
+			} else {
+
+
+			}
+		}, function() {
+
+		});
+
+
 		sysServer.getBanner(function(data) {
-			if(data.status == 200) {
-				console.log(JSON.stringify(data))
+			if (data.status == 200) {
 				var imgLen = data.data.length;
-				if(imgLen > 1) {
+				if (imgLen > 1) {
 					var sliderInfo = aUi.main.sliderInfo(data.data);
 					//轮播图  ---动态生成
 					var outputimg = sliderInfo.item;
 					var outputright = sliderInfo.indicator;
 					aVariable.box.sliderImg.innerHTML = outputimg;
-					// aVariable.box.sliderIndicator.innerHTML = outputright;
-				
 					mui('#slider_one').slider({
 						interval: 2000
 					});
-				
 				} else {
-				
+
 				}
 			}
 		}, function() {
-		
+
 		});
-		
+
 		sysServer.getSeedHot(1, function(data) {
-			if(data.status == 200) {
-				console.log(JSON.stringify(data))
-				aVariable.div.divRt.innerHTML=aUi.seed.hotList(data.data)
+			if (data.status == 200) {
+				aVariable.div.divRt.innerHTML = aUi.seed.hotList(data.data);
 				console.log(1)
 			}
 		}, function() {
@@ -72,38 +76,38 @@ var aFunc = {
 		aVariable.btn.btnTgm.addEventListener("tap", function() {
 			sysServer.getSpreadCode(function(data) {
 					if (data.status == 200) {
-						mui.alert(data.msg,'我的邀请码','复制',function(){
-							if(mui.os.ios){
-							//ios
-							var UIPasteboard = plus.ios.importClass("UIPasteboard");
-							    var generalPasteboard = UIPasteboard.generalPasteboard();
-							    //设置/获取文本内容:
-							    generalPasteboard.plusCallMethod({
-							        setValue:data.msg,
-							        forPasteboardType: "public.utf8-plain-text"
-							    });
-							    generalPasteboard.plusCallMethod({
-							        valueForPasteboardType: "public.utf8-plain-text"
-							    });
-							}else{
-							//安卓
-							var context = plus.android.importClass("android.content.Context");
-							  var main = plus.android.runtimeMainActivity();
-							  var clip = main.getSystemService(context.CLIPBOARD_SERVICE);
-							  plus.android.invoke(clip,"setText",data.msg);
-							  mui.toast('复制成功');
+						mui.alert(data.msg, '我的邀请码', '复制', function() {
+							if (mui.os.ios) {
+								//ios
+								var UIPasteboard = plus.ios.importClass("UIPasteboard");
+								var generalPasteboard = UIPasteboard.generalPasteboard();
+								//设置/获取文本内容:
+								generalPasteboard.plusCallMethod({
+									setValue: data.msg,
+									forPasteboardType: "public.utf8-plain-text"
+								});
+								generalPasteboard.plusCallMethod({
+									valueForPasteboardType: "public.utf8-plain-text"
+								});
+							} else {
+								//安卓
+								var context = plus.android.importClass("android.content.Context");
+								var main = plus.android.runtimeMainActivity();
+								var clip = main.getSystemService(context.CLIPBOARD_SERVICE);
+								plus.android.invoke(clip, "setText", data.msg);
+								mui.toast('复制成功');
 							}
-						},'div')
+						}, 'div')
 					} else {
-                        mui.toast('获取失败')
+						mui.toast('获取失败')
 					}
 				},
 				function() {
 
-				});			
+				});
 			// mui.toast("暂未开放")
 		});
-		
+
 		//查看详情
 		mui(aVariable.div.divRt).on("tap", "div", function(e) {
 			var card = this;
@@ -117,12 +121,12 @@ var aFunc = {
 				id: "gmzz_detail",
 				url: 'gmzz-detail.html',
 				extras: {
-			       seedId:seedId,
-				   seedName:seedName,
-				   seedImg:seedImg,
-				   shengzhang:shengzhang,
-				   jieguo:jieguo,
-				   chanliang:chanliang
+					seedId: seedId,
+					seedName: seedName,
+					seedImg: seedImg,
+					shengzhang: shengzhang,
+					jieguo: jieguo,
+					chanliang: chanliang
 				}
 			});
 		});
@@ -145,3 +149,22 @@ var aFunc = {
 		aFunc.bindEvent();
 	}
 };
+
+
+var i=0;
+function alertTwo(data){
+	mui.alert(data[i].msg,data[i].title,'下一条',function(){
+		i=i+1;
+		if(i==aVariable.params.number-1){
+			alertThree(data[i]);			
+		}else{
+			alertTwo(data);
+		}		
+		});
+}
+
+function alertThree(data){
+	mui.alert(data.msg,data.title,'关闭',function(){
+		
+		});
+}

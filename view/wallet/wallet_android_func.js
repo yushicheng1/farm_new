@@ -22,7 +22,7 @@ var aFunc = {
 
 		bankServer.getBankList(function(data) {
 			if (data.status == 200) {
-				aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data);
+				aVariable.box.bankList.innerHTML += aUi.bank.bankOneList(data.data);
 			} else {
 
 			}
@@ -69,23 +69,26 @@ var aFunc = {
 			total = parseFloat(money);
 			pay_new();
 		})
-		
+
 		aVariable.btn.btnNew.addEventListener("tap", function() {
 			mui.openWindow({
 				id: "newcard",
 				url: '/view/my/bangding.html'
 			});
 		})
-		
+
 		window.addEventListener('refreshBank', function(e) {
 			bankServer.getBankList(function(data) {
 				if (data.status == 200) {
-					aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data);
+					var html = '<li class="mui-table-view-cell mui-selected" data-type="1" style="color: #000000;" >' +
+						'<a class="mui-navigate-right">支付宝</a>' +
+						'</li>';
+					aVariable.box.bankList.innerHTML = html + aUi.bank.bankOneList(data.data);
 				} else {
-			
+
 				}
 			}, function() {
-			
+
 			});
 		});
 	},
@@ -210,7 +213,7 @@ function pay_new() {
 		}, function() {
 
 		});
-	}else if(type==0){
+	} else if (type == 0) {
 		mui.toast('请选择银行卡');
 	}
 }

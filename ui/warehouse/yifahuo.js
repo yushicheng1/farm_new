@@ -25,7 +25,7 @@ aUi.yfh = {
 							'</div>'+
 						'</div>'+
 						'<div>'+
-							'<p><img src="../../images/cangku/ztkd.png" style="height: 14px;padding-top: 2px;margin-right: 4px;"><span style="color: #000000;">'+data.sms_code+'</span><img'+
+							'<p><img src="../../images/cangku/kd.png" style="height: 14px;padding-top: 2px;margin-right: 4px;"><span style="color: #000000;">'+data.sms_code+'</span><img'+
 								' src="../../images/cangku/copy.png" data-num="'+data.sms_code+'" style="height: 13px;padding-top: 2px;margin-left: 10px;"><button'+
 								' type="button" class="mui-btn mui-btn-outlined btn-seed" data-id="'+data.id+'">确认收货</button></p>'+
 						'</div>'+

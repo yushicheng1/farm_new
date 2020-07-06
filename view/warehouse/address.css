@@ -6,3 +6,7 @@ li{
 	background-color: white;
 	margin: 5px 5px 5px 5px;
 }
+
+.mui-table-view-cell:after{
+	height: 0;
+}

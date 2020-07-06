@@ -23,6 +23,7 @@ var aVariable = {
 		divRt:document.getElementById("div_rt")
 	},
 	params: {
-		noticeId: ''
+		noticeId: '',
+		number:0
 	}
 };
