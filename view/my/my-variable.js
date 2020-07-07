@@ -33,6 +33,7 @@ var aVariable = {
 		iptYue:document.getElementById("ipt-yue")
 	},
 	params: {
-		noticeId: ''
+		noticeId: '',
+		token:''
 	}
 };

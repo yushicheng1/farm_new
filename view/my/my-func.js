@@ -9,6 +9,9 @@ var aFunc = {
 				aVariable.ipt.iptYue.innerText = data.data.real_money;
 				// aVariable.ipt.iptPhone.value = data.data.phone;
 				aVariable.ipt.iptImage.src = aServer.ApiUrl + data.data.avatar;
+				if(data.data.is_vip==1){
+					document.getElementById('img_vip').style.display="";
+				}				
 			}
 		}, function() {
 

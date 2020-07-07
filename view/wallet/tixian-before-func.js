@@ -5,6 +5,7 @@ var aFunc = {
 				LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);
 				aVariable.ipt.iptTixian.innerText = "您有" + data.data.real_money + "元可提现";
 				aVariable.params.money = data.data.real_money;
+				aVariable.params.token = data.data.token;
 			} else {
 
 			}
@@ -39,7 +40,7 @@ var aFunc = {
 
 		aVariable.btn.btnSubmit.addEventListener("tap", function() {
 			var money =parseFloat(aVariable.ipt.iptTxje.value).toFixed(2);
-			bankServer.extract(money, 'bank', function(data) {
+			bankServer.extract(money, 'bank',aVariable.params.token, function(data) {
 					if (data.status == 200) {
 						mui.toast(data.msg);
 						var my = plus.webview.getWebviewById('my');
