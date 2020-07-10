@@ -1,7 +1,7 @@
 var aServer = {
 	ApiUrl: "http://farmapi.yiqianyun.com/",  
 	// ApiUrl: "http://39.106.109.129:8000/",
-	// ApiUrl: "http://192.168.1.125:8000/",
+	// ApiUrl: "http://testapi.sdnongzhu.com/",
 	// ServiceUrl: "http://140.143.244.242:8080",
 	Wating: null,
 	WatingTimeInterval: null,
@@ -44,7 +44,11 @@ var aServer = {
 				if (result.status && (result.status == "200" || result.status == "400")) {
 					success(result);
 				} else {
-					if (error) error(errMsg);
+					if(result.status==401){
+						serverError(result);
+					}else{
+						if (error) error(errMsg);
+					}				
 				}
 			}
 		};
@@ -234,6 +238,18 @@ var aServer = {
 function serverError(result){
 	if (result.status == 100000){
 		mui.toast("登录失效,请重新登录");
+		var wvs = plus.webview.all();
+		
+		for (var i = 0,
+				len = wvs.length; i < len; i++) {
+			if (wvs[i].getURL() != null) {
+				if (wvs[i].getURL().indexOf("login") == -1) {
+					plus.webview.close(wvs[i]);
+				}
+			}
+		}
+	}else if(result.status==401){
+		mui.alert(result.data.msg,' ');
 		var wvs = plus.webview.all();
 		
 		for (var i = 0,

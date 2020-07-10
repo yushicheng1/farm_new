@@ -9,8 +9,8 @@ var aFunc = {
 				aVariable.ipt.iptYue.innerText = data.data.real_money;
 				// aVariable.ipt.iptPhone.value = data.data.phone;
 				aVariable.ipt.iptImage.src = aServer.ApiUrl + data.data.avatar;
-				if(data.data.is_vip==1){
-					document.getElementById('img_vip').style.display="";
+				if(data.data.is_vip==0){
+					document.getElementById('img_vip').style.display="none";
 				}				
 			}
 		}, function() {
@@ -110,10 +110,10 @@ var aFunc = {
 
 		//我的钱包
 		aVariable.btn.btnwdqb.addEventListener("tap", function() {
-			// mui.openWindow({
-			// 	id: "wdqb",
-			// 	url: '/view/wallet/money.html'
-			// });
+			mui.openWindow({
+				id: "wdqb",
+				url: '/view/wallet/money.html'
+			});
 		})
 
 		//我的交易
@@ -256,7 +256,13 @@ var aFunc = {
 			}, {
 				title: "微信：18663604825"
 			}, {
-				title: "QQ：1039860457"
+				title: "支付问题QQ：2110760153"
+			}, {
+				title: "操作问题QQ：3271818105"
+			}, {
+				title: "收益问题QQ：1514105549"
+			}, {
+				title: "物流问题QQ：1039860457"
 			}];
 			plus.nativeUI.actionSheet({
 				cancel: "取消",

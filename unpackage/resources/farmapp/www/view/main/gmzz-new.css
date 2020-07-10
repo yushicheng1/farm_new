@@ -93,3 +93,12 @@ img {
 	    -webkit-backface-visibility: hidden;
 	    backface-visibility: hidden; */
 }
+
+.mui-bar-tab .mui-tab-item.mui-active {
+	background-color: #3ba5d7;
+	color: #ffea00;
+}
+
+.mui-bar-tab .mui-tab-item{
+	color: white;
+}

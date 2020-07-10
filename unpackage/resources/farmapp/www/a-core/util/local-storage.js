@@ -15,7 +15,8 @@ var LocalStorage = {
 		Auto_Version: "Auto_Version", //自动检测更新
 		Group_List:"Group_List",
 		ContactList:"ContactList",
-		launchFlag:"launchFlag"
+		launchFlag:"launchFlag",//第一次启动
+		guideFlag:"guideFlag" //第一次登录
 	},
 	setItem: function(itemKey, itemValue) {
 		plus.storage.setItem(itemKey, itemValue + "");

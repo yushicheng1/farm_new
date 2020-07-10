@@ -27,7 +27,7 @@ var aVariable = {
 		btnOneTask: document.getElementById("btn_one_task"),
 		btnShangcheng: document.getElementById("btn_shangcheng"),
 		btnCangku: document.getElementById("btn_cangku"),
-		btnJishi: document.getElementById("btn_jishi")
+		btnTdzb: document.getElementById("btn_tdzb")
 	},
 	div: {
 		divZhongzi: document.getElementById("div_zhongzi"),
@@ -56,7 +56,9 @@ var aVariable = {
 		size: '',
 		num: 0,
 		landId: '',
-		seedId: ''
+		seedId: '',
+		isWater:true,
+		isTask:true
 	},
 	list: {
 		page: {

@@ -1,4 +1,8 @@
-mui.init();
+mui.init({
+	beforeback: function() {
+		return false;
+	}
+	});
 mui('.mui-scroll-wrapper').scroll({
 	bounce: false,
 	indicators: false, //是否显示滚动条

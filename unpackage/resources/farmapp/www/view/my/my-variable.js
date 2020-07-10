@@ -20,15 +20,20 @@ var aVariable = {
 		btnZxdl:document.getElementById("btn-zxdl"),
 		btnXgmm:document.getElementById("btn-xgmm"),
 		btnWdjy:document.getElementById("btn-wdjy"),
-		btnXtsj:document.getElementById("btn-xtsj")
-		// btnPhone:document.getElementById("btn-phone")
+		btnXtsj:document.getElementById("btn-xtsj"),
+		btnWdyhk:document.getElementById("btn-wdyhk"),
+		btnDzxy:document.getElementById("btn-dzxy"),
+		btnZzmx:document.getElementById("btn-zzmx"),
+		btnBdsjh:document.getElementById("btn-bdsjh")
 	},
 	ipt: {
 		iptName: document.getElementById("ipt-name"),
-		iptPhone: document.getElementById("ipt-phone"),
-		iptImage:document.getElementById("ipt_image")
+		iptImage:document.getElementById("ipt-img"),
+		iptJifen:document.getElementById("ipt-jifen"),
+		iptYue:document.getElementById("ipt-yue")
 	},
 	params: {
-		noticeId: ''
+		noticeId: '',
+		token:''
 	}
 };

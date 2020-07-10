@@ -84,4 +84,19 @@ var sysServer = mui.extend(aServer || {}, {
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/banner", "获取失败", data, success, error);
 	},
+	//获取监控
+	getJiankong: function(success, error) {
+		var data = {
+			
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/message/getYSToken", "获取失败", data, success, error);
+	},
+	
+	//获取公告
+	getNotice: function(success, error) {
+		var data = {
+			
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/message/getNotice", "获取失败", data, success, error);
+	}
 })

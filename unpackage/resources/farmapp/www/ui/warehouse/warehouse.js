@@ -28,14 +28,14 @@ aUi.warehouse = {
 								'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
 									'<p>邮寄到家</p>'+
 								'</div>'+
-								'<div class="mui-col-sm-3 mui-col-xs-3">'+
-									'<img src="../../images/homemenu/gdjydt.png" data-type="2" data-id="'+data.id+'" data-price="'+data.recycle_price+
-									'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
-									'<p>挂到交易大厅</p>'+
-								'</div>'+
+								// '<div class="mui-col-sm-3 mui-col-xs-3">'+
+								// 	'<img src="../../images/homemenu/gdjydt.png" data-type="2" data-id="'+data.id+'" data-price="'+data.recycle_price+
+								// 	'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
+								// 	'<p>挂到交易大厅</p>'+
+								// '</div>'+
 								'<div class="mui-col-sm-3 mui-col-xs-3 ckecklogin">'+
 									'<img src="../../images/homemenu/xths.png" data-type="3" data-id="'+data.id+'" data-price="'+data.recycle_price+
-									'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
+									'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'" data-count="'+data.recycle_count+'"/>'+
 									'<p>系统回收</p>'+
 								'</div>'+
 								'<div class="mui-col-sm-3 mui-col-xs-3">'+
@@ -76,9 +76,13 @@ aUi.warehouse = {
 			bgm='../../images/cangku/bgm_6.png'
 		}else if(type==7){
 			bgm='../../images/cangku/bgm_7.png'
+		}else if(type==8){
+			bgm='../../images/cangku/bgm_8.jpg'
+		}else{
+			bgm='../../images/cangku/bgm_9.png'
 		}
 	
-		var html = '<li class="mui-table-view-cell" style="margin-bottom: 5px;background-image: url('+bgm+');background-size: 100% 100%;">'+
+		var html = '<li class="mui-table-view-cell" style="background-image: url('+bgm+');background-size: 100% 100%;">'+
 						'<div class="detail">'+
 							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 80px;height: 80px;border-radius: 50%;" onerror="nofind(this)">'+
 							'<div class="mui-media-body">'+

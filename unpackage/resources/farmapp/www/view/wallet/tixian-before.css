@@ -1,0 +1,39 @@
+/* .mui-scroll {
+	min-height: 100%;
+} */
+
+li {
+	position: relative;
+	overflow: hidden;
+	/* padding: 10px 0px; */
+	padding-right: 45px;
+}
+
+li:after {
+	position: absolute;
+	right: 37px;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	background-color: #c8c7cc;
+}
+.submit {
+	padding: 15px;
+	margin-top: 20px;
+	display: block;
+}
+
+.act-but {
+	line-height: 10px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 50px;
+	background: #63aeff;
+}
+
+.mui-table-view-cell:after{
+	height: 0;
+}

@@ -2,7 +2,13 @@
 var aUi = aUi || {};
 aUi.seed = {
 	_seedYm: function(data) {
-		var chanLiang=parseFloat(data.ending_day*data.yield).toFixed(2);
+		var chanLiang;
+		if(data.ripe_day==1){
+			chanLiang=parseFloat((data.ending_day)*data.yield).toFixed(2);
+		}else{
+			chanLiang=parseFloat((data.ending_day+5)*data.yield).toFixed(2);
+		}
+		
 		var html = 
 		'<li class="mui-table-view-cell mui-media" style="float: left;background-image: url('+aServer.ApiUrl+data.img+');background-size: 100% 100%;" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" data-chanliang="'+chanLiang+'">'+
 			'<div style="height: 50%;">'+			
@@ -63,7 +69,12 @@ aUi.seed = {
 		return html;
 	},
 	_hot: function(data) {
-		var chanLiang=parseFloat(data.ending_day*data.yield).toFixed(2);
+		var chanLiang;
+		if(data.ripe_day==1){
+			chanLiang=parseFloat((data.ending_day)*data.yield).toFixed(2);
+		}else{
+			chanLiang=parseFloat((data.ending_day+5)*data.yield).toFixed(2);
+		}
 		var html = 
 		 '<div class="mui-col-sm-3  mui-col-xs-3 " data-id="'+data.id+'" data-name="'+data.name+'" data-image="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" data-chanliang="'+chanLiang+'">'+
 			'<img src="'+aServer.ApiUrl+data.img+'" />'+

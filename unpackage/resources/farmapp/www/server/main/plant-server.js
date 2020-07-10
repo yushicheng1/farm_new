@@ -109,5 +109,23 @@ var plantServer = mui.extend(aServer || {}, {
 			
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/my/seed", "获取种子失败", data, success, error);
+	},
+	
+	//现有植株
+	getNowPlant: function(page,limit,success, error) {
+		var data = {
+			page:page,
+			limit:limit
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/landinfo", "获取失败", data, success, error);
+	},
+	
+	//过期植株
+	getPastPlant: function(page,limit,success, error) {
+		var data = {
+			page:page,
+			limit:limit
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/getexpire", "获取失败", data, success, error);
 	}
 })

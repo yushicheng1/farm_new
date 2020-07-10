@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>土地直播</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">土地直播</h1>
+				<!-- <a class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 15px;line-height: 25px;" id="btn_record">购买记录</a> -->
+			</header>
+		</head>
+
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/bank/bank-server.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		mui.plusReady(function() {
+			plus.screen.lockOrientation("landscape-primary")
+			var ws = plus.webview.currentWebview();
+			var embed = plus.webview.create(ws.url, 'embed', {
+				top: '45px',
+				bottom: '0px'
+			});
+	
+			ws.append(embed);
+			embed.addEventListener('loading', function() { //当页面加载时
+				plus.nativeUI.showWaiting('', {
+					style: 'black',
+					modal: false,
+					background: 'rgba(0,0,0,0)'
+				});
+			}, false);
+			embed.addEventListener('loaded', function() { //当页面加载完成时
+				plus.nativeUI.closeWaiting();
+			}, false);
+			
+			mui('.mui-bar').on('tap','a',function(e){
+				plus.screen.unlockOrientation();
+				plus.screen.lockOrientation("portrait-primary");
+			})
+			
+			plus.key.addEventListener('backbutton',function(){
+				plus.screen.unlockOrientation();
+				plus.screen.lockOrientation("portrait-primary");
+			},false)
+		});
+	</script>
+</html>

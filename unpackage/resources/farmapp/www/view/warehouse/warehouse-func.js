@@ -22,6 +22,7 @@ var aFunc = {
 			var get = this.getAttribute("data-get");
 			var sum = this.getAttribute("data-sum");
 			var image = this.getAttribute("data-image");
+			var count = this.getAttribute("data-count");
 			if (type == 1) {
 				mui.openWindow({
 					id: "warehouseYouji",
@@ -62,7 +63,8 @@ var aFunc = {
 						plant: plant,
 						get: get,
 						price: price,
-						image:image
+						image:image,
+						count:count,
 					}
 				});
 

@@ -20,6 +20,10 @@
 	background-color: #000000;
 }
 
+.mui-table-view-cell:after{
+	height: 0;
+}
+
 
 
 

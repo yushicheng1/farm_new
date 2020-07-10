@@ -16,7 +16,8 @@ var aVariable = {
 		 iptGet:document.getElementById("ipt_get"),
 		 iptPrice:document.getElementById("ipt_price"),
 		 iptNum:document.getElementById("ipt_num"),
-		 iptImage:document.getElementById("ipt_image")
+		 iptImage:document.getElementById("ipt_image"),
+		 iptcount:document.getElementById("ipt_count")
 	},
 	params: {
 		vegetablesId:'',
@@ -25,6 +26,7 @@ var aVariable = {
 		plant:'',
 		get:'',
 		price:'',
-		image:''
+		image:'',
+		count:'',//鍥炴敹鏁伴噺
 	},
 };

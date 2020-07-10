@@ -1,6 +1,23 @@
-.mui-scroll {
-	min-height: 100%;
+* {
+	margin: 0;
+	padding: 0;
 }
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.mui-content {
+	position:fixed;
+	background-image: url(../../images/homemenu/jishi.png);
+	background-size: 100% 100%;
+	height: 100%;
+	width: 100%;
+}
+
 
 .mui-btn-outlined{
 	color:white;
@@ -21,6 +38,7 @@ span{
 	width:47%;
 	background-color: white;
 	margin: 5px 5px 5px 5px;
+	border-radius: 15px;
 }
 
 .mui-table-view-cell:after {

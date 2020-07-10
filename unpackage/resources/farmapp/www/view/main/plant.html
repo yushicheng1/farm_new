@@ -13,8 +13,8 @@
 			<div class="mui-portrait">
 				<div style="width: 16.0rem;height: 5.2rem;float: right;margin-top: 2rem;margin-right: 1.2rem;background-image: url(../../images/nongchang/kuang.png);background-size: 100% 100%;">
 					<div style="width: 64%;height: 100%;float: left;">
-						<p style="margin-top: 0.7rem;margin-left: 2rem;margin-bottom: 0.1rem;font-weight: 700;font-size: 1.3rem;color: #652a01;" id="ipt_name"> </p>
-						<p style="margin-left: 2rem;color: #652a01;"><span>积分 :</span><span id="ipt_ji"></span></p>
+						<p style="margin-top: 0.7rem;margin-left: 2rem;margin-bottom: 0.1rem;font-weight: 700;font-size: 1.3rem;color: #652a01;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="ipt_name"> </p>
+						<p style="margin-left: 2rem;color: #652a01;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span>积分 :</span><span id="ipt_ji"></span></p>
 					</div>
 					<img id="ipt_tx" src="" onerror="javascript:this.src='../../images/default.png';" style="width: 5.25rem;height: 5.25rem;border-radius: 50%;float: right;" />
 				</div>
@@ -25,12 +25,14 @@
 					</div>
 				</div> -->
 			</div>
-
+<!-- <div style="width:12rem; height: 4rem;background-image: url(../../images/nongchang/zonggong.png);background-size: 100% 100%;">
+					
+				</div> -->
 			<div class="mui-popover" id="popover" style="width: 100px;height: 50px;background-color:rgba(0,0,0,0);margin-left: 3%;margin-top: 5%;-webkit-pointer-events: none;-moz-pointer-events: none;-ms-pointer-events: none;-o-pointer-events: none;pointer-events: none;">
 				<p style="font-size: 14px;color: #366e0c;text-align:center;margin-bottom: 0;font-weight: 900;text-shadow:-1px 0 white,0 1px white,1px 0 white,0 -1px white;"
 				 id="ipt-plant-name"></p>
-				<p style="text-align: center;margin-bottom: 0;color: #5c290d;text-shadow:-1px 0 white,0 1px white,1px 0 white,0 -1px white; "><span>成熟还需</span><span
-					 id="ipt-plant-day"></span><span>天</span></p>
+				<p style="text-align: center;margin-bottom: 0;color: #5c290d;text-shadow:-1px 0 white,0 1px white,1px 0 white,0 -1px white; "><span
+					 id="ipt-plant-day"></span></p>
 			</div>
 
 			<div id="box_jc">
@@ -174,25 +176,25 @@
 
 			<div class="mui-Onekey">
 				<div>
-					<a href="javascript:void(0)" id="btn_one_water" onclick="lise()">
+					<a href="javascript:void(0)" id="btn_one_water">
 						<img src="../../images/nongchang/yjjs.png" style="width: 3.5rem;height: 3.5rem;">
 					</a>
 				</div>
 
 				<div>
-					<a href="javascript:void(0)" id="btn_one_task" onclick="lise()">
+					<a href="javascript:void(0)" id="btn_one_task">
 						<img src="../../images/nongchang/yjsf.png" style="width: 3.5rem;height: 3.5rem;">
 					</a>
 				</div>
 				
 				<div>
-					<a href="javascript:void(0)" id="btn_water" onclick="lise()">
+					<a href="javascript:void(0)" id="btn_water">
 						<img src="../../images/nongchang/jiaoshui.png" style="width: 3.5rem;height: 3.5rem;">
 					</a>
 				</div>
 				
 				<div>
-					<a href="javascript:void(0)" id="btn_task" onclick="lise()">
+					<a href="javascript:void(0)" id="btn_task">
 						<img src="../../images/nongchang/shifei.png" style="width: 3.5rem;height: 3.5rem;">
 					</a>
 				</div>
@@ -201,7 +203,7 @@
 				<ul class="text">
 					<li>
 						<a href="javascript:void(0)" id="btn_shouye">
-							<img src="../../images/nongchang/jiance.png">
+							<img src="../../images/nongchang/fanhui.png">
 						</a>
 						
 					</li>
@@ -210,18 +212,17 @@
 							<img src="../../images/nongchang/shangcheng.png">
 						</a>
 						
-					</li>
-					<li>
-						<a href="javascript:void(0)" id="btn_jishi">
-							<img src="../../images/nongchang/jishi.png">
-						</a>
-						
-					</li>
+					</li>				
 					<li>
 						<a href="javascript:void(0)" id="btn_cangku">
 							<img src="../../images/nongchang/cangku.png">
 						</a>
 						
+					</li>
+					<li>
+						<a href="javascript:void(0)" id="btn_tdzb">
+							<img src="../../images/nongchang/tdzb.png">
+						</a>						
 					</li>
 				</ul>
 			</div>

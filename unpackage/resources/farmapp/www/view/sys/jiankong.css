@@ -1,0 +1,17 @@
+.mui-scroll {
+	min-height: 100%;
+}
+
+.mui-table-view li {
+	background: white;
+	margin-bottom: 10px;
+	width: 48%;
+	height: 200px;
+}
+
+
+.mui-table-view-cell:after {
+	height: 0;
+}
+
+

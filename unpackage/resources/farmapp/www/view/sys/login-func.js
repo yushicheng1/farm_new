@@ -201,24 +201,29 @@ var aFunc = {
 							}
 
 							
-								if (mui.os.android) {
-console.log('android')
-								} else {
-									var payObject = plus.ios.newObject("PayObject");
-									plus.ios.invoke(payObject, "iniSSS:", data.data.token);
-								}
-							
 							// aVariable.btn.btnLogin.disabled = "";
 							// window.location.reload();
-							mui.openWindow({
-								id: 'plant',
-								url: '../../view/main/plant.html',
-								waiting:{
-									autoShow:true,
-									title:'正在加载...'
-								}
-							});
-
+							var guideFlag = LocalStorage.getItem(LocalStorage.keys.guideFlag);
+							console.log(guideFlag)
+							if(guideFlag){
+								mui.openWindow({
+									id: 'main',
+									url: '../../view/main/main.html',
+									waiting:{
+										autoShow:true,
+										title:'正在加载...'
+									}
+								});
+							}else{								
+								mui.openWindow({
+									id: 'newhand',
+									url: '../../view/sys/newhand.html',
+									waiting:{
+										autoShow:true,
+										title:'正在加载...'
+									}
+								});
+							}
 						} else {
 							mui.toast(data.msg);
 							aVariable.btn.btnLogin.disabled = "";
@@ -269,7 +274,7 @@ console.log('android')
 				if (aVariable.value.version_new == '' || aVariable.value.version_new == null) {
 					// mui.toast('')
 				} else {
-					mui.alert(' ', "发现新版本，请到应用商店更新", "确定", );
+					mui.toast("发现新版本，请到应用商店更新");
 					return;
 				}
 			}
@@ -349,8 +354,8 @@ console.log('android')
 				aVariable.value.url = data.data.url;
 				// aVariable.value.desc=data.desc;
 				if (parseInt(aVariable.value.version) < parseInt(android_version)) {
-					isnew = 0;
-					mui.alert(' ', "发现新版本，请到应用商店更新", "确定",);
+					//isnew = 0;
+					mui.toast('发现新版本，请到应用商店更新');
 				}else{
 					//自动登录 本地时间与token过期时间比较,  需在版本判断之后
 					autoLogin();
@@ -358,19 +363,27 @@ console.log('android')
 			}, function() {});
 		} else {
 			type = 1;
-			sysServer.checkVersion(type, function(data) {
-				var ios_version = data.data.version;
-				aVariable.value.version_new = data.data.version;
-				aVariable.value.url = data.data.url;
-				// var ios_desc = data.data.newFeatures;
-				if (parseInt(aVariable.value.version) < parseInt(ios_version)) {
-					isnew = 0;
-					mui.alert(' ', "发现新版本，请到应用商店更新", "确定",);
-				}else{
-					//自动登录 本地时间与token过期时间比较,  需在版本判断之后
-					autoLogin();
-				}
-			}, function() {});
+			   sysServer.checkVersion(type, function(data) {
+			    var ios_version = data.data.version;
+			    aVariable.value.version_new = data.data.version;
+			    aVariable.value.url = data.data.url;
+			    // var ios_desc = data.data.newFeatures;
+			    aVariable.value.version = 14;
+			    if (aVariable.value.version < parseInt(ios_version)) {
+			     
+			     var bts=["确定","取消"];
+			     plus.nativeUI.confirm("请到AppStore进行更新",function(e){
+			      var i=e.index;
+			      if (i==0){
+			       plus.runtime.openURL("https://apps.apple.com/cn/app/%E5%A4%A7%E5%86%9C%E4%B8%BB/id1494099375");
+			      }else{
+			       
+			      }
+			     },"版本更新",bts);
+			    }else{
+			     autoLogin();
+			    }
+			   }, function() {});
 
 		}
 
@@ -472,19 +485,15 @@ console.log('android')
 //     setTimeout("freshBtnNew("+num+")",1000);
 // }
 function autoLogin(){
-	// mui.mui.alert('message','autoLogin','autoLogin',function (e) {
-	  
-	// },'div');
 	var time = Date.parse(new Date())/1000;
 	var outTime = LocalStorage.getItem(LocalStorage.keys.Expires_Time);
-	// var outTime = ' 2020-05-03 11:55:43';
 	console.log(outTime);
 	console.log(time);
 	if (outTime){
 		if (time<outTime){
 			mui.openWindow({
-				id: 'plant',
-				url: '../../view/main/plant.html',
+				id: 'main',
+				url: '../../view/main/main.html',
 				waiting:{
 					autoShow:true,
 					title:'正在加载...'

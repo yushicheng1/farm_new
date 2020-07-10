@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 	<head>
@@ -14,45 +14,39 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
-			<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">确认订单</h1>
+		<header class="mui-bar mui-bar-nav a-header" style="background-color: #3ba5d7;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>
+			<h1 class="mui-title" id="ipt-header" style="color: white;font-size: 20px;">确认订单</h1>
 		</header>
-		<div class="mui-content" style="background-color: #F0F0F0;">
-			<div>
-				<ul class="mui-table-view" id="list_warp" style="margin-top: 8px;border-radius: 8px;">
-					<li class="mui-table-view-cell mui-media">
-						<div style="height: 122px;">
-							<img class="mui-media-object mui-pull-left" src="" style="max-width: 130px;height: 130px;border-radius: 10px;" onerror="this.src='../../images/kongbai.jpg'" id="ipt_image">
-							<div class="mui-media-body" style="padding-top: 6px;">
-								<p><span style="color: green;font-size: 16px;"><b id="ipt_name"></b></span></p>
-								<p style="color: #000000;"><span>库存:</span><span id="ipt_stock"></span></p>
-								<p style="color:#FF5053 ;"><span>积分:</span><span id="ipt_price">20</span><span></span></p>
-								<p>
-									<span style="color: #000000;">购买数量:</span>
-									<div class="mui-numbox" data-numbox-min='1' >
-										<button class="mui-btn mui-numbox-btn-minus" type="button" id="btn_subtract">-</button>
-										<input id="ipt_number" type="number" class="mui-numbox-input" readonly="readonly">
-										<button class="mui-btn mui-numbox-btn-plus" type="button" id="btn_add">+</button>
-									</div>
-								</p>
-							</div>
-						</div>
-					</li>
-				</ul>
-				<!-- <ul class="mui-table-view" style="margin-top: 4px;">
-					<li class="mui-table-view-cell mui-media" style="height: 48px;">
-							<img class="mui-pull-left" src="../../images/homemenu/zhifubao.png" style="height: 26px;">
-							<span style="margin-left: 6px;position: relative;top: 2px;">支付宝支付</span>
-							<img class="mui-pull-right" src="../../images/homemenu/xuanzhong.png" style="height: 16px;margin-top: 4px;">
-					</li>
-				</ul> -->
-				<!-- <span style="font-size: 14px;color: #aeadad;float: right;margin-top: 10px;">温馨提示：1平方米土地可用1份种子哦~</span> -->
+		<div class="mui-content">
+			<div style="height: 350px;background-image: url(../../images/homemenu/qipao.png);background-size: 100% 100%;margin: 150px 27px 27px 27px;">
+				<div style="height: 50px;">
+					<p style="text-align: center;position: relative;top: 32px;color: green;font-size: 18px;"><b id="ipt_name"></b></p>
+				</div>
+				<img class="mui-media-object mui-pull-left" src="" style="max-width: 130px;height: 130px;border-radius: 10px;margin-top: 30px;margin-left: 4%;"
+				 onerror="this.src='../../images/kongbai.jpg'" id="ipt_image">
+				<div class="mui-media-body" style="position: relative;top: 30px;left: 30px;">
+					<p style="color: #000000;"><span>生长周期:</span><span id="ipt_shengzhang"></span></p>
+					<p style="color:#000000 ;"><span>结果周期:</span><span id="ipt_jieguo"></span></p>
+					<p style="color:#000000 ;"><span>预计产量:</span><span id="ipt_chanliang"></span></p>
+					<p style="color: #000000;"><span>库存:</span><span id="ipt_stock"></span></p>
+					<p style="color:#000000 ;"><span>积分:</span><span id="ipt_price"></span></p>
+				</div>
+				<div style="height: 112px;">
+					<div class="mui-numbox" data-numbox-min='1' style="position:relative;top: 50px;">
+						<button class="mui-btn mui-numbox-btn-minus" type="button" id="btn_subtract">-</button>
+						<input id="ipt_number" type="number" class="mui-numbox-input" readonly="readonly">
+						<button class="mui-btn mui-numbox-btn-plus" type="button" id="btn_add">+</button>
+					</div>
+				</div>
+				
 			</div>
-			<nav style="background-color: white;" class="mui-bar mui-bar-tab">
-				<span style="margin-left: 8px;position: relative;top: 15px;">合计:</span><span style="color: red;position: relative;top: 15px;font-size: 21px;" id="ipt_total"></span><span style="color: red;position: relative;top: 15px;font-size: 21px;"></span>
-				<img src="../../images/homemenu/zhifu.png" style="width: 144px;height: auto;float: right;" id="btn_buy"/>
-			</nav>
+		</div>
+		<nav style="background-color: white;" class="mui-bar mui-bar-tab">
+			<span style="margin-left: 8px;position: relative;top: 15px;">合计:</span><span style="color: red;position: relative;top: 15px;font-size: 21px;"
+			 id="ipt_total"></span><span style="color: red;position: relative;top: 15px;font-size: 21px;"></span>
+			<img src="../../images/homemenu/zhifu.png" style="width: 144px;height: auto;float: right;" id="btn_buy" />
+		</nav>
 	</body>
 	<script type="text/javascript" src="../../js/mui.min.js"></script>
 	<script type="text/javascript" src="../../a-core/util/log.js"></script>

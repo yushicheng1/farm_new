@@ -14,6 +14,7 @@ var aFunc = {
 		aVariable.btn.btnSave.addEventListener("tap", function() {
 			var name = aVariable.ipt.iptName.value;
 			var phone = aVariable.ipt.iptPhone.value;
+			var spread_code = aVariable.ipt.iptCode.value;
 			console.log(name.trim().length)
 			if (name == '' || name.trim().length == 0) {
 				mui.toast('昵称不能为空');
@@ -25,16 +26,16 @@ var aFunc = {
 			// 	return;
 			// }
 
-			myServer.updateUserInfo(name.trim(), phone, function(data) {
+			myServer.updateUserInfo(name.trim(), phone,spread_code,function(data) {
 				if (data.status == 200) {
 					var main = plus.webview.currentWebview().opener();
 					mui.fire(main, 'infomation', {});
-					mui.toast("保存成功");
+					mui.toast(data.msg);
 				} else {
 					mui.toast("保存失败");
 				}
 			}, function() {
-
+			
 			});
 
 		})

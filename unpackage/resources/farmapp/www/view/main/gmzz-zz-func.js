@@ -5,18 +5,24 @@ var aFunc = {
 	bindEvent: function() {
 
 		//查看详情
-		mui(aVariable.box.scroll).on("tap", "li button", function(e) {
+		mui(aVariable.box.scroll).on("tap", "li", function(e) {
 			var card = this;
 			var seedId = card.getAttribute("data-id");
 			var seedName = card.getAttribute("data-name");
 			var seedImg = card.getAttribute("data-img");
+			var shengzhang = card.getAttribute("data-shengzhang");
+			var jieguo = card.getAttribute("data-jieguo");
+			var chanliang = card.getAttribute("data-chanliang");
 			mui.openWindow({
 				id: "gmzz_detail",
 				url: 'gmzz-detail.html',
 				extras: {
 			       seedId:seedId,
 				   seedName:seedName,
-				   seedImg:seedImg
+				   seedImg:seedImg,
+				   shengzhang:shengzhang,
+				   jieguo:jieguo,
+				   chanliang:chanliang
 				}
 			});
 		});
@@ -55,7 +61,7 @@ var aFunc = {
 			}, function() {
 
 			});
-		}, 400);
+		}, 100);
 	},
 	down2Refresh: function() {
 		aVariable.list.page.item_page = 1;
@@ -78,7 +84,7 @@ var aFunc = {
 			}, function() {
 
 			});
-		}, 400);
+		}, 100);
 	},
 	nofind: function(item) {
 		item.src = "../../images/res/slider.png";
@@ -115,6 +121,7 @@ var aFunc = {
 				up: {
 					auto:true,
 					contentrefresh: '正在加载...',
+					contentdown:' ',
 					callback: aFunc.up2Refresh
 				}
 			}
