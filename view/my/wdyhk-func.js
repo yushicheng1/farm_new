@@ -2,30 +2,57 @@ var aFunc = {
 	initData: function() {
 		bankServer.getBankList(function(data) {
 			if (data.status == 200) {
-aVariable.box.bankList.innerHTML=aUi.bank.bankList(data.data);
+				aVariable.box.bankList.innerHTML = aUi.bank.bankList(data.data);
 			} else {
 
 			}
 		}, function() {
 
 		});
-
-
 	},
 	bindEvent: function() {
-		//查看详情
-		// mui(aVariable.box.scroll).on("tap", "li button", function(e) {
-		// 	var id = this.getAttribute("data-id");
-		// 	tradingListServer.withDraw(id,function(data) {
-		// 		if (data.status == 200) {
-		// 			mui.toast('下架成功');
-		// 		  aFunc.down2Refresh();
-		// 		} else {
+		mui(aVariable.box.scroll).on("tap", "li", function(e) {
+			var bank_id = this.getAttribute('data-id');
+			aVariable.value.bank_id = bank_id;
+			console.log(bank_id);
+			var btnArray = [{
+				title: "设为默认"
+			},{"解除绑定"}];
+			plus.nativeUI.actionSheet({
+				cancel: "取消",
+				buttons: btnArray
+			}, function(event) {
+				var index = event.index;
+				switch (index) {
+					case 1:
+						bankServer.setDefaultBank(aVariable.value.bank_id,function(data) {
+							if (data.status == 200) {
+								mui.toast(data.msg);
+								aFunc.initData();
+							} else {
+								mui.toast(data.msg);
+							}
+						}, function() {
 
-		// 		}
-		// 	}, function() {
+						});
+						break;
+					case 2:
+                       bankServer.unbind(aVariable.value.bank_id,function(data) {
+                       	if (data.status == 200) {
+                       		mui.toast(data.msg);
+                       		aFunc.initData();
+                       	} else {
+                       		mui.toast(data.msg);
+                       	}
+                       }, function() {
+                       
+                       });
+						break;
+				}
+			});
+		}, function() {
 
-		// 	});
+		});
 		// var seedName = card.getAttribute("data-name");
 		// var seedImg = card.getAttribute("data-img");
 		// mui.openWindow({

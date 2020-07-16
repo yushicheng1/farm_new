@@ -11,6 +11,15 @@ var myServer = mui.extend(aServer || {}, {
 		}
 		aServer.executeActionOfServerGET(this.isDebug, "api/userinfo", "获取失败", data, success, error);
 	},
+	
+	//获取用户信息
+	getSpreadUser: function(page,limit,success, error) {
+		var data = {
+	      page:page,
+		  limit:limit
+		}
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/spreadUser", "获取失败", data, success, error);
+	},
 
 	//修改用户信息
 	updateUserInfo: function(name, phone, spread_code,success, error) {

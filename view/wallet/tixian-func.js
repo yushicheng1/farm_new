@@ -71,6 +71,9 @@ var aFunc = {
 			var money = parseFloat(aVariable.ipt.iptTxje.value).toFixed(2);
 			var bankId = aVariable.params.cardId;
 			var phone = aVariable.params.phone;
+			if(money>parseFloat(aVariable.params.money)){
+				mui.toast('可提现余额不足');
+			}else{
 			bankServer.withDraw(money, bankId, function(data) {
 					if (data.status == 200) {
 						var zhifu = data.data.bizOrderNo;
@@ -109,6 +112,7 @@ var aFunc = {
 				function() {
 
 				});
+				}
 		})
 	},
 

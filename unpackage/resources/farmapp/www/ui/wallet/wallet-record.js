@@ -9,7 +9,28 @@ aUi.record = {
 			pm='+'
 		}
 		var time=formatTime(data.add_time,'Y-M-D h:m     ');
+		var src='';
+		if(data.type=='buy_seed'){
+			src='../../images/jifen/gmzz.png';
+		}else if(data.type=='watering'){
+			src='../../images/jifen/js.png';
+		}else if(data.type=='fertilize'){
+			src='../../images/jifen/sf.png';
+		}else if(data.type=='onewatering'){
+			src='../../images/jifen/yjjs.png';
+		}else if(data.type=='onefertilize'){
+			src='../../images/jifen/yjsf.png';
+		}else if(data.type=='recycle'){
+			src='../../images/jifen/xths.png';
+		}else if(data.type=='pay_post'){
+			src='../../images/jifen/yf.png';
+		}else if(data.type=='charge'||data.type=='buy_vegetable'){
+			src='../../images/jifen/gm.png';
+		}else{
+			src='../../images/kongbai.png';
+		}
 		var html= '<li class="mui-table-view-cell mui-media">'+
+		                    '<img src="'+src+'" class="mui-media-object mui-pull-left"/>	'+
 							'<div class="mui-media-body">'+
 								'<p>'+data.title+'</p>'+
 								'<p class="mui-ellipsis">'+

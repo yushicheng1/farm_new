@@ -2,14 +2,26 @@
 var aUi = aUi || {};
 aUi.bank = {
 	_bank: function(data) {
-		var html = '<li class="mui-table-view-cell mui-media" style="height: 150px;background-image: url(../../images/tixian/bgm_1.png);background-size: 100% 100%;">'+
-						'<div style="height: 60%;padding-top: 7%;">'+
-							'<p style="color: white;font-size: 25px;">'+data.bankname+'</p>'+
-						'</div>'+
-						'<div style="height: 40%;">'+
-							'<p style="color: white;font-size: 23px;text-align: center;letter-spacing: 1.5px;">'+data.cardnumber+'</p>'+
-						'</div>'+
-					'</li>';
+		if(data.status==2){
+			var html = '<li class="mui-table-view-cell mui-media" style="height: 150px;background-image: url(../../images/tixian/bgm_1.png);background-size: 100% 100%;" data-id="'+data.id+'">'+
+			'<p style="float: right;color: #000000;">默认银行卡</p>'+
+							'<div style="height: 60%;padding-top: 7%;">'+
+								'<p style="color: white;font-size: 25px;">'+data.bankname+'</p>'+
+							'</div>'+
+							'<div style="height: 40%;">'+
+								'<p style="color: white;font-size: 23px;text-align: center;letter-spacing: 1.5px;">'+data.cardnumber+'</p>'+
+							'</div>'+
+						'</li>';
+		}else{
+			var html = '<li class="mui-table-view-cell mui-media" style="height: 150px;background-image: url(../../images/tixian/bgm_1.png);background-size: 100% 100%;" data-id="'+data.id+'">'+
+							'<div style="height: 60%;padding-top: 7%;">'+
+								'<p style="color: white;font-size: 25px;">'+data.bankname+'</p>'+
+							'</div>'+
+							'<div style="height: 40%;">'+
+								'<p style="color: white;font-size: 23px;text-align: center;letter-spacing: 1.5px;">'+data.cardnumber+'</p>'+
+							'</div>'+
+						'</li>';
+		}		
 		return html;
 	},
 	bankList: function(list4Bank) {

@@ -27,6 +27,6 @@ var aVariable = {
 		cardId:'',
 		no:'',
 		name:'',
-		money:''
+		money:0
 	}
 };

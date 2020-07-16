@@ -1,0 +1,20 @@
+.mui-scroll {
+	min-height: 100%;
+}
+
+.mui-table-view li {
+	height: 40px;
+	background-color: white;
+	margin-left: 3%;
+	margin-right: 3%;
+	border-radius: 10px;
+}
+
+li p{
+	font-size: 15px;
+	color: #000000;
+}
+
+.mui-table-view-cell:after{
+	height: 0;
+}

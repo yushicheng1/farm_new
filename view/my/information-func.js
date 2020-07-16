@@ -26,7 +26,7 @@ var aFunc = {
 			// 	return;
 			// }
 
-			myServer.updateUserInfo(name.trim(), phone,spread_code,function(data) {
+			myServer.updateUserInfo(name.trim(), phone, spread_code, function(data) {
 				if (data.status == 200) {
 					var main = plus.webview.currentWebview().opener();
 					mui.fire(main, 'infomation', {});
@@ -35,7 +35,7 @@ var aFunc = {
 					mui.toast("保存失败");
 				}
 			}, function() {
-			
+
 			});
 
 		})
@@ -91,7 +91,7 @@ function updateImg(e) {
 
 				var ctx = cvs.getContext('2d');
 
-				var scale = 0.6; //预留压缩比
+				var scale = 0.1; //预留压缩比
 
 				var size = this.size;
 
@@ -119,29 +119,29 @@ function updateImg(e) {
 								// var fatherWidth=parseFloat($('#ipt_img').css('width'));
 
 								// var fatherheight=parseFloat($('#ipt_img').css('height'));
-								var fatherWidth = 300;
+								// var fatherWidth = 60;
 
-								var fatherheight = 300;
-								console.log(fatherWidth + '...' + fatherheight)
-								scale = fatherWidth / this.width;
+								// var fatherheight = 60;
+								// console.log(fatherWidth + '...' + fatherheight)
+								// scale = fatherWidth / this.width;
 
-								heightScale = fatherheight / this.height;
+								// heightScale = fatherheight / this.height;
 
-								cvs.width = fatherWidth;
+								// cvs.width = fatherWidth;
 
-								var x = this.height * scale / 2;
+								// var x = this.height * scale / 2;
 
-								//旋转后的画布需要img标签获取高度的2倍
+								// //旋转后的画布需要img标签获取高度的2倍
 
-								cvs.height = fatherheight * 1;
+								// cvs.height = fatherheight * 1;
 
-								ctx.rotate(Math.PI / 2);
+								// ctx.rotate(Math.PI / 2);
 
-								// (0,-imgHeight) 从旋转原理图那里获得的起始点
+								// // (0,-imgHeight) 从旋转原理图那里获得的起始点
 
-								// ctx.drawImage(this,0,-this.height*scale-(fatherWidth/2-x),fatherWidth,fatherheight);
-								ctx.drawImage(this, 0, -this.height * scale - (fatherWidth / 1.6 - x), fatherWidth, fatherheight);
-
+								// // ctx.drawImage(this,0,-this.height*scale-(fatherWidth/2-x),fatherWidth,fatherheight);
+								// ctx.drawImage(this, 0, -this.height * scale - (fatherWidth / 1.6 - x), fatherWidth, fatherheight);
+								ctx.drawImage(this, 0, 0, cvs.width, cvs.height);
 								break;
 
 							case 3: // 旋转180度
@@ -267,7 +267,7 @@ function uploadHeadImg(file) {
 		var res = JSON.parse(xhr.responseText)
 		console.log(res)
 		var main = plus.webview.currentWebview().opener();
-		mui.fire(main, 'infomation', {});
+		mui.fire(main, 'refreshJf', {});
 		var plant = plus.webview.getWebviewById('plant');
 		mui.fire(plant, 'refreshavatar', {});
 		// }  
@@ -300,14 +300,14 @@ function uploadAvatarBig(dataurl, filename) {
 	console.log(file.size)
 	if (mui.os.ios) {
 		var xhr = new XMLHttpRequest();
-		xhr.open('POST', aServer.ApiUrl+'/api/my/avatar', true);
+		xhr.open('POST', aServer.ApiUrl + '/api/my/avatar', true);
 		xhr.setRequestHeader('Authorization', 'Bearer' + ' ' + LocalStorage.getItem(LocalStorage.keys.Auth_Token))
 		xhr.onreadystatechange = function() {
-			if(xhr.readyState == 4 && xhr.status == 200){  
-			mui.toast("头像上传成功");
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				mui.toast("头像上传成功");
 			}
 			var main = plus.webview.currentWebview().opener();
-			mui.fire(main, 'infomation', {});
+			mui.fire(main, 'refreshJf', {});
 			var plant = plus.webview.getWebviewById('plant');
 			mui.fire(plant, 'refreshavatar', {});
 			// }  
@@ -317,12 +317,12 @@ function uploadAvatarBig(dataurl, filename) {
 		console.log(123)
 		mui.ajax({
 			type: "post",
-			url: aServer.ApiUrl+"/api/my/avatar",
+			url: aServer.ApiUrl + "/api/my/avatar",
 			headers: {
 				'Authorization': 'Bearer' + ' ' + LocalStorage.getItem(LocalStorage.keys.Auth_Token)
 			},
 			data: formData,
-			processData: false, 
+			processData: false,
 			contentType: false,
 			success: function(data) {
 				if (data.status == '200') {
@@ -332,7 +332,7 @@ function uploadAvatarBig(dataurl, filename) {
 				}
 				console.log(JSON.stringify(data))
 				var main = plus.webview.currentWebview().opener();
-				mui.fire(main, 'infomation', {});
+				mui.fire(main, 'refreshJf', {});
 				var plant = plus.webview.getWebviewById('plant');
 				mui.fire(plant, 'refreshavatar', {});
 			}

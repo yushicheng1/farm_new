@@ -8,11 +8,25 @@ var bankServer = mui.extend(aServer || {}, {
 		var data = {};
 		aServer.executeActionOfServerGET(this.isDebug, "api/user/createMember", "绑定失败", data, success, error);
 	},
+	
+	//解除绑定
+	unbind: function(id,success, error) {
+		var data = {
+			id:id
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/user/unbindBanKCard", "解除失败", data, success, error);
+	},
 
 	//获取银行卡
 	getBankList: function(success, error) {
 		var data = {};
 		aServer.executeActionOfServerGET(this.isDebug, "api/user/bankList", "获取失败", data, success, error);
+	},
+	
+	//设置默认银行卡
+	setDefaultBank: function(id,success, error) {
+		var data = {};
+		aServer.executeActionOfServerGET(this.isDebug, "api/user/setDefaultBank/"+id, "设置失败", data, success, error);
 	},
 
 	//获取验证码

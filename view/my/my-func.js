@@ -65,6 +65,7 @@ var aFunc = {
 				if (data.status == 200) {
 					aVariable.ipt.iptJifen.innerText = data.data.money;
 					aVariable.ipt.iptYue.innerText = data.data.real_money;
+					aVariable.ipt.iptImage.src = aServer.ApiUrl+data.data.avatar;
 				}
 			}, function() {
 
@@ -221,6 +222,14 @@ var aFunc = {
 
 			});
 
+		})
+		
+		//我的推荐
+		aVariable.btn.btnWdtj.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "wdtj",
+				url: 'recommend.html'
+			});
 		})
 
 		//种植明细

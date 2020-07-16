@@ -130,7 +130,7 @@ var aFunc = {
 									bankServer.agreeBind(phone, tranceNum, agreeCode, function(data) {
 										console.log(JSON.stringify(data))
 										if (data.status == 200) {
-											mui.toast('绑定成功');
+											mui.toast(data.msg);
 											var list = plus.webview.currentWebview().opener();
 											mui.fire(list, 'refreshBank');
 											mui.back();

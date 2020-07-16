@@ -20,7 +20,8 @@ var aVariable = {
 		iptName: document.getElementById("ipt_name"),
 		iptPhone: document.getElementById("ipt_phone"),
 		iptAddress: document.getElementById("ipt_address"),
-		iptImage: document.getElementById("ipt_image")
+		iptImage: document.getElementById("ipt_image"),
+		iptYunfei: document.getElementById("ipt_yunfei")
 	},
 	params: {
 		vegetablesId:'',

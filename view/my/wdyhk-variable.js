@@ -22,6 +22,7 @@ var aVariable = {
 		}
 	},
 	value:{
-		qianding:0//未签订协议
+		qianding:0,//未签订协议
+		bank_id:''
 	}
 };

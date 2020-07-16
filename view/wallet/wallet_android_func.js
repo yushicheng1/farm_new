@@ -121,7 +121,10 @@ function pay_new() {
 				if (data.data.isPhoneChecked) {
 					//正式环境参数传alipay  测试环境参数传alipayThird
 					walletServer.charge(total, 'alipay', '', function(data) {
-						// console.log(data.data)
+						// console.log(data.data
+						if(data.status=='400'){
+							mui.toast(data.msg);
+						}
 						var zhifu = data.data;
 
 						plus.payment.request(channel, zhifu[0].toString(), function(result) {

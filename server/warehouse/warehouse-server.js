@@ -82,6 +82,13 @@ var warehouseServer = mui.extend(aServer || {}, {
 			limit:limit
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/store/log", "确认记录失败", data, success, error);
+	},
+	
+	//查询运费
+	getYunFei: function(id,success, error) {
+		var data = {
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/store/getFreightPrice?address_id="+id, "确认记录失败", data, success, error);
 	}
 	
 	// //获取土地套餐(露天)

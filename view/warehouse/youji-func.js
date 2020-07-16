@@ -74,7 +74,7 @@ var aFunc = {
 			// 	aVariable.btn.btnYouji.disabled = false;
 			// } else {
 				var bts = ["是", "取消"];
-				plus.nativeUI.confirm("当前邮寄" + allnum.toFixed(2) + "公斤\n邮寄不可取消，请您确认", function(e) {
+				plus.nativeUI.confirm("当前邮寄" + allnum.toFixed(2) + "公斤,邮费为"+aVariable.ipt.iptYunfei.innerText+"积分\n邮寄不可取消，请您确认", function(e) {
 					var i = e.index;
 					if (i == 0) {
 						warehouseServer.sendToHmoe(JSON.stringify(aVariable.params.sendList), addressId, function(data) {
@@ -113,6 +113,16 @@ var aFunc = {
 			aVariable.ipt.iptAddress.innerText = e.detail.province + e.detail.city + e.detail.district + e.detail.detail;
 			aVariable.btn.btnChoose.hidden = "";
 			aVariable.btn.btnChooseNew.hidden = "hidden";
+			warehouseServer.getYunFei(e.detail.addressId,function(data) {
+					if (data.status == 200) {
+						aVariable.ipt.iptYunfei.innerText=data.data.freight_price;
+					} else {
+						
+					}
+				},
+				function() {
+			
+				});
 		})
 	},
 	nofind: function(item) {

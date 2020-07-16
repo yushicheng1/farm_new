@@ -78,7 +78,10 @@ aUi.warehouse = {
 			bgm='../../images/cangku/bgm_7.png'
 		}else if(type==8){
 			bgm='../../images/cangku/bgm_8.jpg'
-		}else{
+		}else if(type==10){
+			bgm='../../images/cangku/bgm_10.jpg'
+		}
+		else{
 			bgm='../../images/cangku/bgm_9.png'
 		}
 	

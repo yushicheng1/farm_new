@@ -250,8 +250,7 @@ function serverError(result){
 		}
 	}else if(result.status==401){
 		mui.alert(result.data.msg,' ');
-		var wvs = plus.webview.all();
-		
+		var wvs = plus.webview.all();		
 		for (var i = 0,
 				len = wvs.length; i < len; i++) {
 			if (wvs[i].getURL() != null) {
