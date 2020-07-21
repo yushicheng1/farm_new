@@ -165,12 +165,17 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnToucai.addEventListener("tap", function() {
-			plantServer.touCai(function(data) {
-					mui.toast(data.msg)
-				},
-				function() {
+			if (aVariable.params.isToucai) {
+				aVariable.params.isToucai = false;
+				plantServer.touCai(function(data) {
+						mui.toast(data.msg);
+						aVariable.params.isToucai = true;
+					},
+					function() {
+						aVariable.params.isToucai = true;
+					});
 
-				});
+			}
 		})
 
 		window.addEventListener('refreshavatar', function(e) {
@@ -296,8 +301,8 @@ var aFunc = {
 		});
 	},
 	pulldownRefresh: function() {
-	    mui('#div_pland1').pullRefresh().endPulldown();
-	  },
+		mui('#div_pland1').pullRefresh().endPulldown();
+	},
 	plusReady: function() {
 		// if (mui.os.plus) {
 		// 	plus.navigator.closeSplashscreen();
@@ -309,9 +314,9 @@ var aFunc = {
 			pullRefresh: {
 				container: '#div_pland1',
 				down: {
-				        style:'circle',
-				        callback: aFunc.pulldownRefresh
-				       },
+					style: 'circle',
+					callback: aFunc.pulldownRefresh
+				},
 				up: {
 					auto: true,
 					contentrefresh: '正在加载...',
@@ -327,5 +332,3 @@ var aFunc = {
 		aFunc.bindEvent();
 	}
 };
-
-

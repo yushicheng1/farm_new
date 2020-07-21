@@ -17,6 +17,7 @@ aUi.warehouse = {
 								'<p style="font-size: 13px;"><span>种植日期:</span><span>'+plantTime+'</span></p>'+
 								'<p style="font-size: 13px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
 								'<p style="font-size: 13px;"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span></p>'+
+								'<p style="font-size: 13px;"><span>果实ID:</span><span></span>'+data.id+'</p>'+
 							'</div>'+
 						'</div>'+
 						// '<span style="font-size: 14px;">剩余</span><span style="font-size: 14px;">'+remaindTime+'</span>'+
@@ -87,11 +88,12 @@ aUi.warehouse = {
 	
 		var html = '<li class="mui-table-view-cell" style="background-image: url('+bgm+');background-size: 100% 100%;">'+
 						'<div class="detail">'+
-							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 80px;height: 80px;border-radius: 50%;" onerror="nofind(this)">'+
+							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 90px;height: 90px;border-radius: 50%;" onerror="nofind(this)">'+
 							'<div class="mui-media-body">'+
 								'<p style="margin-top: 8px;"><span style="color: #1e910e;font-size: 18px;">'+data.sname+'</span></p>'+
 								'<p style="font-size: 13px;"><span>数量:</span><span>'+data.num+'</span></p>'+
 								'<p style="font-size: 13px;"><span>操作时间:</span><span>'+time+'</span></p>'+
+								'<p style="font-size: 13px;"><span>果实ID:</span><span>'+data.vegetables_id+'</span></p>'+
 							'</div>'+
 						'</div>'+
 					'</li>';

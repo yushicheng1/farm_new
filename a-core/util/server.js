@@ -1,7 +1,7 @@
 var aServer = {
-	ApiUrl: "http://farmapi.yiqianyun.com/",  
+	// ApiUrl: "http://farmapi.yiqianyun.com/",  
 	// ApiUrl: "http://39.106.109.129:8000/",
-	// ApiUrl: "http://testapi.sdnongzhu.com/",
+	ApiUrl: "http://testapi.sdnongzhu.com/",
 	// ServiceUrl: "http://140.143.244.242:8080",
 	Wating: null,
 	WatingTimeInterval: null,
@@ -14,6 +14,7 @@ var aServer = {
 
 			if (aServer.WatingSeconds <= 0) {
 				clearInterval(aServer.WatingTimeInterval);
+				
 
 				if (!aServer.Wating) {
 					aServer.closeWating();

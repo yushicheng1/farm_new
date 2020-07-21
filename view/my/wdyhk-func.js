@@ -17,7 +17,7 @@ var aFunc = {
 			console.log(bank_id);
 			var btnArray = [{
 				title: "设为默认"
-			},{"解除绑定"}];
+			},{title:"解除绑定"}];
 			plus.nativeUI.actionSheet({
 				cancel: "取消",
 				buttons: btnArray

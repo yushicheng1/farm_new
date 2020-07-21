@@ -5,9 +5,10 @@ var warehouseServer = mui.extend(aServer || {}, {
 	isDebug: true,
 
 	//获取我的仓库
-	getMyStore: function(success, error) {
+	getMyStore: function(page,limit,success, error) {
 		var data = {
-			
+			page:page,
+			limit:limit
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/my/store", "获取仓库失败", data, success, error);
 	},

@@ -58,7 +58,8 @@ var aVariable = {
 		landId: '',
 		seedId: '',
 		isWater:true,
-		isTask:true
+		isTask:true,
+		isToucai:true
 	},
 	list: {
 		page: {

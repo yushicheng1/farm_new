@@ -1,16 +1,17 @@
 var aFunc = {
 	initData: function() {
-		warehouseServer.getMyStore(function(data) {
-				if (data.status == 200) {
-					console.log(JSON.stringify(data.data))
-					aVariable.box.warehouseList.innerHTML = aUi.warehouse.warehouseList(data.data);
-				} else {
-					aVariable.box.warehouseList.innerHTML = ''
-				}
-			},
-			function() {
+		// aVariable.box.warehouseList.innerHTML = '';
+		// warehouseServer.getMyStore(function(data) {
+		// 		if (data.status == 200) {
+		// 			console.log(JSON.stringify(data.data))
+		// 			aVariable.box.warehouseList.innerHTML = aUi.warehouse.warehouseList(data.data);
+		// 		} else {
+		// 			aVariable.box.warehouseList.innerHTML = ''
+		// 		}
+		// 	},
+		// 	function() {
 
-			});
+		// 	});
 	},
 	bindEvent: function() {
 		mui(aVariable.box.scroll).on("tap", "li img", function(e) {
@@ -33,7 +34,7 @@ var aFunc = {
 						name: name,
 						plant: plant,
 						get: get,
-						image:image
+						image: image
 					}
 				});
 				// mui.toast('暂未开放')
@@ -48,7 +49,7 @@ var aFunc = {
 						plant: plant,
 						get: get,
 						price: price,
-						image:image
+						image: image
 					}
 				});
 				// mui.toast('暂未开放')
@@ -63,8 +64,8 @@ var aFunc = {
 						plant: plant,
 						get: get,
 						price: price,
-						image:image,
-						count:count,
+						image: image,
+						count: count,
 					}
 				});
 
@@ -103,44 +104,53 @@ var aFunc = {
 		})
 
 		window.addEventListener('refreshWarehouse', function(e) {
-			aFunc.initData();
+			aFunc.down2Refresh();
 		});
 	},
-	down2Refresh: function(refreshComponent) {
-		aVariable.box.warehouseList.innerHTML = '';
-		warehouseServer.getMyStore(function(data) {
-				if (data.status == 200) {
-					console.log(JSON.stringify(data.data))
-					aVariable.box.warehouseList.innerHTML = aUi.warehouse.warehouseList(data.data);
-					refreshComponent.refresh(true);
-					refreshComponent.endPullDownToRefresh();
-
+	up2Refresh: function(refreshComponent) {
+		setTimeout(function() {
+			var pages = aVariable.list.page.item_page;
+			var size = aVariable.list.page.item_num;
+			warehouseServer.getMyStore(pages, size, function(data) {
+				if(data.status == 200) {
+					aVariable.box.warehouseList.innerHTML += aUi.warehouse.warehouseList(data.data);
+					aVariable.list.page.item_page += 1;
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(data.data.length <10);
 				} else {
-					refreshComponent.refresh(true);
-					refreshComponent.endPullDownToRefresh();
+			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 				}
-			},
-			function() {
-
+			}, function() {
+	
 			});
+		}, 100);
+	},
+	down2Refresh: function(refreshComponent) {
+		aVariable.list.page.item_sum = 0;
+		aVariable.list.page.item_page = 1;
+		aVariable.box.warehouseList.innerHTML = "";
+		var pages = aVariable.list.page.item_page;
+		var size = aVariable.list.page.item_num;
+		setTimeout(function() {
+			warehouseServer.getMyStore(pages, size, function(data) {
+					if (data.status == 200) {
+						aVariable.box.warehouseList.innerHTML += aUi.warehouse.warehouseList(data.data);
+						aVariable.list.page.item_page += 1;
+						mui('#pullrefresh').pullRefresh().endPulldown();
+						mui('#pullrefresh').pullRefresh().refresh(true);
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(data.data.length < 10);
+					} else {
+
+					}
+				},
+				function() {
+
+				});
+		}, 100);
 	},
 	nofind: function(item) {
 		item.src = "../../images/res/slider.png";
 	},
-	initView: function() {
-		mui(aVariable.box.scroll).pullToRefresh({
-			// up: {
-			// 	callback: function() {
-			// 		aFunc.up2Refresh(this);
-			// 	}
-			// },
-			down: {
-				callback: function() {
-					aFunc.down2Refresh(this);
-				}
-			}
-		})
-	},
+
 	plusReady: function() {
 		// if (mui.os.plus) {
 		// 	plus.navigator.closeSplashscreen();
@@ -148,8 +158,21 @@ var aFunc = {
 		// }
 
 		// aVariable.webview.current = plus.webview.currentWebview();
-		aFunc.initView();
-		aFunc.initData();
+
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					style: 'circle',
+					callback: aFunc.down2Refresh
+				},
+				up: {
+					auto: true,
+					contentrefresh: '正在加载...',
+					callback: aFunc.up2Refresh
+				}
+			}
+		});		
 		aFunc.bindEvent();
 	}
 };
