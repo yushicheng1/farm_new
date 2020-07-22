@@ -58,7 +58,7 @@ aUi.warehouse = {
 	},
 	_record: function(data) {
 		//种植时间
-		var time=formatTime(data.time,'Y-M-D h-m-s');
+		var time=formatTime(data.time,'Y-M-D h:m:s');
 		var type=data.type;
 		var bgm=''
 		if(type==0){

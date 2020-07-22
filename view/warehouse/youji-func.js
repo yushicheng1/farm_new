@@ -6,7 +6,7 @@ var aFunc = {
 		// aVariable.ipt.iptGet.innerText = aVariable.params.get;
 		// aVariable.ipt.iptImage.src = aServer.ApiUrl+aVariable.params.image;
 		aVariable.box.recordList.innerHTML = '';
-		warehouseServer.getMyStore(function(data) {
+		warehouseServer.getMyStore(0,0,function(data) {
 				if (data.status == 200) {
 					// console.log(JSON.stringify(data.data));
 					aVariable.box.recordList.innerHTML = aUi.warehouse.youJiList(data.data);

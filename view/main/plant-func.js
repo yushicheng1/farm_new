@@ -6,6 +6,8 @@ var aFunc = {
 				aVariable.ipt.iptTx.src = aServer.ApiUrl + data.data.avatar;
 				aVariable.ipt.iptJf.innerText = ' ' + data.data.money;
 				aVariable.ipt.iptName.innerText = data.data.nick_name;
+				// aVariable.params.water_token = data.data.water_token;
+				// aVariable.params.fertilize_token = data.data.fertilize_token;
 			}
 		}, function() {
 

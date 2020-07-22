@@ -32,7 +32,7 @@ var aFunc = {
 		var pages = aVariable.list.page.item_page;
 		var size = aVariable.list.page.item_num;
 		setTimeout(function() {
-			walletServer.getRecordList('realmoney',pages, size, function(data) {
+			walletServer.getRecordList('real_money',pages, size, function(data) {
 				if (data.status == 200) {
 					aVariable.box.recordList.innerHTML = aUi.record.recordList(data.data);
 					aVariable.list.page.item_page += 1;
