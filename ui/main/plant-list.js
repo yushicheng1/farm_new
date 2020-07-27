@@ -12,7 +12,7 @@ aUi.seed = {
 		}else if(data.seed.ripe_day==1&&time1>0){
 			//向下取整取余
 			 time2=Math.floor(time1)%5;
-			 day=5-time2+1;
+			 day=5-time2;
 		}else if(data.seed.ripe_day>1&&time1<0){
 			if(time<0){
 				day=data.seed.ripe_day;
@@ -22,7 +22,7 @@ aUi.seed = {
 		}else if(data.seed.ripe_day>1&&time1>0){
 			//向下取整取余
 			 time2=Math.floor(time1)%5;
-			 day=5-time2+1;
+			 day=5-time2;
 		}
 		
 		var status=data.option_status;
