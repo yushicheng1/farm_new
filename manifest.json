@@ -5,8 +5,8 @@
     /*"fullscreen":true,*/
     "name" : "大农主", /*应用名称，程序桌面图标名称*/
     "version" : {
-        "name" : "1.3.0", /*应用版本名称*/
-        "code" : 27
+        "name" : "1.3.1", /*应用版本名称*/
+        "code" : 28
     },
     "description" : "", /*应用描述信息*/
     "icons" : {
@@ -153,11 +153,14 @@
                     "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
                     "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.READ_SMS\"/>",
                     "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
                     "<uses-permission android:name=\"android.permission.SEND_SMS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SMS\"/>"
                 ],
                 "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ]

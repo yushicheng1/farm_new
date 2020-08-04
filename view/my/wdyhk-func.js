@@ -104,10 +104,21 @@ var aFunc = {
 			// }, function() {
 
 			// });
-			mui.openWindow({
-				id: "newcard",
-				url: 'bangding.html'
-			});
+			bankServer.getThirdInfo(function(data) {
+				if (data.data.isIdentityChecked) {
+				  mui.openWindow({
+				  	id: "newcard",
+				  	url: 'bangding.html'
+				  });
+				} else {
+					mui.openWindow({
+						id: "smrz",
+						url: '/view/my/shiming.html'
+					});
+				}
+			}, function() {
+			
+			});		
 		})
 		window.addEventListener('refreshBank', function() {
 			location.reload();

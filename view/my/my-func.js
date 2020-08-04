@@ -149,6 +149,23 @@ var aFunc = {
 				url: '/view/sys/idea.html'
 			});
 		})
+		
+		//实名认证
+		aVariable.btn.btnSmrz.addEventListener("tap", function() {
+			bankServer.getThirdInfo(function(data) {
+				if (data.data.isIdentityChecked) {
+				  mui.toast('您已实名认证');
+				} else {
+					mui.openWindow({
+						id: "smrz",
+						url: '/view/my/shiming.html'
+					});
+				}
+			}, function() {
+			
+			});
+			
+		})
 
 		//我的银行卡
 		aVariable.btn.btnWdyhk.addEventListener("tap", function() {

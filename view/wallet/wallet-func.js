@@ -10,6 +10,18 @@ var aFunc = {
 		}, function() {
 
 		});
+		
+		//发起绑定请求
+		bankServer.createMember(function(data) {
+			console.log(JSON.stringify(data));
+			if (data.status == 200) {
+		
+			} else {
+		
+			}
+		}, function() {
+		
+		});
 
 	},
 	bindEvent: function() {

@@ -25,7 +25,8 @@ var aVariable = {
 		btnDzxy:document.getElementById("btn-dzxy"),
 		btnZzmx:document.getElementById("btn-zzmx"),
 		btnBdsjh:document.getElementById("btn-bdsjh"),
-		btnWdtj:document.getElementById("btn-wdtj")
+		btnWdtj:document.getElementById("btn-wdtj"),
+		btnSmrz:document.getElementById("btn-smrz")
 	},
 	ipt: {
 		iptName: document.getElementById("ipt-name"),

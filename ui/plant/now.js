@@ -8,7 +8,11 @@ aUi.record = {
 		// var endTime=formatTime(data.expire_time,'Y-M-D');
 		var html= '<li class="mui-table-view-cell mui-media">'+
 							'<div class="mui-media-body">'+
-								'<p>'+data.sname+'</p>'+
+								// '<p>'+data.sname+'</p>'+
+								'<p>'+
+									'<span>'+data.sname+'</span>'+
+									'<span style="float: right;">预计产量:'+data.yield+'</span>'+
+								'</p>'+
 								'<p>'+
 									'<span>种植时间:'+data.plant_time+'</span>'+
 									'<span style="float: right;">成熟天数:'+data.ripe_day+'天</span>'+
