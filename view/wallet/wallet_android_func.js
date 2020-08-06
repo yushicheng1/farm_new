@@ -1,4 +1,5 @@
-var channel = null;
+var zfchannel = null;
+var wxchannel = null;
 var ALIPAYSERVER = aServer.ApiUrl + 'api/wallet/charge';
 var WXPAYSERVER = '';
 var total = 0;
@@ -99,7 +100,13 @@ var aFunc = {
 		}
 		// 获取支付通道
 		plus.payment.getChannels(function(channels) {
-			channel = channels[0];
+			for (var i in channels) { 
+			                        if (channels[i].id == "wxpay") { 
+			                             wxchannel=channels[i];  
+			                        }else{ 
+			                            zfchannel=channels[i];  
+			                        } 
+			                    }     
 		}, function(e) {
 			alert("获取支付通道失败：" + e.message);
 		});
@@ -127,7 +134,7 @@ function pay_new() {
 						}
 						var zhifu = data.data;
 
-						plus.payment.request(channel, zhifu[0].toString(), function(result) {
+						plus.payment.request(zfchannel, zhifu[0].toString(), function(result) {
 							plus.nativeUI.alert("支付成功！", function() {
 								//刷新土地界面的积分
 								var plant = plus.webview.getWebviewById('plant');
@@ -160,7 +167,52 @@ function pay_new() {
 		}, function() {
 
 		});
-	} else if (type == 3) {
+	} else if(type==2){
+		mui('#popover').popover('hide');
+		bankServer.getThirdInfo(function(data) {
+			if (data.status == 200) {
+				if (data.data.isPhoneChecked) {
+					//正式环境参数传alipay  测试环境参数传alipayThird
+					walletServer.charge(total, 'weixin', '', function(data) {
+						// console.log(data.data
+						if(data.status=='400'){
+							mui.toast(data.msg);
+						}
+						var zhifu = data.data;
+						plus.payment.request(wxchannel, zhifu[0], function(result) {
+							plus.nativeUI.alert("支付成功！", function() {
+								//刷新土地界面的积分
+								var plant = plus.webview.getWebviewById('plant');
+								mui.fire(plant, 'refreshJifen', {});
+								//刷新我的界面的积分
+								var my = plus.webview.getWebviewById('my');
+								mui.fire(my, 'refreshJf', {});
+								//刷新积分界面
+								var main = plus.webview.currentWebview().opener();
+								mui.fire(main, 'getMoney', {});
+								mui.back();
+							});
+						}, function(error) {
+							plus.nativeUI.alert("支付失败!");
+						});
+					}, function() {
+		
+					});
+		
+				} else {
+					mui.toast('请先绑定手机号');
+					mui.openWindow({
+						id: "bdsjh",
+						url: '/view/my/phone.html'
+					});
+				}
+			} else {
+		
+			}
+		}, function() {
+		
+		});
+	}else if (type == 3) {
 		mui('#popover').popover('hide');
 		bankServer.getThirdInfo(function(data) {
 			if (data.status == 200) {

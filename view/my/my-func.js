@@ -9,9 +9,9 @@ var aFunc = {
 				aVariable.ipt.iptYue.innerText = data.data.real_money;
 				// aVariable.ipt.iptPhone.value = data.data.phone;
 				aVariable.ipt.iptImage.src = aServer.ApiUrl + data.data.avatar;
-				if(data.data.is_vip==0){
-					document.getElementById('img_vip').style.display="none";
-				}				
+				if (data.data.is_vip == 0) {
+					document.getElementById('img_vip').style.display = "none";
+				}
 			}
 		}, function() {
 
@@ -65,7 +65,7 @@ var aFunc = {
 				if (data.status == 200) {
 					aVariable.ipt.iptJifen.innerText = data.data.money;
 					aVariable.ipt.iptYue.innerText = data.data.real_money;
-					aVariable.ipt.iptImage.src = aServer.ApiUrl+data.data.avatar;
+					aVariable.ipt.iptImage.src = aServer.ApiUrl + data.data.avatar;
 				}
 			}, function() {
 
@@ -149,12 +149,12 @@ var aFunc = {
 				url: '/view/sys/idea.html'
 			});
 		})
-		
+
 		//实名认证
 		aVariable.btn.btnSmrz.addEventListener("tap", function() {
 			bankServer.getThirdInfo(function(data) {
 				if (data.data.isIdentityChecked) {
-				  mui.toast('您已实名认证');
+					mui.toast('您已实名认证');
 				} else {
 					mui.openWindow({
 						id: "smrz",
@@ -162,9 +162,9 @@ var aFunc = {
 					});
 				}
 			}, function() {
-			
+
 			});
-			
+
 		})
 
 		//我的银行卡
@@ -240,7 +240,7 @@ var aFunc = {
 			});
 
 		})
-		
+
 		//我的推荐
 		aVariable.btn.btnWdtj.addEventListener("tap", function() {
 			mui.openWindow({
@@ -298,10 +298,14 @@ var aFunc = {
 		//注销登录
 		aVariable.btn.btnZxdl.addEventListener("tap", function() {
 			var btnArray = [{
-				title: "退出当前账号"
-			}, {
-				title: "直接关闭应用"
-			}];
+					title: "注销当前账号"
+				},
+				{
+					title: "退出当前账号"
+				}, {
+					title: "直接关闭应用"
+				}
+			];
 			plus.nativeUI.actionSheet({
 				cancel: "取消",
 				buttons: btnArray
@@ -309,11 +313,12 @@ var aFunc = {
 				var index = event.index;
 				switch (index) {
 					case 1:
-						//注销帐号
-						//						localStorage.clearAll();
+						mui.toast("注销账号请联系客服");
+						break;
+					case 2:
 						mui.toast("注销登录");
 						var wvs = plus.webview.all();
-
+						
 						for (var i = 0,
 								len = wvs.length; i < len; i++) {
 							if (wvs[i].getURL() != null) {
@@ -323,23 +328,23 @@ var aFunc = {
 							}
 						}
 						break;
-					case 2:
-						if (mui.os.ios) {
-							mui.toast("注销登录");
-							var mainHtml = plus.webview.getWebviewById('index');
-							mainHtml.close();
-							var loginHtml = plus.webview.getWebviewById('login');
-							loginHtml.close();
-							mui.openWindow({
-								id: 'login',
-								url: '/view/sys/login.html',
-								extras: {}
-							});
-							break;
-						} else {
-							plus.runtime.quit();
-							break;
-						}
+						case 3:
+							if (mui.os.ios) {
+								mui.toast("注销登录");
+								var mainHtml = plus.webview.getWebviewById('index');
+								mainHtml.close();
+								var loginHtml = plus.webview.getWebviewById('login');
+								loginHtml.close();
+								mui.openWindow({
+									id: 'login',
+									url: '/view/sys/login.html',
+									extras: {}
+								});
+								break;
+							} else {
+								plus.runtime.quit();
+								break;
+							}
 				}
 			});
 		})
