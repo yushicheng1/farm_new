@@ -1,5 +1,16 @@
 var aFunc = {
 	initData: function() {
+		//发起绑定请求
+		bankServer.createMember(function(data) {
+			console.log(JSON.stringify(data));
+			if (data.status == 200) {
+		
+			} else {
+		
+			}
+		}, function() {
+		
+		});
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
 				console.log(JSON.stringify(data.data))
@@ -154,7 +165,11 @@ var aFunc = {
 		aVariable.btn.btnSmrz.addEventListener("tap", function() {
 			bankServer.getThirdInfo(function(data) {
 				if (data.data.isIdentityChecked) {
-					mui.toast('您已实名认证');
+					// mui.toast('您已实名认证');
+					mui.openWindow({
+						id: "smrz",
+						url: '/view/my/shiming.html'
+					});
 				} else {
 					mui.openWindow({
 						id: "smrz",
@@ -191,7 +206,10 @@ var aFunc = {
 		aVariable.btn.btnBdsjh.addEventListener("tap", function() {
 			bankServer.getThirdInfo(function(data) {
 				if (data.data.isPhoneChecked) {
-					mui.toast('您已绑定过手机号');
+					mui.openWindow({
+						id: "mbdsjh",
+						url: '/view/my/mphone.html'
+					});
 				} else {
 					mui.openWindow({
 						id: "bdsjh",

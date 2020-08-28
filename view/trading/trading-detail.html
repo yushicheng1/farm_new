@@ -19,24 +19,55 @@
 			<h1 class="mui-title" id="ipt-header" style="color: black;font-size: 20px;">确认订单</h1>
 		</header>
 		<div class="mui-content" style="background-color: #F0F0F0;">
+			<div style="width: 95% ;margin-left: 2%;">
+				<ul class="mui-table-view" style="margin-top: 8px;border-radius: 8px;">
+					<li class="mui-table-view-cell mui-media" id="btn_choose" hidden="hidden">
+						<a class="mui-navigate-right">
+							<img class="mui-media-object mui-pull-left border" src="../../images/homemenu/address.png" style="height: 30px;width: 24px;">
+							<div class="mui-media-body">
+								<p><span id="ipt_name_person"></span><span id="ipt_phone"></span></p>
+								<p class="mui-ellipsis top8" id="ipt_address"></p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media" id="btn_choose_new">
+						<a class="mui-navigate-right">
+							<div class="mui-media-body">
+								<p style="text-align: center;"><span>请选择地址</span></p>
+							</div>
+						</a>
+					</li>
+				</ul>
+				<p style="margin-top: 10px;margin-bottom: 6px;">所选邮寄地址运费为<span id="ipt_yunfei" style="color: red;">0</span>积分</p>
+				<p>甘肃、海南、青海、云南、黑龙江14元,新疆17元</p>
+			</div>
 			<div>
-				<div style="height: 350px;background-image: url(../../images/homemenu/qipao1.png);background-size: 100% 100%;margin: 70px 27px 27px 27px;">
-					<div style="height: 50px;">
+				<div style="height: 400px;background-image: url(../../images/homemenu/qipao1.png);background-size: 100% 100%;margin: 30px 27px 27px 27px;">
+				<!-- 	<div style="height: 50px;">
 						<p style="text-align: center;position: relative;top: 62px;color: green;font-size: 18px;"><b id="ipt_name"></b></p>
-					</div>
+					</div> -->
 					<img class="mui-media-object mui-pull-left" src="" style="max-width: 120px;height: 120px;border-radius: 10px;margin-top: 80px;margin-left: 4%;"
 					 onerror="this.src='../../images/kongbai.jpg'" id="ipt_image">
-					<div class="mui-media-body" style="position: relative;top: 80px;left: 20px;">					
-						<p><span>种植日期:</span><span id="ipt_plant"></span></p>
-						<p><span>收获日期:</span><span id="ipt_get"></span></p>
-						<p><span>剩余量:</span><span id="ipt_num"></span><span>公斤</span></p>
+					<div class="mui-media-body" style="position: relative;top: 80px;left: 20px;">
+						<p style="color: green;font-size: 18px;"><b id="ipt_name"></b></p>
+						<p><span>剩余量:</span><span id="ipt_stock"></span><span id="ipt_unit"></span></p>
 						<p><span>价格:</span><span id="ipt_price"></span></p>
+					</div>
+					<div style="height: 112px;position: relative;top: 30px;left: 20px;">
+						<div class="mui-numbox" data-numbox-min='1' style="position:relative;top: 50px;">
+							<button class="mui-btn mui-numbox-btn-minus" type="button" id="btn_subtract">-</button>
+							<input id="ipt_number" type="number" class="mui-numbox-input" readonly="readonly">
+							<button class="mui-btn mui-numbox-btn-plus" type="button" id="btn_add">+</button>
+						</div>
+					</div>		
+					<div style="height: 140px;margin-top: 30px;margin-left: 20px;margin-right: 20px;">
+						<p><span>描述:</span><span id="ipt_discription"></span></p>
 					</div>
 				</div>
 			</div>
 			<nav style="background-color: white;" class="mui-bar mui-bar-tab">
 				<span style="margin-left: 8px;position: relative;top: 15px;">合计:</span><span style="color: red;position: relative;top: 15px;font-size: 21px;" id="ipt_total"></span>
-				<img src="../../images/homemenu/zhifu.png" style="width: 144px;height: auto;float: right;" id="btn-pay"/>
+				<img src="../../images/homemenu/zhifu.png" style="width: 144px;height: auto;float: right;" id="btn_pay"/>
 			</nav>
 	</body>
 	<script type="text/javascript" src="../../js/mui.min.js"></script>
@@ -44,6 +75,7 @@
 	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
 	<script type="text/javascript" src="../../a-core/util/server.js"></script>
 	<script type="text/javascript" src="../../server/trading/trading-list-server.js"></script>
+	<script type="text/javascript" src="../../server/warehouse/warehouse-server.js"></script>
 	<script type="text/javascript" src="trading-detail-variable.js"></script>
 	<script type="text/javascript" src="trading-detail-func.js"></script>
 	<script type="text/javascript" src="trading-detail.js"></script>

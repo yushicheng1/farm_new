@@ -71,7 +71,7 @@ var aFunc = {
 									} else {
 										aVariable.btn.btnBuy.disabled = false;
 
-										mui.toast(data.msg);
+										mui.alert(data.msg);
 
 										plus.runtime.getProperty(plus.runtime.appid, function(inf) {
 											if (mui.os.android) {
@@ -96,7 +96,7 @@ var aFunc = {
 							});
 						} else {
 							aVariable.btn.btnBuy.disabled = false;
-							mui.toast(data.msg);
+							mui.alert(data.msg);
 						}
 					}, function() {
 

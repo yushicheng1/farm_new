@@ -9,7 +9,9 @@ var aVariable = {
         btnWdnc:document.getElementById("btn_wdnc"),
 		btnGmzz:document.getElementById("btn_gmzz"),
 		btnJydt:document.getElementById("btn_jydt"),
-		btnTgm:document.getElementById("btn_tgm")
+		btnTgm:document.getElementById("btn_tgm"),
+		btnService: document.getElementById("service-agreement"),
+		btnPrivacy: document.getElementById("privacy-agreement")
 	},
 	ipt: {
 		iptHeader: document.getElementById("ipt-header"),

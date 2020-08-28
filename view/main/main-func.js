@@ -63,11 +63,16 @@ var aFunc = {
 			});
 		});
 		aVariable.btn.btnJydt.addEventListener("tap", function() {
-			// mui.toast('暂未开放')
-			mui.openWindow({
-				id: "jiankong",
-				url: '../sys/jiankong.html'
-			});
+			mui.toast('暂未开放')
+			// mui.openWindow({
+			// 	id: "jiankong",
+			// 	url: '../sys/jiankong.html'
+			// });
+			
+			// mui.openWindow({
+			// 	id: "trading",
+			// 	url: '../trading/trading-list.html'
+			// });
 			// mui.openWindow({
 			// 	id: "my",
 			// 	url: '../my/my.html'
@@ -107,6 +112,20 @@ var aFunc = {
 				});
 			// mui.toast("暂未开放")
 		});
+		
+		aVariable.btn.btnService.addEventListener("tap",function(){
+			mui.openWindow({
+				id: 'service-agreement',
+				url: '../sys/service-agreement.html'
+			});
+		},false);
+		aVariable.btn.btnPrivacy.addEventListener("tap",function(){
+			// mui.toast("展示隐私协议");
+			mui.openWindow({
+				id: 'privacy-agreement',
+				url: '../sys/privacy-agreement.html'
+			});
+		},false);
 
 		//查看详情
 		mui(aVariable.div.divRt).on("tap", "div", function(e) {

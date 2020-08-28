@@ -10,22 +10,22 @@ var aFunc = {
 			// var card = this;
 			var vegetable_id = this.getAttribute("data-id");
 			var name = this.getAttribute("data-name");
-			var plantTime = this.getAttribute("data-plant");
-			var getTime = this.getAttribute("data-get");
-			var num = this.getAttribute("data-num");
+			var stock = this.getAttribute("data-stock");
 			var price = this.getAttribute("data-price");
 			var image = this.getAttribute("data-image");
+			var unit = this.getAttribute("data-unit");
+			var dis=this.getAttribute("data-dis");
 			mui.openWindow({
 				id: "tradingDetail",
 				url: '/view/trading/trading-detail.html',
 				extras: {
 					exchange_info_id: vegetable_id,
 					name: name,
-					plantTime: plantTime,
-					getTime: getTime,
-					num: num,
+					stock: stock,
 					price: price,
-					image:image
+					image:image,
+					unit:unit,
+					dis:dis
 				}
 
 			});

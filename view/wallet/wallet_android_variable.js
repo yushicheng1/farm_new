@@ -19,6 +19,6 @@ var aVariable = {
 		apple_id:'',
 		phone:'',
 		cardId:'',
-		type:1
+		type:0
 	}
 };

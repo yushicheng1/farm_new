@@ -11,6 +11,17 @@ var aFunc = {
 		}, function() {
 
 		});
+
+		bankServer.getThirdInfo(function(data) {
+			if (data.status == 200) {
+				aVariable.ipt.iptName.value = data.data.name;
+				aVariable.ipt.iptIdCard.value = data.data.identityCardNo;
+			} else {
+
+			}
+		}, function() {
+
+		});
 	},
 	// initView: function() {
 	// 	//获取银行卡
@@ -78,27 +89,36 @@ var aFunc = {
 		// })
 
 		aVariable.btn.btnSubmit.addEventListener('tap', function(event) {
-			var name = aVariable.ipt.iptName.value;
-			var idNo = aVariable.ipt.iptIdCard.value;
-			if (name == "") {
-				mui.toast("请填写姓名!");
-				return;
-			}
-			if (idNo == "") {
-				mui.toast("请填写身份证号码!");
-				return;
-			}
-			bankServer.checkRealName(name, idNo, function(data) {
-				console.log(JSON.stringify(data));
-				if (data.status == 200) {				
-					mui.toast(data.msg);
-					mui.back();
-				}else{
-					mui.toast(data.msg);
+			bankServer.getThirdInfo(function(data) {
+				if (data.data.isIdentityChecked) {
+					mui.toast('您已实名认证');
+				} else {
+					var name = aVariable.ipt.iptName.value;
+					var idNo = aVariable.ipt.iptIdCard.value;
+					if (name == "") {
+						mui.toast("请填写姓名!");
+						return;
+					}
+					if (idNo == "") {
+						mui.toast("请填写身份证号码!");
+						return;
+					}
+					bankServer.checkRealName(name, idNo, function(data) {
+						console.log(JSON.stringify(data));
+						if (data.status == 200) {
+							mui.toast(data.msg);
+							mui.back();
+						} else {
+							mui.toast(data.msg);
+						}
+					}, function() {
+
+					});
 				}
 			}, function() {
 
 			});
+
 		})
 	},
 	plusReady: function() {

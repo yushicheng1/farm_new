@@ -23,7 +23,7 @@ var aFunc = {
 
 		bankServer.getBankList(function(data) {
 			if (data.status == 200) {
-				aVariable.box.bankList.innerHTML += aUi.bank.bankOneList(data.data);
+				aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data)+aVariable.box.bankList.innerHTML;
 			} else {
 
 			}
@@ -81,9 +81,12 @@ var aFunc = {
 		window.addEventListener('refreshBank', function(e) {
 			bankServer.getBankList(function(data) {
 				if (data.status == 200) {
-					var html = '<li class="mui-table-view-cell mui-selected" data-type="1" style="color: #000000;" >' +
+					var html = '<li class="mui-table-view-cell" data-type="1" style="color: #000000;" >' +
 						'<a class="mui-navigate-right">支付宝</a>' +
-						'</li>';
+						'</li>';+
+						'<li class="mui-table-view-cell" data-type="2" style="color: #000000;" >' +
+							'<a class="mui-navigate-right">微信</a>' +
+							'</li>';
 					aVariable.box.bankList.innerHTML = html + aUi.bank.bankOneList(data.data);
 				} else {
 
@@ -269,6 +272,6 @@ function pay_new() {
 
 		});
 	} else if (type == 0) {
-		mui.toast('请选择银行卡');
+		mui.toast('请选择支付方式');
 	}
 }

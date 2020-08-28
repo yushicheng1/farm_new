@@ -54,6 +54,27 @@ var bankServer = mui.extend(aServer || {}, {
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/user/bindPhone", "绑定失败", data, success, error);
 	},
+	
+	//修改第三方手机
+	updatePhone: function(real_name,idNo,phone,cardId, success, error) {
+		var data = {
+			phone: phone,
+			cardId: cardId,
+			real_name:real_name,
+			idNo:idNo
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/user/changeBindPhone", "修改失败", data, success, error);
+	},
+	
+	//确认修改第三方手机
+	agreeUpdate: function(phone,tranceNum,code, success, error) {
+		var data = {
+			phone: phone,
+			tranceNum: tranceNum,
+			code:code
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/user/verifyChangePhone", "修改失败", data, success, error);
+	},
 
 	//绑定银行卡
 	bindBankCard: function(name,phone,cardNo,idNo, success, error) {

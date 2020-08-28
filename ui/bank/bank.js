@@ -35,7 +35,7 @@ aUi.bank = {
 	_bankOne: function(data) {
 		
 		var html = '<li class="mui-table-view-cell" style="color: #000000;" data-type="3" data-phone="'+data.phone+'" data-cardId="'+data.id+'" data-no="'+data.cardnumber+'" data-name="'+data.bankname+'">'+
-					'<a class="mui-navigate-right">'+data.bankname+'('+data.cardnumber.substring(data.cardnumber.length-4) +')'+'</a>'+
+					'<a class="mui-navigate-right">'+data.bankname+'('+data.cardnumber.substring(data.cardnumber.length-4) +')'+'<span style="color:red;margin-left:10px">(推荐)</span></a>'+
 				'</li>';
 		return html;
 	},
