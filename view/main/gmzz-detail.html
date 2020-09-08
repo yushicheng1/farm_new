@@ -32,14 +32,25 @@
 					<p style="color: #000000;"><span>库存:</span><span id="ipt_stock"></span></p>
 					<p style="color:#000000 ;"><span>积分:</span><span id="ipt_price"></span></p>
 				</div>
-				<div style="height: 112px;">
-					<div class="mui-numbox" data-numbox-min='1' style="position:relative;top: 50px;">
+				<!-- <div style="height: 40px;position: relative;top: 30px;right: 60px;">				
+					<div class="mui-switch" style="float: right;position: relative;bottom: 5px;left: 5px;">
+					  <div class="mui-switch-handle"></div>
+					</div>
+					<div style="float: right;font-size: 14px;">托管:</div>
+				</div> -->
+				
+				<!-- <div style="height: 112px;"> -->
+<div class="mui-input-row mui-checkbox" style="top: 20px;left: 13px;">
+  <label>系统托管:</label>
+  <input name="checkbox1" value="Item 1" type="checkbox" style="right: 50px;" onclick="tuoguan(this)">
+</div>
+					<div class="mui-numbox" data-numbox-min='1' style="top: 20px;float: right;right: 15%;">
 						<button class="mui-btn mui-numbox-btn-minus" type="button" id="btn_subtract">-</button>
 						<input id="ipt_number" type="number" class="mui-numbox-input" readonly="readonly">
 						<button class="mui-btn mui-numbox-btn-plus" type="button" id="btn_add">+</button>
 					</div>
-				</div>
-				
+				<!-- </div>
+				 -->
 			</div>
 		</div>
 		<nav style="background-color: white;" class="mui-bar mui-bar-tab">

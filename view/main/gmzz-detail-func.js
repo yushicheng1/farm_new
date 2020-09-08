@@ -11,6 +11,20 @@ function accMul(num1, num2) {
 	} catch (e) {};
 	return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
 }
+
+function tuoguan(checkbox){
+	if ( checkbox.checked == true){
+		aVariable.params.auto=1;
+aVariable.ipt.iptPrice.innerHTML =aVariable.params.autoPrice;
+aVariable.ipt.iptNumber.value=1;
+aVariable.ipt.iptTotal.innerText = accMul(1, aVariable.params.autoPrice);
+	}else{
+		aVariable.params.auto=0;
+	 aVariable.ipt.iptPrice.innerHTML =aVariable.params.price;
+	 aVariable.ipt.iptNumber.value=1;
+	 aVariable.ipt.iptTotal.innerText = accMul(1, aVariable.params.price);
+	}
+}
 var aFunc = {
 	initData: function() {
 		aVariable.ipt.iptName.innerHTML = aVariable.params.seedName;
@@ -23,6 +37,9 @@ var aFunc = {
 			if (data.status == 200) {
 				aVariable.ipt.iptStock.innerHTML = data.data.seedValue.小份.stock;
 				aVariable.ipt.iptPrice.innerHTML = data.data.seedValue.小份.price;
+				aVariable.params.price = data.data.seedValue.小份.price;
+				aVariable.params.autoPrice = data.data.autoPrice;
+				// aVariable.ipt.iptPrice.innerHTML = data.data.autoPrice;
 				aVariable.params.size = data.data.seedValue.小份.size;
 				aVariable.params.uniqueId = data.data.seedValue.小份.unique;
 				var num = aVariable.ipt.iptNumber.value;
@@ -59,7 +76,7 @@ var aFunc = {
 						if (data.status == 200) {
 							var orderKey = data.data.orderKey;
 							//生成订单
-							gmzzServer.createSeedOrder(orderKey, function(data) {
+							gmzzServer.createSeedOrder(orderKey,aVariable.params.auto, function(data) {
 								if (data.status == 200) {
 									if (data.data.status == "SUCCESS") {
 										console.log("订单生成成功");

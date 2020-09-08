@@ -58,8 +58,8 @@ var aFunc = {
 		});
 		aVariable.btn.btnGmzz.addEventListener("tap", function() {
 			mui.openWindow({
-				id: "gmzz",
-				url: 'gmzz-new.html'
+				id: "grzx",
+				url: '../my/my.html'
 			});
 		});
 		aVariable.btn.btnJydt.addEventListener("tap", function() {

@@ -43,9 +43,10 @@ var gmzzServer = mui.extend(aServer || {}, {
 	},
 
 	//生成订单
-	createSeedOrder: function(orderKey, success, error) {
+	createSeedOrder: function(orderKey,auto, success, error) {
 		var data = {
-			payType: 'yue'
+			payType: 'yue',
+			autoOption:auto
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/order/create_seed_order/"+orderKey, "确认订单失败", data, success, error);
 	}

@@ -29,6 +29,9 @@ var aVariable = {
 		uniqueId:'',
 		shengzhang:'',
 		jieguo:'',
-		chanliang:''
+		chanliang:'',
+		price:0,
+		autoPrice:0,
+		auto:0
 	}
 };
