@@ -62,69 +62,79 @@ var aFunc = {
 			aVariable.ipt.iptTotal.innerText = accMul(num, price);
 		})
 		aVariable.btn.btnBuy.addEventListener("tap", function() {
-			aVariable.btn.btnBuy.disabled = true;
-			var id = aVariable.params.seedId;
-			var num = aVariable.ipt.iptNumber.value;
-			var unique = aVariable.params.uniqueId;
-			var size = aVariable.params.size;
-			//添加到购物车
-			gmzzServer.addSeedCart(id, num, unique, size, function(data) {
-				if (data.status == 200) {
-					var cartId = data.data.cartId;
-					//确认种子订单
-					gmzzServer.confirmSeedOrder(cartId, function(data) {
+			var btnArray = ['是', '否'];
+			mui.confirm("本次操作共消耗积分"+aVariable.ipt.iptTotal.innerText+",确定要支付吗?", "提示", btnArray, function(e) {
+				if (e.index == 0) {
+					aVariable.btn.btnBuy.disabled = true;
+					var id = aVariable.params.seedId;
+					var num = aVariable.ipt.iptNumber.value;
+					var unique = aVariable.params.uniqueId;
+					var size = aVariable.params.size;
+					//添加到购物车
+					gmzzServer.addSeedCart(id, num, unique, size, function(data) {
 						if (data.status == 200) {
-							var orderKey = data.data.orderKey;
-							//生成订单
-							gmzzServer.createSeedOrder(orderKey,aVariable.params.auto, function(data) {
+							var cartId = data.data.cartId;
+							//确认种子订单
+							gmzzServer.confirmSeedOrder(cartId, function(data) {
 								if (data.status == 200) {
-									if (data.data.status == "SUCCESS") {
-										console.log("订单生成成功");
-										console.log(JSON.stringify(data));
-										mui.toast('购买成功');
-										var plant = plus.webview.getWebviewById('plant');
-										mui.fire(plant, 'refreshJifenAndPlant', {});
-										mui.back();
-									} else {
-										aVariable.btn.btnBuy.disabled = false;
-
-										mui.alert(data.msg);
-
-										plus.runtime.getProperty(plus.runtime.appid, function(inf) {
-											if (mui.os.android) {
-												mui.openWindow({
-													id: "chongzhi",
-													url: '/view/wallet/wallet_android.html'
-												});
+									var orderKey = data.data.orderKey;
+									//生成订单
+									gmzzServer.createSeedOrder(orderKey,aVariable.params.auto, function(data) {
+										if (data.status == 200) {
+											if (data.data.status == "SUCCESS") {
+												console.log("订单生成成功");
+												console.log(JSON.stringify(data));
+												mui.toast('购买成功');
+												var plant = plus.webview.getWebviewById('plant');
+												mui.fire(plant, 'refreshJifenAndPlant', {});
+												mui.back();
 											} else {
-												mui.openWindow({
-													id: "chongzhi",
-													url: '/view/wallet/wallet_android.html'
+												aVariable.btn.btnBuy.disabled = false;
+					
+												mui.alert(data.msg);
+					
+												plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+													if (mui.os.android) {
+														mui.openWindow({
+															id: "chongzhi",
+															url: '/view/wallet/wallet_android.html'
+														});
+													} else {
+														mui.openWindow({
+															id: "chongzhi",
+															url: '/view/wallet/wallet_android.html'
+														});
+													}
 												});
 											}
-										});
-									}
+										} else {
+											aVariable.btn.btnBuy.disabled = false;
+											mui.toast(data.msg);
+										}
+									}, function() {
+					
+									});
 								} else {
 									aVariable.btn.btnBuy.disabled = false;
-									mui.toast(data.msg);
+									mui.alert(data.msg);
 								}
 							}, function() {
-
+					
 							});
 						} else {
 							aVariable.btn.btnBuy.disabled = false;
-							mui.alert(data.msg);
+							mui.toast(data.msg);
 						}
 					}, function() {
-
+					
 					});
+					
 				} else {
-					aVariable.btn.btnBuy.disabled = false;
-					mui.toast(data.msg);
+			
 				}
-			}, function() {
-
 			});
+			
+			
 		})
 	},
 	plusReady: function() {

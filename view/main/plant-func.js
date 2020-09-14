@@ -73,97 +73,134 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnWater.addEventListener("tap", function() {
-			var land_id = aVariable.params.landId;
-			if (land_id == '') {
-				mui.toast('请选择需要浇水的土地!');
-				return;
-			}
-			plantServer.JiaoShui(land_id, function(data) {
-					if (data.status == 200) {
-						mui.toast(data.msg);
-						aVariable.list.page.item_page = 1;
-						aVariable.div.divPland.innerHTML = '';
-						aFunc.initData();
-						document.getElementById('popover').style.display = 'none';
-						aFunc.up2Refresh();
-						mui('#div_pland1').pullRefresh().refresh(true);
-					} else {
-
+			var btnArray = ['是', '否'];
+			mui.confirm("确定要浇水吗?", "提示", btnArray, function(e) {
+				if (e.index == 0) {
+					var land_id = aVariable.params.landId;
+					if (land_id == '') {
+						mui.toast('请选择需要浇水的土地!');
+						return;
 					}
-				},
-				function() {
-
-				});
+					plantServer.JiaoShui(land_id, function(data) {
+							if (data.status == 200) {
+								mui.toast(data.msg);
+								aVariable.list.page.item_page = 1;
+								aVariable.div.divPland.innerHTML = '';
+								aFunc.initData();
+								document.getElementById('popover').style.display = 'none';
+								aFunc.up2Refresh();
+								mui('#div_pland1').pullRefresh().refresh(true);
+							} else {
+					
+							}
+						},
+						function() {
+					
+						});
+					
+				} else {
+			
+				}
+			});
+			
+			
 		})
 		aVariable.btn.btnTask.addEventListener("tap", function() {
-			var land_id = aVariable.params.landId;
-			if (land_id == '') {
-				mui.toast('请选择需要施肥的土地!');
-				return;
-			}
-			plantServer.ShiFei(land_id, function(data) {
-					if (data.status == 200) {
-						mui.toast(data.msg);
-						aVariable.list.page.item_page = 1;
-						aFunc.initData();
-						aVariable.div.divPland.innerHTML = '';
-						document.getElementById('popover').style.display = 'none';
-						aFunc.up2Refresh();
-						mui('#div_pland1').pullRefresh().refresh(true);
-					} else {
-
+			var btnArray = ['是', '否'];
+			mui.confirm("确定要施肥吗?", "提示", btnArray, function(e) {
+				if (e.index == 0) {
+					var land_id = aVariable.params.landId;
+					if (land_id == '') {
+						mui.toast('请选择需要施肥的土地!');
+						return;
 					}
-				},
-				function() {
-
-				});
+					plantServer.ShiFei(land_id, function(data) {
+							if (data.status == 200) {
+								mui.toast(data.msg);
+								aVariable.list.page.item_page = 1;
+								aFunc.initData();
+								aVariable.div.divPland.innerHTML = '';
+								document.getElementById('popover').style.display = 'none';
+								aFunc.up2Refresh();
+								mui('#div_pland1').pullRefresh().refresh(true);
+							} else {
+					
+							}
+						},
+						function() {
+					
+						});
+				} else {
+			
+				}
+			});
+			
+			
 		})
 		aVariable.btn.btnOneWater.addEventListener("tap", function() {
-			if (aVariable.params.isWater) {
-				aVariable.params.isWater = false;
-				plantServer.JiaoShuiALL(function(data) {
-						console.log(JSON.stringify(data))
-						if (data.status == 200) {
-							mui.toast(data.msg);
-							aVariable.list.page.item_page = 1;
-							aVariable.div.divPland.innerHTML = '';
-							aFunc.initData();
-							document.getElementById('popover').style.display = 'none';
-							aFunc.up2Refresh();
-							mui('#div_pland1').pullRefresh().refresh(true);
-							aVariable.params.isWater = true;
-						} else {
-							aVariable.params.isWater = true;
-						}
-					},
-					function() {
-						aVariable.params.isWater = true;
-					});
-			}
+			var btnArray = ['是', '否'];
+			mui.confirm("确定要一键浇水吗?", "提示", btnArray, function(e) {
+				if (e.index == 0) {
+					if (aVariable.params.isWater) {
+						aVariable.params.isWater = false;
+						plantServer.JiaoShuiALL(function(data) {
+								console.log(JSON.stringify(data))
+								if (data.status == 200) {
+									mui.toast(data.msg);
+									aVariable.list.page.item_page = 1;
+									aVariable.div.divPland.innerHTML = '';
+									aFunc.initData();
+									document.getElementById('popover').style.display = 'none';
+									aFunc.up2Refresh();
+									mui('#div_pland1').pullRefresh().refresh(true);
+									aVariable.params.isWater = true;
+								} else {
+									aVariable.params.isWater = true;
+								}
+							},
+							function() {
+								aVariable.params.isWater = true;
+							});
+					}
+				} else {
+			
+				}
+			});
+			
+			
 
 		})
 		aVariable.btn.btnOneTask.addEventListener("tap", function() {
-			if (aVariable.params.isTask) {
-				aVariable.params.isTask = false;
-				plantServer.ShiFeiAll(function(data) {
-						console.log(JSON.stringify(data))
-						if (data.status == 200) {
-							mui.toast(data.msg);
-							aVariable.list.page.item_page = 1;
-							aFunc.initData();
-							aVariable.div.divPland.innerHTML = '';
-							document.getElementById('popover').style.display = 'none';
-							aFunc.up2Refresh();
-							mui('#div_pland1').pullRefresh().refresh(true);
-							aVariable.params.isTask = true;
-						} else {
-							aVariable.params.isTask = true;
-						}
-					},
-					function() {
-						aVariable.params.isTask = true;
-					});
-			}
+			var btnArray = ['是', '否'];
+			mui.confirm("确定要一键施肥吗?", "提示", btnArray, function(e) {
+				if (e.index == 0) {
+					if (aVariable.params.isTask) {
+						aVariable.params.isTask = false;
+						plantServer.ShiFeiAll(function(data) {
+								console.log(JSON.stringify(data))
+								if (data.status == 200) {
+									mui.toast(data.msg);
+									aVariable.list.page.item_page = 1;
+									aFunc.initData();
+									aVariable.div.divPland.innerHTML = '';
+									document.getElementById('popover').style.display = 'none';
+									aFunc.up2Refresh();
+									mui('#div_pland1').pullRefresh().refresh(true);
+									aVariable.params.isTask = true;
+								} else {
+									aVariable.params.isTask = true;
+								}
+							},
+							function() {
+								aVariable.params.isTask = true;
+							});
+					}
+				} else {
+			
+				}
+			});
+			
+			
 		})
 
 		aVariable.btn.btnToucai.addEventListener("tap", function() {

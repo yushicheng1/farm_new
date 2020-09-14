@@ -39,27 +39,38 @@ var aFunc = {
 
 
 		aVariable.btn.btnSubmit.addEventListener("tap", function() {
-			var money =parseFloat(aVariable.ipt.iptTxje.value).toFixed(2);
-			if(money>parseFloat(aVariable.params.money)){
-				mui.toast('可提现余额不足');
-			}else{
-				bankServer.extract(money, 'bank',aVariable.params.token, function(data) {
-						if (data.status == 200) {
-							mui.toast(data.msg);
-							var my = plus.webview.getWebviewById('my');
-							mui.fire(my, 'refreshJf', {});
-							//刷新积分界面
-							var main = plus.webview.currentWebview().opener();
-							mui.fire(main, 'getMoney', {});
-							mui.back();
-						} else {
-							mui.toast(data.msg);
-						}
-					},
-					function() {
-				
-					});
-			}
+			aVariable.btn.btnSubmit.disabled=true;
+			var btnArray = ['是', '否'];
+			mui.confirm("确定要提现吗?", "提示", btnArray, function(e) {
+				if (e.index == 0) {
+					var money =parseFloat(aVariable.ipt.iptTxje.value).toFixed(2);
+					if(money>parseFloat(aVariable.params.money)){
+						mui.toast('可提现余额不足');
+						aVariable.btn.btnSubmit.disabled=false;
+					}else{
+						bankServer.extract(money, 'bank',aVariable.params.token, function(data) {
+								if (data.status == 200) {
+									mui.toast(data.msg);
+									var my = plus.webview.getWebviewById('my');
+									mui.fire(my, 'refreshJf', {});
+									//刷新积分界面
+									var main = plus.webview.currentWebview().opener();
+									mui.fire(main, 'getMoney', {});
+									mui.back();
+								} else {
+									mui.toast(data.msg);
+									aVariable.btn.btnSubmit.disabled=false;
+								}
+							},
+							function() {
+						
+							});
+					}
+				} else {
+			aVariable.btn.btnSubmit.disabled=false;
+				}
+			});
+			
 		
 		})
 

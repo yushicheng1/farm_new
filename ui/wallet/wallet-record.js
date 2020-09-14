@@ -28,6 +28,8 @@ aUi.record = {
 			src='../../images/jifen/gm.png';
 		}else if(data.type=='reward'){
 			src='../../images/jifen/zs.png';
+		}else if(data.type=='auto_service'){
+			src='../../images/jifen/tuoguan.png';
 		}else{
 			src='../../images/kongbai.png';
 		}
