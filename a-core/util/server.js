@@ -233,7 +233,42 @@ var aServer = {
 				aServer.closeWating();
 			}
 		});
-	}
+	},
+	//默认请求 无AuthToken
+	executeActionOfServerNew: function(isDebug, methodName, errMsg, postData, success, error) {
+		aUtil.aLog.deb(isDebug, methodName + " postData is " + JSON.stringify(postData));
+		aServer.showWating();
+		var success4Post = function(result) {
+			aServer.closeWating();
+			if (!result) {
+				if (error) error(errMsg);
+			} else {
+				// aUtil.aLog.deb(isDebug, methodName + " return is " + JSON.stringify(result));
+				// if (result.status && (result.status == "200" || result.status == "400")) {
+					console.log(11111111111)
+					success(result);
+				// } else {
+				// 	if(result.status==401){
+				// 		serverError(result);
+				// 	}else{
+				// 		if (error) error(errMsg);
+				// 	}				
+				// }
+			}
+		};
+		mui.ajax(this.ApiUrl + methodName, {
+			data: postData,
+			// dataType: 'json', //服务器返回json格式数据
+			type: 'get', //HTTP请求类型
+			timeout: 10000, //超时时间设置为10秒；
+			success: success4Post,
+			error: function(xhr, type, errorThrown) {
+				if (error) error(xhr.responseText);
+				console.log("" + xhr.status + "  " + xhr.readyState + xhr.responseText);
+				aServer.closeWating();
+			}
+		});
+	},
 
 }
 function serverError(result){

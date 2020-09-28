@@ -19,7 +19,8 @@ var aVariable = {
 		iptRegisterPasswordOne:document.getElementById("ipt-register-passwordOne"),
 		iptRegisterPasswordTwo:document.getElementById("ipt-register-passwordTwo"),
 		iptChkRem:document.getElementById("ipt-chkRem"),
-		iptAgree:document.getElementById("ipt_agree")
+		iptAgree:document.getElementById("ipt_agree"),
+		iptImgCode: document.getElementById("ipt-img-code")
 	},
 	btn: {
 		btnOne:document.getElementById("btn-one"),
@@ -31,7 +32,8 @@ var aVariable = {
 		btnCodeNew:document.getElementById("btn-code-new"),
 		btnUseCode:document.getElementById("btn_user_code"),
 		btnUsePwd:document.getElementById("btn_use_psw"),
-		btnAgreement:document.getElementById("btn_agreement")
+		btnAgreement:document.getElementById("btn_agreement"),
+		btnYzm:document.getElementById("btn_yzm")
 	},
 	div:{
 		itemOne:document.getElementById("itemOne"),

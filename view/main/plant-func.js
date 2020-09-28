@@ -73,16 +73,21 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnWater.addEventListener("tap", function() {
-			var btnArray = ['是', '否'];
-			mui.confirm("确定要浇水吗?", "提示", btnArray, function(e) {
-				if (e.index == 0) {
+			
+			// var btnArray = ['是', '否'];
+			// mui.confirm("确定要浇水吗?", "提示", btnArray, function(e) {
+			// 	if (e.index == 0) {
+				if (aVariable.params.isWaterNew) {
+					aVariable.params.isWaterNew=false;
 					var land_id = aVariable.params.landId;
 					if (land_id == '') {
 						mui.toast('请选择需要浇水的土地!');
+						aVariable.params.isWaterNew=true;
 						return;
 					}
 					plantServer.JiaoShui(land_id, function(data) {
 							if (data.status == 200) {
+								aVariable.params.isWaterNew=true;
 								mui.toast(data.msg);
 								aVariable.list.page.item_page = 1;
 								aVariable.div.divPland.innerHTML = '';
@@ -91,32 +96,35 @@ var aFunc = {
 								aFunc.up2Refresh();
 								mui('#div_pland1').pullRefresh().refresh(true);
 							} else {
-					
+					aVariable.params.isWaterNew=true;
 							}
 						},
 						function() {
-					
+					aVariable.params.isWaterNew=true;
 						});
 					
-				} else {
-			
-				}
-			});
+				} 
+			// });
 			
 			
 		})
 		aVariable.btn.btnTask.addEventListener("tap", function() {
-			var btnArray = ['是', '否'];
-			mui.confirm("确定要施肥吗?", "提示", btnArray, function(e) {
-				if (e.index == 0) {
+			
+			// var btnArray = ['是', '否'];
+			// mui.confirm("确定要施肥吗?", "提示", btnArray, function(e) {
+			// 	if (e.index == 0) {
+				if (aVariable.params.isTaskNew) {
+					aVariable.params.isTaskNew=false;
 					var land_id = aVariable.params.landId;
 					if (land_id == '') {
 						mui.toast('请选择需要施肥的土地!');
+						aVariable.params.isTaskNew=true;
 						return;
 					}
 					plantServer.ShiFei(land_id, function(data) {
 							if (data.status == 200) {
 								mui.toast(data.msg);
+								aVariable.params.isTaskNew=true;
 								aVariable.list.page.item_page = 1;
 								aFunc.initData();
 								aVariable.div.divPland.innerHTML = '';
@@ -124,16 +132,14 @@ var aFunc = {
 								aFunc.up2Refresh();
 								mui('#div_pland1').pullRefresh().refresh(true);
 							} else {
-					
+					aVariable.params.isTaskNew=true;
 							}
 						},
 						function() {
-					
+					aVariable.params.isTaskNew=true;
 						});
-				} else {
-			
 				}
-			});
+			// });
 			
 			
 		})

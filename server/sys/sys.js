@@ -37,10 +37,11 @@ var sysServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServer(this.isDebug, "api/register", "注册失败", data, success, error);
 	},
 
-	getVerify: function(phone, type, success, error) {
+	getVerify: function(phone, capcha, type, success, error) {
 		var data = {
 			'phone': phone,
-			'type': type
+			'type': type,
+			'capcha': capcha
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/verify", "获取失败", data, success, error);
 	},
@@ -80,23 +81,39 @@ var sysServer = mui.extend(aServer || {}, {
 	//获取banner
 	getBanner: function(success, error) {
 		var data = {
-			
+
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/banner", "获取失败", data, success, error);
 	},
 	//获取监控
 	getJiankong: function(success, error) {
 		var data = {
-			
+
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/message/getYSToken", "获取失败", data, success, error);
 	},
-	
+
 	//获取公告
 	getNotice: function(success, error) {
 		var data = {
-			
+
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/message/getNotice", "获取失败", data, success, error);
+	},
+	
+	//获取农场数据
+	getData: function(success, error) {
+		var data = {
+	
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/getdata", "获取失败", data, success, error);
+	},
+
+	//获取图片验证码
+	getYzmImg: function(success, error) {
+		var data = {
+
+		};
+		aServer.executeActionOfServerNew(this.isDebug, "api/verify_code", "获取失败", data, success, error);
 	}
 })

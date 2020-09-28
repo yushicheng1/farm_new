@@ -61,7 +61,9 @@ var aVariable = {
 		isTask:true,
 		isToucai:true,
 		water_token:'',
-		fertilize_token:''
+		fertilize_token:'',
+		isWaterNew:true,
+		isTaskNew:true
 	},
 	list: {
 		page: {

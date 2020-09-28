@@ -89,10 +89,10 @@ var aFunc = {
 		// })
 
 		aVariable.btn.btnSubmit.addEventListener('tap', function(event) {
-			bankServer.getThirdInfo(function(data) {
-				if (data.data.isIdentityChecked) {
-					mui.toast('您已实名认证');
-				} else {
+			// bankServer.getThirdInfo(function(data) {
+			// 	if (data.data.isIdentityChecked) {
+			// 		mui.toast('您已实名认证');
+			// 	} else {
 					var name = aVariable.ipt.iptName.value;
 					var idNo = aVariable.ipt.iptIdCard.value;
 					if (name == "") {
@@ -114,10 +114,10 @@ var aFunc = {
 					}, function() {
 
 					});
-				}
-			}, function() {
+			// 	}
+			// }, function() {
 
-			});
+			// });
 
 		})
 	},
