@@ -24,6 +24,7 @@ var aVariable = {
 		
 	},
 	value:{
-		code:true
+		code:true,
+		suiji:0
 	}
 };

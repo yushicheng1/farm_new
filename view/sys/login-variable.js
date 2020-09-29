@@ -49,6 +49,7 @@ var aVariable = {
 		version:0,
 		version_new:0,
 		url:'',
-		desc:''
+		desc:'',
+		suiji:0
 	}
 };

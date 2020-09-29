@@ -37,11 +37,12 @@ var sysServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServer(this.isDebug, "api/register", "注册失败", data, success, error);
 	},
 
-	getVerify: function(phone, capcha, type, success, error) {
+	getVerify: function(phone, capcha,code, type, success, error) {
 		var data = {
 			'phone': phone,
 			'type': type,
-			'capcha': capcha
+			'capcha': capcha,
+			'code':code
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/verify", "获取失败", data, success, error);
 	},

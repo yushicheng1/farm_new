@@ -9,11 +9,13 @@ var aFunc = {
 		});
 
 		aVariable.btn.btnYzm.addEventListener('tap', function(event) {
-			sysServer.getYzmImg(function(data) {
-				aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code';
-			}, function() {
+			aVariable.value.suiji=Math.random();
+			// sysServer.getYzmImg(function(data) {
+				aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code?code='+aVariable.value.suiji; 
+				// aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code'
+			// }, function() {
 
-			});
+			// });
 		})
 
 		//验证码
@@ -37,7 +39,7 @@ var aFunc = {
 				}
 
 
-				sysServer.getVerify(phone, code, 'reset', function(data) {
+				sysServer.getVerify(phone, code,aVariable.value.suiji, 'reset', function(data) {
 					console.log(JSON.stringify(data))
 					if (data.status == "400") {
 						mui.toast(data.msg);
@@ -99,6 +101,9 @@ var aFunc = {
 		})
 	},
 	initData: function() {
+		var random=Math.random();
+		aVariable.value.suiji=random;
+		aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code?code='+aVariable.value.suiji; 
 		// var account = LocalStorage.getItem(LocalStorage.keys.account);
 		// var password = LocalStorage.getItem(LocalStorage.keys.password);
 		// if(account && password) {
@@ -112,7 +117,7 @@ var aFunc = {
 			plus.screen.lockOrientation("portrait-primary");
 			aVariable.webview.current = plus.webview.currentWebview();
 		}
-		// aFunc.initData();
+		aFunc.initData();
 		// 绑定事件
 		aFunc.bindEvent();
 	},

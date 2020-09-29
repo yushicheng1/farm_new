@@ -96,11 +96,8 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnYzm.addEventListener('tap', function(event) {
-			sysServer.getYzmImg(function(data) {
-				aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code';
-			}, function() {
-
-			});
+			aVariable.value.suiji = (Math.random() * 1000000).toFixed(0);
+			aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code?code=' + aVariable.value.suiji;
 		})
 		//登录验证码
 		aVariable.btn.btnCodeNew.addEventListener('tap', function(event) {
@@ -150,7 +147,7 @@ var aFunc = {
 					return;
 				}
 
-				sysServer.getVerify(phone, code, 'register', function(data) {
+				sysServer.getVerify(phone, code, aVariable.value.suiji,'register', function(data) {
 					console.log(JSON.stringify(data))
 					if (data.status == "400") {
 						mui.toast(data.msg);
@@ -428,6 +425,10 @@ var aFunc = {
 			// aVariable.ipt.iptAccount.value = '';
 			// aVariable.ipt.iptPassword.value = '';
 		}
+		
+		var random=Math.random();
+		aVariable.value.suiji=(Math.random()*1000000).toFixed(0);
+		aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code?code='+aVariable.value.suiji; 
 	},
 	plusReady: function() {
 		// if (mui.os.plus) {
