@@ -28,7 +28,7 @@ aUi.tradingList = {
 								'<p style="color: black;font-size: 11px;"><span>库存:</span><span>'+data.stock+'</span><span>'+data.unit_name+'</span></p>'+
 								// '<p style="color: black;font-size: 11px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
 								// '<p style="color: black;font-size: 11px;"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span>'+
-								'<p style="color: #FF5053;font-size: 15px;"><span>'+data.price+'</span><button data-id="'+data.id+'" data-name="'+data.name+'"  data-price="'+data.price+'" data-image="'+data.image+'" data-stock="'+data.stock+'" data-unit="'+data.unit_name+'" data-dis="'+data.description+'" type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>'+							
+								'<p style="color: #FF5053;font-size: 15px;"><span>'+data.price+'</span><button data-id="'+data.id+'" data-name="'+data.name+'"  data-price="'+data.price+'" data-image="'+data.image+'" data-stock="'+data.stock+'" data-unit="'+data.unit_name+'"  type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>'+							
 							'</div>'+
 						'</div>'+
 					'</li>';

@@ -6,6 +6,7 @@ var aFunc = {
 		aVariable.ipt.iptTotal.innerText = aVariable.params.total;
 		warehouseServer.getPostDetail(aVariable.params.order_id,function(data) {
 				if (data.status == 200) {
+					aVariable.ipt.iptUnit.innerText=data.data[0].unit;
 					aVariable.box.recordList.innerHTML = aUi.yfh.detailList(data.data);
 				} else {
 					

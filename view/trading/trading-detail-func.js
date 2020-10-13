@@ -13,7 +13,16 @@ function accMul(num1, num2) {
 }
 
 var aFunc = {
-	initData: function() {
+	initData: function() {		
+		tradingListServer.getTradingDetails(aVariable.params.exchange_info_id,function(data) {
+			if (data.status == 200) {
+				aVariable.ipt.iptDis.innerHTML = data.data.description;
+			} else {
+				
+			}
+		}, function() {
+		
+		});
 		aVariable.ipt.iptName.innerText = aVariable.params.name;
 		aVariable.ipt.iptStock.innerText = aVariable.params.stock;
 		aVariable.ipt.iptPrice.innerText = aVariable.params.price;

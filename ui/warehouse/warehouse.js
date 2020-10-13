@@ -9,7 +9,7 @@ aUi.warehouse = {
 		//剩余时间
 		var remaindTime=formatSeconds(data.remaind_time);
 
-		var html = '<li class="mui-table-view-cell mui-collapse">'+
+		var html = '<li class="mui-table-view-cell mui-collapse" data-id="'+data.id+'" data-sum="'+data.num+'">'+
 						'<div class="detail">'+
 							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 100px;height: 80px;border-radius: 10px;" data-type="0" onerror="nofind(this)">'+
 							'<div class="mui-media-body">'+

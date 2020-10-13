@@ -1,9 +1,24 @@
 var aFunc = {
 	initData: function() {
-		$('#countdown17').ClassyCountdown({
-			theme: "flat-colors-very-wide",
-			end: '1'
+		sysServer.getData(function(data) {
+			if (data.status == 200) {
+				$('#countdown17').ClassyCountdown({
+					theme: "flat-colors-very-wide",
+					end: '1',
+					wendu:data.data.temperature,
+					shidu:data.data.humidity,
+					eyht:data.data.ppm,
+					shiwai:data.data.out_temperature,
+					
+				});
+			} else {
+		
+		
+			}
+		}, function() {
+		
 		});
+		
 		sysServer.getNotice(function(data) {
 			if (data.status == 200) {
 				aVariable.params.number=data.data.length;
@@ -19,25 +34,25 @@ var aFunc = {
 		});
 
 
-		sysServer.getBanner(function(data) {
-			if (data.status == 200) {
-				var imgLen = data.data.length;
-				if (imgLen > 1) {
-					var sliderInfo = aUi.main.sliderInfo(data.data);
-					//轮播图  ---动态生成
-					var outputimg = sliderInfo.item;
-					var outputright = sliderInfo.indicator;
-					aVariable.box.sliderImg.innerHTML = outputimg;
-					mui('#slider_one').slider({
-						interval: 2000
-					});
-				} else {
+		// sysServer.getBanner(function(data) {
+		// 	if (data.status == 200) {
+		// 		var imgLen = data.data.length;
+		// 		if (imgLen > 1) {
+		// 			var sliderInfo = aUi.main.sliderInfo(data.data);
+		// 			//轮播图  ---动态生成
+		// 			var outputimg = sliderInfo.item;
+		// 			var outputright = sliderInfo.indicator;
+		// 			aVariable.box.sliderImg.innerHTML = outputimg;
+		// 			mui('#slider_one').slider({
+		// 				interval: 2000
+		// 			});
+		// 		} else {
 
-				}
-			}
-		}, function() {
+		// 		}
+		// 	}
+		// }, function() {
 
-		});
+		// });
 
 		sysServer.getSeedHot(1, function(data) {
 			if (data.status == 200) {

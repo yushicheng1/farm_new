@@ -284,8 +284,8 @@ var aFunc = {
 							aVariable.params.landId = landId;
 							aVariable.params.seedId = seedId;
 							this.style.border = 'solid 3px greenyellow';
-							mui("#popover").popover('hide')
-							mui("#popover").popover('toggle', this)
+							mui("#popover").popover('hide');
+							mui("#popover").popover('toggle', this);
 						});
 					} else {
 

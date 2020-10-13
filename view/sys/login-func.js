@@ -1,9 +1,5 @@
 var isnew = 1;
 var aFunc = {
-	verifyValue: function() {
-		//@TODO 增加校验内容
-		return true;
-	},
 	back: function() {
 		mui.back = function(event) {
 			aVariable.ipt.backButtonPress++;
@@ -19,24 +15,6 @@ var aFunc = {
 		};
 	},
 	bindEvent: function() {
-		// aVariable.btn.btnUseCode.addEventListener('tap', function() {
-		// 	aVariable.div.itemThree.hidden = '';
-		// 	aVariable.div.itemOne.hidden = 'hidden';
-		// 	aVariable.value.loginWay = 'code';
-		// });
-
-		// aVariable.btn.btnUsePwd.addEventListener('tap', function() {
-		// 	aVariable.div.itemOne.hidden = '';
-		// 	aVariable.div.itemThree.hidden = 'hidden';
-		// 	aVariable.value.loginWay = 'psw';
-		// });
-		//  aVariable.ipt.iptAccount.addEventListener('tap',function(){
-		////          aVariable.ipt.iptAccount.scrollIntoView(true);
-		////          aVariable.ipt.iptPassword.scrollIntoView(true);
-		//          aVariable.box.logotop.scrollIntoView(true);
-		//          window.scrollBy(0,-200);
-		////          console.log($(window).scrollTop());
-		//  });
 		aVariable.btn.btnOne.addEventListener('tap', function(event) {
 			aVariable.btn.btnOne.style.fontSize = '20px';
 			aVariable.btn.btnTwo.style.fontSize = '16px';
@@ -50,12 +28,6 @@ var aFunc = {
 			aVariable.div.divRegister.hidden = 'hidden';
 		})
 		aVariable.btn.btnTwo.addEventListener('tap', function(event) {
-			// sysServer.getYzmImg(function(data) {		
-			// 	aVariable.btn.btnYzm.src=data;
-			// }, function() {
-
-			// });
-
 			aVariable.btn.btnOne.style.fontSize = '16px';
 			aVariable.btn.btnTwo.style.fontSize = '20px';
 			aVariable.btn.btnOne.style.color = '#9fb2c7';
@@ -69,19 +41,6 @@ var aFunc = {
 			aVariable.div.divRegister.hidden = '';
 		})
 		aVariable.btn.btnForgetPsw.addEventListener('tap', function(event) {
-			// 	//    aVariable.btn.btnOne.hidden="hidden";
-			// 	// aVariable.btn.btnTwo.hidden="hidden";
-			// 	// aVariable.btn.btnThree.hidden=""; 
-			// 	// aVariable.btn.btnOne.style.fontSize='20px';
-			// 	// aVariable.btn.btnTwo.style.fontSize='16px';
-			// 	// aVariable.btn.btnOne.style.color='#1c1b1b';
-			// 	// aVariable.btn.btnTwo.style.color='#9fb2c7';
-			// 	// aVariable.div.itemOne.hidden='hidden';
-			// 	// aVariable.div.itemTwo.hidden='hidden';
-			// 	// aVariable.div.itemThree.hidden='';
-			// 	// aVariable.div.divLogin.hidden='hidden';
-			// 	// aVariable.div.divRegister.hidden='hidden';
-			// 	// aVariable.div.divEdit.hidden='';
 			mui.openWindow({
 				id: 'forget',
 				url: 'forget.html'
@@ -431,11 +390,11 @@ var aFunc = {
 		aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code?code='+aVariable.value.suiji; 
 	},
 	plusReady: function() {
-		// if (mui.os.plus) {
-		// 	plus.navigator.closeSplashscreen();
-		// 	plus.screen.lockOrientation("portrait-primary");
-		// 	aVariable.webview.current = plus.webview.currentWebview();
-		// }
+		if (mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			// plus.screen.lockOrientation("portrait-primary");
+			// aVariable.webview.current = plus.webview.currentWebview();
+		}
 		aFunc.initData();
 		// 绑定事件
 		aFunc.bindEvent();
@@ -474,37 +433,7 @@ var aFunc = {
 		setTimeout("aFunc.freshBtnNew(" + num + ")", 1000);
 	}
 };
-// var getSmsBtn = document.getElementById('btn-code');
-// function freshBtn(num){
-//     num--;
-//     if(num == 0){
-//         getSmsBtn.value = "重新发送" ;
-//         // aVariable.value.code = false;
-//         num = 120;
-//         getSmsBtn.removeAttribute("disabled");
-//         return false;
-//     }else{
-//         //var sec_counts = 120-num;
-//         getSmsBtn.value = "获取验证码("+num+")";
-//     }
-//     setTimeout("freshBtn("+num+")",1000);
-// }
 
-// var getSmsBtnNew = document.getElementById('btn-code-new');
-// function freshBtnNew(num){
-//     num--;
-//     if(num == 0){
-//         getSmsBtnNew.value = "重新发送" ;
-//         // hasSendSms = false;
-//         num = 60;
-//         getSmsBtnNew.removeAttribute("disabled");
-//         return false;
-//     }else{
-//         //var sec_counts = 120-num;
-//         getSmsBtnNew.value = "获取验证码("+num+")";
-//     }
-//     setTimeout("freshBtnNew("+num+")",1000);
-// }
 function autoLogin() {
 	var time = Date.parse(new Date()) / 1000;
 	var outTime = LocalStorage.getItem(LocalStorage.keys.Expires_Time);
@@ -512,6 +441,7 @@ function autoLogin() {
 	console.log(time);
 	if (outTime) {
 		if (time < outTime) {
+			console.log(11111111111111111111111)
 			mui.openWindow({
 				id: 'main',
 				url: '../../view/main/main.html',
@@ -522,18 +452,8 @@ function autoLogin() {
 			});
 		} else {
 			mui.toast("自动登录已过期,请重新登录");
+			console.log(22222222222222)
 		}
 	}
 }
 
-function getObjectURL(file) {
-	var url = null;
-	if (window.createObjcectURL != undefined) {
-		url = window.createOjcectURL(file);
-	} else if (window.URL != undefined) {
-		url = window.URL.createObjectURL(file);
-	} else if (window.webkitURL != undefined) {
-		url = window.webkitURL.createObjectURL(file);
-	}
-	return url;
-}

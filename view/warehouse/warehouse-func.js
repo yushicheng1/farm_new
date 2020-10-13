@@ -91,6 +91,22 @@ var aFunc = {
 
 			}
 		});
+		
+		// mui(aVariable.box.scroll).on("tap", "li", function(e) {
+		// 	var vegetablesId = this.getAttribute("data-id");
+		// 	var sum = this.getAttribute("data-sum");
+		// 	warehouseServer.recycle(vegetablesId, sum, function(data) {
+		// 			if (data.status == 200) {
+		// 				mui.toast("回收成功");
+		// 				aFunc.down2Refresh();
+		// 			} else {
+						
+		// 			}
+		// 		},
+		// 		function() {
+			
+		// 		});		
+		// });
 
 		aVariable.btn.btnWarehouseRecord.addEventListener("tap", function() {
 			mui.openWindow({

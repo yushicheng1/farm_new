@@ -62,7 +62,8 @@ var aFunc = {
 			// aVariable.webview.listComponent = refreshComponent;
 			var pages = aVariable.list.page.item_page;
 			var size = aVariable.list.page.item_num;
-			var name = aVariable.ipt.iptSearch.value;
+			// var name = aVariable.ipt.iptSearch.value;
+			var name = '';
 			tradingListServer.getTradingList(pages, size, name, function(data) {
 				if (data.status == 200) {
 					aVariable.box.tradingList.innerHTML += aUi.tradingList.tradingList(data.data);
@@ -81,7 +82,8 @@ var aFunc = {
 		aVariable.box.tradingList.innerHTML = "";
 		var pages = aVariable.list.page.item_page;
 		var size = aVariable.list.page.item_num;
-		var name = aVariable.ipt.iptSearch.value;
+		// var name = aVariable.ipt.iptSearch.value;
+		var name = '';
 		setTimeout(function() {
 			tradingListServer.getTradingList(pages, size, name, function(data) {
 				if (data.status == 200) {

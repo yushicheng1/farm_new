@@ -5,24 +5,42 @@ var aFunc = {
 				$('#countdown17').ClassyCountdown({
 					theme: "flat-colors-very-wide",
 					end: '1',
-					wendu:data.data.temperature,
-					shidu:data.data.humidity,
-					eyht:data.data.ppm,
-					shiwai:data.data.out_temperature,
-					
+					wendu: data.data.temperature,
+					shidu: data.data.humidity,
+					eyht: data.data.ppm,
+					shiwai: data.data.out_temperature
 				});
 			} else {
-		
-		
+
+
 			}
 		}, function() {
-		
+
 		});
-		
+		setInterval(function() {
+			document.getElementById('countdown17').innerHTML = '';
+			sysServer.getData(function(data) {
+				if (data.status == 200) {
+					$('#countdown17').ClassyCountdown({
+						theme: "flat-colors-very-wide",
+						end: '1',
+						wendu: data.data.temperature,
+						shidu: data.data.humidity,
+						eyht: data.data.ppm,
+						shiwai: data.data.out_temperature
+					});
+				} else {
+
+
+				}
+			}, function() {
+
+			});
+		}, 600000);
 		sysServer.getNotice(function(data) {
 			if (data.status == 200) {
-				aVariable.params.number=data.data.length;
-				if(data.data.length>0){
+				aVariable.params.number = data.data.length;
+				if (data.data.length > 0) {
 					alertTwo(data.data);
 				}
 			} else {
@@ -34,25 +52,25 @@ var aFunc = {
 		});
 
 
-		// sysServer.getBanner(function(data) {
-		// 	if (data.status == 200) {
-		// 		var imgLen = data.data.length;
-		// 		if (imgLen > 1) {
-		// 			var sliderInfo = aUi.main.sliderInfo(data.data);
-		// 			//轮播图  ---动态生成
-		// 			var outputimg = sliderInfo.item;
-		// 			var outputright = sliderInfo.indicator;
-		// 			aVariable.box.sliderImg.innerHTML = outputimg;
-		// 			mui('#slider_one').slider({
-		// 				interval: 2000
-		// 			});
-		// 		} else {
+		sysServer.getBanner(function(data) {
+			if (data.status == 200) {
+				var imgLen = data.data.length;
+				if (imgLen > 1) {
+					var sliderInfo = aUi.main.sliderInfo(data.data);
+					//轮播图  ---动态生成
+					var outputimg = sliderInfo.item;
+					var outputright = sliderInfo.indicator;
+					aVariable.box.sliderImg.innerHTML = outputimg;
+					mui('#slider_one').slider({
+						interval: 2000
+					});
+				} else {
 
-		// 		}
-		// 	}
-		// }, function() {
+				}
+			}
+		}, function() {
 
-		// });
+		});
 
 		sysServer.getSeedHot(1, function(data) {
 			if (data.status == 200) {
@@ -83,11 +101,11 @@ var aFunc = {
 			// 	id: "jiankong",
 			// 	url: '../sys/jiankong.html'
 			// });
-			
-			// mui.openWindow({
-			// 	id: "trading",
-			// 	url: '../trading/trading-list.html'
-			// });
+
+			mui.openWindow({
+				id: "trading",
+				url: '../trading/trading-list.html'
+			});
 			// mui.openWindow({
 			// 	id: "my",
 			// 	url: '../my/my.html'
@@ -127,20 +145,20 @@ var aFunc = {
 				});
 			// mui.toast("暂未开放")
 		});
-		
-		aVariable.btn.btnService.addEventListener("tap",function(){
+
+		aVariable.btn.btnService.addEventListener("tap", function() {
 			mui.openWindow({
 				id: 'service-agreement',
 				url: '../sys/service-agreement.html'
 			});
-		},false);
-		aVariable.btn.btnPrivacy.addEventListener("tap",function(){
+		}, false);
+		aVariable.btn.btnPrivacy.addEventListener("tap", function() {
 			// mui.toast("展示隐私协议");
 			mui.openWindow({
 				id: 'privacy-agreement',
 				url: '../sys/privacy-agreement.html'
 			});
-		},false);
+		}, false);
 
 		//查看详情
 		mui(aVariable.div.divRt).on("tap", "div", function(e) {
@@ -185,20 +203,21 @@ var aFunc = {
 };
 
 
-var i=0;
-function alertTwo(data){
-	mui.alert(data[i].msg,data[i].title,'下一条',function(){
-		i=i+1;
-		if(i==aVariable.params.number-1){
-			alertThree(data[i]);			
-		}else{
+var i = 0;
+
+function alertTwo(data) {
+	mui.alert(data[i].msg, data[i].title, '下一条', function() {
+		i = i + 1;
+		if (i == aVariable.params.number - 1) {
+			alertThree(data[i]);
+		} else {
 			alertTwo(data);
-		}		
-		});
+		}
+	});
 }
 
-function alertThree(data){
-	mui.alert(data.msg,data.title,'关闭',function(){
-		
-		});
+function alertThree(data) {
+	mui.alert(data.msg, data.title, '关闭', function() {
+
+	});
 }

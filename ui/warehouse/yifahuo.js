@@ -20,7 +20,7 @@ aUi.yfh = {
 								'<div style="height: 43px;">'+
 									'<p style="overflow: hidden;height: 40px;color: #11872a;">'+name+'</p>'+
 								'</div>'+
-								'<p style="font-size: 13px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">公斤</span><span style="float: right;font-size: 15px;">'+data.total_num+'</span></p>'+
+								'<p style="font-size: 13px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">'+data.unit+'</span><span style="float: right;font-size: 15px;">'+data.total_num+'</span></p>'+
 								'<p style="font-size: 13px;color: #000000;"><span>配送方式:</span><span style="float:right">快递包邮</span></p>'+
 							'</div>'+
 						'</div>'+
@@ -51,7 +51,7 @@ aUi.yfh = {
 									'<p style="overflow: hidden;color: #11872a;font-size: 18px;">'+data.vegetable_name+'</p>'+
 									'<p style="color: #8f8f94;font-size: 12px;margin-top: 5px;"><span>种植日期:</span><span>'+plantTime+'</span></p>'+
 									'<p style="color: #8f8f94;font-size: 12px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
-								'<p style="font-size: 12px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">公斤</span><span style="float: right;font-size: 15px;">'+data.num+'</span></p>'+
+								'<p style="font-size: 12px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">'+data.unit+'</span><span style="float: right;font-size: 15px;">'+data.num+'</span></p>'+
 								'<p style="font-size: 12px;color: #000000;margin-top: 3px;"><span>配送方式:</span><span style="float:right">快递包邮</span></p>'+
 							'</div>'+
 						'</div>'+

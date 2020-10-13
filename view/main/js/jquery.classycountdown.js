@@ -115,7 +115,7 @@
                 width: '100%',
                 displayInput: false,
                 readOnly: true,
-                max: 100
+                max: 1000
             }, settings.style.minutes.gauge));
             element.find('.ClassyCountdown-seconds input').knob($.extend({
                 width: '100%',
@@ -165,11 +165,11 @@
             element.find('.ClassyCountdown-days input').val(options.wendu).trigger('change');
             element.find('.ClassyCountdown-hours input').val(options.shidu).trigger('change');
             element.find('.ClassyCountdown-minutes input').val(options.eyht).trigger('change');
-            element.find('.ClassyCountdown-seconds input').val(18).trigger('change');
+            element.find('.ClassyCountdown-seconds input').val(options.shiwai).trigger('change');
             element.find('.ClassyCountdown-days .ClassyCountdown-value > div').html(options.wendu+'℃');
             element.find('.ClassyCountdown-hours .ClassyCountdown-value > div').html(options.shidu+'%');
-            element.find('.ClassyCountdown-minutes .ClassyCountdown-value > div').html(options.eyht+'%');
-            element.find('.ClassyCountdown-seconds .ClassyCountdown-value > div').html(18+'℃');
+            element.find('.ClassyCountdown-minutes .ClassyCountdown-value > div').html(options.eyht);
+            element.find('.ClassyCountdown-seconds .ClassyCountdown-value > div').html(options.shiwai+'℃'); 
         }
         
         function doResponsive() {

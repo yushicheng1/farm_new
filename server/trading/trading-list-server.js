@@ -14,6 +14,14 @@ var tradingListServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServerGET(this.isDebug, "api/trading/list", "获取失败", data, success, error);
 	},
 	
+	//获取交易大厅详情
+	getTradingDetails: function(id,success, error) {
+		var data = {
+		
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/trading/details/"+id, "获取失败", data, success, error);
+	},
+	
 	//购买
 	tradingBuy: function(id,num,address_id,success, error) {
 		var data = {

@@ -11,6 +11,7 @@ var aVariable = {
 	},
 	ipt: {
 		iptName: document.getElementById("ipt_name"),
+		iptUnit: document.getElementById("ipt_unit"),
 		iptPhone: document.getElementById("ipt_phone"),
 		iptAddress: document.getElementById("ipt_address"),
 		iptTotal: document.getElementById("ipt_total")

@@ -5,8 +5,8 @@
     /*"fullscreen":true,*/
     "name" : "大农主", /*应用名称，程序桌面图标名称*/
     "version" : {
-        "name" : "1.4.1", /*应用版本名称*/
-        "code" : 38
+        "name" : "1.4.4", /*应用版本名称*/
+        "code" : 41
     },
     "description" : "", /*应用描述信息*/
     "icons" : {
@@ -113,7 +113,7 @@
             }
         },
         "splashscreen" : {
-            "autoclose" : false, /*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+            "autoclose" : true, /*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
             "waiting" : false,
             "delay" : 0
         },
