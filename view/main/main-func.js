@@ -96,7 +96,7 @@ var aFunc = {
 			});
 		});
 		aVariable.btn.btnJydt.addEventListener("tap", function() {
-			mui.toast('暂未开放')
+			// mui.toast('暂未开放')
 			// mui.openWindow({
 			// 	id: "jiankong",
 			// 	url: '../sys/jiankong.html'

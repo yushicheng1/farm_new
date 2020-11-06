@@ -46,19 +46,39 @@
 			</div>
 			<div style="width: 95% ;margin-left: 2%;">
 				<ul class="mui-table-view" id="record_list" style="margin-top: 8px;border-radius: 8px;">
+					<!-- <li class="mui-table-view-cell mui-collapse" style="background-image: url(../../images/nongchang/wxz.png);background-size: 100% 100%;" data-id="'+data.id+'" data-num="'+data.num+'" data-choose="0">
+									<div class="detail">
+										<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 100px;height: 80px;border-radius: 10px;" data-type="0" onerror="nofind(this)">
+										<div class="mui-media-body">
+											<p><span style="color: green;font-size: 15px;"><b>西红柿</b></span></p>
+											<p style="font-size: 13px;"><span>剩余量:</span><span></span></p>
+											<p style="font-size: 13px;"><span>产地:</span><span></span></p>
+											<p><span style="font-size: 18px;color: #000000;"></span><input style="float: right;width: 100%;text-align: right;border: 0;" id="123" type="number" onkeyup="clearNoNum(this)"  placeholder="请填写邮寄数量"/></p>
+										</div>
+									</div>
+								</li> -->
 					<!-- <li class="mui-table-view-cell mui-media">
-						<div style="height: 122px;">
+						<div style="height: 100px;">
+							<img class="mui-media-object mui-pull-left" id="ipt_image" src=""  onerror="this.src='../../images/kongbai.jpg'"  style="max-width: 100px;height: 100px;border-radius: 10px;">
+							<div class="mui-media-body">
+								<p style="float: right;"><span style="color: green;font-size: 18px;" id="ipt_plant_name">西红柿</span></p>
+								<p style="float: right;font-size: 16px;color: #000000;padding-right: 14px;"><span>剩余量:</span><span id="ipt_sum"></span><span>公斤</span></p>
+								<p style="float: right;font-size: 16px;color: #000000;padding-right: 14px;"><span>产地:</span><span id="ipt_sum"></span><span>公斤</span></p>
+								<p><span style="font-size: 18px;color: #000000;"></span><input style="float: right;width: 100%;text-align: right;border: 0;" id="123" type="number" onkeyup="clearNoNum(this)"  placeholder="请填写邮寄数量"/></p>
+							</div>
+						</div>
+						
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<div style="height: 100px;">
 							<img class="mui-media-object mui-pull-left" id="ipt_image" src=""  onerror="this.src='../../images/kongbai.jpg'"  style="max-width: 100px;height: 100px;border-radius: 10px;">
 							<div class="mui-media-body">
 								<p><span style="color: green;font-size: 18px;" id="ipt_plant_name"></span></p>
-								<p><span>种植日期:</span><span id="ipt_plant"></span></p>
-								<p><span>收获日期:</span><span id="ipt_get"></span></p>
-								<p><span>剩余量:</span><span id="ipt_sum"></span><span>公斤</span></p>
+								<p style="float: right;font-size: 16px;color: #000000;padding-right: 14px;"><span >剩余量:</span><span id="ipt_sum"></span><span>公斤</span></p>
+								<p><span style="font-size: 18px;color: #000000;"></span><input style="float: right;width: 100%;text-align: right;border: 0;" id="123" type="number" onkeyup="clearNoNum(this)"  placeholder="请填写邮寄数量"/></p>
 							</div>
 						</div>
-						<div class="peoplewarp">
-							<p><span style="font-size: 18px;color: #000000;position: relative;top: 12px;">邮寄数量</span><input style="float: right;width: 60%;text-align: right;border: 0;" id="ipt_num" type="number" placeholder="请填写邮寄数量"/></p>
-						</div>
+						
 					</li> -->
 				</ul>
 			</div>
