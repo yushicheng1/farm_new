@@ -153,5 +153,11 @@ var bankServer = mui.extend(aServer || {}, {
 	getThirdInfo: function(success, error) {
 		var data = {};
 		aServer.executeActionOfServerGET(this.isDebug, "api/user/getThirdInfo", "获取失败", data, success, error);
-	}
+	},
+	
+	//查询第三方电子协议签订结果
+	 signContractQuery: function(success, error) {
+	  var data = {};
+	  aServer.executeActionOfServerGET(this.isDebug, "api/user/signContractQuery", "获取失败", data, success, error);
+	 }
 })

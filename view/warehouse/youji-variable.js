@@ -9,7 +9,10 @@ var aVariable = {
 	btn: {
 		btnChoose: document.getElementById("btn_choose"),
 		btnChooseNew: document.getElementById("btn_choose_new"),
-		btnYouji: document.getElementById("btn_youji")
+		btnYouji: document.getElementById("btn_youji"),
+		btnShandong: document.getElementById("btn_shandong"),
+		btnYunnan: document.getElementById("btn_yunnan"),
+		btnHainan: document.getElementById("btn_hainan")
 	},
 	ipt: {
 		iptPlantName: document.getElementById("ipt_plant_name"),
@@ -21,7 +24,9 @@ var aVariable = {
 		iptPhone: document.getElementById("ipt_phone"),
 		iptAddress: document.getElementById("ipt_address"),
 		iptImage: document.getElementById("ipt_image"),
-		iptYunfei: document.getElementById("ipt_yunfei")
+		iptYunfei: document.getElementById("ipt_yunfei"),
+		iptTishi: document.getElementById("ipt_tishi"),
+		iptChandi: document.getElementById("warehouse_record")
 	},
 	params: {
 		vegetablesId:'',
@@ -31,6 +36,7 @@ var aVariable = {
 		plant:'',
 		get:'',
 		image:'',
-		sendList:[]
+		sendList:[],
+		chandi:0
 	},
 };

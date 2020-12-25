@@ -16,7 +16,7 @@ var aFunc = {
 				return;
 			}
 			
-			if(num>aVariable.params.sum){
+			if(parseFloat(num)>parseFloat(aVariable.params.sum)){
 				mui.toast("回收数量超出剩余量!");
 				return;
 			}

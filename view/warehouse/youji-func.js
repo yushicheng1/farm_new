@@ -7,7 +7,7 @@ var aFunc = {
 		warehouseServer.getMyStore(0,0,function(data) {
 				if (data.status == 200) {
 					// console.log(JSON.stringify(data.data));
-					aVariable.box.recordList.innerHTML = aUi.warehouse.youJiList(data.data);
+					aVariable.box.recordList.innerHTML = aUi.warehouse.youJiListOne(data.data);
 					// mui(aVariable.box.recordList).on("tap", "li", function(e) {
 					// 	if (this.getAttribute("data-choose") == 0) {
 					// 		this.style.backgroundImage = 'url(../../images/nongchang/yxz.png)';
@@ -24,21 +24,130 @@ var aFunc = {
 			function() {
 
 			});
+			
+			warehouseServer.getPostRule(0,function(data){
+			    if(data.status == 200){
+			     aVariable.ipt.iptTishi.innerText=data.data.price+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
+			     
+			    }
+			    
+			   },function(){
+			    
+			   })
 	},
 	bindEvent: function() {
 		aVariable.btn.btnChoose.addEventListener("tap", function() {
 			mui.openWindow({
 				id: "waddress",
-				url: 'address.html'
+				url: 'address.html',
+				extras:{
+					chandi:aVariable.params.chandi
+				}
 			});
 		})
 
 		aVariable.btn.btnChooseNew.addEventListener("tap", function() {
 			mui.openWindow({
 				id: "waddress",
-				url: 'address.html'
+				url: 'address.html',
+				extras:{
+					chandi:aVariable.params.chandi
+				}
 			});
 		})
+		
+		aVariable.btn.btnShandong.addEventListener("tap", function() {
+			mui('#popover').popover('hide');
+			aVariable.params.chandi=0;
+			aVariable.ipt.iptChandi.innerText ='当前产地:山东';
+			aVariable.ipt.iptAddress.innerText ='';
+			aVariable.btn.btnChoose.hidden = "hidden";
+			aVariable.btn.btnChooseNew.hidden = "";
+			aVariable.params.addressId='';
+			// aVariable.ipt.iptTishi.innerText='甘肃、海南、青海、云南、黑龙江14元,新疆17元';
+			warehouseServer.getMyStore(0,0,function(data) {
+					if (data.status == 200) {
+						aVariable.box.recordList.innerHTML = aUi.warehouse.youJiListOne(data.data);				
+					} else {
+						aVariable.box.recordList.innerHTML = ''
+					}
+				},
+				function() {
+			
+				});
+				
+				warehouseServer.getPostRule(0,function(data){
+				    if(data.status == 200){
+				     aVariable.ipt.iptTishi.innerText=data.data.price+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
+				     
+				    }
+				    
+				   },function(){
+				    
+				   })
+		})
+		
+		aVariable.btn.btnYunnan.addEventListener("tap", function() {
+			mui('#popover').popover('hide');
+			aVariable.params.chandi=1;
+			aVariable.ipt.iptChandi.innerText ='当前产地:云南';
+			aVariable.ipt.iptAddress.innerText ='';
+			aVariable.btn.btnChoose.hidden = "hidden";
+			aVariable.btn.btnChooseNew.hidden = "";
+			aVariable.params.addressId='';
+			// aVariable.ipt.iptTishi.innerText='青海、甘肃、宁夏、黑龙江、吉林、辽宁2元,内蒙古、海南16元，新疆、西藏35元'
+			warehouseServer.getMyStore(0,0,function(data) {
+					if (data.status == 200) {
+						aVariable.box.recordList.innerHTML = aUi.warehouse.youJiListTwo(data.data);				
+					} else {
+						aVariable.box.recordList.innerHTML = ''
+					}
+				},
+				function() {
+			
+				});
+				
+				warehouseServer.getPostRule(1,function(data){
+				    if(data.status == 200){
+				     aVariable.ipt.iptTishi.innerText=data.data.price+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
+				     
+				    }
+				    
+				   },function(){
+				    
+				   })
+		})
+		
+		// aVariable.btn.btnHainan.addEventListener("tap", function() {
+		// 	mui('#popover').popover('hide');
+		// 	aVariable.params.chandi=2;
+		// aVariable.ipt.iptChandi.innerText ='当前产地:海南';
+		// 	aVariable.ipt.iptAddress.innerText ='';
+		// 	aVariable.btn.btnChoose.hidden = "hidden";
+		// 	aVariable.btn.btnChooseNew.hidden = "";
+		// 	aVariable.params.addressId='';
+		// 	aVariable.ipt.iptTishi.innerText='青海、甘肃、宁夏、黑龙江、吉林、辽宁2元,内蒙古、海南16元，新疆、西藏35元'
+		// 	warehouseServer.getMyStore(0,0,function(data) {
+		// 			if (data.status == 200) {
+		// 				aVariable.box.recordList.innerHTML = aUi.warehouse.youJiListThree(data.data);				
+		// 			} else {
+		// 				aVariable.box.recordList.innerHTML = ''
+		// 			}
+		// 		},
+		// 		function() {
+			
+		// 		});
+		
+		// warehouseServer.getPostRule(2,function(data){
+		//     if(data.status == 200){
+		//      aVariable.ipt.iptTishi.innerText=data.data.price+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
+		     
+		//     }
+		    
+		//    },function(){
+		    
+		//    })
+		// })
 
 		aVariable.btn.btnYouji.addEventListener("tap", function() {
 			aVariable.btn.btnYouji.disabled = true;
@@ -71,12 +180,12 @@ var aFunc = {
 			if(number>1){
 				var chandi=b[0].getAttribute('data-origin');
 				for (var i = 0; i < b.length; i++) {
-					console.log(b[i].getAttribute('data-origin'))
-					if(b[i].getAttribute('data-origin')!=chandi){
-						mui.toast('一次只能邮寄同一产地的果实');
-						aVariable.btn.btnYouji.disabled = false;
-						return;
-					}
+					// console.log(b[i].getAttribute('data-origin'))
+					// if(b[i].getAttribute('data-origin')!=chandi){
+					// 	mui.toast('一次只能邮寄同一产地的果实');
+					// 	aVariable.btn.btnYouji.disabled = false;
+					// 	return;
+					// }
 					console.log(b[i].getAttribute('data-min'))
 					if(b[i].getAttribute('data-min')>b[i].value){
 						mui.toast('不能低于最低邮寄重量');
@@ -104,39 +213,51 @@ var aFunc = {
 				allnum = allnum + parseFloat(num);
 				aVariable.params.sendList.push(data);
 			}
+			
+			warehouseServer.getYunFei(aVariable.params.addressId,aVariable.params.chandi,function(data) {
+					if (data.status == 200) {
+						var bts = ["是", "取消"];
+						plus.nativeUI.confirm("当前邮寄" + allnum.toFixed(2) + "公斤,本次运费为"+data.data.freight_price+"元,邮寄不可取消，请您确认", function(e) {
+							var i = e.index;
+							if (i == 0) {
+								warehouseServer.sendToHmoe(JSON.stringify(aVariable.params.sendList), addressId, function(data) {
+									if (data.status == 200) {
+										if (data.data.status == 'SUCCESS') {
+											mui.toast('邮寄成功');
+											aVariable.params.sendList = [];
+											var main = plus.webview.currentWebview().opener();
+											mui.fire(main, 'refreshWarehouse', {});
+											mui.back();
+										} else {
+											aVariable.btn.btnYouji.disabled = false;
+											aVariable.params.sendList = [];
+											mui.toast(data.msg);
+										}
+									} else {
+										aVariable.btn.btnYouji.disabled = false;
+										aVariable.params.sendList = [];
+										mui.toast(data.msg);
+									}
+								}, function() {
+						
+								});
+							} else {
+						
+							}
+						}, "邮寄到家", bts);
+											
+					} else {
+						
+					}
+				},
+				function() {
+			
+				});
 			// if (allnum < 2 || allnum > 2.7) {
 			// 	mui.toast('邮寄范围在2到2.7公斤');
 			// 	aVariable.btn.btnYouji.disabled = false;
 			// } else {
-				var bts = ["是", "取消"];
-				plus.nativeUI.confirm("当前邮寄" + allnum.toFixed(2) + "公斤,邮费为"+aVariable.ipt.iptYunfei.innerText+"积分\n邮寄不可取消，请您确认", function(e) {
-					var i = e.index;
-					if (i == 0) {
-						warehouseServer.sendToHmoe(JSON.stringify(aVariable.params.sendList), addressId, function(data) {
-							if (data.status == 200) {
-								if (data.data.status == 'SUCCESS') {
-									mui.toast('邮寄成功');
-									aVariable.params.sendList = [];
-									var main = plus.webview.currentWebview().opener();
-									mui.fire(main, 'refreshWarehouse', {});
-									mui.back();
-								} else {
-									aVariable.btn.btnYouji.disabled = false;
-									aVariable.params.sendList = [];
-									mui.toast(data.msg);
-								}
-							} else {
-								aVariable.btn.btnYouji.disabled = false;
-								aVariable.params.sendList = [];
-								mui.toast(data.msg);
-							}
-						}, function() {
-
-						});
-					} else {
-
-					}
-				}, "邮寄到家", bts);
+				
 				aVariable.btn.btnYouji.disabled = false;
 			// }
 		})
@@ -148,9 +269,9 @@ var aFunc = {
 			aVariable.ipt.iptAddress.innerText = e.detail.province + e.detail.city + e.detail.district + e.detail.detail;
 			aVariable.btn.btnChoose.hidden = "";
 			aVariable.btn.btnChooseNew.hidden = "hidden";
-			warehouseServer.getYunFei(e.detail.addressId,function(data) {
+			warehouseServer.getYunFei(e.detail.addressId,aVariable.params.chandi,function(data) {
 					if (data.status == 200) {
-						aVariable.ipt.iptYunfei.innerText=data.data.freight_price;
+						// aVariable.ipt.iptYunfei.innerText=data.data.freight_price;
 					} else {
 						
 					}
@@ -195,7 +316,7 @@ var aFunc = {
          obj.value = parseFloat(obj.value);
      }
 	 
-	 if(obj.value>obj.getAttribute('data-num')){
+	 if(obj.value>parseFloat(obj.getAttribute('data-num'))){
 		 obj.value=obj.getAttribute('data-num');
 	 }
 	 

@@ -116,5 +116,23 @@ var sysServer = mui.extend(aServer || {}, {
 
 		};
 		aServer.executeActionOfServerNew(this.isDebug, "api/verify_code", "获取失败", data, success, error);
+	},
+	
+	//注销账号
+	drawUser: function(name,phone,reason, success, error) {
+		var data = {
+			name: name,
+			phone: phone,
+			reason: reason
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/my/drawuser", "提交失败", data, success, error);
+	},
+	
+	//获取注销信息
+	getMyDraw: function(success, error) {
+		var data = {
+	
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/mydraw", "获取失败", data, success, error);
 	}
 })

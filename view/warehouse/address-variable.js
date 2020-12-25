@@ -14,5 +14,8 @@ var aVariable = {
 	},
 	ipt: {
 
+	},
+	params:{
+		chandi:0
 	}
 };

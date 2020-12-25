@@ -344,7 +344,7 @@ var aFunc = {
 				aVariable.value.version_new = data.data.version;
 				aVariable.value.url = data.data.url;
 				// var ios_desc = data.data.newFeatures;
-				aVariable.value.version = 14;
+				aVariable.value.version = 63;
 				if (aVariable.value.version < parseInt(ios_version)) {
 
 					var bts = ["确定", "取消"];

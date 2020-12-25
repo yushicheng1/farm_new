@@ -42,22 +42,27 @@ aUi.address = {
 			'</li>';
 		return html;
 	},
-	addressListNew: function(list4Address) {
+	addressListNew: function(list4Address,chandi) {
 		var html = "";
 		for (var i = 0; i < list4Address.length; i++) {
 			html += this._addressNew(list4Address[i]);
 		}
-		var ziti='<li class="mui-table-view-cell mui-media" data-id="0"  data-name="次日自提" data-phone="15615963133(物流客服)" data-province="" data-city="" data-district="" data-detail="潍坊前阙番茄大世界南门(8点-11.30,13.30-18点)" data-default="" >' +
-			'<div class="mui-slider-handle">' +
-			'<a class="mui-navigate-right">' +
-			'<img class="mui-media-object mui-pull-left border" src="../../images/homemenu/address.png" style="height: 30px;width: 24px;">' +
-			'<div class="mui-media-body">' +
-			'<p><span>自提</span><span> 15615963133物流客服</span></p>' +
-			'<p class="mui-ellipsis top8"><span>潍坊前阙番茄大世界南门(8点-11.30,13.30-18点)</span></p>' +
-			'</div>' +
-			'</a>' +
-			'</div>' +
-			'</li>';
-		return ziti+html;
+		if(chandi==0){
+			var ziti='<li class="mui-table-view-cell mui-media" data-id="0"  data-name="次日自提" data-phone="15615963133(物流客服)" data-province="" data-city="" data-district="" data-detail="潍坊前阙番茄大世界南门(8点-11.30,13.30-18点)" data-default="" >' +
+				'<div class="mui-slider-handle">' +
+				'<a class="mui-navigate-right">' +
+				'<img class="mui-media-object mui-pull-left border" src="../../images/homemenu/address.png" style="height: 30px;width: 24px;">' +
+				'<div class="mui-media-body">' +
+				'<p><span>自提</span><span> 15615963133物流客服</span></p>' +
+				'<p class="mui-ellipsis top8"><span>潍坊前阙番茄大世界南门(8点-11.30,13.30-18点)</span></p>' +
+				'</div>' +
+				'</a>' +
+				'</div>' +
+				'</li>';
+			return ziti+html;
+		}else{
+			return html;
+		}
+		
 	}
 }

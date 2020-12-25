@@ -223,40 +223,48 @@ var aFunc = {
 
 		//电子协议
 		aVariable.btn.btnDzxy.addEventListener("tap", function() {
-			// bankServer.unlock(function(data) {
-			// 	console.log(JSON.stringify(data));
-			// 	if (data.status == 200) {
-
-			// 	} else {
-
-			// 	}
-			// }, function() {
-
-			// });		
-			bankServer.createMember(function(data) {
-				if (data.status == 200) {
-					bankServer.signContract(function(data) {
-						if (data.status == 200) {
-							mui.openWindow({
-								id: "xieyi",
-								url: '/view/my/xieyi.html',
-								extras: {
-									url: data.msg
-								}
-							});
-						} else {
-
-						}
-					}, function() {
-
-					});
-				} else {
-
-				}
-			}, function() {
-
-			});
-
+			bankServer.getThirdInfo(function(data){
+			    if(data.status==200){
+			     if(data.data.isSignContract == true){
+			      
+			       bankServer.signContractQuery(function(data) {
+			        if (data.status == 200) {
+			         mui.openWindow({
+			          id: "xieyi",
+			          url: '/view/my/xieyi.html',
+			          extras: {
+			           url: data.msg
+			          }
+			         });
+			        } else {
+			      
+			        }
+			       }, function() {
+			      
+			       });
+			      
+			     }else{
+			      
+			       bankServer.signContract(function(data) {
+			        if (data.status == 200) {
+			         mui.openWindow({
+			          id: "xieyi",
+			          url: '/view/my/xieyi.html',
+			          extras: {
+			           url: data.msg
+			          }
+			         });
+			        } else {
+			      
+			        }
+			       }, function() {
+			      
+			       });
+			     }
+			    }else{
+			     
+			    }
+			   });
 		})
 
 		//我的推荐
@@ -282,6 +290,15 @@ var aFunc = {
 				url: '/view/sys/xgmm.html'
 			});
 		})
+		
+		//注销账号
+		aVariable.btn.btnZxzh.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "zxzh",
+				url: '/view/sys/zxzh.html'
+			});
+		})
+		
 		//关于
 		aVariable.btn.btnXtsj.addEventListener("tap", function() {
 			mui.openWindow({
@@ -294,30 +311,33 @@ var aFunc = {
 		// 	mui.toast("暂未开放")
 		// })
 		//客服中心
-		aVariable.btn.btnKfzx.addEventListener("tap", function() {
-			var btnArray = [{
-				title: "客服电话:400-9997815"
-			}, {
-				title: "微信：18663604825"
-			}, {
-				title: "支付问题QQ：2110760153"
-			}, {
-				title: "操作问题QQ：3271818105"
-			}, {
-				title: "收益问题QQ：1514105549"
-			}, {
-				title: "物流问题QQ：1039860457"
-			}];
-			plus.nativeUI.actionSheet({
-				cancel: "取消",
-				buttons: btnArray
-			}, function(event) {});
-		})
+		  aVariable.btn.btnKfzx.addEventListener("tap", function() {
+		   var btnArray = [];
+		   myServer.getCustomerService(function(data){
+		    if(data.status == 200){
+		     console.log(data.data);
+		     plus.nativeUI.actionSheet({
+		      cancel: "取消",
+		      buttons: data.data,
+		     }, function(event) {
+		         var index = event.index;
+		         switch (index) {
+		             case 1:
+		                 plus.device.dial("400-9997815", false);
+		                 break;
+		         }
+		     });
+		    }else{
+		     
+		    }
+		   },function(data){
+		    
+		   });
+		   
+		    })
 		//注销登录
 		aVariable.btn.btnZxdl.addEventListener("tap", function() {
-			var btnArray = [{
-					title: "注销当前账号"
-				},
+			var btnArray = [
 				{
 					title: "退出当前账号"
 				}, {
@@ -331,9 +351,6 @@ var aFunc = {
 				var index = event.index;
 				switch (index) {
 					case 1:
-						mui.toast("注销账号请联系客服");
-						break;
-					case 2:
 						mui.toast("注销登录");
 						var wvs = plus.webview.all();
 						
@@ -346,7 +363,7 @@ var aFunc = {
 							}
 						}
 						break;
-						case 3:
+						case 2:
 							if (mui.os.ios) {
 								mui.toast("注销登录");
 								var mainHtml = plus.webview.getWebviewById('index');

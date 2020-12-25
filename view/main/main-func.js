@@ -91,7 +91,7 @@ var aFunc = {
 		});
 		aVariable.btn.btnGmzz.addEventListener("tap", function() {
 			mui.openWindow({
-				id: "grzx",
+				id: "my",
 				url: '../my/my.html'
 			});
 		});

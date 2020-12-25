@@ -15,7 +15,7 @@ var aVariable = {
 		btnYjdj:document.getElementById("btn-yjdj"),
 		btnYjfk:document.getElementById("btn-yjfk"),
 		btnBbsj:document.getElementById("btn-bbsj"),
-		// btnBzzx:document.getElementById("btn-bzzx"),
+		btnZxzh:document.getElementById("btn-zxzh"),
 		btnKfzx:document.getElementById("btn-kfzx"),
 		btnZxdl:document.getElementById("btn-zxdl"),
 		btnXgmm:document.getElementById("btn-xgmm"),

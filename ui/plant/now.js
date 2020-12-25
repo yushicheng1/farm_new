@@ -2,6 +2,10 @@
 var aUi = aUi || {};
 aUi.record = {
 	_record: function(data) {
+		var auto="否";
+		if(data.auto_option==1){
+			auto="是";
+		}
 		// //种植时间
 		// var plantTime=formatTime(data.plant_time,'Y-M-D');
 		// //到期时间
@@ -20,6 +24,9 @@ aUi.record = {
 								'<p>'+
 									'<span>到期时间:'+data.expire_time+'</span>'+
 									'<span style="float: right;">结果天数:'+data.ending_day+'天</span>'+
+								'</p>'+
+								'<p>'+
+									'<span style="float: right;">托管:'+auto+'</span>'+
 								'</p>'+
 							'</div>'+
 					'</li>';

@@ -92,5 +92,13 @@ var myServer = mui.extend(aServer || {}, {
 
 		}
 		aServer.executeActionOfServerGET(this.isDebug, "api/address/delete/" + id, "删除失败", data, success, error);
-	}
+	},
+	
+	//获取客服列表
+	 getCustomerService: function(success, error) {
+	  var data = {
+	 
+	  }
+	  aServer.executeActionOfServerGET(this.isDebug, "api/my/getCustomerService", "获取失败", data, success, error);
+	 }
 })

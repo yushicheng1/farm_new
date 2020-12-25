@@ -1,17 +1,17 @@
 var aFunc = {
 	initData: function() {
-		// aVariable.box.warehouseList.innerHTML = '';
-		// warehouseServer.getMyStore(function(data) {
-		// 		if (data.status == 200) {
-		// 			console.log(JSON.stringify(data.data))
-		// 			aVariable.box.warehouseList.innerHTML = aUi.warehouse.warehouseList(data.data);
-		// 		} else {
-		// 			aVariable.box.warehouseList.innerHTML = ''
-		// 		}
-		// 	},
-		// 	function() {
+		aVariable.box.warehouseList.innerHTML = '';
+		warehouseServer.getMyStore(function(data) {
+				if (data.status == 200) {
+					console.log(JSON.stringify(data.data))
+					aVariable.box.warehouseList.innerHTML = aUi.warehouse.warehouseList(data.data);
+				} else {
+					aVariable.box.warehouseList.innerHTML = ''
+				}
+			},
+			function() {
 
-		// 	});
+			});
 	},
 	bindEvent: function() {
 		mui(aVariable.box.scroll).on("tap", "li img", function(e) {
@@ -40,16 +40,16 @@ var aFunc = {
 				// mui.toast('暂未开放')
 			} else if (type == 2) {
 				mui.openWindow({
-					id: "warehouseGdjydt",
-					url: '/view/warehouse/gdjydt.html',
+					id: "warehouseXiangqing",
+					url: '/view/warehouse/warehouse-record.html',
 					extras: {
-						vegetablesId: vegetablesId,
-						sum: sum,
-						name: name,
-						plant: plant,
-						get: get,
-						price: price,
-						image: image
+						vegetablesId: vegetablesId
+						// sum: sum,
+						// name: name,
+						// plant: plant,
+						// get: get,
+						// price: price,
+						// image: image
 					}
 				});
 				// mui.toast('暂未开放')

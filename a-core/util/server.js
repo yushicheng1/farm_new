@@ -77,7 +77,7 @@ var aServer = {
 			} else {
 				aUtil.aLog.deb(isDebug, methodName + " return is " + JSON.stringify(result));
 				if (result.status && (result.status == "200" || result.status == "409" || result.status == "405" || result.status ==
-						'400')) //200 成功  409资源冲突  405不允许删除
+						'400'|| result.status == "401")) //200 成功  409资源冲突  405不允许删除
 				{
 					serverError(result);
 					success(result);
@@ -114,7 +114,7 @@ var aServer = {
 				if (error) error(errMsg);
 			} else {
 				aUtil.aLog.deb(isDebug, methodName + " return is " + JSON.stringify(result));
-				if (result.status && (result.status == "200" || result.status == "409" || result.status == "405")) //200 成功  409资源冲突  405不允许删除
+				if (result.status && (result.status == "200" || result.status == "409" || result.status == "405"|| result.status == "401")) //200 成功  409资源冲突  405不允许删除
 				{
 					serverError(result);
 					success(result);
@@ -285,7 +285,7 @@ function serverError(result){
 			}
 		}
 	}else if(result.status==401){
-		mui.alert(result.data.msg,' ');
+		mui.alert(result.msg,' ');
 		var wvs = plus.webview.all();		
 		for (var i = 0,
 				len = wvs.length; i < len; i++) {

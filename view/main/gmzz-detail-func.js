@@ -35,7 +35,21 @@ var aFunc = {
 		var id = aVariable.params.seedId;
 		gmzzServer.getSeedDetail(id, function(data) {
 			if (data.status == 200) {
-				aVariable.ipt.iptStock.innerHTML = data.data.seedValue.小份.stock;
+				// aVariable.ipt.iptStock.innerHTML =data.data.seedValue.小份.stock;
+				if(data.data.seedValue.小份.stock>=10000){
+					 aVariable.ipt.iptStock.innerHTML = '库存充足';
+					 aVariable.ipt.iptStock.style.color='blue';
+				}else if(data.data.seedValue.小份.stock>=5000&&data.data.seedValue.小份.stock<10000){
+					aVariable.ipt.iptStock.innerHTML = '库存正常';
+					aVariable.ipt.iptStock.style.color='green';
+				}else if(data.data.seedValue.小份.stock>0&&data.data.seedValue.小份.stock<5000){
+					aVariable.ipt.iptStock.innerHTML = '库存紧张';
+					aVariable.ipt.iptStock.style.color='red';
+				}else{
+					aVariable.ipt.iptStock.innerHTML = '无库存';
+					aVariable.ipt.iptStock.style.color='red';
+				}
+				
 				aVariable.ipt.iptPrice.innerHTML = data.data.seedValue.小份.price;
 				aVariable.params.price = data.data.seedValue.小份.price;
 				aVariable.params.autoPrice = data.data.autoPrice;

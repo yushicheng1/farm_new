@@ -13,12 +13,14 @@ var aVariable = {
 	},
 	ipt: {
         iptMoney:document.getElementById("ipt_money"),
-		iptJiFen:document.getElementById("ipt_jifen")
+		iptJiFen:document.getElementById("ipt_jifen"),
+		realMoney:document.getElementById("user_yue")
 	},
 	params:{
 		apple_id:'',
 		phone:'',
 		cardId:'',
-		type:0
+		type:0,
+		real_money:0
 	}
 };
