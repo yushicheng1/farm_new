@@ -42,18 +42,20 @@ var aFunc = {
 				aVariable.params.number = data.data.length;
 				if (data.data.length > 0) {
 					alertTwo(data.data);
-					var notice=data.data;
-					aVariable.ipt.iptNotice.innerHTML='<marquee><span style="font-size: 15px;width: 100%;display:-moz-inline-box;display: inline-block;padding-left: 10px;margin-top: 1px;">'+notice[0].msg+'</span></marquee>';
-					var ids='';
-					var notice=data.data;
-					for(var i=0;i<notice.length;i++){
-						if(i==0){
-							ids+=notice[i].id;
-						}else{
-							ids+=','+notice[i].id;
-						}
-					}
-					LocalStorage.setItem(LocalStorage.keys.ids,ids);
+					var notice = data.data;
+					aVariable.ipt.iptNotice.innerHTML =
+						'<marquee><span style="font-size: 15px;width: 100%;display:-moz-inline-box;display: inline-block;padding-left: 10px;margin-top: 1px;">' +
+						notice[0].msg + '</span></marquee>';
+					// var ids='';
+					// var notice=data.data;
+					// for(var i=0;i<notice.length;i++){
+					// 	if(i==0){
+					// 		ids+=notice[i].id;
+					// 	}else{
+					// 		ids+=','+notice[i].id;
+					// 	}
+					// }
+					// LocalStorage.setItem(LocalStorage.keys.ids,ids);
 				}
 			} else {
 
@@ -129,6 +131,7 @@ var aFunc = {
 			// });
 		});
 		aVariable.btn.btnTgm.addEventListener("tap", function() {
+			// LocalStorage.setItem(LocalStorage.keys.ids,'');
 			sysServer.getSpreadCode(function(data) {
 					if (data.status == 200) {
 						mui.alert(data.msg, '我的邀请码', '复制', function() {
@@ -223,40 +226,114 @@ var aFunc = {
 var i = 0;
 
 function alertTwo(data) {
-	var xtIds=LocalStorage.getItem(LocalStorage.keys.ids);
-	var ids=[];
-	if(xtIds==null){
-		 
-	}else{
-		ids=xtIds.split(',');
-	}
-	console.log(ids);
-	console.log(data[i].id)
-	console.log(ids.indexOf(data[i].id+''))
-	if(ids.indexOf(data[i].id+'')>-1){
-		console.log(1111111)
-		
-		if (i == aVariable.params.number - 1) {
-			
-		} else {
-			i = i + 1;
-			alertTwo(data); 		
-		}
-	}else{
-		console.log(2222222222)
-		mui.alert(data[i].msg, data[i].title, '下一条', function() {
-			i = i + 1;
+	var xtIds = LocalStorage.getItem(LocalStorage.keys.ids);
+	var ids = [];
+	if (xtIds == null) {
+
+	} else {
+		ids = xtIds.split(',');
+		console.log(ids);
+		console.log(data[i].id)
+		console.log(ids.indexOf(data[i].id + ''))
+		if (ids.indexOf(data[i].id + '') > -1) {
+			console.log(1111111)		
 			if (i == aVariable.params.number - 1) {
-				alertThree(data[i]);
+		 	
 			} else {
-				alertTwo(data); 
+				i = i + 1;
+				if (i == aVariable.params.number - 1) {
+					alertFour(data); 
+				} else {
+					alertTwo(data);
+				}
 			}
-		});
+		} else {
+			console.log(2222222222) 
+			mui.alert(data[i].msg, data[i].title, '下一条', function() {
+				i = i + 1;
+				if (i == aVariable.params.number - 1) {
+					alertThree(data[i],data);
+				} else {
+					alertTwo(data);
+				}
+			});
+		}
 	}	
 }
 
-function alertThree(data) {	 
+function alertThree(data,all) {
 	mui.alert(data.msg, data.title, '关闭', function() {
-
-	}); 
+		var ids = '';
+		for (var i = 0; i < all.length; i++) {
+			if (i == 0) {
+				ids += all[i].id;
+			} else {
+				ids += ',' + all[i].id; 
+			}  
+		}
+		LocalStorage.setItem(LocalStorage.keys.ids, ids);
+	});
 }
+
+function alertFour(all) {	
+		var ids = '';
+		for (var i = 0; i < all.length; i++) {
+			if (i == 0) {
+				ids += all[i].id;
+			} else {
+				ids += ',' + all[i].id; 
+			}  
+		}
+		LocalStorage.setItem(LocalStorage.keys.ids, ids);
+}
+
+// function alertTwo(data) {
+// 	var xtIds = LocalStorage.getItem(LocalStorage.keys.ids);
+// 	var ids = [];
+// 	if (xtIds == null) {
+
+// 	} else {
+// 		ids = xtIds.split(',');
+// 		console.log(ids);
+// 		console.log(data[i].id)
+// 		console.log(ids.indexOf(data[i].id + ''))
+// 		if (ids.indexOf(data[i].id + '') > -1) {
+// 			console.log(1111111)
+		
+// 			if (i == aVariable.params.number - 1) {
+// 				var ids = '';
+// 				var notice = data.data;
+// 				for (var i = 0; i < notice.length; i++) {
+// 					if (i == 0) {
+// 						ids += notice[i].id;
+// 					} else {
+// 						ids += ',' + notice[i].id;
+// 					}
+// 				}
+// 				LocalStorage.setItem(LocalStorage.keys.ids, ids);
+// 			} else {
+// 				i = i + 1;
+// 				alertTwo(data);
+// 			}
+// 		} else {
+// 			console.log(2222222222)
+// 			mui.alert(data[i].msg, data[i].title, '确认', function() {
+// 				i = i + 1;
+// 				if (i == aVariable.params.number - 1) {
+// 							var ids = '';
+// 							var notice = data.data;
+// 							for (var i = 0; i < notice.length; i++) {
+// 								if (i == 0) {
+// 									ids += notice[i].id;
+// 								} else {
+// 									ids += ',' + notice[i].id;
+// 								}
+// 							}
+// 							LocalStorage.setItem(LocalStorage.keys.ids, ids);
+// 				} else {
+// 					alertTwo(data);
+// 				}
+// 			});
+// 		}
+// 	}	
+// }
