@@ -228,8 +228,15 @@ var i = 0;
 function alertTwo(data) {
 	var xtIds = LocalStorage.getItem(LocalStorage.keys.ids);
 	var ids = [];
-	if (xtIds == null) {
-
+	if (xtIds == null) {       
+        	mui.alert(data[i].msg, data[i].title, '下一条', function() {
+        		i = i + 1;
+        		if (i == aVariable.params.number - 1) {
+        			alertThree(data[i],data);
+        		} else {
+        			alertTwo(data);
+        		}
+        	});
 	} else {
 		ids = xtIds.split(',');
 		console.log(ids);
