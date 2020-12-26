@@ -42,6 +42,18 @@ var aFunc = {
 				aVariable.params.number = data.data.length;
 				if (data.data.length > 0) {
 					alertTwo(data.data);
+					var notice=data.data;
+					aVariable.ipt.iptNotice.innerHTML='<marquee><span style="font-size: 15px;width: 100%;display:-moz-inline-box;display: inline-block;padding-left: 10px;margin-top: 1px;">'+notice[0].msg+'</span></marquee>';
+					var ids='';
+					var notice=data.data;
+					for(var i=0;i<notice.length;i++){
+						if(i==0){
+							ids+=notice[i].id;
+						}else{
+							ids+=','+notice[i].id;
+						}
+					}
+					LocalStorage.setItem(LocalStorage.keys.ids,ids);
 				}
 			} else {
 
@@ -75,7 +87,6 @@ var aFunc = {
 		sysServer.getSeedHot(1, function(data) {
 			if (data.status == 200) {
 				aVariable.div.divRt.innerHTML = aUi.seed.hotList(data.data);
-				console.log(1)
 			}
 		}, function() {
 
@@ -93,6 +104,12 @@ var aFunc = {
 			mui.openWindow({
 				id: "my",
 				url: '../my/my.html'
+			});
+		});
+		aVariable.btn.btnNotice.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "notice",
+				url: '../my/notice.html'
 			});
 		});
 		aVariable.btn.btnJydt.addEventListener("tap", function() {
@@ -206,18 +223,40 @@ var aFunc = {
 var i = 0;
 
 function alertTwo(data) {
-	mui.alert(data[i].msg, data[i].title, '下一条', function() {
-		i = i + 1;
+	var xtIds=LocalStorage.getItem(LocalStorage.keys.ids);
+	var ids=[];
+	if(xtIds==null){
+		 
+	}else{
+		ids=xtIds.split(',');
+	}
+	console.log(ids);
+	console.log(data[i].id)
+	console.log(ids.indexOf(data[i].id+''))
+	if(ids.indexOf(data[i].id+'')>-1){
+		console.log(1111111)
+		
 		if (i == aVariable.params.number - 1) {
-			alertThree(data[i]);
+			
 		} else {
-			alertTwo(data);
+			i = i + 1;
+			alertTwo(data); 		
 		}
-	});
+	}else{
+		console.log(2222222222)
+		mui.alert(data[i].msg, data[i].title, '下一条', function() {
+			i = i + 1;
+			if (i == aVariable.params.number - 1) {
+				alertThree(data[i]);
+			} else {
+				alertTwo(data); 
+			}
+		});
+	}	
 }
 
-function alertThree(data) {
+function alertThree(data) {	 
 	mui.alert(data.msg, data.title, '关闭', function() {
 
-	});
+	}); 
 }

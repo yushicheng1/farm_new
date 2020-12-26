@@ -16,44 +16,72 @@ aUi.warehouse = {
 		}else if(data.origin==2){
 			origin='海南';
 		}
+		var html;
+		if(data.num==0){
+			html = '<li class="mui-table-view-cell mui-collapse" data-id="'+data.id+'" data-sum="'+data.num+'">'+
+									'<div class="detail">'+
+										'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 100px;height: 80px;border-radius: 10px;" data-type="0" onerror="nofind(this)">'+
+										'<div class="mui-media-body">'+
+											'<p><span style="color: green;font-size: 15px;"><b>'+data.name+'</b></span></p>'+
+											'<p style="font-size: 13px;"><span>产地:</span><span>'+origin+'</span></p>'+
+											// '<p style="font-size: 13px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
+											'<p style="font-size: 13px;"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span></p>'+
+											// '<p style="font-size: 13px;"><span>果实ID:</span><span></span>'+data.id+'</p>'+
+										'</div>'+
+									'</div>'+
+									// '<span style="font-size: 14px;">剩余</span><span style="font-size: 14px;">'+remaindTime+'</span>'+
+									'<a class="mui-navigate-right" style="width: 120px;float: right;font-size: 13px;">查看更多</a>'+
+									'<div class="mui-collapse-content" style="width:100%">'+
+										'<div class="mui-row mui-text-center navig">'+											
+											'<div class="mui-col-sm-3 mui-col-xs-3">'+
+												'<img src="../../images/homemenu/gdjydt.png" data-type="2" data-id="'+data.id+'" data-price="'+data.recycle_price+
+												'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
+												'<p>详情</p>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+								'</li>';
+		}else{
+			html = '<li class="mui-table-view-cell mui-collapse" data-id="'+data.id+'" data-sum="'+data.num+'">'+
+									'<div class="detail">'+
+										'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 100px;height: 80px;border-radius: 10px;" data-type="0" onerror="nofind(this)">'+
+										'<div class="mui-media-body">'+
+											'<p><span style="color: green;font-size: 15px;"><b>'+data.name+'</b></span></p>'+
+											'<p style="font-size: 13px;"><span>产地:</span><span>'+origin+'</span></p>'+
+											// '<p style="font-size: 13px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
+											'<p style="font-size: 13px;"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span></p>'+
+											// '<p style="font-size: 13px;"><span>果实ID:</span><span></span>'+data.id+'</p>'+
+										'</div>'+
+									'</div>'+
+									// '<span style="font-size: 14px;">剩余</span><span style="font-size: 14px;">'+remaindTime+'</span>'+
+									'<a class="mui-navigate-right" style="width: 120px;float: right;font-size: 13px;">查看更多</a>'+
+									'<div class="mui-collapse-content" style="width:100%">'+
+										'<div class="mui-row mui-text-center navig">'+
+											'<div class="mui-col-sm-3 mui-col-xs-3">'+
+											'	<img src="../../images/homemenu/yjdj.png" data-type="1" data-id="'+data.id+
+											'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
+												'<p>邮寄到家</p>'+
+											'</div>'+
+											'<div class="mui-col-sm-3 mui-col-xs-3">'+
+												'<img src="../../images/homemenu/gdjydt.png" data-type="2" data-id="'+data.id+'" data-price="'+data.recycle_price+
+												'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
+												'<p>详情</p>'+
+											'</div>'+
+											'<div class="mui-col-sm-3 mui-col-xs-3 ckecklogin">'+
+												'<img src="../../images/homemenu/xths.png" data-type="3" data-id="'+data.id+'" data-price="'+data.recycle_price+
+												'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'" data-count="'+data.recycle_count+'"/>'+
+												'<p>系统回收</p>'+
+											'</div>'+
+											'<div class="mui-col-sm-3 mui-col-xs-3">'+
+												'<img src="../../images/homemenu/dq.png" data-type="4" data-id="'+data.id+'"/>'+
+												'<p>丢弃</p>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+								'</li>';
+		}
 
-		var html = '<li class="mui-table-view-cell mui-collapse" data-id="'+data.id+'" data-sum="'+data.num+'">'+
-						'<div class="detail">'+
-							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 100px;height: 80px;border-radius: 10px;" data-type="0" onerror="nofind(this)">'+
-							'<div class="mui-media-body">'+
-								'<p><span style="color: green;font-size: 15px;"><b>'+data.name+'</b></span></p>'+
-								'<p style="font-size: 13px;"><span>产地:</span><span>'+origin+'</span></p>'+
-								// '<p style="font-size: 13px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
-								'<p style="font-size: 13px;"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span></p>'+
-								// '<p style="font-size: 13px;"><span>果实ID:</span><span></span>'+data.id+'</p>'+
-							'</div>'+
-						'</div>'+
-						// '<span style="font-size: 14px;">剩余</span><span style="font-size: 14px;">'+remaindTime+'</span>'+
-						'<a class="mui-navigate-right" style="width: 120px;float: right;font-size: 13px;">查看更多</a>'+
-						'<div class="mui-collapse-content" style="width:100%">'+
-							'<div class="mui-row mui-text-center navig">'+
-								'<div class="mui-col-sm-3 mui-col-xs-3">'+
-								'	<img src="../../images/homemenu/yjdj.png" data-type="1" data-id="'+data.id+
-								'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
-									'<p>邮寄到家</p>'+
-								'</div>'+
-								'<div class="mui-col-sm-3 mui-col-xs-3">'+
-									'<img src="../../images/homemenu/gdjydt.png" data-type="2" data-id="'+data.id+'" data-price="'+data.recycle_price+
-									'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'"/>'+
-									'<p>详情</p>'+
-								'</div>'+
-								'<div class="mui-col-sm-3 mui-col-xs-3 ckecklogin">'+
-									'<img src="../../images/homemenu/xths.png" data-type="3" data-id="'+data.id+'" data-price="'+data.recycle_price+
-									'" data-name="'+data.name+'" data-sum="'+data.num+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-image="'+data.img+'" data-count="'+data.recycle_count+'"/>'+
-									'<p>系统回收</p>'+
-								'</div>'+
-								'<div class="mui-col-sm-3 mui-col-xs-3">'+
-									'<img src="../../images/homemenu/dq.png" data-type="4" data-id="'+data.id+'"/>'+
-									'<p>丢弃</p>'+
-								'</div>'+
-							'</div>'+
-						'</div>'+
-					'</li>';
+		
 		
 		return html;
 	},
@@ -115,36 +143,40 @@ aUi.warehouse = {
 		return html;
 	},
 	_youJiOne: function(data) {
-		//种植时间
-		var plantTime=formatTime(data.plant_time,'Y-M-D');
-		//收获时间
-		var getTime=formatTime(data.get_time,'Y-M-D');
-		//剩余时间
-		var remaindTime=formatSeconds(data.remaind_time);
-		
-		var origin='';
-		if(data.origin==0){
-			origin='山东';
-		}else if(data.origin==1){
-			origin='云南';
-		}else if(data.origin==2){
-			origin='海南';
-		}
-	
-		var html = '<li class="mui-table-view-cell mui-collapse" style="" data-id="'+data.id+'" data-num="'+data.num+'" data-choose="0">'+
-						'<div class="detail">'+
-							'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 100px;height: 80px;border-radius: 10px;" data-type="0" onerror="nofind(this)">'+
-							'<div class="mui-media-body">'+
-								'<p><span style="color: green;font-size: 15px;"><b>'+data.name+'</b></span></p>'+
-								'<p style="font-size: 15px;padding-left:15px;margin-top:5px"><span>产地:</span><span>'+origin+'</span></p>'+
-								'<p style="font-size: 15px;padding-left:15px"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span></p>'+
-								'<p style="font-size: 15px;padding-left:15px"><span>最低邮寄重量:</span><span></span>'+data.min_num+'<span>公斤</span></p>'+
-								'<p><input style="width: 100%;text-align: left;border: 0;font-size:15px" data-id="'+data.id+'" data-origin="'+data.origin+'" data-num="'+data.num+'" data-min="'+data.min_num+'" type="number" onkeyup="clearNoNum(this)"  placeholder="请填写邮寄重量"/></p>'+
+		if(data.num==0){
+			return '';
+		}else{
+			//种植时间
+			var plantTime=formatTime(data.plant_time,'Y-M-D');
+			//收获时间
+			var getTime=formatTime(data.get_time,'Y-M-D');
+			//剩余时间
+			var remaindTime=formatSeconds(data.remaind_time);
+			
+			var origin='';
+			if(data.origin==0){
+				origin='山东';
+			}else if(data.origin==1){
+				origin='云南';
+			}else if(data.origin==2){
+				origin='海南';
+			}
+				
+			var html = '<li class="mui-table-view-cell mui-collapse" style="" data-id="'+data.id+'" data-num="'+data.num+'" data-choose="0">'+
+							'<div class="detail">'+
+								'<img class="mui-media-object mui-pull-left" src="'+aServer.ApiUrl+data.img+'" style="max-width: 100px;height: 80px;border-radius: 10px;" data-type="0" onerror="nofind(this)">'+
+								'<div class="mui-media-body">'+
+									'<p><span style="color: green;font-size: 15px;"><b>'+data.name+'</b></span></p>'+
+									'<p style="font-size: 15px;padding-left:15px;margin-top:5px"><span>产地:</span><span>'+origin+'</span></p>'+
+									'<p style="font-size: 15px;padding-left:15px"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span></p>'+
+									'<p style="font-size: 15px;padding-left:15px"><span>最低邮寄重量:</span><span></span>'+data.min_num+'<span>公斤</span></p>'+
+									'<p><input style="width: 100%;text-align: left;border: 0;font-size:15px" data-id="'+data.id+'" data-origin="'+data.origin+'" data-num="'+data.num+'" data-min="'+data.min_num+'" type="number" onkeyup="clearNoNum(this)"  placeholder="请填写邮寄重量"/></p>'+
+								'</div>'+
 							'</div>'+
-						'</div>'+
-					'</li>';
-		
-		return html;
+						'</li>';
+			
+			return html;
+		}	
 	},
 	youJiListOne: function(list4Warehouse) {
 		var html = "";
@@ -156,6 +188,9 @@ aUi.warehouse = {
 		return html;
 	},
 	_youJiTwo: function(data) {
+		if(data.num==0){
+			return '';
+		}else{
 		//种植时间
 		var plantTime=formatTime(data.plant_time,'Y-M-D');
 		//收获时间
@@ -186,6 +221,7 @@ aUi.warehouse = {
 					'</li>';
 		
 		return html;
+		}
 	},
 	youJiListTwo: function(list4Warehouse) {
 		var html = "";
@@ -197,6 +233,9 @@ aUi.warehouse = {
 		return html;
 	},
 	_youJiThree: function(data) {
+		if(data.num==0){
+			return '';
+		}else{
 		//种植时间
 		var plantTime=formatTime(data.plant_time,'Y-M-D');
 		//收获时间
@@ -227,6 +266,7 @@ aUi.warehouse = {
 					'</li>';
 		
 		return html;
+		}
 	},
 	youJiListThree: function(list4Warehouse) {
 		var html = "";

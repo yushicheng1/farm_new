@@ -16,7 +16,8 @@ var LocalStorage = {
 		Group_List:"Group_List",
 		ContactList:"ContactList",
 		launchFlag:"launchFlag",//第一次启动
-		guideFlag:"guideFlag" //第一次登录
+		guideFlag:"guideFlag", //第一次登录
+		ids:"ids"//公告id集合
 	},
 	setItem: function(itemKey, itemValue) {
 		plus.storage.setItem(itemKey, itemValue + "");
