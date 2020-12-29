@@ -96,10 +96,10 @@ var aFunc = {
 					bankServer.getBankList(function(data) {
 						if (data.status == 200) {
 							var html = '<li class="mui-table-view-cell" data-type="1" style="color: #000000;" >' +
-								'<a class="mui-navigate-right">支付宝<span style="color: red;">(千分之二手续费)</a>' +
+								'<a class="mui-navigate-right">支付宝<span style="color: red;"></a>' +
 								'</li>';+
 								'<li class="mui-table-view-cell" data-type="2" style="color: #000000;" >' +
-									'<a class="mui-navigate-right">微信<span style="color: red;">(千分之二手续费)</a>' +
+									'<a class="mui-navigate-right">微信<span style="color: red;"></a>' +
 									'</li>';
 									'<li class="mui-table-view-cell" data-type="4" style="color: #000000;" >' +
 										'<a class="mui-navigate-right">余额<span style="color: red;">('+aVariable.params.real_money+')(试运行)</a>' +
