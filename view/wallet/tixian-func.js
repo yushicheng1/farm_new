@@ -1,5 +1,8 @@
 var aFunc = {
 	initData: function() {
+		var rules=JSON.parse(LocalStorage.getItem(LocalStorage.keys.Rules));
+		var to_bank_description=rules.to_bank_description;
+		aVariable.box.ruleOne.innerHTML+=to_bank_description;
 		bankServer.getMoney(function(data) {
 			if (data.status == 200) {
 				aVariable.ipt.iptTixian.innerText = "您有" + data.msg + "元可提现";

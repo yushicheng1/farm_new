@@ -1,5 +1,10 @@
 var aFunc = {
 	initData: function() {
+		var rules=JSON.parse(LocalStorage.getItem(LocalStorage.keys.Rules));
+		var extract_rule=rules.extract_rule;
+		var real_money_description=rules.real_money_description;
+		aVariable.box.ruleOne.innerHTML+=extract_rule;
+		aVariable.box.ruleTwo.innerHTML+=real_money_description;
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
 				LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);

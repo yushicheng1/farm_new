@@ -5,7 +5,8 @@ var aVariable = {
 	},
 	box: {
 		scroll: document.getElementById("box-scroll"),
-		bankList: document.getElementById("bank-list")
+		bankList: document.getElementById("bank-list"),
+		ruleOne: document.getElementById("box_rule_one")
 	},
 	btn: {
         btnRecord:document.getElementById("btn_record"),

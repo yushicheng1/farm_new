@@ -3,8 +3,12 @@ var wxchannel = null;
 var ALIPAYSERVER = aServer.ApiUrl + 'api/wallet/charge';
 var WXPAYSERVER = '';
 var total = 0;
+var level=1;
 var aFunc = {
 	initData: function() {
+		var rules=LocalStorage.getItem(LocalStorage.keys.Rules);
+		aVariable.box.moneyList.innerHTML=aUi.wallet.walletList(JSON.parse(rules).chargeRule);
+		
 		//默认选中第一个套餐
 		var tc = document.getElementsByClassName('li-xz')[0];
 		aVariable.ipt.iptMoney.innerText = tc.getAttribute("data-price");
@@ -53,6 +57,7 @@ var aFunc = {
 			card.className = 'li-xz'
 			aVariable.ipt.iptMoney.innerText = card.getAttribute("data-price");
 			aVariable.params.apple_id = card.getAttribute("data-id");
+			level= card.getAttribute("data-level");
 		});
 
 		//绑定支付方式选择事件
@@ -150,7 +155,7 @@ function pay_new() {
 			if (data.status == 200) {
 				if (data.data.isPhoneChecked) {
 					//正式环境参数传alipay  测试环境参数传alipayThird
-					walletServer.charge(total, 'alipay', '', function(data) {
+					walletServer.charge(level, 'alipay', '', function(data) {
 						// console.log(data.data
 						if(data.status=='400'){
 							mui.toast(data.msg);
@@ -196,7 +201,7 @@ function pay_new() {
 			if (data.status == 200) {
 				if (data.data.isPhoneChecked) {
 					//正式环境参数传alipay  测试环境参数传alipayThird
-					walletServer.charge(total, 'weixin', '', function(data) {
+					walletServer.charge(level, 'weixin', '', function(data) {
 						// console.log(data.data
 						if(data.status=='400'){
 							mui.toast(data.msg);
@@ -240,7 +245,7 @@ function pay_new() {
 		bankServer.getThirdInfo(function(data) {
 			if (data.status == 200) {
 				if (data.data.isPhoneChecked) {
-					walletServer.charge(total, 'bank', cardId, function(data) {
+					walletServer.charge(level, 'bank', cardId, function(data) {
 						var zhifu = data.data;
 						console.log(zhifu)
 						var a = mui.prompt('已发送至' + phone, '', '验证码', ['取消', '确认'], function(e) {
@@ -302,7 +307,7 @@ function pay_new() {
 					if (data.status == 200) {
 						if (data.data.isPhoneChecked) {
 							//正式环境参数传alipay  测试环境参数传alipayThird
-							walletServer.charge(total, 'realmoney', '', function(data) {
+							walletServer.charge(level, 'realmoney', '', function(data) {
 								// console.log(data.data
 								if(data.status=='400'){
 									mui.toast(data.msg);

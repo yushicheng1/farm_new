@@ -27,7 +27,7 @@ var aFunc = {
 			
 			warehouseServer.getPostRule(0,function(data){
 			    if(data.status == 200){
-			     aVariable.ipt.iptTishi.innerText=data.data.price+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
+			     aVariable.ipt.iptTishi.innerText=data.data.description+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
 			     
 			    }
 			    
@@ -78,7 +78,7 @@ var aFunc = {
 				
 				warehouseServer.getPostRule(0,function(data){
 				    if(data.status == 200){
-				     aVariable.ipt.iptTishi.innerText=data.data.price+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
+				     aVariable.ipt.iptTishi.innerText=data.data.description+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
 				     
 				    }
 				    
@@ -109,7 +109,7 @@ var aFunc = {
 				
 				warehouseServer.getPostRule(1,function(data){
 				    if(data.status == 200){
-				     aVariable.ipt.iptTishi.innerText=data.data.price+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
+				     aVariable.ipt.iptTishi.innerText=data.data.description+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
 				     
 				    }
 				    
@@ -140,7 +140,7 @@ var aFunc = {
 		
 		// warehouseServer.getPostRule(2,function(data){
 		//     if(data.status == 200){
-		//      aVariable.ipt.iptTishi.innerText=data.data.price+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
+		//      aVariable.ipt.iptTishi.innerText=data.data.description+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
 		     
 		//     }
 		    

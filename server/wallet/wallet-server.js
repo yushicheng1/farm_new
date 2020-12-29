@@ -29,7 +29,7 @@ var walletServer = mui.extend(aServer || {}, {
 	//充值
 	charge: function(money, type,cardId,success, error) {
 		var data = {
-			'pay_number': money,
+			'level': money,
 			'pay_type': type,
 			'card_id':cardId
 		};

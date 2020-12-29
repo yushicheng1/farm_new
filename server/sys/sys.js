@@ -134,5 +134,13 @@ var sysServer = mui.extend(aServer || {}, {
 	
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/my/mydraw", "获取失败", data, success, error);
-	}
+	},
+	
+	//获取后台参数
+	getRules: function(success, error) {
+		var data = {
+			
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/system/getRules", "获取失败", data, success, error);
+	},
 })

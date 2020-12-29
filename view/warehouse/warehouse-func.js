@@ -3,7 +3,6 @@ var aFunc = {
 		aVariable.box.warehouseList.innerHTML = '';
 		warehouseServer.getMyStore(function(data) {
 				if (data.status == 200) {
-					console.log(JSON.stringify(data.data))
 					aVariable.box.warehouseList.innerHTML = aUi.warehouse.warehouseList(data.data);
 				} else {
 					aVariable.box.warehouseList.innerHTML = ''
@@ -37,22 +36,14 @@ var aFunc = {
 						image: image
 					}
 				});
-				// mui.toast('暂未开放')
 			} else if (type == 2) {
 				mui.openWindow({
 					id: "warehouseXiangqing",
 					url: '/view/warehouse/warehouse-record.html',
 					extras: {
 						vegetablesId: vegetablesId
-						// sum: sum,
-						// name: name,
-						// plant: plant,
-						// get: get,
-						// price: price,
-						// image: image
 					}
 				});
-				// mui.toast('暂未开放')
 			} else if (type == 3) {
 				mui.openWindow({
 					id: "warehouseXths",
@@ -71,7 +62,7 @@ var aFunc = {
 
 			} else if (type == 4) {
 				var btnArray = ['是', '否'];
-				mui.confirm("确定要丢弃吗?", "提示", btnArray, function(e) {
+				mui.confirm("此操作不可逆,确定要丢弃吗?", "提示", btnArray, function(e) {
 					if (e.index == 0) {
 						warehouseServer.discard(vegetablesId, function(data) {
 								if (data.status == 200) {
@@ -91,22 +82,6 @@ var aFunc = {
 
 			}
 		});
-		
-		// mui(aVariable.box.scroll).on("tap", "li", function(e) {
-		// 	var vegetablesId = this.getAttribute("data-id");
-		// 	var sum = this.getAttribute("data-sum");
-		// 	warehouseServer.recycle(vegetablesId, sum, function(data) {
-		// 			if (data.status == 200) {
-		// 				mui.toast("回收成功");
-		// 				aFunc.down2Refresh();
-		// 			} else {
-						
-		// 			}
-		// 		},
-		// 		function() {
-			
-		// 		});		
-		// });
 
 		aVariable.btn.btnWarehouseRecord.addEventListener("tap", function() {
 			mui.openWindow({
@@ -115,7 +90,6 @@ var aFunc = {
 				extras: {
 
 				}
-
 			});
 		})
 
@@ -128,15 +102,15 @@ var aFunc = {
 			var pages = aVariable.list.page.item_page;
 			var size = aVariable.list.page.item_num;
 			warehouseServer.getMyStore(pages, size, function(data) {
-				if(data.status == 200) {
+				if (data.status == 200) {
 					aVariable.box.warehouseList.innerHTML += aUi.warehouse.warehouseList(data.data);
 					aVariable.list.page.item_page += 1;
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh(data.data.length <10);
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(data.data.length < 10);
 				} else {
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 				}
 			}, function() {
-	
+
 			});
 		}, 100);
 	},
@@ -168,13 +142,6 @@ var aFunc = {
 	},
 
 	plusReady: function() {
-		// if (mui.os.plus) {
-		// 	plus.navigator.closeSplashscreen();
-		// 	plus.screen.lockOrientation("portrait-primary");
-		// }
-
-		// aVariable.webview.current = plus.webview.currentWebview();
-
 		mui.init({
 			pullRefresh: {
 				container: '#pullrefresh',
@@ -188,7 +155,7 @@ var aFunc = {
 					callback: aFunc.up2Refresh
 				}
 			}
-		});		
+		});
 		aFunc.bindEvent();
 	}
 };

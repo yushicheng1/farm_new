@@ -100,25 +100,25 @@
                     '</div>' +
                 '</div>');
             element.find('.ClassyCountdown-days input').knob($.extend({
-                width: '100%',
+                width: '99%',
                 displayInput: false,
                 readOnly: true,
                 max: 100
             }, settings.style.days.gauge));
             element.find('.ClassyCountdown-hours input').knob($.extend({
-                width: '100%',
+                width: '99%',
                 displayInput: false,
                 readOnly: true,
                 max: 100
             }, settings.style.hours.gauge));
             element.find('.ClassyCountdown-minutes input').knob($.extend({
-                width: '100%',
+                width: '99%',
                 displayInput: false,
                 readOnly: true,
                 max: 1000
             }, settings.style.minutes.gauge));
             element.find('.ClassyCountdown-seconds input').knob($.extend({
-                width: '100%',
+                width: '99%',
                 displayInput: false,
                 readOnly: true,
                 max: 100
