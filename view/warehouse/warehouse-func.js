@@ -62,7 +62,7 @@ var aFunc = {
 
 			} else if (type == 4) {
 				var btnArray = ['是', '否'];
-				mui.confirm("此操作不可逆,确定要丢弃吗?", "提示", btnArray, function(e) {
+				mui.confirm("您正在丢弃作物,此操作不可逆,确定要丢弃吗?", "提示", btnArray, function(e) {
 					if (e.index == 0) {
 						warehouseServer.discard(vegetablesId, function(data) {
 								if (data.status == 200) {

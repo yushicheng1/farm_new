@@ -54,7 +54,7 @@ var aFunc = {
 					alertTwo(data.data);
 					var notice = data.data;
 					aVariable.ipt.iptNotice.innerHTML =
-						'<marquee><span style="font-size: 15px;width: 100%;display:-moz-inline-box;display: inline-block;padding-left: 10px;margin-top: 1px;">' +
+						'<marquee><span style="font-size: 15px;width: 100%;display:-moz-inline-box;display: inline-block;padding-left: 10px;">' +
 						notice[0].msg + '</span></marquee>';
 				}
 			} else {

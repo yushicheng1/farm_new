@@ -157,27 +157,29 @@ function pay_new() {
 					//正式环境参数传alipay  测试环境参数传alipayThird
 					walletServer.charge(level, 'alipay', '', function(data) {
 						// console.log(data.data
-						if(data.status=='400'){
-							mui.toast(data.msg);
-						}
-						var zhifu = data.data;
-
-						plus.payment.request(zfchannel, zhifu[0].toString(), function(result) {
-							plus.nativeUI.alert("支付成功！", function() {
-								//刷新土地界面的积分
-								var plant = plus.webview.getWebviewById('plant');
-								mui.fire(plant, 'refreshJifen', {});
-								//刷新我的界面的积分
-								var my = plus.webview.getWebviewById('my');
-								mui.fire(my, 'refreshJf', {});
-								//刷新积分界面
-								var main = plus.webview.currentWebview().opener();
-								mui.fire(main, 'getMoney', {});
-								mui.back();
+						if(data.status==200){
+							var zhifu = data.data;
+							
+							plus.payment.request(zfchannel, zhifu[0].toString(), function(result) {
+								plus.nativeUI.alert("支付成功！", function() {
+									//刷新土地界面的积分
+									var plant = plus.webview.getWebviewById('plant');
+									mui.fire(plant, 'refreshJifen', {});
+									//刷新我的界面的积分
+									var my = plus.webview.getWebviewById('my');
+									mui.fire(my, 'refreshJf', {});
+									//刷新积分界面
+									var main = plus.webview.currentWebview().opener();
+									mui.fire(main, 'getMoney', {});
+									mui.back();
+								});
+							}, function(error) {
+								plus.nativeUI.alert("支付失败!");
 							});
-						}, function(error) {
-							plus.nativeUI.alert("支付失败!");
-						});
+							
+						}else{
+							mui.toast(data.msg);
+						}						
 					}, function() {
 
 					});
@@ -203,26 +205,28 @@ function pay_new() {
 					//正式环境参数传alipay  测试环境参数传alipayThird
 					walletServer.charge(level, 'weixin', '', function(data) {
 						// console.log(data.data
-						if(data.status=='400'){
-							mui.toast(data.msg);
-						}
-						var zhifu = data.data;
-						plus.payment.request(wxchannel, zhifu[0], function(result) {
-							plus.nativeUI.alert("支付成功！", function() {
-								//刷新土地界面的积分
-								var plant = plus.webview.getWebviewById('plant');
-								mui.fire(plant, 'refreshJifen', {});
-								//刷新我的界面的积分
-								var my = plus.webview.getWebviewById('my');
-								mui.fire(my, 'refreshJf', {});
-								//刷新积分界面
-								var main = plus.webview.currentWebview().opener();
-								mui.fire(main, 'getMoney', {});
-								mui.back();
+						if(data.status==200){
+							var zhifu = data.data;
+							plus.payment.request(wxchannel, zhifu[0], function(result) {
+								plus.nativeUI.alert("支付成功！", function() {
+									//刷新土地界面的积分
+									var plant = plus.webview.getWebviewById('plant');
+									mui.fire(plant, 'refreshJifen', {});
+									//刷新我的界面的积分
+									var my = plus.webview.getWebviewById('my');
+									mui.fire(my, 'refreshJf', {});
+									//刷新积分界面
+									var main = plus.webview.currentWebview().opener();
+									mui.fire(main, 'getMoney', {});
+									mui.back();
+								});
+							}, function(error) {
+								plus.nativeUI.alert("支付失败!");
 							});
-						}, function(error) {
-							plus.nativeUI.alert("支付失败!");
-						});
+							
+						}else{
+							mui.toast(data.msg);
+						}					
 					}, function() {
 		
 					});
@@ -247,39 +251,43 @@ function pay_new() {
 				if (data.data.isPhoneChecked) {
 					walletServer.charge(level, 'bank', cardId, function(data) {
 						var zhifu = data.data;
-						console.log(zhifu)
-						var a = mui.prompt('已发送至' + phone, '', '验证码', ['取消', '确认'], function(e) {
-							if (e.index == 1) {
-								var agreeCode = document.getElementById("ipt-agree-code").value;
-								walletServer.ConfirmCharge(zhifu[0], agreeCode, function(data) {
-									if (data.status == 200) {
-										plus.nativeUI.alert("支付成功！", function() {
-											//刷新土地界面的积分
-											var plant = plus.webview.getWebviewById('plant');
-											mui.fire(plant, 'refreshJifen', {});
-											//刷新我的界面的积分
-											var my = plus.webview.getWebviewById('my');
-											mui.fire(my, 'refreshJf', {});
-											//刷新积分界面
-											var main = plus.webview.currentWebview().opener();
-											mui.fire(main, 'getMoney', {});
-											mui.back();
-										});
-									} else {
-										mui.toast(data.msg);
-									}
-								}, function() {
-
-								});
-
-							} else {
-								console.log('取消');
-							}
-						}, 'div');
-						var lihh = document.querySelector('.mui-popup-input');
-						lihh.innerHTML =
-							'<input  id="ipt-agree-code" type="number" style="height:40px;text-align: center;width: 50%;"></input>';
-
+						if(data.status==200){
+							var a = mui.prompt('已发送至' + phone, '', '验证码', ['取消', '确认'], function(e) {
+								if (e.index == 1) {
+									var agreeCode = document.getElementById("ipt-agree-code").value;
+									walletServer.ConfirmCharge(zhifu[0], agreeCode, function(data) {
+										if (data.status == 200) {
+											plus.nativeUI.alert("支付成功！", function() {
+												//刷新土地界面的积分
+												var plant = plus.webview.getWebviewById('plant');
+												mui.fire(plant, 'refreshJifen', {});
+												//刷新我的界面的积分
+												var my = plus.webview.getWebviewById('my');
+												mui.fire(my, 'refreshJf', {});
+												//刷新积分界面
+												var main = plus.webview.currentWebview().opener();
+												mui.fire(main, 'getMoney', {});
+												mui.back();
+											});
+										} else {
+											mui.toast(data.msg);
+										}
+									}, function() {
+							
+									});
+							
+								} else {
+									console.log('取消');
+								}
+							}, 'div');
+							var lihh = document.querySelector('.mui-popup-input');
+							lihh.innerHTML =
+								'<input  id="ipt-agree-code" type="number" style="height:40px;text-align: center;width: 50%;"></input>';
+							
+						}else{
+							mui.toast(data.msg);
+						}
+						
 					}, function() {
 
 					});
