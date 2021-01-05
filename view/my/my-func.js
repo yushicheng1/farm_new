@@ -2,7 +2,6 @@ var aFunc = {
 	initData: function() {
 		//发起绑定请求
 		bankServer.createMember(function(data) {
-			console.log(JSON.stringify(data));
 			if (data.status == 200) {
 		
 			} else {
@@ -13,12 +12,10 @@ var aFunc = {
 		});
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
-				console.log(JSON.stringify(data.data))
 				LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);
 				aVariable.ipt.iptName.innerText = data.data.nick_name;
 				aVariable.ipt.iptJifen.innerText = data.data.money;
 				aVariable.ipt.iptYue.innerText = data.data.real_money;
-				// aVariable.ipt.iptPhone.value = data.data.phone;
 				aVariable.ipt.iptImage.src = aServer.ApiUrl + data.data.avatar;
 				if (data.data.is_vip == 1) {
 					document.getElementById('img_vip').style.display = "";
@@ -40,22 +37,6 @@ var aFunc = {
 		// mui.toast("手机号失去焦点")
 	},
 	bindEvent: function() {
-		// //修改手机号
-		// aVariable.btn.btnName.addEventListener("tap", function() {
-		// 	aVariable.ipt.iptName.disabled=false
-		// 	aVariable.ipt.iptName.className='ipt-y'
-		// 	setTimeout(function() {
-		// 		aVariable.ipt.iptName.focus()
-		// 	}, 100);	
-		// })
-		// //修改手机号
-		// aVariable.btn.btnPhone.addEventListener("tap", function() {
-		// 	aVariable.ipt.iptPhone.disabled=false
-		// 	aVariable.ipt.iptPhone.className='ipt-y'
-		// 	setTimeout(function() {
-		// 		aVariable.ipt.iptPhone.focus()
-		// 	}, 100);
-		// })
 		//修改个人信息
 		aVariable.ipt.iptName.addEventListener("tap", function() {
 			mui.openWindow({

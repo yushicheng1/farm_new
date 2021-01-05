@@ -75,25 +75,56 @@ var aFunc = {
 			var price = aVariable.ipt.iptPrice.innerText;
 			aVariable.ipt.iptTotal.innerText = accMul(num, price);
 		})
+		// aVariable.btn.btnZs.addEventListener("tap", function() {
+		// 	if(aVariable.params.phone==0){
+		// 		var a = mui.prompt('请填写赠送人的手机号码' , '', '', ['取消', '确认'], function(e) {
+		// 			if (e.index == 1) {
+		// 		       var phone=document.getElementById("ipt_phone").value;
+		// 			   if (!(/^1[3456789]\d{9}$/.test(phone))) {
+		// 			   	alert("请输入正确的手机号码");
+		// 			   	return;
+		// 			   }else{
+		// 				   aVariable.params.phone=phone;
+		// 				   aVariable.btn.btnZs.innerText="取消赠送"
+		// 			   }
+		// 			} else {
+		// 				console.log('取消');
+		// 			}
+		// 		}, 'div');
+		// 		var lihh = document.querySelector('.mui-popup-input');
+		// 		lihh.innerHTML =
+		// 			'<input  id="ipt_phone" type="number" style="height:40px;text-align: center;width: 70%;"></input>';
+		// 	}else{
+		// 		 aVariable.btn.btnZs.innerText="赠送";
+		// 		 aVariable.params.phone=0;
+		// 	}		
+		// })
 		aVariable.btn.btnBuy.addEventListener("tap", function() {
 			var btnArray = ['是', '否'];
-			mui.confirm("本次操作共消耗积分"+aVariable.ipt.iptTotal.innerText+",确定要支付吗?", "提示", btnArray, function(e) {
+			var text="";
+			if(aVariable.params.phone==0){
+				text="本次操作共消耗积分"+aVariable.ipt.iptTotal.innerText+",确定要支付吗?";
+			}else{
+				text="当前赠送人为"+aVariable.params.phone+",本次操作共消耗积分"+aVariable.ipt.iptTotal.innerText+",确定要支付吗?";
+			}
+			mui.confirm(text, "提示", btnArray, function(e) {
 				if (e.index == 0) {
 					aVariable.btn.btnBuy.disabled = true;
 					var id = aVariable.params.seedId;
 					var num = aVariable.ipt.iptNumber.value;
 					var unique = aVariable.params.uniqueId;
 					var size = aVariable.params.size;
+					var phone=aVariable.params.phone;
 					//添加到购物车
-					gmzzServer.addSeedCart(id, num, unique, size, function(data) {
+					gmzzServer.addSeedCart(id, num, unique, size,phone,function(data) {
 						if (data.status == 200) {
 							var cartId = data.data.cartId;
 							//确认种子订单
-							gmzzServer.confirmSeedOrder(cartId, function(data) {
+							gmzzServer.confirmSeedOrder(cartId,phone,function(data) {
 								if (data.status == 200) {
 									var orderKey = data.data.orderKey;
 									//生成订单
-									gmzzServer.createSeedOrder(orderKey,aVariable.params.auto, function(data) {
+									gmzzServer.createSeedOrder(orderKey,aVariable.params.auto,phone, function(data) {
 										if (data.status == 200) {
 											if (data.data.status == "SUCCESS") {
 												console.log("订单生成成功");

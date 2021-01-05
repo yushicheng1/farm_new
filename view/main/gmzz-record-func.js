@@ -11,7 +11,6 @@ var aFunc = {
 			aVariable.webview.listComponent = refreshComponent;
 			var pages = aVariable.list.page.item_page;
 			var size = aVariable.list.page.item_num;
-			console.log('2222')
 			// noticeServer.getNoticeList(pages, size, function(data) {
 			// 	if(data.code == 200) {
 			// 		aVariable.box.noticeList.innerHTML += aUi.notice.noticeList(data.body);

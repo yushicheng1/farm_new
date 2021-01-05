@@ -3,12 +3,12 @@ var wxchannel = null;
 var ALIPAYSERVER = aServer.ApiUrl + 'api/wallet/charge';
 var WXPAYSERVER = '';
 var total = 0;
-var level=1;
+var level = 1;
 var aFunc = {
 	initData: function() {
-		var rules=LocalStorage.getItem(LocalStorage.keys.Rules);
-		aVariable.box.moneyList.innerHTML=aUi.wallet.walletList(JSON.parse(rules).chargeRule);
-		
+		var rules = LocalStorage.getItem(LocalStorage.keys.Rules);
+		aVariable.box.moneyList.innerHTML = aUi.wallet.walletList(JSON.parse(rules).chargeRule);
+
 		//默认选中第一个套餐
 		var tc = document.getElementsByClassName('li-xz')[0];
 		aVariable.ipt.iptMoney.innerText = tc.getAttribute("data-price");
@@ -19,8 +19,18 @@ var aFunc = {
 				// console.log(JSON.stringify(data.data))
 				LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);
 				aVariable.ipt.iptJiFen.innerHTML = LocalStorage.getItem(LocalStorage.keys.User_Money);
-				aVariable.params.real_money=data.data.real_money;
-				aVariable.ipt.realMoney.innerText='('+data.data.real_money+')'+'(试运行)';
+				aVariable.params.real_money = data.data.real_money;
+				// aVariable.ipt.realMoney.innerText = '(' + data.data.real_money + ')' + '(试运行)';
+				var money=aVariable.params.real_money;
+				bankServer.getBankList(function(data) {
+					if (data.status == 200) {
+						aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data,money) + aVariable.box.bankList.innerHTML;
+					} else {
+				
+					}
+				}, function() {
+				
+				});
 			} else {
 
 			}
@@ -28,15 +38,7 @@ var aFunc = {
 
 		});
 
-		bankServer.getBankList(function(data) {
-			if (data.status == 200) {
-				aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data)+aVariable.box.bankList.innerHTML;
-			} else {
-
-			}
-		}, function() {
-
-		});
+		
 
 		bankServer.createMember(function(data) {
 			if (data.status == 200) {
@@ -57,7 +59,7 @@ var aFunc = {
 			card.className = 'li-xz'
 			aVariable.ipt.iptMoney.innerText = card.getAttribute("data-price");
 			aVariable.params.apple_id = card.getAttribute("data-id");
-			level= card.getAttribute("data-level");
+			level = card.getAttribute("data-level");
 		});
 
 		//绑定支付方式选择事件
@@ -92,33 +94,31 @@ var aFunc = {
 					// console.log(JSON.stringify(data.data))
 					LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);
 					aVariable.ipt.iptJiFen.innerHTML = LocalStorage.getItem(LocalStorage.keys.User_Money);
-					aVariable.params.real_money=data.data.real_money;
+					aVariable.params.real_money = data.data.real_money;
 					bankServer.getBankList(function(data) {
 						if (data.status == 200) {
-							var html = '<li class="mui-table-view-cell" data-type="1" style="color: #000000;" >' +
+							var html = 
+								'<li class="mui-table-view-cell" data-type="1" style="color: #000000;" >' +
 								'<a class="mui-navigate-right">支付宝<span style="color: red;"></a>' +
-								'</li>';+
+								'</li>' +
 								'<li class="mui-table-view-cell" data-type="2" style="color: #000000;" >' +
-									'<a class="mui-navigate-right">微信<span style="color: red;"></a>' +
-									'</li>';
-									'<li class="mui-table-view-cell" data-type="4" style="color: #000000;" >' +
-										'<a class="mui-navigate-right">余额<span style="color: red;">('+aVariable.params.real_money+')(试运行)</a>' +
-										'</li>';
-							aVariable.box.bankList.innerHTML = html + aUi.bank.bankOneList(data.data);
+								'<a class="mui-navigate-right">微信<span style="color: red;"></a>' +
+								'</li>';
+							aVariable.box.bankList.innerHTML = html + aUi.bank.bankOneList(data.data,data.data.real_money);
 						} else {
-					
+
 						}
 					}, function() {
-					
+
 					});
 				} else {
-			
+
 				}
 			}, function() {
-			
+
 			});
-			
-			
+
+
 		});
 	},
 	plusReady: function() {
@@ -128,13 +128,13 @@ var aFunc = {
 		}
 		// 获取支付通道
 		plus.payment.getChannels(function(channels) {
-			for (var i in channels) { 
-			                        if (channels[i].id == "wxpay") { 
-			                             wxchannel=channels[i];  
-			                        }else{ 
-			                            zfchannel=channels[i];  
-			                        } 
-			                    }     
+			for (var i in channels) {
+				if (channels[i].id == "wxpay") {
+					wxchannel = channels[i];
+				} else {
+					zfchannel = channels[i];
+				}
+			}
 		}, function(e) {
 			alert("获取支付通道失败：" + e.message);
 		});
@@ -157,9 +157,9 @@ function pay_new() {
 					//正式环境参数传alipay  测试环境参数传alipayThird
 					walletServer.charge(level, 'alipay', '', function(data) {
 						// console.log(data.data
-						if(data.status==200){
+						if (data.status == 200) {
 							var zhifu = data.data;
-							
+
 							plus.payment.request(zfchannel, zhifu[0].toString(), function(result) {
 								plus.nativeUI.alert("支付成功！", function() {
 									//刷新土地界面的积分
@@ -176,10 +176,10 @@ function pay_new() {
 							}, function(error) {
 								plus.nativeUI.alert("支付失败!");
 							});
-							
-						}else{
+
+						} else {
 							mui.toast(data.msg);
-						}						
+						}
 					}, function() {
 
 					});
@@ -197,7 +197,7 @@ function pay_new() {
 		}, function() {
 
 		});
-	} else if(type==2){
+	} else if (type == 2) {
 		mui('#popover').popover('hide');
 		bankServer.getThirdInfo(function(data) {
 			if (data.status == 200) {
@@ -205,7 +205,7 @@ function pay_new() {
 					//正式环境参数传alipay  测试环境参数传alipayThird
 					walletServer.charge(level, 'weixin', '', function(data) {
 						// console.log(data.data
-						if(data.status==200){
+						if (data.status == 200) {
 							var zhifu = data.data;
 							plus.payment.request(wxchannel, zhifu[0], function(result) {
 								plus.nativeUI.alert("支付成功！", function() {
@@ -223,14 +223,14 @@ function pay_new() {
 							}, function(error) {
 								plus.nativeUI.alert("支付失败!");
 							});
-							
-						}else{
+
+						} else {
 							mui.toast(data.msg);
-						}					
+						}
 					}, function() {
-		
+
 					});
-		
+
 				} else {
 					mui.toast('请先绑定手机号');
 					mui.openWindow({
@@ -239,19 +239,19 @@ function pay_new() {
 					});
 				}
 			} else {
-		
+
 			}
 		}, function() {
-		
+
 		});
-	}else if (type == 3) {
+	} else if (type == 3) {
 		mui('#popover').popover('hide');
 		bankServer.getThirdInfo(function(data) {
 			if (data.status == 200) {
 				if (data.data.isPhoneChecked) {
 					walletServer.charge(level, 'bank', cardId, function(data) {
 						var zhifu = data.data;
-						if(data.status==200){
+						if (data.status == 200) {
 							var a = mui.prompt('已发送至' + phone, '', '验证码', ['取消', '确认'], function(e) {
 								if (e.index == 1) {
 									var agreeCode = document.getElementById("ipt-agree-code").value;
@@ -273,9 +273,9 @@ function pay_new() {
 											mui.toast(data.msg);
 										}
 									}, function() {
-							
+
 									});
-							
+
 								} else {
 									console.log('取消');
 								}
@@ -283,11 +283,11 @@ function pay_new() {
 							var lihh = document.querySelector('.mui-popup-input');
 							lihh.innerHTML =
 								'<input  id="ipt-agree-code" type="number" style="height:40px;text-align: center;width: 50%;"></input>';
-							
-						}else{
+
+						} else {
 							mui.toast(data.msg);
 						}
-						
+
 					}, function() {
 
 					});
@@ -306,7 +306,7 @@ function pay_new() {
 		});
 	} else if (type == 0) {
 		mui.toast('请选择支付方式');
-	}else if(type==4){
+	} else if (type == 4) {
 		var btnArray = ['是', '否'];
 		mui.confirm("确定要用余额充值吗?", "提示", btnArray, function(e) {
 			if (e.index == 0) {
@@ -317,26 +317,26 @@ function pay_new() {
 							//正式环境参数传alipay  测试环境参数传alipayThird
 							walletServer.charge(level, 'realmoney', '', function(data) {
 								// console.log(data.data
-								if(data.status=='400'){
+								if (data.status == '400') {
 									mui.toast(data.msg);
 								}
-								if(data.status=='200'){
+								if (data.status == '200') {
 									mui.toast(data.data)
 									//刷新土地界面的积分
 									var plant = plus.webview.getWebviewById('plant');
 									mui.fire(plant, 'refreshJifen', {});
 									//刷新我的界面的积分
 									var my = plus.webview.getWebviewById('my');
-									mui.fire(my,'refreshJf', {});
+									mui.fire(my, 'refreshJf', {});
 									//刷新积分界面
 									var main = plus.webview.currentWebview().opener();
 									mui.fire(main, 'getMoney', {});
 									mui.back();
 								}
 							}, function() {
-				
+
 							});
-				
+
 						} else {
 							mui.toast('请先绑定手机号');
 							mui.openWindow({
@@ -345,13 +345,13 @@ function pay_new() {
 							});
 						}
 					} else {
-				
+
 					}
 				}, function() {
-				
+
 				});
 			} else {
-		
+
 			}
 		});
 	}

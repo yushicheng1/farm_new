@@ -9,6 +9,7 @@ var aVariable = {
 	btn: {
         btnRecord:document.getElementById("btn_record"),
 		btnChongzhi:document.getElementById("btn_chongzhi"),
+		btnChongzhiOther:document.getElementById("btn_chongzhi_other"),
 		btnTixian:document.getElementById("btn_tixian")
 	},
 	ipt: {

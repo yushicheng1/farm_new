@@ -23,30 +23,33 @@ var gmzzServer = mui.extend(aServer || {}, {
 	},
 
 	//添加到购物车
-	addSeedCart: function(id, num, uniqueId, size, success, error) {
+	addSeedCart: function(id, num, uniqueId, size,phone, success, error) {
 		var data = {
 			product_id: id,
 			cartNum: num,
 			is_new: 1,
 			uniqueId: uniqueId,
-			size: size
+			size: size,
+			phone:phone
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/seedcart/add", "添加到购物车失败", data, success, error);
 	},
 
 	//确认种子订单
-	confirmSeedOrder: function(cartId, success, error) {
+	confirmSeedOrder: function(cartId,phone,success, error) {
 		var data = {
-			cart_id: cartId
+			cart_id: cartId,
+			phone:phone
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/order/confirm_seed_order", "确认订单失败", data, success, error);
 	},
 
 	//生成订单
-	createSeedOrder: function(orderKey,auto, success, error) {
+	createSeedOrder: function(orderKey,auto,phone, success, error) {
 		var data = {
 			payType: 'yue',
-			autoOption:auto
+			autoOption:auto,
+			phone:phone
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/order/create_seed_order/"+orderKey, "确认订单失败", data, success, error);
 	}

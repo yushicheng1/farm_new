@@ -64,6 +64,32 @@ var aFunc = {
 			});
 			
 		})
+		
+		aVariable.btn.btnChongzhiOther.addEventListener("tap", function() {
+			bankServer.getBankList(function(data) {
+				if (data.status == 200) {
+					if(data.data.length>0){
+						plus.runtime.getProperty(plus.runtime.appid, function(inf) {							
+								mui.openWindow({
+									id: "chongzhiother",
+									url: '/view/wallet/wallet_other.html'
+								});			
+						});
+					}else{
+						mui.toast('请先绑定银行卡')
+						mui.openWindow({
+							id: "wdyhk",
+							url: '/view/my/wdyhk.html'
+						});	
+					}
+				} else {
+			
+				}
+			}, function() {
+			
+			});
+			
+		})
 
 		// aVariable.btn.btnTixian.addEventListener("tap", function() {
 		// 	mui.openWindow({

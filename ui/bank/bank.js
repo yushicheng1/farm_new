@@ -39,8 +39,11 @@ aUi.bank = {
 				'</li>';
 		return html;
 	},
-	bankOneList: function(list4Bank) {
-		var html = "";
+	bankOneList: function(list4Bank,money) {
+		var html = '<li class="mui-table-view-cell" data-type="4" style="color: #000000;" >' +
+								'<a class="mui-navigate-right">余额<span style="color: red;">(' + money +
+								')(试运行)</a>' +
+								'</li>';
 		for (var i = 0; i < list4Bank.length; i++) {
 			html += this._bankOne(list4Bank[i]);
 		}

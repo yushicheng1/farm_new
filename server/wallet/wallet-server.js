@@ -45,11 +45,14 @@ var walletServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/confirmPay", "充值失败", data, success, error);
 	},
 	
-	//充值(apple)
-	chargeApple: function(data, success, error) {
+	//代充值
+	chargeOther: function(money, type,cardId,phone,success, error) {
 		var data = {
-			'data': data
+			'level': money,
+			'pay_type': type,
+			'card_id':cardId,
+			'oth_phone':phone
 		};
-		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/appleCharge", "充值失败", data, success, error);
+		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/charge", "充值失败", data, success, error);
 	}
 });
