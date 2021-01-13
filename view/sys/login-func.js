@@ -180,6 +180,9 @@ var aFunc = {
 							// aVariable.btn.btnLogin.disabled = "";
 							// window.location.reload();
 							var guideFlag = LocalStorage.getItem(LocalStorage.keys.guideFlag);
+							aVariable.ipt.iptAccount.value = '';
+							       aVariable.ipt.iptPassword.value = '';
+							       aVariable.ipt.iptChkRem.checked = false;
 							console.log(guideFlag)
 							if (guideFlag) {
 								mui.openWindow({
@@ -439,6 +442,9 @@ function autoLogin() {
 	var outTime = LocalStorage.getItem(LocalStorage.keys.Expires_Time);
 	console.log(outTime);
 	console.log(time);
+	aVariable.ipt.iptAccount.value = '';
+	aVariable.ipt.iptPassword.value = '';
+	aVariable.ipt.iptChkRem.checked = false;
 	if (outTime) {
 		if (time < outTime) {
 			console.log(11111111111111111111111)

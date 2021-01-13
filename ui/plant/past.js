@@ -21,6 +21,7 @@ aUi.record = {
 									'<span style="float: right;">结果天数:'+data.ending_day+'天</span>'+
 								'</p>'+
 								'<p>'+
+								'<span>累计收获:'+data.cumulative_harvest+'kg</span>'+
 									'<span style="float: right;">托管:'+auto+'</span>'+
 								'</p>'+
 							'</div>'+

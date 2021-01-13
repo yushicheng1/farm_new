@@ -5,8 +5,8 @@
     /*"fullscreen":true,*/
     "name" : "大农主", /*应用名称，程序桌面图标名称*/
     "version" : {
-        "name" : "1.6.0", /*应用版本名称*/
-        "code" : 57
+        "name" : "1.6.3", /*应用版本名称*/
+        "code" : 60
     },
     "description" : "", /*应用描述信息*/
     "icons" : {

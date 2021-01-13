@@ -334,7 +334,11 @@ var aFunc = {
 					case 1:
 						mui.toast("注销登录");
 						var wvs = plus.webview.all();
-						
+						LocalStorage.setItem(LocalStorage.keys.Auto_Save, '0');
+						     LocalStorage.setItem(LocalStorage.keys.Expires_Time, '');
+						     LocalStorage.setItem(LocalStorage.keys.User_Account, '');
+						     LocalStorage.setItem(LocalStorage.keys.User_Password, '');
+						     LocalStorage.setItem(LocalStorage.keys.Auth_Token, '');
 						for (var i = 0,
 								len = wvs.length; i < len; i++) {
 							if (wvs[i].getURL() != null) {

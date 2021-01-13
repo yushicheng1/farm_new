@@ -118,36 +118,36 @@ var aFunc = {
 				   })
 		})
 		
-		// aVariable.btn.btnHainan.addEventListener("tap", function() {
-		// 	mui('#popover').popover('hide');
-		// 	aVariable.params.chandi=2;
-		// aVariable.ipt.iptChandi.innerText ='当前产地:海南';
-		// 	aVariable.ipt.iptAddress.innerText ='';
-		// 	aVariable.btn.btnChoose.hidden = "hidden";
-		// 	aVariable.btn.btnChooseNew.hidden = "";
-		// 	aVariable.params.addressId='';
-		// 	aVariable.ipt.iptTishi.innerText='青海、甘肃、宁夏、黑龙江、吉林、辽宁2元,内蒙古、海南16元，新疆、西藏35元'
-		// 	warehouseServer.getMyStore(0,0,function(data) {
-		// 			if (data.status == 200) {
-		// 				aVariable.box.recordList.innerHTML = aUi.warehouse.youJiListThree(data.data);				
-		// 			} else {
-		// 				aVariable.box.recordList.innerHTML = ''
-		// 			}
-		// 		},
-		// 		function() {
+		aVariable.btn.btnHainan.addEventListener("tap", function() {
+			mui('#popover').popover('hide');
+			aVariable.params.chandi=2;
+		aVariable.ipt.iptChandi.innerText ='当前产地:海南';
+			aVariable.ipt.iptAddress.innerText ='';
+			aVariable.btn.btnChoose.hidden = "hidden";
+			aVariable.btn.btnChooseNew.hidden = "";
+			aVariable.params.addressId='';
+			// aVariable.ipt.iptTishi.innerText='青海、甘肃、宁夏、黑龙江、吉林、辽宁2元,内蒙古、海南16元，新疆、西藏35元'
+			warehouseServer.getMyStore(0,0,function(data) {
+					if (data.status == 200) {
+						aVariable.box.recordList.innerHTML = aUi.warehouse.youJiListThree(data.data);				
+					} else {
+						aVariable.box.recordList.innerHTML = ''
+					}
+				},
+				function() {
 			
-		// 		});
+				});
 		
-		// warehouseServer.getPostRule(2,function(data){
-		//     if(data.status == 200){
-		//      aVariable.ipt.iptTishi.innerText=data.data.description+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
+		warehouseServer.getPostRule(2,function(data){
+		    if(data.status == 200){
+		     aVariable.ipt.iptTishi.innerText=data.data.description+'\n最小邮寄重量:'+data.data.min_post+'公斤   最大邮寄重量:'+data.data.max_post+'公斤';
 		     
-		//     }
+		    }
 		    
-		//    },function(){
+		   },function(){
 		    
-		//    })
-		// })
+		   })
+		})
 
 		aVariable.btn.btnYouji.addEventListener("tap", function() {
 			aVariable.btn.btnYouji.disabled = true;

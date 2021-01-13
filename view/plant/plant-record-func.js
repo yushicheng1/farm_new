@@ -1,6 +1,6 @@
 var subPages = ["now.html", "past.html"];
 var subPageStyle = {
-	top: '96px',
+	top: '13%',
 	bottom: '0'
 }
 var aFunc = {
@@ -33,7 +33,7 @@ var aFunc = {
 		var self = plus.webview.currentWebview();
 		var page = aVariable.webview.current.page;
 		for (var i = 0; i < subPages.length; i++) {
-			var sub = plus.webview.create(subPages[i].replace("order/", ""), subPages[i], subPageStyle);
+			var sub = plus.webview.create(subPages[i].replace("plant/", ""), subPages[i], subPageStyle);
 			self.append(sub);
 		}
 		if (page == 2) {

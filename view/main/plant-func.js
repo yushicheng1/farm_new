@@ -273,14 +273,14 @@ var aFunc = {
 							var name = this.getAttribute('data-name');
 							var day = this.getAttribute('data-day');
 							aVariable.ipt.iptPlantName.innerText = name;
-							if (day < 0) {
-								day = 0;
-							}
-							if (day == 0) {
-								aVariable.ipt.iptPlantDay.innerText = '收获还需5天';
-							} else {
-								aVariable.ipt.iptPlantDay.innerText = '收获还需' + day + '天';
-							}
+							// if (day < 0) {
+							// 	day = 0;
+							// }
+							// if (day == 0) {
+								aVariable.ipt.iptPlantDay.innerText = day;
+							// } else {
+							// 	aVariable.ipt.iptPlantDay.innerText = '收获还需' + day + '天';
+							// }
 							aVariable.params.landId = landId;
 							aVariable.params.seedId = seedId;
 							this.style.border = 'solid 3px greenyellow';

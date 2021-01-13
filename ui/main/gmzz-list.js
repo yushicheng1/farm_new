@@ -78,7 +78,7 @@ aUi.seed = {
 		var html = 
 		 '<div class="mui-col-sm-3  mui-col-xs-3 " data-id="'+data.id+'" data-name="'+data.name+'" data-image="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" data-chanliang="'+chanLiang+'">'+
 			'<img src="'+aServer.ApiUrl+data.img+'" />'+
-			'<p>'+data.name+'</p>'+
+			'<p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">'+data.name+'</p>'+
 		'</div>';
 		return html;
 	},
