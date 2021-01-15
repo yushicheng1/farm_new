@@ -22,7 +22,7 @@ var aFunc = {
 				var money=aVariable.params.real_money;
 				bankServer.getBankList(function(data) {
 					if (data.status == 200) {
-						aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data,money) + aVariable.box.bankList.innerHTML;
+						aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data,money,JSON.parse(rules).pay_rule);
 					} else {
 				
 					}
@@ -104,13 +104,7 @@ var aFunc = {
 					aVariable.params.real_money = data.data.real_money;
 					bankServer.getBankList(function(data) {
 						if (data.status == 200) {
-							var html = '<li class="mui-table-view-cell" data-type="1" style="color: #000000;" >' +
-								'<a class="mui-navigate-right">支付宝<span style="color: red;"></a>' +
-								'</li>' +
-							'<li class="mui-table-view-cell" data-type="2" style="color: #000000;" >' +
-							'<a class="mui-navigate-right">微信<span style="color: red;"></a>' +
-							'</li>';
-							aVariable.box.bankList.innerHTML = html + aUi.bank.bankOneList(data.data,data.data.real_money);
+							aUi.bank.bankOneList(data.data,money,JSON.parse(rules).pay_rule);
 						} else {
 
 						}

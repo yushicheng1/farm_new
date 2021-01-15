@@ -5,11 +5,10 @@ var gmzzServer = mui.extend(aServer || {}, {
 	isDebug: true,
 
 	//获取种子列表
-	getSeedList: function(pages, size,type, success, error) {
+	getSeedList: function(pages, size,success, error) {
 		var data = {
 			"page": pages,
-			"limit": size,
-			"type":type
+			"limit": size
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/seed/list", "获取种子列表失败", data, success, error);
 	},

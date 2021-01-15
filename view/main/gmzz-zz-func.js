@@ -49,7 +49,7 @@ var aFunc = {
 		setTimeout(function() {
 			var pages = aVariable.list.page.item_page;
 			var size = aVariable.list.page.item_num;
-			gmzzServer.getSeedList(pages,size,'0',function(data) {
+			gmzzServer.getSeedList(pages,size,function(data) {
 				if(data.status == 200) {
 					aVariable.box.seedList.innerHTML += aUi.seed.seedYmList(data.data);
 					aVariable.list.page.item_sum += data.data.length;
@@ -69,7 +69,7 @@ var aFunc = {
 		var pages = aVariable.list.page.item_page;
 		var size = aVariable.list.page.item_num;
 		setTimeout(function() {			
-			gmzzServer.getSeedList(pages,size,'0',function(data) {
+			gmzzServer.getSeedList(pages,size,function(data) {
 				if(data.status == 200) {
 					aVariable.box.seedList.innerHTML = aUi.seed.seedYmList(data.data);
 					aVariable.list.page.item_sum = data.data.length;
