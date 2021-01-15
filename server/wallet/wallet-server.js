@@ -54,5 +54,24 @@ var walletServer = mui.extend(aServer || {}, {
 			'oth_phone':phone
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/charge", "充值失败", data, success, error);
-	}
+	},
+	
+	//转账
+	largecharge: function(realname, cardNo,number,success, error) {
+		var data = {
+			'realname': realname,
+			'cardNo': cardNo,
+			'number':number
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/largecharge", "充值失败", data, success, error);
+	},
+	
+	//获取转账记录
+	getTransferList: function(pages, size, success, error) {
+		var data = {
+			"page": pages,
+			"limit": size
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/wallet/largechargelog", "获取记录失败", data, success, error);
+	},
 });

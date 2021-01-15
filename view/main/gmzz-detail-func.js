@@ -30,7 +30,7 @@ var aFunc = {
 		aVariable.ipt.iptName.innerHTML = aVariable.params.seedName;
 		aVariable.ipt.iptShengzhang.innerHTML = aVariable.params.shengzhang;
 		aVariable.ipt.iptJieguo.innerHTML = aVariable.params.jieguo;
-		aVariable.ipt.iptChanliang.innerHTML = aVariable.params.chanliang;
+		// aVariable.ipt.iptChanliang.innerHTML = aVariable.params.chanliang;
 		aVariable.ipt.iptImage.src = aServer.ApiUrl + aVariable.params.seedImg;
 		var id = aVariable.params.seedId;
 		gmzzServer.getSeedDetail(id, function(data) {
@@ -51,11 +51,13 @@ var aFunc = {
 				}
 				
 				aVariable.ipt.iptPrice.innerHTML = data.data.seedValue.小份.price;
+				aVariable.ipt.iptChanliang.innerHTML = data.data.seedValue.小份.total_product;
 				aVariable.params.price = data.data.seedValue.小份.price;
 				aVariable.params.autoPrice = data.data.autoPrice;
 				// aVariable.ipt.iptPrice.innerHTML = data.data.autoPrice;
 				aVariable.params.size = data.data.seedValue.小份.size;
 				aVariable.params.uniqueId = data.data.seedValue.小份.unique;
+				
 				var num = aVariable.ipt.iptNumber.value;
 				var price = aVariable.ipt.iptPrice.innerText;
 				aVariable.ipt.iptTotal.innerText = accMul(num, price);

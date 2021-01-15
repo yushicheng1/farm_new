@@ -42,7 +42,7 @@ var aFunc = {
 		aVariable.btn.btnShangcheng.addEventListener("tap", function() {
 			mui.openWindow({
 				id: "gmzz",
-				url: '/view/main/gmzz-new.html',
+				url: '/view/main/gmzz-zz.html',
 				extras: {
 
 				}

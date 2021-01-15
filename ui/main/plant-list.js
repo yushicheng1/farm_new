@@ -29,9 +29,9 @@ aUi.seed = {
 		var day2=data.growth_days;//种植天数
 		var day3=data.seed.ending_day;//结果周期
 		if(day2<day1){
-			text="据收获还有"+(day1-day2)+"天";
+			text="距结果期还有"+(day1-day2)+"天";
 		}else{
-			text="收获期还剩"+[day3-(day2-day1)]+"天";
+			text="结果期还剩"+[day3-(day2-day1)]+"天";
 		}
 		var status=data.option_status;
 		var url;

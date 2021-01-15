@@ -1,0 +1,66 @@
+                                                                                                                                                                                                                                                                      <!DOCTYPE html>
+<html>
+
+	<head>
+		<title>大额转账</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="wallet_big.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">大额转账</h1>
+				<a class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 15px;line-height: 25px;margin-right: 10px;" id="btn-record">转账记录</a>
+			</header>
+		</head>
+		<div class="mui-content" style="background-color: #F0F0F0;padding-top: 44px;">
+		 <ul>
+		 	<!-- <li>
+		 		<p style="color: #0062CC;" id="btn_user_code">用验证码登录</p>
+		 	</li> -->
+		 	<li>
+		 		<label class="mui-col-xs-2 mui-pull-left">姓名</label>
+		 		<input style="width: 220px;border: 0;background-color: #F0F0F0;margin-left: 5px;-webkit-user-select:text !important " placeholder="请填写您的真实姓名"
+		 		 id="ipt-name"/>
+		 	</li>
+			<li>
+				<label class="mui-col-xs-2 mui-pull-left">银行卡</label>
+				<input  oninput="value=value.replace(/\D/g,'').replace(/....(?!$)/g,'$& ')" style="width: 220px;border: 0;background-color: #F0F0F0;margin-left: 5px;-webkit-user-select:text !important " placeholder="请填写您的银行卡号"
+				 id="ipt-bank"/>
+			</li>
+			<li>
+				<label class="mui-col-xs-2 mui-pull-left">金额</label>
+				<input style="width: 220px;border: 0;background-color: #F0F0F0;margin-left: 5px;-webkit-user-select:text !important " oninput="value=value.replace(/[^\d]/g,'')" placeholder="请填写转账金额"
+				 id="ipt-number"/>
+			</li>
+			
+			<!-- <li>
+				<label class="mui-col-xs-2 mui-pull-left">验证码</label>
+				<input style="width: 90px;border: 0;background-color: #F0F0F0;margin-left: 5px;" class="mui-input-clear"
+				 placeholder="手机验证码" id="ipt-code" oninput="value=value.replace(/[^\d]/g,'')" maxlength="6"/>
+				<a style="background-color: #ffeff0; color: #f1404b;width: 100px;float: right;" class="code" id='btn-code' >验证码</a>
+			</li> -->
+		 </ul>
+		 <div class="mb2" style="margin-top: 50px;">
+		 	<a style="background-color: #f65c53; color: white;width: 280px;margin:0 auto;" class="submit" id='btn-submit'>提交</a>
+		 </div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/wallet/wallet-server.js"></script>
+	<script type="text/javascript" src="wallet_big_variable.js"></script>
+	<script type="text/javascript" src="wallet_big_func.js"></script>
+	<script type="text/javascript" src="wallet_big.js"></script>
+
+</html>

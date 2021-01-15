@@ -11,7 +11,7 @@ var aFunc = {
 			aVariable.webview.listComponent = refreshComponent;
 			var pages = aVariable.list.page.item_page;
 			var size = aVariable.list.page.item_num;
-			plantServer.getNowPlant(pages, size, function(data) {
+			walletServer.getTransferList(pages, size, function(data) {
 				if (data.status == 200) {
 					aVariable.box.recordList.innerHTML += aUi.record.recordList(data.data);
 					aVariable.list.page.item_page += 1;
@@ -31,7 +31,7 @@ var aFunc = {
 		var pages = aVariable.list.page.item_page;
 		var size = aVariable.list.page.item_num;
 		setTimeout(function() {
-			plantServer.getNowPlant(pages, size, function(data) {
+			walletServer.getTransferList(pages, size, function(data) {
 				if (data.status == 200) {
 					aVariable.box.recordList.innerHTML = aUi.record.recordList(data.data);
 					aVariable.list.page.item_page += 1;

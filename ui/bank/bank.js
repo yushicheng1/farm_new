@@ -39,14 +39,34 @@ aUi.bank = {
 				'</li>';
 		return html;
 	},
-	bankOneList: function(list4Bank,money) {
-		var html = '<li class="mui-table-view-cell" data-type="4" style="color: #000000;" >' +
+	bankOneList: function(list4Bank,money,rules) {
+		var html='';		
+		var html1 = '<li class="mui-table-view-cell" data-type="4" style="color: #000000;" >' +
 								'<a class="mui-navigate-right">余额<span style="color: red;">(' + money +
 								')(试运行)</a>' +
 								'</li>';
-		for (var i = 0; i < list4Bank.length; i++) {
-			html += this._bankOne(list4Bank[i]);
+								
+		var html2=	'<li class="mui-table-view-cell" data-type="1" style="color: #000000;" >' +
+					'<a class="mui-navigate-right">支付宝<span style="color: red;"></span></a>' +
+					'</li>';
+		var html3=	'<li class="mui-table-view-cell " data-type="2" style="color: #000000;" >' +
+					'<a class="mui-navigate-right">微信<span style="color: red;"></a>' +
+					'</li>';
+		if(rules.realmoney_open==1){
+			html+=html1;
 		}
+		if(rules.bank_open==1){
+			for (var i = 0; i < list4Bank.length; i++) {
+				html += this._bankOne(list4Bank[i]);
+			}
+		}
+		if(rules.wechat_open==1){
+			html+=html3;
+		}
+		if(rules.alipay_open==1){
+			html+=html2;
+		}
+		
 		return html;
 	}
 }

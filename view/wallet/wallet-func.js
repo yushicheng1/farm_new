@@ -90,6 +90,30 @@ var aFunc = {
 			});
 			
 		})
+		
+		aVariable.btn.btnChongzhiBig.addEventListener("tap", function() {
+			bankServer.getBankList(function(data) {
+				if (data.status == 200) {
+					if(data.data.length>0){			
+								mui.openWindow({
+									id: "chongzhibig",
+									url: '/view/wallet/wallet_big.html'
+								});			
+					}else{
+						mui.toast('请先绑定银行卡')
+						mui.openWindow({
+							id: "wdyhk",
+							url: '/view/my/wdyhk.html'
+						});	
+					}
+				} else {
+			
+				}
+			}, function() {
+			
+			});
+			
+		})
 
 		// aVariable.btn.btnTixian.addEventListener("tap", function() {
 		// 	mui.openWindow({
