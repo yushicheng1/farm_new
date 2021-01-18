@@ -170,7 +170,7 @@ var aFunc = {
 			}
 			
 			if(number==1){
-				if(b[0].getAttribute('data-min')>b[0].value){
+				if(parseFloat(b[0].getAttribute('data-min'))>parseFloat(b[0].value)){
 					mui.toast('不能低于最低邮寄重量');
 					aVariable.btn.btnYouji.disabled = false;
 					return;
@@ -187,7 +187,7 @@ var aFunc = {
 					// 	return;
 					// }
 					console.log(b[i].getAttribute('data-min'))
-					if(b[i].getAttribute('data-min')>b[i].value){
+					if(parseFloat(b[i].getAttribute('data-min'))>parseFloat(b[i].value)){
 						mui.toast('不能低于最低邮寄重量');
 						aVariable.btn.btnYouji.disabled = false;
 						return;

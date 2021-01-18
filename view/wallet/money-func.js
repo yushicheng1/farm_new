@@ -1,5 +1,11 @@
 var aFunc = {
 	initData: function() {
+			var rules=JSON.parse(LocalStorage.getItem(LocalStorage.keys.Rules));
+			var open=rules.is_tobank;
+			alert(open)
+			if(open==1){
+				document.getElementById('btn_bank_open').style.display = "";
+			}
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
 				aVariable.ipt.iptMoney.innerHTML = data.data.real_money;
@@ -77,6 +83,57 @@ var aFunc = {
 				},
 				function() {
 
+				});
+		})
+		
+		aVariable.btn.btnTixianBank.addEventListener("tap", function() {
+			bankServer.getBankList(function(data) {
+					if (data.status == 200) {
+						if (data.data.length > 0) {
+							bankServer.getThirdInfo(function(data) {
+									if (data.status == 200) {
+										if (data.data.isSignContract) {
+											mui.openWindow({
+												id: "tixian_bank",
+												url: 'tixian_bank.html',
+											})
+										} else {
+											bankServer.signContract(function(data) {
+												if (data.status == 200) {
+													mui.openWindow({
+														id: "xieyi",
+														url: '/view/my/xieyi.html',
+														extras: {
+															url: data.msg
+														}
+													});
+												} else {
+		
+												}
+											}, function() {
+		
+											});
+										}
+									} else {
+		
+									}
+								},
+								function() {
+		
+								});
+						} else {
+							mui.toast('请先绑定银行卡');
+							mui.openWindow({
+								id: "wdyhk",
+								url: '/view/my/wdyhk.html'
+							});
+						}
+					} else {
+		
+					}
+				},
+				function() {
+		
 				});
 		})
 

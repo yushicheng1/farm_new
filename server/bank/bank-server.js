@@ -122,10 +122,11 @@ var bankServer = mui.extend(aServer || {}, {
 	},
 	
 	//提现
-	extract: function(money,type,token,success, error) {
+	extract: function(money,type,token,bank_id,success, error) {
 		var data = {
 			extract_money:money,
-			type:type,
+			type:type,			
+			bank_id:bank_id+'',
 			token:token
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/extract", "提现失败", data, success, error);
