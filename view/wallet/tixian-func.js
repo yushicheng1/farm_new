@@ -28,7 +28,7 @@ var aFunc = {
 
 		bankServer.getBankList(function(data) {
 			if (data.status == 200) {
-				aVariable.box.bankList.innerHTML += aUi.bank.bankOneList(data.data);
+				aVariable.box.bankList.innerHTML += aUi.bank.bankTwoList(data.data);
 			} else {
 
 			}

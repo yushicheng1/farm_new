@@ -68,5 +68,18 @@ aUi.bank = {
 		}
 		
 		return html;
+	},
+	_bankTwo: function(data) {		
+		var html = '<li class="mui-table-view-cell" style="color: #000000;" data-type="3" data-phone="'+data.phone+'" data-cardId="'+data.id+'" data-no="'+data.cardnumber+'" data-name="'+data.bankname+'">'+
+					'<a class="mui-navigate-right">'+data.bankname+'('+data.cardnumber.substring(data.cardnumber.length-4) +')'+'</a>'+
+				'</li>';
+		return html;
+	},
+	bankTwoList: function(list4Bank) {
+		var html='';		
+			for (var i = 0; i < list4Bank.length; i++) {
+				html += this._bankTwo(list4Bank[i]);
+			}		
+		return html;
 	}
 }
