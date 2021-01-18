@@ -2,7 +2,7 @@ var aFunc = {
 	initData: function() {
 			var rules=JSON.parse(LocalStorage.getItem(LocalStorage.keys.Rules));
 			var open=rules.is_tobank;
-			alert(open)
+			// alert(open)
 			if(open==1){
 				document.getElementById('btn_bank_open').style.display = "";
 			}
