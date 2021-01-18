@@ -101,6 +101,7 @@ var aFunc = {
 					// console.log(JSON.stringify(data.data))
 					LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);
 					aVariable.ipt.iptJiFen.innerHTML = LocalStorage.getItem(LocalStorage.keys.User_Money);
+					var rules = LocalStorage.getItem(LocalStorage.keys.Rules);
 					aVariable.params.real_money = data.data.real_money;
 					bankServer.getBankList(function(data) {
 						if (data.status == 200) {

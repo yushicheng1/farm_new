@@ -81,7 +81,7 @@ var aFunc = {
 						mui.toast('可提现余额不足');
 						aVariable.btn.btnSubmit.disabled=false;
 					}else{
-						bankServer.extract(money, 'bank',aVariable.params.token,aVariable.params.cardId, function(data) {
+						bankServer.extractNew(money, 'bank',aVariable.params.token,aVariable.params.cardId, function(data) {
 								if (data.status == 200) {
 									mui.toast(data.msg);
 									var my = plus.webview.getWebviewById('my');
