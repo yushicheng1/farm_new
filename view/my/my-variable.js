@@ -26,7 +26,10 @@ var aVariable = {
 		btnZzmx:document.getElementById("btn-zzmx"),
 		btnBdsjh:document.getElementById("btn-bdsjh"),
 		btnWdtj:document.getElementById("btn-wdtj"),
-		btnSmrz:document.getElementById("btn-smrz")
+		btnSmrz:document.getElementById("btn-smrz"),
+		btnTjzy:document.getElementById("btn-tjzy"),
+		btnYhxy:document.getElementById("btn-yhxy"),
+		btnHyxy:document.getElementById("btn-hyxy")
 	},
 	ipt: {
 		iptName: document.getElementById("ipt-name"),

@@ -19,6 +19,8 @@ var aFunc = {
 				aVariable.ipt.iptImage.src = aServer.ApiUrl + data.data.avatar;
 				if (data.data.is_vip == 1) {
 					document.getElementById('img_vip').style.display = "";
+					document.getElementById('btn-hyxy').style.display = "";
+					document.getElementById('btn-tjzy').style.display = "";
 				}
 			}
 		}, function() {
@@ -247,6 +249,22 @@ var aFunc = {
 			    }
 			   });
 		})
+		
+		//用户协议
+		aVariable.btn.btnYhxy.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "yhxy",
+				url: 'xieyiall.html'
+			});
+		})
+		
+		//会员协议
+		aVariable.btn.btnHyxy.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "hyxy",
+				url: 'xieyivip.html'
+			});
+		})
 
 		//我的推荐
 		aVariable.btn.btnWdtj.addEventListener("tap", function() {
@@ -287,10 +305,15 @@ var aFunc = {
 				url: '/view/sys/update.html'
 			});
 		})
-		// //帮助中心
-		// aVariable.btn.btnBzzx.addEventListener("tap", function() {
-		// 	mui.toast("暂未开放")
-		// })
+		
+		//推荐专员
+		aVariable.btn.btnTjzy.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "tjzy",
+				url: '/view/my/tuijian.html'
+			});
+		})
+		
 		//客服中心
 		  aVariable.btn.btnKfzx.addEventListener("tap", function() {
 		   var btnArray = [];
