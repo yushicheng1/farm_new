@@ -52,20 +52,20 @@ aUi.bank = {
 		var html3=	'<li class="mui-table-view-cell " data-type="2" style="color: #000000;" >' +
 					'<a class="mui-navigate-right">微信<span style="color: red;"></a>' +
 					'</li>';
-		if(rules.realmoney_open==1){
+		// if(rules.realmoney_open==1){
 			html+=html1;
-		}
-		if(rules.bank_open==1){
+		// }
+		// if(rules.bank_open==1){
 			for (var i = 0; i < list4Bank.length; i++) {
 				html += this._bankOne(list4Bank[i]);
 			}
-		}
-		if(rules.wechat_open==1){
+		// }
+		// if(rules.wechat_open==1){
 			html+=html3;
-		}
-		if(rules.alipay_open==1){
+		// }
+		// if(rules.alipay_open==1){
 			html+=html2;
-		}
+		// }
 		
 		return html;
 	},
