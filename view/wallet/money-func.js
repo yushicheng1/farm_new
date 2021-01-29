@@ -1,11 +1,10 @@
 var aFunc = {
 	initData: function() {
 			var rules=JSON.parse(LocalStorage.getItem(LocalStorage.keys.Rules));
-			var open=rules.is_tobank;
-			// alert(open)
-			if(open==1){
-				document.getElementById('btn_bank_open').style.display = "";
-			}
+			// var open=rules.is_tobank;
+			// if(open==1){
+			// 	document.getElementById('btn_bank_open').style.display = "";
+			// }
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
 				aVariable.ipt.iptYue.innerHTML = data.data.real_money;

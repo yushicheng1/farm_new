@@ -59,19 +59,20 @@
 		}
 		mui.plusReady(function() {
 			myServer.getVipXieyi(function(data) {
+				console.log(JSON.stringify(data))
 				// if (data.status == 200) {									
 				myServer.getUserInfo(function(dataOne) {
 					if (dataOne.status == 200) {
-						if (dataOne.data.is_vip pact == 0) {
+						if(dataOne.data.is_vip_pact == 0){
 							document.getElementById('xieyi').innerHTML = data +
-							'<div style="height:150px;width:100%"></div>'+
+								'<div style="height:150px;width:100%"></div>' +
 								'<nav style="background-color: white;text-align:center" class="mui-bar mui-bar-tab">' +
 								'	<button onclick="agree()" style="margin-top:5px">同意</button>' +
 								'	<button style="margin-left:10px;margin-top:5px" onclick="mui.back()">返回</button>' +
 								'</nav>';
 						} else {
 							document.getElementById('xieyi').innerHTML = data +
-							'<div style="height:150px;width:100%"></div>'+
+								'<div style="height:150px;width:100%"></div>' +
 								'<nav style="background-color: white;text-align:center" class="mui-bar mui-bar-tab">' +
 								'	<button onclick="mui.back()" style="margin-top:5px">返回</button>' +
 								'</nav>';
@@ -83,26 +84,6 @@
 			}, function() {
 
 			});
-
-
-
-			// 		var ws = plus.webview.currentWebview();
-			// 		var embed = plus.webview.create('http://farmapi.yiqianyun.com/api/my/useLicense', 'embed', {
-			// 			top: '45px',
-			// 			bottom: '40px'
-			// 		});
-
-			// 		ws.append(embed);
-			// 		embed.addEventListener('loading', function() { //当页面加载时
-			// 			plus.nativeUI.showWaiting('', {
-			// 				style: 'black',
-			// 				modal: false,
-			// 				background: 'rgba(0,0,0,0)'
-			// 			});
-			// 		}, false);
-			// 		embed.addEventListener('loaded', function() { //当页面加载完成时
-			// 			plus.nativeUI.closeWaiting();
-			// 		}, false);
 		});
 	</script>
 </html>
