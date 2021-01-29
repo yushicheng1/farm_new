@@ -1,7 +1,7 @@
 var aServer = {
 	ApiUrl: "http://farmapi.yiqianyun.com/",   
 	// ApiUrl: "http://newapi.sdnongzhu.com/",
-	// ApiUrl: "http://testapi.sdnongzhu.com:8880/",
+	// ApiUrl: "http://testapi.sdnongzhu.com:8880/", 
 	// ServiceUrl: "http://140.143.244.242:8080",,,,,,,,,,,,,,./.
 	Wating: null,
 	WatingTimeInterval: null,

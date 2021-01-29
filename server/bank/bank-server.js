@@ -87,6 +87,17 @@ var bankServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServerPOST(this.isDebug, "api/user/applyBindBankCard", "绑定失败", data, success, error);
 	},
 	
+	//绑定银行卡(新)
+	bindBankCardNew: function(name,phone,cardNo,idno, success, error) {
+		var data = {
+			acctname: name,
+			mobile: phone,
+			acctno:cardNo,
+			idno:idno
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/agreeapply", "绑定失败", data, success, error);
+	},
+	
 	//确认绑定银行卡
 	agreeBind: function(phone,tranceNum,code, success, error) {
 		var data = {
@@ -95,6 +106,19 @@ var bankServer = mui.extend(aServer || {}, {
 			code:code
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/user/bindBankCard", "绑定失败", data, success, error);
+	},
+	
+	//确认绑定银行卡(新)
+	agreeBindNew: function(name,phone,cardNo,idno,code,thpinfo, success, error) {
+		var data = {
+			acctname: name,
+			mobile: phone,
+			acctno:cardNo,
+			idno:idno,
+			smscode:code,
+			thpinfo:thpinfo
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/agreeconfirm", "绑定失败", data, success, error);
 	},
 	
 	//电子协议
@@ -122,21 +146,21 @@ var bankServer = mui.extend(aServer || {}, {
 	},
 	
 	//提现
-	extract: function(money,type,token,success, error) {
-		var data = {
-			extract_money:money,
-			type:type,			
-			token:token
-		};
-		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/extract", "提现失败", data, success, error);
-	},
+	// extract: function(money,type,token,success, error) {
+	// 	var data = {
+	// 		extract_money:money,
+	// 		type:type,			
+	// 		token:token
+	// 	};
+	// 	aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/extract", "提现失败", data, success, error);
+	// },
 	
 	//提现
-	extractNew: function(money,type,token,bank_id,success, error) {
+	extractNew: function(money,type,bank_id,token,success, error) {
 		var data = {
 			extract_money:money,
 			type:type,			
-			bank_id:bank_id+'',
+			bank_id:bank_id,
 			token:token
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/extract", "提现失败", data, success, error);

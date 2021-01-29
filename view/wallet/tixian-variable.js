@@ -29,6 +29,7 @@ var aVariable = {
 		no:'',
 		name:'',
 		money:'',
-		phone:''
+		phone:'',
+		token:''
 	}
 };

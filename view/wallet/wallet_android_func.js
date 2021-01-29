@@ -21,15 +21,15 @@ var aFunc = {
 				aVariable.ipt.iptJiFen.innerHTML = LocalStorage.getItem(LocalStorage.keys.User_Money);
 				aVariable.params.real_money = data.data.real_money;
 				// aVariable.ipt.realMoney.innerText = '(' + data.data.real_money + ')' + '(试运行)';
-				var money=aVariable.params.real_money;
-				bankServer.getBankList(function(data) {
-					if (data.status == 200) {
-						aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data,money,JSON.parse(rules).pay_rule);
+				var money = aVariable.params.real_money;
+				bankServer.getBankList(function(data1) {
+					if (data1.status == 200) {
+						aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data1.data, money, JSON.parse(rules).pay_rule);
 					} else {
-				
+
 					}
 				}, function() {
-				
+
 				});
 			} else {
 
@@ -38,17 +38,17 @@ var aFunc = {
 
 		});
 
-		
 
-		bankServer.createMember(function(data) {
-			if (data.status == 200) {
 
-			} else {
+		// bankServer.createMember(function(data) {
+		// 	if (data.status == 200) {
 
-			}
-		}, function() {
+		// 	} else {
 
-		});
+		// 	}
+		// }, function() {
+
+		// });
 
 	},
 	bindEvent: function() {
@@ -105,7 +105,8 @@ var aFunc = {
 							// 	'<li class="mui-table-view-cell" data-type="2" style="color: #000000;" >' +
 							// 	'<a class="mui-navigate-right">微信<span style="color: red;"></a>' +
 							// 	'</li>';
-							aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data,data.data.real_money,JSON.parse(rules).pay_rule);
+							aVariable.box.bankList.innerHTML = aUi.bank.bankOneList(data.data, data.data.real_money, JSON.parse(
+								rules).pay_rule);
 						} else {
 
 						}
@@ -152,9 +153,9 @@ function pay_new() {
 	var cardId = aVariable.params.cardId;
 	if (type == 1) {
 		mui('#popover').popover('hide');
-		bankServer.getThirdInfo(function(data) {
-			if (data.status == 200) {
-				if (data.data.isPhoneChecked) {
+		// bankServer.getThirdInfo(function(data) {
+		// 	if (data.status == 200) {
+		// 		if (data.data.isPhoneChecked) {
 					//正式环境参数传alipay  测试环境参数传alipayThird
 					walletServer.charge(level, 'alipay', '', function(data) {
 						// console.log(data.data
@@ -185,29 +186,30 @@ function pay_new() {
 
 					});
 
-				} else {
-					mui.toast('请先绑定手机号');
-					mui.openWindow({
-						id: "bdsjh",
-						url: '/view/my/phone.html'
-					});
-				}
-			} else {
+		// 		} else {
+		// 			mui.toast('请先绑定手机号');
+		// 			mui.openWindow({
+		// 				id: "bdsjh",
+		// 				url: '/view/my/phone.html'
+		// 			});
+		// 		}
+		// 	} else {
 
-			}
-		}, function() {
+		// 	}
+		// }, function() {
 
-		});
+		// });
 	} else if (type == 2) {
 		mui('#popover').popover('hide');
-		bankServer.getThirdInfo(function(data) {
-			if (data.status == 200) {
-				if (data.data.isPhoneChecked) {
+		// bankServer.getThirdInfo(function(data) {
+		// 	if (data.status == 200) {
+		// 		if (data.data.isPhoneChecked) {
 					//正式环境参数传alipay  测试环境参数传alipayThird
 					walletServer.charge(level, 'weixin', '', function(data) {
 						// console.log(data.data
 						if (data.status == 200) {
 							var zhifu = data.data;
+							console.log(JSON.stringify(data))
 							plus.payment.request(wxchannel, zhifu[0], function(result) {
 								plus.nativeUI.alert("支付成功！", function() {
 									//刷新土地界面的积分
@@ -232,31 +234,32 @@ function pay_new() {
 
 					});
 
-				} else {
-					mui.toast('请先绑定手机号');
-					mui.openWindow({
-						id: "bdsjh",
-						url: '/view/my/phone.html'
-					});
-				}
-			} else {
+				// } else {
+				// 	mui.toast('请先绑定手机号');
+				// 	mui.openWindow({
+				// 		id: "bdsjh",
+				// 		url: '/view/my/phone.html'
+				// 	});
+				// }
+		// 	} else {
 
-			}
-		}, function() {
+		// 	}
+		// }, function() {
 
-		});
+		// });
 	} else if (type == 3) {
 		mui('#popover').popover('hide');
-		bankServer.getThirdInfo(function(data) {
-			if (data.status == 200) {
-				if (data.data.isPhoneChecked) {
+		// bankServer.getThirdInfo(function(data) {
+		// 	if (data.status == 200) {
+		// 		if (data.data.isPhoneChecked) {
 					walletServer.charge(level, 'bank', cardId, function(data) {
+						console.log(JSON.stringify(data))
 						var zhifu = data.data;
 						if (data.status == 200) {
 							var a = mui.prompt('已发送至' + phone, '', '验证码', ['取消', '确认'], function(e) {
 								if (e.index == 1) {
 									var agreeCode = document.getElementById("ipt-agree-code").value;
-									walletServer.ConfirmCharge(zhifu[0], agreeCode, function(data) {
+									walletServer.confirmChargeNew(zhifu.orderid,cardId, agreeCode,JSON.stringify(zhifu.thpinfo), function(data) {
 										if (data.status == 200) {
 											plus.nativeUI.alert("支付成功！", function() {
 												//刷新土地界面的积分
@@ -292,19 +295,19 @@ function pay_new() {
 					}, function() {
 
 					});
-				} else {
-					mui.toast('请先绑定手机号');
-					mui.openWindow({
-						id: "bdsjh",
-						url: '/view/my/phone.html'
-					});
-				}
-			} else {
+		// 		} else {
+		// 			mui.toast('请先绑定手机号');
+		// 			mui.openWindow({
+		// 				id: "bdsjh",
+		// 				url: '/view/my/phone.html'
+		// 			});
+		// 		}
+		// 	} else {
 
-			}
-		}, function() {
+		// 	}
+		// }, function() {
 
-		});
+		// });
 	} else if (type == 0) {
 		mui.toast('请选择支付方式');
 	} else if (type == 4) {
@@ -312,9 +315,9 @@ function pay_new() {
 		mui.confirm("确定要用余额充值吗?", "提示", btnArray, function(e) {
 			if (e.index == 0) {
 				mui('#popover').popover('hide');
-				bankServer.getThirdInfo(function(data) {
-					if (data.status == 200) {
-						if (data.data.isPhoneChecked) {
+				// bankServer.getThirdInfo(function(data) {
+				// 	if (data.status == 200) {
+				// 		if (data.data.isPhoneChecked) {
 							//正式环境参数传alipay  测试环境参数传alipayThird
 							walletServer.charge(level, 'realmoney', '', function(data) {
 								// console.log(data.data
@@ -338,19 +341,19 @@ function pay_new() {
 
 							});
 
-						} else {
-							mui.toast('请先绑定手机号');
-							mui.openWindow({
-								id: "bdsjh",
-								url: '/view/my/phone.html'
-							});
-						}
-					} else {
+					// 	} else {
+					// 		mui.toast('请先绑定手机号');
+					// 		mui.openWindow({
+					// 			id: "bdsjh",
+					// 			url: '/view/my/phone.html'
+					// 		});
+					// 	}
+					// } else {
 
-					}
-				}, function() {
+					// }
+				// }, function() {
 
-				});
+				// });
 			} else {
 
 			}

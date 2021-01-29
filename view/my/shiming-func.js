@@ -1,27 +1,27 @@
 var aFunc = {
 	initData: function() {
 		//发起绑定请求
-		bankServer.createMember(function(data) {
-			console.log(JSON.stringify(data));
-			if (data.status == 200) {
+		// bankServer.createMember(function(data) {
+		// 	console.log(JSON.stringify(data));
+		// 	if (data.status == 200) {
 
-			} else {
+		// 	} else {
 
-			}
-		}, function() {
+		// 	}
+		// }, function() {
 
-		});
+		// });
 
-		bankServer.getThirdInfo(function(data) {
-			if (data.status == 200) {
-				aVariable.ipt.iptName.value = data.data.name;
-				aVariable.ipt.iptIdCard.value = data.data.identityCardNo;
-			} else {
+		// bankServer.getThirdInfo(function(data) {
+		// 	if (data.status == 200) {
+		// 		aVariable.ipt.iptName.value = data.data.name;
+		// 		aVariable.ipt.iptIdCard.value = data.data.identityCardNo;
+		// 	} else {
 
-			}
-		}, function() {
+		// 	}
+		// }, function() {
 
-		});
+		// });
 	},
 	// initView: function() {
 	// 	//获取银行卡

@@ -2,7 +2,7 @@ var aFunc = {
 	initData: function() {
 		sysServer.getNotice(function(data) {
 			if (data.status == 200) {
-				console.log(123)
+				console.log(JSON.stringify(data))
 				aVariable.box.recordList.innerHTML=aUi.notice.noticeList(data.data); 
 			} else {
 			
@@ -20,5 +20,6 @@ var aFunc = {
 	plusReady: function() {
 		aFunc.initData();
 		aFunc.bindEvent();
+		// mui.previewImage();
 	}
 };

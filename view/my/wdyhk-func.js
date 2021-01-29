@@ -53,72 +53,23 @@ var aFunc = {
 		}, function() {
 
 		});
-		// var seedName = card.getAttribute("data-name");
-		// var seedImg = card.getAttribute("data-img");
-		// mui.openWindow({
-		// 	id: "gmzz_detail",
-		// 	url: 'gmzz-detail.html',
-		// 	extras: {
-		//                 seedId:seedId,
-		// 	   seedName:seedName,
-		// 	   seedImg:seedImg
-		// 	}
-		// });
-		// });
 		//添加银行卡
 		aVariable.btn.btnAdd.addEventListener("tap", function() {
-			// myServer.getUserInfo(function(data) {
-			// 	if (data.status == 200) {
-			// 		if (data.data.is_signed == 0) {
-			// 			bankServer.createMember(function(data) {
-			// 				if (data.status == 200) {
-			// 					bankServer.signContract(function(data) {
-			// 						if (data.status == 200) {
-			// 							mui.openWindow({
-			// 								id: "dzxy",
-			// 								url: 'xieyi.html',
-			// 								extras: {
-			// 									url: data.msg
-			// 								}
-			// 							});
-			// 						} else {
-
-			// 						}
-			// 					}, function() {
-
-			// 					});
-			// 				} else {
-
-			// 				}
-			// 			}, function() {
-
-			// 			});
-
-			// 		} else {
-			// 			mui.openWindow({
-			// 				id: "newcard",
-			// 				url: 'bangding.html'
-			// 			});
-			// 		}
-			// 	}
-			// }, function() {
-
-			// });
-			bankServer.getThirdInfo(function(data) {
-				if (data.data.isIdentityChecked) {
+			// bankServer.getThirdInfo(function(data) {
+			// 	if (data.data.isIdentityChecked) {
 				  mui.openWindow({
 				  	id: "newcard",
 				  	url: 'bangding.html'
 				  });
-				} else {
-					mui.openWindow({
-						id: "smrz",
-						url: '/view/my/shiming.html'
-					});
-				}
-			}, function() {
+			// 	} else {
+			// 		mui.openWindow({
+			// 			id: "smrz",
+			// 			url: '/view/my/shiming.html'
+			// 		});
+			// 	}
+			// }, function() {
 			
-			});		
+			// });		
 		})
 		window.addEventListener('refreshBank', function() {
 			location.reload();

@@ -5,17 +5,27 @@ aUi.notice = {
 		var time=formatTime(data.add_time,'Y-M-D');
 		var time1=time.substring(0,4);
 		var time2=time.substring(5,10);
-		var html= '<li class="mui-table-view-cell mui-media">'+
-						'<div style="width: 30%;float: left;">'+
-							'<p style="font-weight: 500;padding-top: 5px;">'+time1+'</p>'+
-							'<p style="color: #6d6d6d;">'+time2+'</p>'+
-						'</div>'+
-						'<div style="width: 70%;float: right;">'+
-							'<P style="font-size: 18px;font-weight: 700;padding-top: 5px;">'+data.title+'</P>'+
-							'<P style="color: #6d6d6d;padding-top: 8px;">'+data.msg+'</P>'+
-						'</div>'+
-					'</li>';
-		return html;
+		if(data.img==''){
+			var html= '<li class="mui-table-view-cell mui-media">'+
+							'<div>'+
+								'<P style="font-size: 18px;font-weight: 700;padding-top: 5px;">'+data.title+'</P>'+
+								'<P style="color: #6d6d6d;padding-top: 8px;">'+data.msg+'</P>'+
+							'</div>'+
+						'</li>';
+			return html;
+		}else{
+			var html= '<li class="mui-table-view-cell mui-media">'+
+							'<div class="mui-content-padded">'+
+								'<img src="'+aServer.ApiUrl+data.img+'" style="width: 100%;">'+
+							'</div>'+
+							'<div>'+
+								'<P style="font-size: 18px;font-weight: 700;padding-top: 5px;">'+data.title+'</P>'+
+								'<P style="color: #6d6d6d;padding-top: 8px;">'+data.msg+'</P>'+
+							'</div>'+
+						'</li>';
+			return html;
+		}
+
 	},
 	noticeList: function(list4Record) {
 		var html = "";

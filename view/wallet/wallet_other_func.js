@@ -36,15 +36,15 @@ var aFunc = {
 
 		});
 
-		bankServer.createMember(function(data) {
-			if (data.status == 200) {
+		// bankServer.createMember(function(data) {
+		// 	if (data.status == 200) {
 
-			} else {
+		// 	} else {
 
-			}
-		}, function() {
+		// 	}
+		// }, function() {
 
-		});
+		// });
 
 	},
 	bindEvent: function() {
@@ -155,9 +155,9 @@ function pay_new(other_phone) {
 		var btnArray = ['是', '否'];
 		mui.confirm("您正在发起赠与代付行为。个人之间产生的风险与公司无关，请悉知。最后请再次确认是否要为用户（" + other_phone + "）进行代付？", "提示", btnArray, function(e) {
 			if (e.index == 0) {
-				bankServer.getThirdInfo(function(data) {
-					if (data.status == 200) {
-						if (data.data.isPhoneChecked) {
+				// bankServer.getThirdInfo(function(data) {
+				// 	if (data.status == 200) {
+				// 		if (data.data.isPhoneChecked) {
 							//正式环境参数传alipay  测试环境参数传alipayThird
 							walletServer.chargeOther(level, 'alipay', '', other_phone, function(data) {
 								// console.log(data.data
@@ -188,19 +188,19 @@ function pay_new(other_phone) {
 
 							});
 
-						} else {
-							mui.toast('请先绑定手机号');
-							mui.openWindow({
-								id: "bdsjh",
-								url: '/view/my/phone.html'
-							});
-						}
-					} else {
+		// 				} else {
+		// 					mui.toast('请先绑定手机号');
+		// 					mui.openWindow({
+		// 						id: "bdsjh",
+		// 						url: '/view/my/phone.html'
+		// 					});
+		// 				}
+		// 			} else {
 
-					}
-				}, function() {
+		// 			}
+		// 		}, function() {
 
-				});
+		// 		});
 			} else {
 
 			}
@@ -210,9 +210,9 @@ function pay_new(other_phone) {
 		var btnArray = ['是', '否'];
 		mui.confirm("您正在发起赠与代付行为。个人之间产生的风险与公司无关，请悉知。最后请再次确认是否要为用户（" + other_phone + "）进行代付？", "提示", btnArray, function(e) {
 			if (e.index == 0) {
-				bankServer.getThirdInfo(function(data) {
-					if (data.status == 200) {
-						if (data.data.isPhoneChecked) {
+				// bankServer.getThirdInfo(function(data) {
+				// 	if (data.status == 200) {
+				// 		if (data.data.isPhoneChecked) {
 							//正式环境参数传alipay  测试环境参数传alipayThird
 							walletServer.chargeOther(level, 'weixin', '', other_phone, function(data) {
 								// console.log(data.data
@@ -242,19 +242,19 @@ function pay_new(other_phone) {
 
 							});
 
-						} else {
-							mui.toast('请先绑定手机号');
-							mui.openWindow({
-								id: "bdsjh",
-								url: '/view/my/phone.html'
-							});
-						}
-					} else {
+				// 		} else {
+				// 			mui.toast('请先绑定手机号');
+				// 			mui.openWindow({
+				// 				id: "bdsjh",
+				// 				url: '/view/my/phone.html'
+				// 			});
+				// 		}
+				// 	} else {
 
-					}
-				}, function() {
+				// 	}
+				// }, function() {
 
-				});
+				// });
 			} else {
 
 			}
@@ -264,9 +264,9 @@ function pay_new(other_phone) {
 		var btnArray = ['是', '否'];
 		mui.confirm("您正在发起赠与代付行为。个人之间产生的风险与公司无关，请悉知。最后请再次确认是否要为用户（" + other_phone + "）进行代付？", "提示", btnArray, function(e) {
 			if (e.index == 0) {
-				bankServer.getThirdInfo(function(data) {
-					if (data.status == 200) {
-						if (data.data.isPhoneChecked) {
+				// bankServer.getThirdInfo(function(data) {
+				// 	if (data.status == 200) {
+				// 		if (data.data.isPhoneChecked) {
 							walletServer.chargeOther(level, 'bank', cardId, other_phone, function(data) {
 								var zhifu = data.data;
 								if (data.status == 200) {
@@ -309,19 +309,19 @@ function pay_new(other_phone) {
 							}, function() {
 
 							});
-						} else {
-							mui.toast('请先绑定手机号');
-							mui.openWindow({
-								id: "bdsjh",
-								url: '/view/my/phone.html'
-							});
-						}
-					} else {
+				// 		} else {
+				// 			mui.toast('请先绑定手机号');
+				// 			mui.openWindow({
+				// 				id: "bdsjh",
+				// 				url: '/view/my/phone.html'
+				// 			});
+				// 		}
+				// 	} else {
 
-					}
-				}, function() {
+				// 	}
+				// }, function() {
 
-				});
+				// });
 			} else {
 
 			}
@@ -333,9 +333,9 @@ function pay_new(other_phone) {
 		mui.confirm("您正在发起赠与代付行为。个人之间产生的风险与公司无关，请悉知。最后请再次确认是否要为用户（" + other_phone + "）进行代付？", "提示", btnArray, function(e) {
 			if (e.index == 0) {
 				mui('#popover').popover('hide');
-				bankServer.getThirdInfo(function(data) {
-					if (data.status == 200) {
-						if (data.data.isPhoneChecked) {
+				// bankServer.getThirdInfo(function(data) {
+				// 	if (data.status == 200) {
+				// 		if (data.data.isPhoneChecked) {
 							//正式环境参数传alipay  测试环境参数传alipayThird
 							walletServer.chargeOther(level, 'realmoney', '', other_phone, function(data) {
 								// console.log(data.data
@@ -359,19 +359,19 @@ function pay_new(other_phone) {
 
 							});
 
-						} else {
-							mui.toast('请先绑定手机号');
-							mui.openWindow({
-								id: "bdsjh",
-								url: '/view/my/phone.html'
-							});
-						}
-					} else {
+				// 		} else {
+				// 			mui.toast('请先绑定手机号');
+				// 			mui.openWindow({
+				// 				id: "bdsjh",
+				// 				url: '/view/my/phone.html'
+				// 			});
+				// 		}
+				// 	} else {
 
-					}
-				}, function() {
+				// 	}
+				// }, function() {
 
-				});
+				// });
 			} else {
 
 			}

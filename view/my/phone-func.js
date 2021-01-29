@@ -1,14 +1,14 @@
 var aFunc = {
 	initData: function() {
-		bankServer.createMember(function(data) {
-			if (data.status == 200) {
+		// bankServer.createMember(function(data) {
+		// 	if (data.status == 200) {
 
-			} else {
+		// 	} else {
 
-			}
-		}, function() {
+		// 	}
+		// }, function() {
 
-		});
+		// });
 	},
 	bindEvent: function() {
 		//登录验证码

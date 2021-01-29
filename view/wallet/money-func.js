@@ -8,7 +8,7 @@ var aFunc = {
 			}
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
-				aVariable.ipt.iptMoney.innerHTML = data.data.real_money;
+				aVariable.ipt.iptYue.innerHTML = data.data.real_money;
 			} else {
 
 			}
@@ -16,15 +16,15 @@ var aFunc = {
 
 		});
 
-		bankServer.getMoney(function(data) {
-			if (data.status == 200) {
-				aVariable.ipt.iptYue.innerHTML = data.msg;
-			} else {
+		// bankServer.getMoney(function(data) {
+		// 	if (data.status == 200) {
+		// 		aVariable.ipt.iptYue.innerHTML = data.msg;
+		// 	} else {
 
-			}
-		}, function() {
+		// 	}
+		// }, function() {
 
-		});
+		// });
 
 	},
 	bindEvent: function() {
@@ -35,143 +35,144 @@ var aFunc = {
 			});
 		})
 
-		aVariable.btn.btnTixian.addEventListener("tap", function() {
-			bankServer.getBankList(function(data) {
-					if (data.status == 200) {
-						if (data.data.length > 0) {
-							bankServer.getThirdInfo(function(data) {
-									if (data.status == 200) {
-										if (data.data.isSignContract) {
-											mui.openWindow({
-												id: "tixian_before",
-												url: 'tixian-before.html',
-											})
-										} else {
-											bankServer.signContract(function(data) {
-												if (data.status == 200) {
-													mui.openWindow({
-														id: "xieyi",
-														url: '/view/my/xieyi.html',
-														extras: {
-															url: data.msg
-														}
-													});
-												} else {
+		// aVariable.btn.btnTixian.addEventListener("tap", function() {
+		// 	bankServer.getBankList(function(data) {
+		// 			if (data.status == 200) {
+		// 				if (data.data.length > 0) {
+		// 					// bankServer.getThirdInfo(function(data) {
+		// 					// 		if (data.status == 200) {
+		// 					// 			if (data.data.isSignContract) {
+		// 									mui.openWindow({
+		// 										id: "tixian_before",
+		// 										url: 'tixian-before.html',
+		// 									})
+		// 						// 		} else {
+		// 						// 			bankServer.signContract(function(data) {
+		// 						// 				if (data.status == 200) {
+		// 						// 					mui.openWindow({
+		// 						// 						id: "xieyi",
+		// 						// 						url: '/view/my/xieyi.html',
+		// 						// 						extras: {
+		// 						// 							url: data.msg
+		// 						// 						}
+		// 						// 					});
+		// 						// 				} else {
+													
 
-												}
-											}, function() {
+		// 						// 				}
+		// 						// 			}, function() {
 
-											});
-										}
-									} else {
+		// 						// 			});
+		// 						// 		}
+		// 						// 	} else {
 
-									}
-								},
-								function() {
+		// 						// 	}
+		// 						// },
+		// 						// function() {
 
-								});
-						} else {
-							mui.toast('请先绑定银行卡');
-							mui.openWindow({
-								id: "wdyhk",
-								url: '/view/my/wdyhk.html'
-							});
-						}
-					} else {
+		// 						// });
+		// 				} else {
+		// 					mui.toast('请先绑定银行卡');
+		// 					mui.openWindow({
+		// 						id: "wdyhk",
+		// 						url: '/view/my/wdyhk.html'
+		// 					});
+		// 				}
+		// 			} else {
 
-					}
-				},
-				function() {
+		// 			}
+		// 		},
+		// 		function() {
 
-				});
-		})
+		// 		});
+		// })
 		
-		aVariable.btn.btnTixianBank.addEventListener("tap", function() {
-			bankServer.getBankList(function(data) {
-					if (data.status == 200) {
-						if (data.data.length > 0) {
-							bankServer.getThirdInfo(function(data) {
-									if (data.status == 200) {
-										if (data.data.isSignContract) {
-											mui.openWindow({
-												id: "tixian_bank",
-												url: 'tixian_bank.html',
-											})
-										} else {
-											bankServer.signContract(function(data) {
-												if (data.status == 200) {
-													mui.openWindow({
-														id: "xieyi",
-														url: '/view/my/xieyi.html',
-														extras: {
-															url: data.msg
-														}
-													});
-												} else {
+		// aVariable.btn.btnTixianBank.addEventListener("tap", function() {
+		// 	bankServer.getBankList(function(data) {
+		// 			if (data.status == 200) {
+		// 				if (data.data.length > 0) {
+		// 					// bankServer.getThirdInfo(function(data) {
+		// 					// 		if (data.status == 200) {
+		// 					// 			if (data.data.isSignContract) {
+		// 									mui.openWindow({
+		// 										id: "tixian_bank",
+		// 										url: 'tixian_bank.html',
+		// 									})
+		// // 								} else {
+		// // 									bankServer.signContract(function(data) {
+		// // 										if (data.status == 200) {
+		// // 											mui.openWindow({
+		// // 												id: "xieyi",
+		// // 												url: '/view/my/xieyi.html',
+		// // 												extras: {
+		// // 													url: data.msg
+		// // 												}
+		// // 											});
+		// // 										} else {
 		
-												}
-											}, function() {
+		// // 										}
+		// // 									}, function() {
 		
-											});
-										}
-									} else {
+		// // 									});
+		// // 								}
+		// // 							} else {
 		
-									}
-								},
-								function() {
+		// // 							}
+		// // 						},
+		// // 						function() {
 		
-								});
-						} else {
-							mui.toast('请先绑定银行卡');
-							mui.openWindow({
-								id: "wdyhk",
-								url: '/view/my/wdyhk.html'
-							});
-						}
-					} else {
+		// // 						});
+		// 				} else {
+		// 					mui.toast('请先绑定银行卡');
+		// 					mui.openWindow({
+		// 						id: "wdyhk",
+		// 						url: '/view/my/wdyhk.html'
+		// 					});
+		// 				}
+		// 			} else {
 		
-					}
-				},
-				function() {
+		// 			}
+		// 		},
+		// 		function() {
 		
-				});
-		})
+		// 		});
+		// })
 
 		aVariable.btn.btnYhk.addEventListener("tap", function() {
 			bankServer.getBankList(function(data) {
 					if (data.status == 200) {
 						if (data.data.length > 0) {
-							bankServer.getThirdInfo(function(data) {
-									if (data.status == 200) {
-										if (data.data.isSignContract) {
+							// bankServer.getThirdInfo(function(data) {
+							// 		if (data.status == 200) {
+							// 			if (data.data.isSignContract) {
 											mui.openWindow({
 												id: "tixian",
 												url: 'tixian.html',
 											})
-										} else {
-											bankServer.signContract(function(data) {
-												if (data.status == 200) {
-													mui.openWindow({
-														id: "xieyi",
-														url: '/view/my/xieyi.html',
-														extras: {
-															url: data.msg
-														}
-													});
-												} else {
+								// 		} else {
+								// 			bankServer.signContract(function(data) {
+								// 				if (data.status == 200) {
+								// 					mui.openWindow({
+								// 						id: "xieyi",
+								// 						url: '/view/my/xieyi.html',
+								// 						extras: {
+								// 							url: data.msg
+								// 						}
+								// 					});
+								// 				} else {
 
-												}
-											}, function() {
+								// 				}
+								// 			}, function() {
 
-											});
-										}
-									} else {
+								// 			});
+								// 		}
+								// 	} else {
 
-									}
-								},
-								function() {
+								// 	}
+								// },
+								// function() {
 
-								});
+								// });
 						} else {
 							mui.toast('请先绑定银行卡');
 							mui.openWindow({

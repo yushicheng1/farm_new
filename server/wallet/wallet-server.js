@@ -36,6 +36,17 @@ var walletServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/charge", "充值失败", data, success, error);
 	},
 	
+	//充值(新)
+	confirmChargeNew: function(orderid,bankid, smscode,thpinfo,success, error) {
+		var data = {
+			'orderid': orderid,
+			'bankid': bankid,
+			'smscode':smscode,
+			'thpinfo':thpinfo
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/wallet/payagreeconfirm", "充值失败", data, success, error);
+	},
+	
 	//确认充值
 	ConfirmCharge: function(bizOrderNo, code,success, error) {
 		var data = {
