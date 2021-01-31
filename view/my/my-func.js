@@ -3,12 +3,12 @@ var aFunc = {
 		//发起绑定请求
 		// bankServer.createMember(function(data) {
 		// 	if (data.status == 200) {
-		
+
 		// 	} else {
-		
+
 		// 	}
 		// }, function() {
-		
+
 		// });
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
@@ -145,24 +145,30 @@ var aFunc = {
 		})
 
 		//实名认证
-		// aVariable.btn.btnSmrz.addEventListener("tap", function() {
-		// 	bankServer.getThirdInfo(function(data) {
-		// 		if (data.data.isIdentityChecked) {
-		// 			// mui.toast('您已实名认证');
-		// 			mui.openWindow({
-		// 				id: "smrz",
-		// 				url: '/view/my/shiming.html'
-		// 			});
-		// 		} else {
-		// 			mui.openWindow({
-		// 				id: "smrz",
-		// 				url: '/view/my/shiming.html'
-		// 			});
-		// 		}
-		// 	}, function() {
+		aVariable.btn.btnSmrz.addEventListener("tap", function() {
+			bankServer.getBankList(function(data) {
+				if (data.status == 200) {
+					if (data.data.length > 0) {
+						// mui.toast('您已实名认证');
+						mui.openWindow({
+							id: "smrz",
+							url: '/view/my/shiming.html'
+						});
+					} else {
+						mui.openWindow({
+							id: "wdyhk",
+							url: '/view/my/wdyhk.html'
+						});
+                        mui.toast('请先绑定银行卡进行实名认证')
+					}
+				}else{
+					mui.toast(data.msg)
+				}
+			}, function() {
 
-		// 	});
-// aVariable.btn.btnBdsjh.addEventListener("tap", function() {
+			});
+		})
+		// aVariable.btn.btnBdsjh.addEventListener("tap", function() {
 		// 	bankServer.getThirdInfo(function(data) {
 		// 		if (data.data.isPhoneChecked) {
 		// 			mui.openWindow({
@@ -185,10 +191,10 @@ var aFunc = {
 		aVariable.btn.btnWdyhk.addEventListener("tap", function() {
 			// bankServer.getThirdInfo(function(data) {
 			// 	if (data.data.isPhoneChecked) {
-					mui.openWindow({
-						id: "wdyhk",
-						url: '/view/my/wdyhk.html'
-					});
+			mui.openWindow({
+				id: "wdyhk",
+				url: '/view/my/wdyhk.html'
+			});
 			// 	} else {
 			// 		mui.toast('请先绑定手机号');
 			// 		mui.openWindow({
@@ -225,7 +231,7 @@ var aFunc = {
 		// 	bankServer.getThirdInfo(function(data){
 		// 	    if(data.status==200){
 		// 	     if(data.data.isSignContract == true){
-			      
+
 		// 	       bankServer.signContractQuery(function(data) {
 		// 	        if (data.status == 200) {
 		// 	         mui.openWindow({
@@ -236,14 +242,14 @@ var aFunc = {
 		// 	          }
 		// 	         });
 		// 	        } else {
-			      
+
 		// 	        }
 		// 	       }, function() {
-			      
+
 		// 	       });
-			      
+
 		// 	     }else{
-			      
+
 		// 	       bankServer.signContract(function(data) {
 		// 	        if (data.status == 200) {
 		// 	         mui.openWindow({
@@ -254,18 +260,18 @@ var aFunc = {
 		// 	          }
 		// 	         });
 		// 	        } else {
-			      
+
 		// 	        }
 		// 	       }, function() {
-			      
+
 		// 	       });
 		// 	     }
 		// 	    }else{
-			     
+
 		// 	    }
 		// 	   });
 		// })
-		
+
 		//用户协议
 		aVariable.btn.btnYhxy.addEventListener("tap", function() {
 			mui.openWindow({
@@ -273,7 +279,7 @@ var aFunc = {
 				url: 'xieyiall.html'
 			});
 		})
-		
+
 		//会员协议
 		aVariable.btn.btnHyxy.addEventListener("tap", function() {
 			mui.openWindow({
@@ -305,7 +311,7 @@ var aFunc = {
 				url: '/view/sys/xgmm.html'
 			});
 		})
-		
+
 		//注销账号
 		aVariable.btn.btnZxzh.addEventListener("tap", function() {
 			mui.openWindow({
@@ -313,7 +319,7 @@ var aFunc = {
 				url: '/view/sys/zxzh.html'
 			});
 		})
-		
+
 		//关于
 		aVariable.btn.btnXtsj.addEventListener("tap", function() {
 			mui.openWindow({
@@ -321,7 +327,7 @@ var aFunc = {
 				url: '/view/sys/update.html'
 			});
 		})
-		
+
 		//推荐专员
 		aVariable.btn.btnTjzy.addEventListener("tap", function() {
 			mui.openWindow({
@@ -329,41 +335,39 @@ var aFunc = {
 				url: '/view/my/tuijian.html'
 			});
 		})
-		
+
 		//客服中心
-		  aVariable.btn.btnKfzx.addEventListener("tap", function() {
-		   var btnArray = [];
-		   myServer.getCustomerService(function(data){
-		    if(data.status == 200){
-		     console.log(data.data);
-		     plus.nativeUI.actionSheet({
-		      cancel: "取消",
-		      buttons: data.data,
-		     }, function(event) {
-		         var index = event.index;
-		         switch (index) {
-		             case 1:
-		                 plus.device.dial("400-9997815", false);
-		                 break;
-		         }
-		     });
-		    }else{
-		     
-		    }
-		   },function(data){
-		    
-		   });
-		   
-		    })
+		aVariable.btn.btnKfzx.addEventListener("tap", function() {
+			var btnArray = [];
+			myServer.getCustomerService(function(data) {
+				if (data.status == 200) {
+					console.log(data.data);
+					plus.nativeUI.actionSheet({
+						cancel: "取消",
+						buttons: data.data,
+					}, function(event) {
+						var index = event.index;
+						switch (index) {
+							case 1:
+								plus.device.dial("400-9997815", false);
+								break;
+						}
+					});
+				} else {
+
+				}
+			}, function(data) {
+
+			});
+
+		})
 		//注销登录
 		aVariable.btn.btnZxdl.addEventListener("tap", function() {
-			var btnArray = [
-				{
-					title: "退出当前账号"
-				}, {
-					title: "直接关闭应用"
-				}
-			];
+			var btnArray = [{
+				title: "退出当前账号"
+			}, {
+				title: "直接关闭应用"
+			}];
 			plus.nativeUI.actionSheet({
 				cancel: "取消",
 				buttons: btnArray
@@ -374,10 +378,10 @@ var aFunc = {
 						mui.toast("注销登录");
 						var wvs = plus.webview.all();
 						LocalStorage.setItem(LocalStorage.keys.Auto_Save, '0');
-						     LocalStorage.setItem(LocalStorage.keys.Expires_Time, '');
-						     LocalStorage.setItem(LocalStorage.keys.User_Account, '');
-						     LocalStorage.setItem(LocalStorage.keys.User_Password, '');
-						     LocalStorage.setItem(LocalStorage.keys.Auth_Token, '');
+						LocalStorage.setItem(LocalStorage.keys.Expires_Time, '');
+						LocalStorage.setItem(LocalStorage.keys.User_Account, '');
+						LocalStorage.setItem(LocalStorage.keys.User_Password, '');
+						LocalStorage.setItem(LocalStorage.keys.Auth_Token, '');
 						for (var i = 0,
 								len = wvs.length; i < len; i++) {
 							if (wvs[i].getURL() != null) {
@@ -387,23 +391,23 @@ var aFunc = {
 							}
 						}
 						break;
-						case 2:
-							if (mui.os.ios) {
-								mui.toast("注销登录");
-								var mainHtml = plus.webview.getWebviewById('index');
-								mainHtml.close();
-								var loginHtml = plus.webview.getWebviewById('login');
-								loginHtml.close();
-								mui.openWindow({
-									id: 'login',
-									url: '/view/sys/login.html',
-									extras: {}
-								});
-								break;
-							} else {
-								plus.runtime.quit();
-								break;
-							}
+					case 2:
+						if (mui.os.ios) {
+							mui.toast("注销登录");
+							var mainHtml = plus.webview.getWebviewById('index');
+							mainHtml.close();
+							var loginHtml = plus.webview.getWebviewById('login');
+							loginHtml.close();
+							mui.openWindow({
+								id: 'login',
+								url: '/view/sys/login.html',
+								extras: {}
+							});
+							break;
+						} else {
+							plus.runtime.quit();
+							break;
+						}
 				}
 			});
 		})
