@@ -10,7 +10,7 @@ aUi.seed = {
 		// }
 		
 		var html = 
-		'<li class="mui-table-view-cell mui-media" style="float: left;background-image: url('+aServer.ApiUrl+data.img+');background-size: 100% 100%;" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" data-chanliang="'+chanLiang+'">'+
+		'<li class="mui-table-view-cell mui-media" style="float: left;background-image: url('+aServer.ApiUrl+data.img+');background-size: 100% 100%;" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'">'+
 			'<div style="height: 50%;">'+			
 			'</div>'+
 			'<div style="height: 50%; background:rgba(0, 0, 0, 0.4);filter:alpha(opacity=60);">'+
@@ -35,7 +35,7 @@ aUi.seed = {
 	_seedCs: function(data) {
 		// var chanLiang=parseFloat(data.ending_day*data.yield).toFixed(2);
 		var html = 
-		'<li class="mui-table-view-cell mui-media" style="float: left;background-image: url('+aServer.ApiUrl+data.img+');background-size: 100% 100%;" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" data-chanliang="'+chanLiang+'">'+
+		'<li class="mui-table-view-cell mui-media" style="float: left;background-image: url('+aServer.ApiUrl+data.img+');background-size: 100% 100%;" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" >'+
 			'<div style="height: 50%;">'+			
 			'</div>'+
 			'<div style="height: 50%; background:rgba(0, 0, 0, 0.4);filter:alpha(opacity=60);">'+

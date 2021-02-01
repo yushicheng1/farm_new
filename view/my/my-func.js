@@ -146,9 +146,9 @@ var aFunc = {
 
 		//实名认证
 		aVariable.btn.btnSmrz.addEventListener("tap", function() {
-			bankServer.getBankList(function(data) {
+			myServer.getUserInfo(function(data) {
 				if (data.status == 200) {
-					if (data.data.length > 0) {
+					if (data.data.idnumber!=''&&data.data.idnumber!=null) {
 						// mui.toast('您已实名认证');
 						mui.openWindow({
 							id: "smrz",

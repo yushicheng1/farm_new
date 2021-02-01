@@ -85,4 +85,12 @@ var walletServer = mui.extend(aServer || {}, {
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/wallet/largechargelog", "获取记录失败", data, success, error);
 	},
+	
+	//解除绑定(新)
+	unbindNew: function(id,success, error) {
+		var data = {
+			id:id
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/wallet/unbind", "解除失败", data, success, error);
+	}
 });

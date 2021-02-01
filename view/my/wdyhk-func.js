@@ -37,7 +37,7 @@ var aFunc = {
 						});
 						break;
 					case 2:
-                       bankServer.unbind(aVariable.value.bank_id,function(data) {
+                       walletServer.unbindNew(aVariable.value.bank_id,function(data) {
                        	if (data.status == 200) {
                        		mui.toast(data.msg);
                        		aFunc.initData();
