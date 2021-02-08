@@ -66,9 +66,9 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnChongzhiOther.addEventListener("tap", function() {
-			bankServer.getBankList(function(data) {
+			myServer.getUserInfo(function(data) {
 				if (data.status == 200) {
-					if (data.data.length > 0) {
+					if (data.data.idnumber != '' && data.data.idnumber != null) {
 						plus.runtime.getProperty(plus.runtime.appid, function(inf) {
 							mui.openWindow({
 								id: "chongzhiother",
