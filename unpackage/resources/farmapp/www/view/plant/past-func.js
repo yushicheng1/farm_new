@@ -23,7 +23,7 @@ var aFunc = {
 			}, function() {
 
 			});
-		}, 400);
+		}, 100);
 	},
 	down2Refresh: function(refreshComponent) {
 		aVariable.list.page.item_sum = 0;
@@ -45,7 +45,7 @@ var aFunc = {
 			}, function() {
 
 			});
-		}, 400);
+		}, 100);
 	},
 	nofind: function(item) {
 		item.src = "../../images/res/slider.png";

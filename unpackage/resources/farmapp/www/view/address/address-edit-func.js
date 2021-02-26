@@ -36,7 +36,7 @@ var aFunc = {
 				mui.toast('姓名不能为空');
 				return;
 			}
-			if (province == '' || province == undefined || city == '' || city == undefined || district == '' || district ==
+			if (province == '' || province == undefined || city == '' || city == undefined ||  district ==
 				undefined) {
 				mui.toast('所在地区不能为空');
 				return;

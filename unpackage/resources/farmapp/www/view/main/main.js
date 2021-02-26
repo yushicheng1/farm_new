@@ -1,7 +1,7 @@
 mui.init({
-	beforeback: function() {
-		return false;
-	}
+	// beforeback: function() {
+	// 	return false;
+	// }
 	});
 mui('.mui-scroll-wrapper').scroll({
 	bounce: false,

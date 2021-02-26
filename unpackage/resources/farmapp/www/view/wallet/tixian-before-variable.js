@@ -5,7 +5,9 @@ var aVariable = {
 	},
 	box: {
 		scroll: document.getElementById("box-scroll"),
-		bankList: document.getElementById("bank-list")
+		bankList: document.getElementById("bank-list"),
+		ruleOne: document.getElementById("box_rule_one"),
+		ruleTwo: document.getElementById("box_rule_two")
 	},
 	btn: {
         btnRecord:document.getElementById("btn_record"),
@@ -21,12 +23,13 @@ var aVariable = {
 		iptName:document.getElementById("ipt_name"),
 		iptNo:document.getElementById("ipt_no"),
 		iptTixian:document.getElementById("ipt_tixian"),
-		iptTxje:document.getElementById("ipt_txje")
+		iptTxje:document.getElementById("ipt_txje"),
+		iptRuleOne:document.getElementById("ipt_rule_one")
 	},
 	params:{
 		cardId:'',
 		no:'',
 		name:'',
-		money:''
+		money:0
 	}
 };

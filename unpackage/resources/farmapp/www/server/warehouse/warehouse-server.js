@@ -5,9 +5,10 @@ var warehouseServer = mui.extend(aServer || {}, {
 	isDebug: true,
 
 	//获取我的仓库
-	getMyStore: function(success, error) {
+	getMyStore: function(page,limit,success, error) {
 		var data = {
-			
+			page:page,
+			limit:limit
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/my/store", "获取仓库失败", data, success, error);
 	},
@@ -76,13 +77,28 @@ var warehouseServer = mui.extend(aServer || {}, {
 	},
 	
 	//仓库记录
-	getRecord: function(page,limit,success, error) {
+	getRecord: function(page,limit,store_id,success, error) {
 		var data = {
 			page:page,
-			limit:limit
+			limit:limit,
+			store_id:store_id
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/store/log", "确认记录失败", data, success, error);
-	}
+	},
+	
+	//查询运费
+	getYunFei: function(id,origin,success, error) {
+		var data = {
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/store/getFreightPrice?address_id="+id+"&origin="+origin, "查询失败", data, success, error);
+	},
+	
+	//查询产地邮寄规则
+	 getPostRule: function(origin,success, error) {
+	  var data = {
+	  };
+	  aServer.executeActionOfServerGET(this.isDebug, "api/store/getPostRule?origin="+origin, "查询失败", data, success, error);
+	 }
 	
 	// //获取土地套餐(露天)
 	// getLtList: function(success, error) {

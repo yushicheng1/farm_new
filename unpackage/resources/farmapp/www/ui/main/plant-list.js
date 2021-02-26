@@ -3,28 +3,36 @@ var aUi = aUi || {};
 aUi.seed = {
 	_tuDi: function(data) {
 		//当前时间戳减去种植时间
-		var time=parseInt(new Date().getTime()/1000)-data.plant_time;
-		var time1=(time/86400)-data.seed.ripe_day;
-		var time2;
-		var day;		
-		if(data.seed.ripe_day==1&&time1<0){
-			day=6
-		}else if(data.seed.ripe_day==1&&time1>0){
-			//向下取整取余
-			 time2=Math.floor(time1)%5;
-			 day=5-time2;
-		}else if(data.seed.ripe_day>1&&time1<0){
-			if(time<0){
-				day=data.seed.ripe_day;
-			}else{
-				day=Math.ceil(Math.abs(time1));
-			}						
-		}else if(data.seed.ripe_day>1&&time1>0){
-			//向下取整取余
-			 time2=Math.floor(time1)%5;
-			 day=5-time2;
+		// var time=parseInt(new Date().getTime()/1000)-data.plant_time;
+		// var time1=(time/86400)-data.seed.ripe_day;
+		// var time2;
+		// var day;		
+		// if(data.seed.ripe_day==1&&time1<0){
+		// 	day=6;
+		// }else if(data.seed.ripe_day==1&&time1>0){
+		// 	//向下取整取余
+		// 	 time2=Math.floor(time1)%5;
+		// 	 day=5-time2;
+		// }else if(data.seed.ripe_day>1&&time1<0){
+		// 	if(time<0){
+		// 		day=data.seed.ripe_day;
+		// 	}else{
+		// 		day=Math.ceil(Math.abs(time1));
+		// 	}						
+		// }else if(data.seed.ripe_day>1&&time1>0){
+		// 	//向下取整取余
+		// 	 time2=Math.floor(time1)%5;
+		// 	 day=5-time2;
+		// }
+		var text='';
+		var day1=data.seed.ripe_day;//生长周期
+		var day2=data.growth_days;//种植天数
+		var day3=data.seed.ending_day;//结果周期
+		if(day2<day1){
+			text="距结果期还有"+(day1-day2)+"天";
+		}else{
+			text="结果期还剩"+[day3-(day2-day1)]+"天";
 		}
-		
 		var status=data.option_status;
 		var url;
 		if(status==0){
@@ -38,7 +46,7 @@ aUi.seed = {
 		}else{
 			url='../../images/nongchang/tudi.png';
 		}
-		var html = '<div class="mui-plant-land" style="background-image: url('+url+');" data-day="'+day+'" data-name="'+data.seed.name+'"  data-landId="'+data.id+'" data-seedId="'+data.seed.id+'">' +
+		var html = '<div class="mui-plant-land" style="background-image: url('+url+');" data-day="'+text+'" data-name="'+data.seed.name+'"  data-landId="'+data.id+'" data-seedId="'+data.seed.id+'">' +
 		'<a href="#popover" style="display: block;width:100%;height:100%">'+
 			'<img src="'+aServer.ApiUrl+data.level_img+'" class="image1" onerror="nofindZz(this)">' +
 			'</a>'+

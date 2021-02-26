@@ -92,5 +92,13 @@ var walletServer = mui.extend(aServer || {}, {
 			id:id
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/wallet/unbind", "解除失败", data, success, error);
+	},
+	
+	//农行确认支付
+	confirmABC: function(order_id,success, error) {
+		var data = {
+			order_id:order_id
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/wallet/confirmABC", "支付失败", data, success, error);
 	}
 });

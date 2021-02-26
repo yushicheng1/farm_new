@@ -8,7 +8,8 @@ var aVariable = {
 	btn: {
 		btnSubtract: document.getElementById("btn_subtract"),
 		btnAdd: document.getElementById("btn_add"),
-		btnBuy:document.getElementById("btn_buy")
+		btnBuy:document.getElementById("btn_buy"),
+		btnZs:document.getElementById("btn_zs")
 	},
 	ipt: {
 		iptName: document.getElementById("ipt_name"),
@@ -19,7 +20,8 @@ var aVariable = {
 		iptPrice: document.getElementById("ipt_price"),
 		iptShengzhang: document.getElementById("ipt_shengzhang"),
 		iptJieguo: document.getElementById("ipt_jieguo"),
-		iptChanliang: document.getElementById("ipt_chanliang")
+		iptChanliang: document.getElementById("ipt_chanliang"),
+		iptPhone: document.getElementById("ipt_phone")
 	},
 	params: {
 		seedId:'',
@@ -29,6 +31,10 @@ var aVariable = {
 		uniqueId:'',
 		shengzhang:'',
 		jieguo:'',
-		chanliang:''
+		chanliang:'',
+		price:0,
+		autoPrice:0,
+		auto:0,
+		phone:0
 	}
 };

@@ -1,9 +1,5 @@
-var isnew=1;
+var isnew = 1;
 var aFunc = {
-	verifyValue: function() {
-		//@TODO 增加校验内容
-		return true;
-	},
 	back: function() {
 		mui.back = function(event) {
 			aVariable.ipt.backButtonPress++;
@@ -19,24 +15,6 @@ var aFunc = {
 		};
 	},
 	bindEvent: function() {
-		// aVariable.btn.btnUseCode.addEventListener('tap', function() {
-		// 	aVariable.div.itemThree.hidden = '';
-		// 	aVariable.div.itemOne.hidden = 'hidden';
-		// 	aVariable.value.loginWay = 'code';
-		// });
-
-		// aVariable.btn.btnUsePwd.addEventListener('tap', function() {
-		// 	aVariable.div.itemOne.hidden = '';
-		// 	aVariable.div.itemThree.hidden = 'hidden';
-		// 	aVariable.value.loginWay = 'psw';
-		// });
-		//  aVariable.ipt.iptAccount.addEventListener('tap',function(){
-		////          aVariable.ipt.iptAccount.scrollIntoView(true);
-		////          aVariable.ipt.iptPassword.scrollIntoView(true);
-		//          aVariable.box.logotop.scrollIntoView(true);
-		//          window.scrollBy(0,-200);
-		////          console.log($(window).scrollTop());
-		//  });
 		aVariable.btn.btnOne.addEventListener('tap', function(event) {
 			aVariable.btn.btnOne.style.fontSize = '20px';
 			aVariable.btn.btnTwo.style.fontSize = '16px';
@@ -63,19 +41,6 @@ var aFunc = {
 			aVariable.div.divRegister.hidden = '';
 		})
 		aVariable.btn.btnForgetPsw.addEventListener('tap', function(event) {
-			// 	//    aVariable.btn.btnOne.hidden="hidden";
-			// 	// aVariable.btn.btnTwo.hidden="hidden";
-			// 	// aVariable.btn.btnThree.hidden=""; 
-			// 	// aVariable.btn.btnOne.style.fontSize='20px';
-			// 	// aVariable.btn.btnTwo.style.fontSize='16px';
-			// 	// aVariable.btn.btnOne.style.color='#1c1b1b';
-			// 	// aVariable.btn.btnTwo.style.color='#9fb2c7';
-			// 	// aVariable.div.itemOne.hidden='hidden';
-			// 	// aVariable.div.itemTwo.hidden='hidden';
-			// 	// aVariable.div.itemThree.hidden='';
-			// 	// aVariable.div.divLogin.hidden='hidden';
-			// 	// aVariable.div.divRegister.hidden='hidden';
-			// 	// aVariable.div.divEdit.hidden='';
 			mui.openWindow({
 				id: 'forget',
 				url: 'forget.html'
@@ -87,6 +52,11 @@ var aFunc = {
 				id: 'agreement',
 				url: 'agreement.html'
 			});
+		})
+
+		aVariable.btn.btnYzm.addEventListener('tap', function(event) {
+			aVariable.value.suiji = (Math.random() * 1000000).toFixed(0);
+			aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code?code=' + aVariable.value.suiji;
 		})
 		//登录验证码
 		aVariable.btn.btnCodeNew.addEventListener('tap', function(event) {
@@ -120,6 +90,7 @@ var aFunc = {
 		aVariable.btn.btnCode.addEventListener('tap', function(event) {
 			if (aVariable.value.code == true) {
 				var phone = aVariable.ipt.iptRegisterAccount.value;
+				var code = aVariable.ipt.iptImgCode.value;
 				if (phone == "") {
 					mui.toast("请填写手机号!");
 					return;
@@ -130,17 +101,22 @@ var aFunc = {
 					return;
 				}
 
-				sysServer.getVerify(phone, 'register', function(data) {
+				if (code.trim() == '') {
+					mui.toast("请填写验证码!");
+					return;
+				}
+
+				sysServer.getVerify(phone, code, aVariable.value.suiji,'register', function(data) {
 					console.log(JSON.stringify(data))
 					if (data.status == "400") {
 						mui.toast(data.msg);
 					} else {
-
+						aFunc.freshBtn(60);
 					}
 				}, function() {
 
 				});
-				aFunc.freshBtn(60)
+
 			}
 		})
 
@@ -200,27 +176,30 @@ var aFunc = {
 								aVariable.ipt.iptPassword.value = '';
 							}
 
-							
+
 							// aVariable.btn.btnLogin.disabled = "";
 							// window.location.reload();
 							var guideFlag = LocalStorage.getItem(LocalStorage.keys.guideFlag);
+							aVariable.ipt.iptAccount.value = '';
+							       aVariable.ipt.iptPassword.value = '';
+							       aVariable.ipt.iptChkRem.checked = false;
 							console.log(guideFlag)
-							if(guideFlag){
+							if (guideFlag) {
 								mui.openWindow({
 									id: 'main',
-									url: '../../view/main/main.html',
-									waiting:{
-										autoShow:true,
-										title:'正在加载...'
+									url: '../../view/main/main_a.html',
+									waiting: {
+										autoShow: true,
+										title: '正在加载...'
 									}
 								});
-							}else{								
+							} else {
 								mui.openWindow({
 									id: 'newhand',
 									url: '../../view/sys/newhand.html',
-									waiting:{
-										autoShow:true,
-										title:'正在加载...'
+									waiting: {
+										autoShow: true,
+										title: '正在加载...'
 									}
 								});
 							}
@@ -341,10 +320,10 @@ var aFunc = {
 	initData: function() {
 		var type;
 		mui.getJSON("../../manifest.json", null, function(manifest) {
-			aVariable.value.version  = Number(manifest.version.code);
+			aVariable.value.version = Number(manifest.version.code);
 		});
 		console.log(aVariable.value.version);
-		
+
 		if (mui.os.android) {
 			type = 0;
 			sysServer.checkVersion(type, function(data) {
@@ -356,40 +335,40 @@ var aFunc = {
 				if (parseInt(aVariable.value.version) < parseInt(android_version)) {
 					//isnew = 0;
 					mui.toast('发现新版本，请到应用商店更新');
-				}else{
+				} else {
 					//自动登录 本地时间与token过期时间比较,  需在版本判断之后
 					autoLogin();
 				}
 			}, function() {});
 		} else {
 			type = 1;
-			   sysServer.checkVersion(type, function(data) {
-			    var ios_version = data.data.version;
-			    aVariable.value.version_new = data.data.version;
-			    aVariable.value.url = data.data.url;
-			    // var ios_desc = data.data.newFeatures;
-			    aVariable.value.version = 14;
-			    if (aVariable.value.version < parseInt(ios_version)) {
-			     
-			     var bts=["确定","取消"];
-			     plus.nativeUI.confirm("请到AppStore进行更新",function(e){
-			      var i=e.index;
-			      if (i==0){
-			       plus.runtime.openURL("https://apps.apple.com/cn/app/%E5%A4%A7%E5%86%9C%E4%B8%BB/id1494099375");
-			      }else{
-			       
-			      }
-			     },"版本更新",bts);
-			    }else{
-			     autoLogin();
-			    }
-			   }, function() {});
+			sysServer.checkVersion(type, function(data) {
+				var ios_version = data.data.version;
+				aVariable.value.version_new = data.data.version;
+				aVariable.value.url = data.data.url;
+				// var ios_desc = data.data.newFeatures;
+				aVariable.value.version = 63;
+				if (aVariable.value.version < parseInt(ios_version)) {
+
+					var bts = ["确定", "取消"];
+					plus.nativeUI.confirm("请到AppStore进行更新", function(e) {
+						var i = e.index;
+						if (i == 0) {
+							plus.runtime.openURL("https://apps.apple.com/cn/app/%E5%A4%A7%E5%86%9C%E4%B8%BB/id1494099375");
+						} else {
+
+						}
+					}, "版本更新", bts);
+				} else {
+					autoLogin();
+				}
+			}, function() {});
 
 		}
 
 
 
-		
+
 
 
 		//判断是否记住密码
@@ -408,20 +387,24 @@ var aFunc = {
 			// aVariable.ipt.iptAccount.value = '';
 			// aVariable.ipt.iptPassword.value = '';
 		}
+		
+		var random=Math.random();
+		aVariable.value.suiji=(Math.random()*1000000).toFixed(0);
+		aVariable.btn.btnYzm.src = 'http://farmapi.yiqianyun.com/api/verify_code?code='+aVariable.value.suiji; 
 	},
 	plusReady: function() {
-		// if (mui.os.plus) {
-		// 	plus.navigator.closeSplashscreen();
-		// 	plus.screen.lockOrientation("portrait-primary");
-		// 	aVariable.webview.current = plus.webview.currentWebview();
-		// }
+		if (mui.os.plus) {
+			plus.navigator.closeSplashscreen();
+			// plus.screen.lockOrientation("portrait-primary");
+			// aVariable.webview.current = plus.webview.currentWebview();
+		}
 		aFunc.initData();
 		// 绑定事件
 		aFunc.bindEvent();
 		aFunc.back();
 	},
 	freshBtn: function(num) {
-		console.log(num)
+		// console.log(num)
 		var getSmsBtn = document.getElementById('btn-code');
 		num--;
 		if (num == 0) {
@@ -453,54 +436,30 @@ var aFunc = {
 		setTimeout("aFunc.freshBtnNew(" + num + ")", 1000);
 	}
 };
-// var getSmsBtn = document.getElementById('btn-code');
-// function freshBtn(num){
-//     num--;
-//     if(num == 0){
-//         getSmsBtn.value = "重新发送" ;
-//         // aVariable.value.code = false;
-//         num = 120;
-//         getSmsBtn.removeAttribute("disabled");
-//         return false;
-//     }else{
-//         //var sec_counts = 120-num;
-//         getSmsBtn.value = "获取验证码("+num+")";
-//     }
-//     setTimeout("freshBtn("+num+")",1000);
-// }
 
-// var getSmsBtnNew = document.getElementById('btn-code-new');
-// function freshBtnNew(num){
-//     num--;
-//     if(num == 0){
-//         getSmsBtnNew.value = "重新发送" ;
-//         // hasSendSms = false;
-//         num = 60;
-//         getSmsBtnNew.removeAttribute("disabled");
-//         return false;
-//     }else{
-//         //var sec_counts = 120-num;
-//         getSmsBtnNew.value = "获取验证码("+num+")";
-//     }
-//     setTimeout("freshBtnNew("+num+")",1000);
-// }
-function autoLogin(){
-	var time = Date.parse(new Date())/1000;
+function autoLogin() {
+	var time = Date.parse(new Date()) / 1000;
 	var outTime = LocalStorage.getItem(LocalStorage.keys.Expires_Time);
 	console.log(outTime);
 	console.log(time);
-	if (outTime){
-		if (time<outTime){
+	aVariable.ipt.iptAccount.value = '';
+	aVariable.ipt.iptPassword.value = '';
+	aVariable.ipt.iptChkRem.checked = false;
+	if (outTime) {
+		if (time < outTime) {
+			console.log(11111111111111111111111)
 			mui.openWindow({
 				id: 'main',
-				url: '../../view/main/main.html',
-				waiting:{
-					autoShow:true,
-					title:'正在加载...'
+				url: '../../view/main/main_a.html',
+				waiting: {
+					autoShow: true,
+					title: '正在加载...'
 				}
 			});
-		}else{
+		} else {
 			mui.toast("自动登录已过期,请重新登录");
+			console.log(22222222222222)
 		}
 	}
 }
+

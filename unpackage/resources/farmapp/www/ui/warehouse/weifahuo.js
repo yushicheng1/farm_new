@@ -20,7 +20,7 @@ aUi.wfh = {
 								'<div style="height: 43px;">'+
 									'<p style="overflow: hidden;height: 40px;color: #11872a;">'+name+'</p>'+
 								'</div>'+
-								'<p style="font-size: 13px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">公斤</span><span style="float: right;font-size: 15px;">'+data.total_num+'</span></p>'+
+								'<p style="font-size: 13px;color: #000000;"><span>邮寄数量:</span><span style="float: right;font-size: 11px;margin-left: 4px;">'+data.unit+'</span><span style="float: right;font-size: 15px;">'+data.total_num+'</span></p>'+
 								'<p style="font-size: 13px;color: #000000;"><span>配送方式:</span><span style="float:right">快递包邮</span></p>'+
 							'</div>'+
 						'</div>'+

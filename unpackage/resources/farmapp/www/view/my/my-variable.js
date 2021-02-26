@@ -15,7 +15,7 @@ var aVariable = {
 		btnYjdj:document.getElementById("btn-yjdj"),
 		btnYjfk:document.getElementById("btn-yjfk"),
 		btnBbsj:document.getElementById("btn-bbsj"),
-		// btnBzzx:document.getElementById("btn-bzzx"),
+		btnZxzh:document.getElementById("btn-zxzh"),
 		btnKfzx:document.getElementById("btn-kfzx"),
 		btnZxdl:document.getElementById("btn-zxdl"),
 		btnXgmm:document.getElementById("btn-xgmm"),
@@ -24,7 +24,12 @@ var aVariable = {
 		btnWdyhk:document.getElementById("btn-wdyhk"),
 		btnDzxy:document.getElementById("btn-dzxy"),
 		btnZzmx:document.getElementById("btn-zzmx"),
-		btnBdsjh:document.getElementById("btn-bdsjh")
+		btnBdsjh:document.getElementById("btn-bdsjh"),
+		btnWdtj:document.getElementById("btn-wdtj"),
+		btnSmrz:document.getElementById("btn-smrz"),
+		btnTjzy:document.getElementById("btn-tjzy"),
+		btnYhxy:document.getElementById("btn-yhxy"),
+		btnHyxy:document.getElementById("btn-hyxy")
 	},
 	ipt: {
 		iptName: document.getElementById("ipt-name"),

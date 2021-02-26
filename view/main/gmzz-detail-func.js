@@ -149,7 +149,7 @@ var aFunc = {
 													} else {
 														mui.openWindow({
 															id: "chongzhi",
-															url: '/view/wallet/wallet_android.html'
+															url: '/view/wallet/wallet_ios.html'
 														});
 													}
 												});

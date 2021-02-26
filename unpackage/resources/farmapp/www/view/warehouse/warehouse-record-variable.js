@@ -21,4 +21,7 @@ var aVariable = {
 			item_page:1//页数
 		}
 	},
+	params:{
+		store_id:-1
+	}
 };

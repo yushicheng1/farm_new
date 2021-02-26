@@ -37,10 +37,12 @@ var sysServer = mui.extend(aServer || {}, {
 		aServer.executeActionOfServer(this.isDebug, "api/register", "注册失败", data, success, error);
 	},
 
-	getVerify: function(phone, type, success, error) {
+	getVerify: function(phone, capcha,code, type, success, error) {
 		var data = {
 			'phone': phone,
-			'type': type
+			'type': type,
+			'capcha': capcha,
+			'code':code
 		};
 		aServer.executeActionOfServerPOST(this.isDebug, "api/verify", "获取失败", data, success, error);
 	},
@@ -80,23 +82,65 @@ var sysServer = mui.extend(aServer || {}, {
 	//获取banner
 	getBanner: function(success, error) {
 		var data = {
-			
+
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/banner", "获取失败", data, success, error);
 	},
 	//获取监控
 	getJiankong: function(success, error) {
 		var data = {
-			
+
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/message/getYSToken", "获取失败", data, success, error);
 	},
-	
+
 	//获取公告
 	getNotice: function(success, error) {
 		var data = {
-			
+
 		};
 		aServer.executeActionOfServerGET(this.isDebug, "api/message/getNotice", "获取失败", data, success, error);
-	}
+	},
+	
+	//获取农场数据
+	getData: function(success, error) {
+		var data = {
+	
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/getdata", "获取失败", data, success, error);
+	},
+
+	//获取图片验证码
+	getYzmImg: function(success, error) {
+		var data = {
+
+		};
+		aServer.executeActionOfServerNew(this.isDebug, "api/verify_code", "获取失败", data, success, error);
+	},
+	
+	//注销账号
+	drawUser: function(name,phone,reason, success, error) {
+		var data = {
+			name: name,
+			phone: phone,
+			reason: reason
+		};
+		aServer.executeActionOfServerPOST(this.isDebug, "api/my/drawuser", "提交失败", data, success, error);
+	},
+	
+	//获取注销信息
+	getMyDraw: function(success, error) {
+		var data = {
+	
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/mydraw", "获取失败", data, success, error);
+	},
+	
+	//获取后台参数
+	getRules: function(success, error) {
+		var data = {
+			
+		};
+		aServer.executeActionOfServerGET(this.isDebug, "api/system/getRules", "获取失败", data, success, error);
+	},
 })

@@ -1,0 +1,57 @@
+.mui-content {
+	/* padding: 5px 10px 8px 10px; */
+	/* overflow-x: visible; */
+	
+}
+
+.bq p{
+	text-align: center;
+}
+
+
+.manearea {
+	width: 100%;
+	/* padding: 1%; */
+	height: 210px;
+	padding-bottom: 5%;
+}
+
+.mainmenu {
+	height: 33%;
+	float: left;
+	width: 25%;
+	padding: 0;
+	padding-left: 3%;
+}
+
+.mainmenu img {
+	width: 85%;
+	height: 60px;
+}
+
+.navig img {
+	width: 85%;
+	height: auto;
+}
+
+.navig {
+	padding: 24px 0 7px 0;
+	background: #fff;
+}
+
+.navig p {
+	color: #686868;
+	font-size: 12px;
+}
+
+.mainmenu_nc {
+	float: left;
+	width: 25%;
+	padding: 3%;
+	/* padding-left: 7%; */
+}
+
+.mainmenu_nc img {
+	width: 100%;
+	height: 60px;
+}

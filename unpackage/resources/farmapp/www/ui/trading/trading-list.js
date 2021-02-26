@@ -3,9 +3,9 @@ var aUi = aUi || {};
 aUi.tradingList = {
 	_tradingList: function(data) {
 		//种植时间
-		var plantTime=formatTime(data.plant_time,'Y-M-D');
-		//收获时间
-		var getTime=formatTime(data.get_time,'Y-M-D');
+		// var plantTime=formatTime(data.plant_time,'Y-M-D');
+		// //收获时间
+		// var getTime=formatTime(data.get_time,'Y-M-D');
 		// var html=  '<li class="mui-table-view-cell mui-media">'+
 		// 				'<div>'+
 		// 					'<img class="mui-media-object mui-pull-left" src="../../images/homemenu/xhs.jpg" style="max-width: 100px;height: 100px;border-radius: 10px;">'+
@@ -22,13 +22,13 @@ aUi.tradingList = {
 		
 		var html= '<li class="mui-table-view-cell mui-media" style="float: left;">'+
 						'<div>'+
-							'<img class="img_seed" src="'+aServer.ApiUrl+data.img+'" onerror="nofind(this)">'+
+							'<img class="img_seed" src="'+aServer.ApiUrl+data.image+'" onerror="nofind(this)">'+
 							'<div class="mui-media-body">'+
 								'<p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="color: green;font-size: 13px;"><b>'+data.name+'</b></span></p>'+
-								'<p style="color: black;font-size: 11px;"><span>种植日期:</span><span>'+plantTime+'</span></p>'+
-								'<p style="color: black;font-size: 11px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
-								'<p style="color: black;font-size: 11px;"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span>'+
-								'<p style="color: #FF5053;font-size: 15px;"><span>'+data.sales_price+'</span><button data-id="'+data.id+'" data-name="'+data.name+'" data-plant="'+plantTime+'" data-get="'+getTime+'" data-num="'+data.num+'" data-price="'+data.sales_price+'" data-image="'+data.img+'" type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>'+							
+								'<p style="color: black;font-size: 11px;"><span>库存:</span><span>'+data.stock+'</span><span>'+data.unit_name+'</span></p>'+
+								// '<p style="color: black;font-size: 11px;"><span>收获日期:</span><span>'+getTime+'</span></p>'+
+								// '<p style="color: black;font-size: 11px;"><span>剩余量:</span><span></span>'+data.num+'<span>公斤</span>'+
+								'<p style="color: #FF5053;font-size: 15px;"><span>'+data.price+'</span><button data-id="'+data.id+'" data-name="'+data.name+'"  data-price="'+data.price+'" data-image="'+data.image+'" data-stock="'+data.stock+'" data-unit="'+data.unit_name+'"  type="button" class="mui-btn mui-btn-outlined btn-seed">购买</button></p>'+							
 							'</div>'+
 						'</div>'+
 					'</li>';

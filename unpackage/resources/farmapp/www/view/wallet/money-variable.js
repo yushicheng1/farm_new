@@ -9,7 +9,8 @@ var aVariable = {
 	btn: {
 		btnYhk:document.getElementById("btn_yhk"),
 		btnTixian:document.getElementById("btn_tixian"),
-		btnRecord:document.getElementById("btn_record")
+		btnRecord:document.getElementById("btn_record"),
+		btnTixianBank:document.getElementById("btn_tixian_bank")
 	},
 	ipt: {
         iptMoney:document.getElementById("ipt_money"),

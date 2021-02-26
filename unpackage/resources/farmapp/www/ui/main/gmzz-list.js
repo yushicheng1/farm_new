@@ -2,15 +2,15 @@
 var aUi = aUi || {};
 aUi.seed = {
 	_seedYm: function(data) {
-		var chanLiang;
-		if(data.ripe_day==1){
-			chanLiang=parseFloat((data.ending_day)*data.yield).toFixed(2);
-		}else{
-			chanLiang=parseFloat((data.ending_day+5)*data.yield).toFixed(2);
-		}
+		// var chanLiang;
+		// if(data.ripe_day==1){
+		// 	chanLiang=parseFloat((data.ending_day)*data.yield).toFixed(2);
+		// }else{
+		// 	chanLiang=parseFloat((data.ending_day+5)*data.yield).toFixed(2);
+		// }
 		
 		var html = 
-		'<li class="mui-table-view-cell mui-media" style="float: left;background-image: url('+aServer.ApiUrl+data.img+');background-size: 100% 100%;" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" data-chanliang="'+chanLiang+'">'+
+		'<li class="mui-table-view-cell mui-media" style="float: left;background-image: url('+aServer.ApiUrl+data.img+');background-size: 100% 100%;" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'">'+
 			'<div style="height: 50%;">'+			
 			'</div>'+
 			'<div style="height: 50%; background:rgba(0, 0, 0, 0.4);filter:alpha(opacity=60);">'+
@@ -18,7 +18,7 @@ aUi.seed = {
 					'<p style="font-size: 15px;color: #045586;text-align: center;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: white 1px 0 0, white 0 1px 0, white -1px 0 0, white 0 -1px 0;">'+data.name+'</p>'+
 				'</div>'+
 				'<div style="height: 50%;">'+
-					'<p style="font-size: 12px;color: white;padding-left: 8%;padding-right: 8%;"><span style="float: left;">产量:'+chanLiang+'</span><span style="float: right;color: #f4c615;">'+data.price+'积分</span></p>'+
+					'<p style="font-size: 12px;color: white;padding-left: 8%;padding-right: 8%;"><span style="float: left;">产量:'+data.total_product+'</span><span style="float: right;color: #f4c615;">'+data.price+'积分</span></p>'+
 				'</div>'+					
 			'</div>'+
 		'</li>';
@@ -33,9 +33,9 @@ aUi.seed = {
 		return html;
 	},
 	_seedCs: function(data) {
-		var chanLiang=parseFloat(data.ending_day*data.yield).toFixed(2);
+		// var chanLiang=parseFloat(data.ending_day*data.yield).toFixed(2);
 		var html = 
-		'<li class="mui-table-view-cell mui-media" style="float: left;background-image: url('+aServer.ApiUrl+data.img+');background-size: 100% 100%;" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" data-chanliang="'+chanLiang+'">'+
+		'<li class="mui-table-view-cell mui-media" style="float: left;background-image: url('+aServer.ApiUrl+data.img+');background-size: 100% 100%;" data-id="'+data.id+'" data-name="'+data.name+'" data-img="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" >'+
 			'<div style="height: 50%;">'+			
 			'</div>'+
 			'<div style="height: 50%; background:rgba(0, 0, 0, 0.4);filter:alpha(opacity=60);">'+
@@ -43,7 +43,7 @@ aUi.seed = {
 					'<p style="font-size: 16px;color: #045586;text-align: center;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;text-shadow: white 1px 0 0, white 0 1px 0, white -1px 0 0, white 0 -1px 0;">'+data.name+'</p>'+
 				'</div>'+
 				'<div style="height: 50%;">'+
-					'<p style="font-size: 12px;color: white;padding-left: 8%;padding-right: 8%;"><span style="float: left;">产量:'+chanLiang+'</span><span style="float: right;color: #f4c615;">'+data.price+'积分</span></p>'+
+					'<p style="font-size: 12px;color: white;padding-left: 8%;padding-right: 8%;"><span style="float: left;">产量:'+data.total_product+'</span><span style="float: right;color: #f4c615;">'+data.price+'积分</span></p>'+
 				'</div>'+					
 			'</div>'+
 		'</li>';
@@ -69,16 +69,16 @@ aUi.seed = {
 		return html;
 	},
 	_hot: function(data) {
-		var chanLiang;
-		if(data.ripe_day==1){
-			chanLiang=parseFloat((data.ending_day)*data.yield).toFixed(2);
-		}else{
-			chanLiang=parseFloat((data.ending_day+5)*data.yield).toFixed(2);
-		}
+		// var chanLiang;
+		// if(data.ripe_day==1){
+		// 	chanLiang=parseFloat((data.ending_day)*data.yield).toFixed(2);
+		// }else{
+		// 	chanLiang=parseFloat((data.ending_day+5)*data.yield).toFixed(2);
+		// }
 		var html = 
-		 '<div class="mui-col-sm-3  mui-col-xs-3 " data-id="'+data.id+'" data-name="'+data.name+'" data-image="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" data-chanliang="'+chanLiang+'">'+
+		 '<div class="mui-col-sm-3  mui-col-xs-3 " data-id="'+data.id+'" data-name="'+data.name+'" data-image="'+data.img+'" data-shengzhang="'+data.ripe_day+'" data-jieguo="'+data.ending_day+'" >'+
 			'<img src="'+aServer.ApiUrl+data.img+'" />'+
-			'<p>'+data.name+'</p>'+
+			'<p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">'+data.name+'</p>'+
 		'</div>';
 		return html;
 	},

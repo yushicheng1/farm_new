@@ -10,7 +10,7 @@ var aFunc = {
 		setTimeout(function() {
 			var pages = aVariable.list.page.item_page;
 			var size = aVariable.list.page.item_num;
-			warehouseServer.getRecord(pages, size, function(data) {
+			warehouseServer.getRecord(pages, size,aVariable.params.store_id, function(data) {
 				if(data.status == 200) {
 					aVariable.box.recordList.innerHTML += aUi.warehouse.recordList(data.data);
 					aVariable.list.page.item_page += 1;
@@ -30,7 +30,7 @@ var aFunc = {
 		var pages = aVariable.list.page.item_page;
 		var size = aVariable.list.page.item_num;
 		setTimeout(function() {
-		warehouseServer.getRecord(pages, size, function(data) {
+		warehouseServer.getRecord(pages, size,aVariable.params.store_id, function(data) {
 				if(data.status == 200) {
 					aVariable.box.recordList.innerHTML += aUi.warehouse.recordList(data.data);
 					aVariable.list.page.item_page += 1;
@@ -63,6 +63,13 @@ var aFunc = {
 		// }).pullUpLoading();
 	},
 	plusReady: function() {
+		aVariable.webview.current = plus.webview.currentWebview();
+		var id= aVariable.webview.current.vegetablesId;
+		if(id==null||id==''){
+			
+		}else{
+			aVariable.params.store_id=id;
+		}
 		// if (mui.os.plus) {
 		// 	plus.navigator.closeSplashscreen();
 		// 	plus.screen.lockOrientation("portrait-primary");

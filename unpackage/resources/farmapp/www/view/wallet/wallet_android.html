@@ -24,57 +24,13 @@
 				</div>
 			</header>
 		</head>
-		<div class="mui-content" style="background-image: url(../../images/chongzhi/jfcz_2.png);background-size: 100% 100%;padding-top: 176px;height: 100vh;">
+		<div class="mui-content mui-scroll-wrapper" style="background-image: url(../../images/chongzhi/jfcz_2.png);background-size: 100% 100%;padding-top: 176px;background-position: center center;overflow: auto;padding-bottom: 20%;">
+			<div class="mui-scroll">
 			<ul class="mui-table-view ul-one" id="chongzhi-list" style="background:#F0F0F0;">
-				<li class="li-xz" style="float: left;margin-left: 17%;" data-price='6'>
-					<div class="mui-media-body" style="display: flex;align-items: center;justify-content: center;height: 160px;">
-						<p><span style="color: #eb7b76;font-size: 25px;">6</span><span style="color: #eb7b76;font-size: 12px;"></span></p>
-					</div>
-					<div>
-						<p style="text-align: center;position: relative;bottom: 40px;"><span>￥6</span></p>
-					</div>
-				</li>
-				<li class="li-wxz" style="float: left;" data-price='68'>
-					<div class="mui-media-body" style="display: flex;align-items: center;justify-content: center;height: 160px;">
-						<p style="text-align: center;"><span style="color: #eb7b76;font-size: 25px;">68</span><br><span style="color: #eb7b76;font-size: 12px;">首充+6.8</span></p>
-					</div>
-					<div>
-						<p style="text-align: center;position: relative;bottom: 40px;"><span>￥68</span></p>
-					</div>
-				</li>
-				<li class="li-wxz" style="float: left;margin-left: 17%;" data-price='198'>
-					<div class="mui-media-body" style="display: flex;align-items: center;justify-content: center;height: 160px;">
-						<p style="text-align: center;"><span style="color: #eb7b76;font-size: 25px;">198</span><br><span style="color: #eb7b76;font-size: 12px;">首充+23</span></p>
-					</div>
-					<div>
-						<p style="text-align: center;position: relative;bottom: 40px;"><span>￥198</span></p>
-					</div>
-				</li>
-				<li class="li-wxz" style="float: left;" data-price='348'>
-					<div class="mui-media-body" style="display: flex;align-items: center;justify-content: center;height: 160px;">
-						<p style="text-align: center;"><span style="color: #eb7b76;font-size: 25px;">348</span><br><span style="color: #eb7b76;font-size: 12px;">首充+45</span></p>
-					</div>
-					<div>
-						<p style="text-align: center;position: relative;bottom: 40px;"><span>￥348</span></p>
-					</div>
-				</li>
-				<li class="li-wxz" style="float: left;margin-left: 17%;" data-price='648'>
-					<div class="mui-media-body" style="display: flex;align-items: center;justify-content: center;height: 160px;">
-						<p style="text-align: center;"><span style="color: #eb7b76;font-size: 25px;">648</span><br><span style="color: #eb7b76;font-size: 12px;">首充+90</span></p>
-					</div>
-					<div>
-						<p style="text-align: center;position: relative;bottom: 40px;"><span>￥648</span></p>
-					</div>
-				</li>
-				<li class="li-wxz" style="float: left;" data-price='5000'>
-					<div class="mui-media-body" style="display: flex;align-items: center;justify-content: center;height: 160px;">
-						<p style="text-align: center;"><span style="color: #eb7b76;font-size: 25px;">5000</span><br><span style="color: #eb7b76;font-size: 12px;">首充+1000</span></p>
-					</div>
-					<div>
-						<p style="text-align: center;position: relative;bottom: 40px;"><span>￥5000</span></p>
-					</div>
-				</li>
+				
 			</ul>
+			
+			</div>
 			<nav style="background-color: white;" class="mui-bar mui-bar-tab">
 				<img src="../../images/chongzhi/qian.png" style="float: left;height: 35px;margin-left: 30px;margin-top: 6px;"><span style="margin-left: 20px;font-size: 25px;color: #eb7b76;position: relative;top: 12px;" id="ipt_money"></span>
 				<!-- <img src="../../images/chongzhi/queding.png" style="width: 100px;height: auto;float: right;padding: 9px 9px 9px 9px;margin-right: 15px;" id="btn_pay"/> -->
@@ -86,9 +42,18 @@
 				<div class="mui-scroll">
 					<p><button  class="mui-btn mui-btn-primary" style="float: right;margin-right: 20px;border-radius: 5px;" id="btn_pay">确认支付</button></p>
 			<ul id="bank-list" class="mui-table-view mui-table-view-radio" style="background-color: white;margin-top: 40px;" >
-				<li class="mui-table-view-cell mui-selected" data-type='1' style="color: #000000;" >
-					<a class="mui-navigate-right">支付宝</a>
+				<!-- <li class="mui-table-view-cell " data-type='4' style="color: #000000;" >
+					<a class="mui-navigate-right">余额<span style="color: red;" id="user_yue"></a>
+				</li> -->
+				<!-- <li class="mui-table-view-cell" data-type='1' style="color: #000000;" >
+					<a class="mui-navigate-right">支付宝<span style="color: red;"></span></a>
 				</li>
+				<li class="mui-table-view-cell " data-type='2' style="color: #000000;" >
+					<a class="mui-navigate-right">微信<span style="color: red;"></a>
+				</li> -->
+				<!-- <li class="mui-table-view-cell " data-type='4' style="color: #000000;" >
+					<a class="mui-navigate-right">余额<span style="color: red;" id="user_yue"></a>
+				</li> -->
 <!-- 				<li class="mui-table-view-cell" data-type='5' style="color: #000000;" >
 					<a class="mui-navigate-right">微信</a>
 				</li> -->
@@ -111,6 +76,7 @@
 	<script type="text/javascript" src="../../a-core/util/server.js"></script>
 	<script type="text/javascript" src="../../server/my/my-server.js"></script>
 	<script type="text/javascript" src="../../ui/bank/bank.js"></script>
+	<script type="text/javascript" src="../../ui/wallet/wallet.js"></script>
 	<script type="text/javascript" src="../../server/bank/bank-server.js"></script>
 	<script type="text/javascript" src="../../server/wallet/wallet-server.js"></script>
 	<script type="text/javascript" src="wallet_android_variable.js"></script>

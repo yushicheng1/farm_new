@@ -1,8 +1,8 @@
 var aServer = {
-	ApiUrl: "http://farmapi.yiqianyun.com/",  
-	// ApiUrl: "http://39.106.109.129:8000/",
-	// ApiUrl: "http://testapi.sdnongzhu.com/",
-	// ServiceUrl: "http://140.143.244.242:8080",
+	// ApiUrl: "http://farmapi.yiqianyun.com/",   
+	// ApiUrl: "http://newapi.sdnongzhu.com/",
+	ApiUrl: "http://testapi.sdnongzhu.com:8880/", 
+	// ServiceUrl: "http://140.143.244.242:8080",,,,,,,,,,,,,,./.
 	Wating: null,
 	WatingTimeInterval: null,
 	WatingSeconds: 60,
@@ -14,6 +14,7 @@ var aServer = {
 
 			if (aServer.WatingSeconds <= 0) {
 				clearInterval(aServer.WatingTimeInterval);
+				
 
 				if (!aServer.Wating) {
 					aServer.closeWating();
@@ -76,7 +77,7 @@ var aServer = {
 			} else {
 				aUtil.aLog.deb(isDebug, methodName + " return is " + JSON.stringify(result));
 				if (result.status && (result.status == "200" || result.status == "409" || result.status == "405" || result.status ==
-						'400')) //200 成功  409资源冲突  405不允许删除
+						'400'|| result.status == "401")) //200 成功  409资源冲突  405不允许删除
 				{
 					serverError(result);
 					success(result);
@@ -113,7 +114,7 @@ var aServer = {
 				if (error) error(errMsg);
 			} else {
 				aUtil.aLog.deb(isDebug, methodName + " return is " + JSON.stringify(result));
-				if (result.status && (result.status == "200" || result.status == "409" || result.status == "405")) //200 成功  409资源冲突  405不允许删除
+				if (result.status && (result.status == "200" || result.status == "409" || result.status == "405"|| result.status == "401")) //200 成功  409资源冲突  405不允许删除
 				{
 					serverError(result);
 					success(result);
@@ -232,7 +233,42 @@ var aServer = {
 				aServer.closeWating();
 			}
 		});
-	}
+	},
+	//默认请求 无AuthToken
+	executeActionOfServerNew: function(isDebug, methodName, errMsg, postData, success, error) {
+		aUtil.aLog.deb(isDebug, methodName + " postData is " + JSON.stringify(postData));
+		aServer.showWating();
+		var success4Post = function(result) {
+			aServer.closeWating();
+			if (!result) {
+				if (error) error(errMsg);
+			} else {
+				// aUtil.aLog.deb(isDebug, methodName + " return is " + JSON.stringify(result));
+				// if (result.status && (result.status == "200" || result.status == "400")) {
+					console.log(11111111111)
+					success(result);
+				// } else {
+				// 	if(result.status==401){
+				// 		serverError(result);
+				// 	}else{
+				// 		if (error) error(errMsg);
+				// 	}				
+				// }
+			}
+		};
+		mui.ajax(this.ApiUrl + methodName, {
+			data: postData,
+			// dataType: 'json', //服务器返回json格式数据
+			type: 'get', //HTTP请求类型
+			timeout: 10000, //超时时间设置为10秒；
+			success: success4Post,
+			error: function(xhr, type, errorThrown) {
+				if (error) error(xhr.responseText);
+				console.log("" + xhr.status + "  " + xhr.readyState + xhr.responseText);
+				aServer.closeWating();
+			}
+		});
+	},
 
 }
 function serverError(result){
@@ -249,7 +285,7 @@ function serverError(result){
 			}
 		}
 	}else if(result.status==401){
-		mui.alert(result.data.msg,' ');
+		mui.alert(result.msg,' ');
 		var wvs = plus.webview.all();		
 		for (var i = 0,
 				len = wvs.length; i < len; i++) {

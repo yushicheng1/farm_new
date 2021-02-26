@@ -1,17 +1,27 @@
 var aFunc = {
 	initData: function() {
+		//发起绑定请求
+		// bankServer.createMember(function(data) {
+		// 	if (data.status == 200) {
+
+		// 	} else {
+
+		// 	}
+		// }, function() {
+
+		// });
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
-				console.log(JSON.stringify(data.data))
 				LocalStorage.setItem(LocalStorage.keys.User_Money, data.data.money);
 				aVariable.ipt.iptName.innerText = data.data.nick_name;
 				aVariable.ipt.iptJifen.innerText = data.data.money;
 				aVariable.ipt.iptYue.innerText = data.data.real_money;
-				// aVariable.ipt.iptPhone.value = data.data.phone;
 				aVariable.ipt.iptImage.src = aServer.ApiUrl + data.data.avatar;
-				if(data.data.is_vip==0){
-					document.getElementById('img_vip').style.display="none";
-				}				
+				if (data.data.is_vip == 1) {
+					document.getElementById('img_vip').style.display = "";
+					document.getElementById('btn-hyxy').style.display = "";
+					document.getElementById('btn-tjzy').style.display = "";
+				}
 			}
 		}, function() {
 
@@ -29,22 +39,6 @@ var aFunc = {
 		// mui.toast("手机号失去焦点")
 	},
 	bindEvent: function() {
-		// //修改手机号
-		// aVariable.btn.btnName.addEventListener("tap", function() {
-		// 	aVariable.ipt.iptName.disabled=false
-		// 	aVariable.ipt.iptName.className='ipt-y'
-		// 	setTimeout(function() {
-		// 		aVariable.ipt.iptName.focus()
-		// 	}, 100);	
-		// })
-		// //修改手机号
-		// aVariable.btn.btnPhone.addEventListener("tap", function() {
-		// 	aVariable.ipt.iptPhone.disabled=false
-		// 	aVariable.ipt.iptPhone.className='ipt-y'
-		// 	setTimeout(function() {
-		// 		aVariable.ipt.iptPhone.focus()
-		// 	}, 100);
-		// })
 		//修改个人信息
 		aVariable.ipt.iptName.addEventListener("tap", function() {
 			mui.openWindow({
@@ -65,6 +59,7 @@ var aFunc = {
 				if (data.status == 200) {
 					aVariable.ipt.iptJifen.innerText = data.data.money;
 					aVariable.ipt.iptYue.innerText = data.data.real_money;
+					aVariable.ipt.iptImage.src = aServer.ApiUrl + data.data.avatar;
 				}
 			}, function() {
 
@@ -149,78 +144,156 @@ var aFunc = {
 			});
 		})
 
+		//实名认证
+		aVariable.btn.btnSmrz.addEventListener("tap", function() {
+			myServer.getUserInfo(function(data) {
+				if (data.status == 200) {
+					if (data.data.idnumber!=''&&data.data.idnumber!=null) {
+						// mui.toast('您已实名认证');
+						mui.openWindow({
+							id: "smrz",
+							url: '/view/my/shiming.html'
+						});
+					} else {
+						mui.openWindow({
+							id: "wdyhk",
+							url: '/view/my/wdyhk.html'
+						});
+                        mui.toast('请先绑定银行卡进行实名认证')
+					}
+				}else{
+					mui.toast(data.msg)
+				}
+			}, function() {
+
+			});
+		})
+		// aVariable.btn.btnBdsjh.addEventListener("tap", function() {
+		// 	bankServer.getThirdInfo(function(data) {
+		// 		if (data.data.isPhoneChecked) {
+		// 			mui.openWindow({
+		// 				id: "mbdsjh",
+		// 				url: '/view/my/mphone.html'
+		// 			});
+		// 		} else {
+		// 			mui.openWindow({
+		// 				id: "bdsjh",
+		// 				url: '/view/my/phone.html'
+		// 			});
+		// 		}
+		// 	}, function() {
+
+		// 	});
+		// })
+		// })
+
 		//我的银行卡
 		aVariable.btn.btnWdyhk.addEventListener("tap", function() {
-			bankServer.getThirdInfo(function(data) {
-				if (data.data.isPhoneChecked) {
-					mui.openWindow({
-						id: "wdyhk",
-						url: '/view/my/wdyhk.html'
-					});
-				} else {
-					mui.toast('请先绑定手机号');
-					mui.openWindow({
-						id: "bdsjh",
-						url: '/view/my/phone.html'
-					});
-				}
-			}, function() {
-
+			// bankServer.getThirdInfo(function(data) {
+			// 	if (data.data.isPhoneChecked) {
+			mui.openWindow({
+				id: "wdyhk",
+				url: '/view/my/wdyhk.html'
 			});
-		})
-
-		//绑定手机号
-		aVariable.btn.btnBdsjh.addEventListener("tap", function() {
-			bankServer.getThirdInfo(function(data) {
-				if (data.data.isPhoneChecked) {
-					mui.toast('您已绑定过手机号');
-				} else {
-					mui.openWindow({
-						id: "bdsjh",
-						url: '/view/my/phone.html'
-					});
-				}
-			}, function() {
-
-			});
-		})
-
-		//电子协议
-		aVariable.btn.btnDzxy.addEventListener("tap", function() {
-			// bankServer.unlock(function(data) {
-			// 	console.log(JSON.stringify(data));
-			// 	if (data.status == 200) {
-
 			// 	} else {
-
+			// 		mui.toast('请先绑定手机号');
+			// 		mui.openWindow({
+			// 			id: "bdsjh",
+			// 			url: '/view/my/phone.html'
+			// 		});
 			// 	}
 			// }, function() {
 
-			// });		
-			bankServer.createMember(function(data) {
-				if (data.status == 200) {
-					bankServer.signContract(function(data) {
-						if (data.status == 200) {
-							mui.openWindow({
-								id: "xieyi",
-								url: '/view/my/xieyi.html',
-								extras: {
-									url: data.msg
-								}
-							});
-						} else {
+			// });
+		})
 
-						}
-					}, function() {
+		//绑定手机号
+		// aVariable.btn.btnBdsjh.addEventListener("tap", function() {
+		// 	bankServer.getThirdInfo(function(data) {
+		// 		if (data.data.isPhoneChecked) {
+		// 			mui.openWindow({
+		// 				id: "mbdsjh",
+		// 				url: '/view/my/mphone.html'
+		// 			});
+		// 		} else {
+		// 			mui.openWindow({
+		// 				id: "bdsjh",
+		// 				url: '/view/my/phone.html'
+		// 			});
+		// 		}
+		// 	}, function() {
 
-					});
-				} else {
+		// 	});
+		// })
 
-				}
-			}, function() {
+		//电子协议
+		// aVariable.btn.btnDzxy.addEventListener("tap", function() {
+		// 	bankServer.getThirdInfo(function(data){
+		// 	    if(data.status==200){
+		// 	     if(data.data.isSignContract == true){
 
+		// 	       bankServer.signContractQuery(function(data) {
+		// 	        if (data.status == 200) {
+		// 	         mui.openWindow({
+		// 	          id: "xieyi",
+		// 	          url: '/view/my/xieyi.html',
+		// 	          extras: {
+		// 	           url: data.msg
+		// 	          }
+		// 	         });
+		// 	        } else {
+
+		// 	        }
+		// 	       }, function() {
+
+		// 	       });
+
+		// 	     }else{
+
+		// 	       bankServer.signContract(function(data) {
+		// 	        if (data.status == 200) {
+		// 	         mui.openWindow({
+		// 	          id: "xieyi",
+		// 	          url: '/view/my/xieyi.html',
+		// 	          extras: {
+		// 	           url: data.msg
+		// 	          }
+		// 	         });
+		// 	        } else {
+
+		// 	        }
+		// 	       }, function() {
+
+		// 	       });
+		// 	     }
+		// 	    }else{
+
+		// 	    }
+		// 	   });
+		// })
+
+		//用户协议
+		aVariable.btn.btnYhxy.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "yhxy",
+				url: 'xieyiall.html'
 			});
+		})
 
+		//会员协议
+		aVariable.btn.btnHyxy.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "hyxy",
+				url: 'xieyivip.html'
+			});
+		})
+
+		//我的推荐
+		aVariable.btn.btnWdtj.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "wdtj",
+				url: 'recommend.html'
+			});
 		})
 
 		//种植明细
@@ -238,6 +311,15 @@ var aFunc = {
 				url: '/view/sys/xgmm.html'
 			});
 		})
+
+		//注销账号
+		aVariable.btn.btnZxzh.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "zxzh",
+				url: '/view/sys/zxzh.html'
+			});
+		})
+
 		//关于
 		aVariable.btn.btnXtsj.addEventListener("tap", function() {
 			mui.openWindow({
@@ -245,29 +327,39 @@ var aFunc = {
 				url: '/view/sys/update.html'
 			});
 		})
-		// //帮助中心
-		// aVariable.btn.btnBzzx.addEventListener("tap", function() {
-		// 	mui.toast("暂未开放")
-		// })
+
+		//推荐专员
+		aVariable.btn.btnTjzy.addEventListener("tap", function() {
+			mui.openWindow({
+				id: "tjzy",
+				url: '/view/my/tuijian.html'
+			});
+		})
+
 		//客服中心
 		aVariable.btn.btnKfzx.addEventListener("tap", function() {
-			var btnArray = [{
-				title: "客服电话:400-9997815"
-			}, {
-				title: "微信：18663604825"
-			}, {
-				title: "支付问题QQ：2110760153"
-			}, {
-				title: "操作问题QQ：3271818105"
-			}, {
-				title: "收益问题QQ：1514105549"
-			}, {
-				title: "物流问题QQ：1039860457"
-			}];
-			plus.nativeUI.actionSheet({
-				cancel: "取消",
-				buttons: btnArray
-			}, function(event) {});
+			var btnArray = [];
+			myServer.getCustomerService(function(data) {
+				if (data.status == 200) {
+					console.log(data.data);
+					plus.nativeUI.actionSheet({
+						cancel: "取消",
+						buttons: data.data,
+					}, function(event) {
+						var index = event.index;
+						switch (index) {
+							case 1:
+								plus.device.dial("400-9997815", false);
+								break;
+						}
+					});
+				} else {
+
+				}
+			}, function(data) {
+
+			});
+
 		})
 		//注销登录
 		aVariable.btn.btnZxdl.addEventListener("tap", function() {
@@ -283,11 +375,13 @@ var aFunc = {
 				var index = event.index;
 				switch (index) {
 					case 1:
-						//注销帐号
-						//						localStorage.clearAll();
 						mui.toast("注销登录");
 						var wvs = plus.webview.all();
-
+						LocalStorage.setItem(LocalStorage.keys.Auto_Save, '0');
+						LocalStorage.setItem(LocalStorage.keys.Expires_Time, '');
+						LocalStorage.setItem(LocalStorage.keys.User_Account, '');
+						LocalStorage.setItem(LocalStorage.keys.User_Password, '');
+						LocalStorage.setItem(LocalStorage.keys.Auth_Token, '');
 						for (var i = 0,
 								len = wvs.length; i < len; i++) {
 							if (wvs[i].getURL() != null) {

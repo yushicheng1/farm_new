@@ -12,12 +12,12 @@ var aVariable = {
 	ipt: {
          iptName:document.getElementById("ipt_name"),
 		 iptSum:document.getElementById("ipt_sum"),
-		 iptPlant:document.getElementById("ipt_plant"),
-		 iptGet:document.getElementById("ipt_get"),
+		 // iptPlant:document.getElementById("ipt_plant"),
+		 // iptGet:document.getElementById("ipt_get"),
 		 iptPrice:document.getElementById("ipt_price"),
 		 iptNum:document.getElementById("ipt_num"),
-		 iptImage:document.getElementById("ipt_image"),
-		 iptcount:document.getElementById("ipt_count")
+		 iptImage:document.getElementById("ipt_image")
+		 // iptcount:document.getElementById("ipt_count")
 	},
 	params: {
 		vegetablesId:'',

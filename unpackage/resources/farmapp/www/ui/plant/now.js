@@ -2,13 +2,21 @@
 var aUi = aUi || {};
 aUi.record = {
 	_record: function(data) {
+		var auto="否";
+		if(data.auto_option==1){
+			auto="是";
+		}
 		// //种植时间
 		// var plantTime=formatTime(data.plant_time,'Y-M-D');
 		// //到期时间
 		// var endTime=formatTime(data.expire_time,'Y-M-D');
 		var html= '<li class="mui-table-view-cell mui-media">'+
 							'<div class="mui-media-body">'+
-								'<p>'+data.sname+'</p>'+
+								// '<p>'+data.sname+'</p>'+
+								'<p>'+
+									'<span>'+data.sname+'</span>'+
+									'<span style="float: right;">预计产量:'+data.yield+'</span>'+
+								'</p>'+
 								'<p>'+
 									'<span>种植时间:'+data.plant_time+'</span>'+
 									'<span style="float: right;">成熟天数:'+data.ripe_day+'天</span>'+
@@ -16,6 +24,10 @@ aUi.record = {
 								'<p>'+
 									'<span>到期时间:'+data.expire_time+'</span>'+
 									'<span style="float: right;">结果天数:'+data.ending_day+'天</span>'+
+								'</p>'+
+								'<p>'+
+								'<span>累计收获:'+data.cumulative_harvest+'kg</span>'+
+									'<span style="float: right;">托管:'+auto+'</span>'+
 								'</p>'+
 							'</div>'+
 					'</li>';

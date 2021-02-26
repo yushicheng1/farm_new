@@ -2,7 +2,7 @@ var aFunc = {
 	initData: function() {
 		myServer.getAddressList(function(data) {
 				if (data.status == 200) {
-					aVariable.box.addressList.innerHTML = aUi.address.addressListNew(data.data);
+					aVariable.box.addressList.innerHTML = aUi.address.addressListNew(data.data,aVariable.params.chandi);
 				} else {
 
 				}
@@ -101,9 +101,10 @@ var aFunc = {
 		// 	plus.screen.lockOrientation("portrait-primary");
 		// }
 
-		// aVariable.webview.current = plus.webview.currentWebview();
+		aVariable.webview.current = plus.webview.currentWebview();
 		aFunc.initView();
 		aFunc.initData();
 		aFunc.bindEvent();
+		aVariable.params.chandi = aVariable.webview.current.chandi;
 	}
 };

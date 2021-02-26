@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>电子协议</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<style>
+			li{
+				font-size: 14px;
+			}
+			
+			div{
+				font-size:14px;
+			}
+		</style>
+	</head>
+
+	<body id="xieyi">
+		<head>
+
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">电子协议</h1>
+				<!-- <a class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 15px;line-height: 25px;" id="btn_record">购买记录</a> -->
+			</header>
+
+			<!-- <button class="mui-fooder">
+				<p id="btn_youji">同意</p>
+			</button> -->
+		</head>
+
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/my/my-server.js"></script>
+	<script type="text/javascript">
+		mui.init();
+
+		function agree() {
+			myServer.XieyiVip(function(data) {
+				if (data.status == '200') {
+					mui.toast(data.msg);
+					mui.back();
+				} else {
+					mui.toast(data.msg)
+				}
+
+			}, function() {
+
+			});
+		}
+		mui.plusReady(function() {
+			myServer.getVipXieyi(function(data) {
+				console.log(JSON.stringify(data))
+				// if (data.status == 200) {									
+				myServer.getUserInfo(function(dataOne) {
+					if (dataOne.status == 200) {
+						if(dataOne.data.is_vip_pact == 0){
+							document.getElementById('xieyi').innerHTML = data +
+								'<div style="height:150px;width:100%"></div>' +
+								'<nav style="background-color: white;text-align:center" class="mui-bar mui-bar-tab">' +
+								'	<button onclick="agree()" style="margin-top:5px">同意</button>' +
+								'	<button style="margin-left:10px;margin-top:5px" onclick="mui.back()">返回</button>' +
+								'</nav>';
+						} else {
+							document.getElementById('xieyi').innerHTML = data +
+								'<div style="height:150px;width:100%"></div>' +
+								'<nav style="background-color: white;text-align:center" class="mui-bar mui-bar-tab">' +
+								'	<button onclick="mui.back()" style="margin-top:5px">返回</button>' +
+								'</nav>';
+						}
+					}
+				}, function() {
+
+				});
+			}, function() {
+
+			});
+		});
+	</script>
+</html>

@@ -11,6 +11,18 @@ var aFunc = {
 
 		});
 
+		//发起绑定请求
+		// bankServer.createMember(function(data) {
+		// 	console.log(JSON.stringify(data));
+		// 	if (data.status == 200) {
+
+		// 	} else {
+
+		// 	}
+		// }, function() {
+
+		// });
+
 	},
 	bindEvent: function() {
 		aVariable.btn.btnRecord.addEventListener("tap", function() {
@@ -21,11 +33,11 @@ var aFunc = {
 		})
 
 		aVariable.btn.btnChongzhi.addEventListener("tap", function() {
-			bankServer.getBankList(function(data) {
+			myServer.getUserInfo(function(data) {
 				if (data.status == 200) {
-					if(data.data.length>0){
+					if (data.data.idnumber != '' && data.data.idnumber != null) {
 						plus.runtime.getProperty(plus.runtime.appid, function(inf) {
-							if (mui.os.android) {			
+							if (mui.os.android) {
 								mui.openWindow({
 									id: "chongzhi",
 									url: '/view/wallet/wallet_android.html'
@@ -34,24 +46,74 @@ var aFunc = {
 								mui.openWindow({
 									id: "chongzhi",
 									url: '/view/wallet/wallet_android.html'
-								});				
-							}						
+								});
+							}
 						});
-					}else{
+					} else {
 						mui.toast('请先绑定银行卡')
 						mui.openWindow({
 							id: "wdyhk",
 							url: '/view/my/wdyhk.html'
-						});	
+						});
 					}
 				} else {
-			
+					mui.toast(data.msg)
 				}
 			}, function() {
-			
+
 			});
-			
+
 		})
+
+		aVariable.btn.btnChongzhiOther.addEventListener("tap", function() {
+			myServer.getUserInfo(function(data) {
+				if (data.status == 200) {
+					if (data.data.idnumber != '' && data.data.idnumber != null) {
+						plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+							mui.openWindow({
+								id: "chongzhiother",
+								url: '/view/wallet/wallet_other.html'
+							});
+						});
+					} else {
+						mui.toast('请先绑定银行卡')
+						mui.openWindow({
+							id: "wdyhk",
+							url: '/view/my/wdyhk.html'
+						});
+					}
+				} else {
+
+				}
+			}, function() {
+
+			});
+
+		})
+
+		// aVariable.btn.btnChongzhiBig.addEventListener("tap", function() {
+		// 	bankServer.getBankList(function(data) {
+		// 		if (data.status == 200) {
+		// 			if(data.data.length>0){			
+		// 						mui.openWindow({
+		// 							id: "chongzhibig",
+		// 							url: '/view/wallet/wallet_big.html'
+		// 						});			
+		// 			}else{
+		// 				mui.toast('请先绑定银行卡')
+		// 				mui.openWindow({
+		// 					id: "wdyhk",
+		// 					url: '/view/my/wdyhk.html'
+		// 				});	
+		// 			}
+		// 		} else {
+
+		// 		}
+		// 	}, function() {
+
+		// 	});
+
+		// })
 
 		// aVariable.btn.btnTixian.addEventListener("tap", function() {
 		// 	mui.openWindow({

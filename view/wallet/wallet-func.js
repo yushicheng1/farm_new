@@ -45,7 +45,7 @@ var aFunc = {
 							} else {
 								mui.openWindow({
 									id: "chongzhi",
-									url: '/view/wallet/wallet_android.html'
+									url: '/view/wallet/wallet_ios.html'
 								});
 							}
 						});
@@ -70,10 +70,17 @@ var aFunc = {
 				if (data.status == 200) {
 					if (data.data.idnumber != '' && data.data.idnumber != null) {
 						plus.runtime.getProperty(plus.runtime.appid, function(inf) {
-							mui.openWindow({
-								id: "chongzhiother",
-								url: '/view/wallet/wallet_other.html'
-							});
+							if (mui.os.android) {
+								mui.openWindow({
+									id: "chongzhiother",
+									url: '/view/wallet/wallet_other_android.html'
+								});
+							} else {
+								mui.openWindow({
+									id: "chongzhi",
+									url: '/view/wallet/wallet_other_ios.html'
+								});
+							}						
 						});
 					} else {
 						mui.toast('请先绑定银行卡')

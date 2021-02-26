@@ -17,7 +17,7 @@ aUi.record = {
 								'</p>'+
 							'</div>'+
 						'<div class="liRight">'+
-						'<p style="float:right">ID:'+data.link_id+'</p>'+
+						'<p style="float:right">ID:'+data.id+'</p>'+
 							'<p><span style="color: #13D1BE;">'+pm+'</span><span style="color: #13D1BE;">'+data.number+'</span>'+'<span class="war">￥</span></p>'+
 						'</div>'+
 					'</li>'

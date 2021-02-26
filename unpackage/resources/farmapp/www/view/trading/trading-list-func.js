@@ -10,22 +10,22 @@ var aFunc = {
 			// var card = this;
 			var vegetable_id = this.getAttribute("data-id");
 			var name = this.getAttribute("data-name");
-			var plantTime = this.getAttribute("data-plant");
-			var getTime = this.getAttribute("data-get");
-			var num = this.getAttribute("data-num");
+			var stock = this.getAttribute("data-stock");
 			var price = this.getAttribute("data-price");
 			var image = this.getAttribute("data-image");
+			var unit = this.getAttribute("data-unit");
+			var dis=this.getAttribute("data-dis");
 			mui.openWindow({
 				id: "tradingDetail",
 				url: '/view/trading/trading-detail.html',
 				extras: {
 					exchange_info_id: vegetable_id,
 					name: name,
-					plantTime: plantTime,
-					getTime: getTime,
-					num: num,
+					stock: stock,
 					price: price,
-					image:image
+					image:image,
+					unit:unit,
+					dis:dis
 				}
 
 			});
@@ -62,7 +62,8 @@ var aFunc = {
 			// aVariable.webview.listComponent = refreshComponent;
 			var pages = aVariable.list.page.item_page;
 			var size = aVariable.list.page.item_num;
-			var name = aVariable.ipt.iptSearch.value;
+			// var name = aVariable.ipt.iptSearch.value;
+			var name = '';
 			tradingListServer.getTradingList(pages, size, name, function(data) {
 				if (data.status == 200) {
 					aVariable.box.tradingList.innerHTML += aUi.tradingList.tradingList(data.data);
@@ -81,7 +82,8 @@ var aFunc = {
 		aVariable.box.tradingList.innerHTML = "";
 		var pages = aVariable.list.page.item_page;
 		var size = aVariable.list.page.item_num;
-		var name = aVariable.ipt.iptSearch.value;
+		// var name = aVariable.ipt.iptSearch.value;
+		var name = '';
 		setTimeout(function() {
 			tradingListServer.getTradingList(pages, size, name, function(data) {
 				if (data.status == 200) {

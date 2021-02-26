@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>提现到银行卡</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="tixian_bank.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar mui-bar-nav a-header" style="background-color: white;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: #000000;font-size: 20px;">提现到银行卡</h1>
+				<!-- <a class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 15px;line-height: 25px;" id="btn_record">账单记录</a> -->
+			</header>
+		</head>
+		<div class="mui-content" style="background-color: #F0F0F0;">
+			<div style="height: 170px;padding: 10px 10px;">
+				<div style="height: 100%;background-image: url(../../images/tixian/bgm_1.png);background-size: 100% 100%;">
+					<!-- <div style="height: 40%;">
+						
+						
+					</div>
+					<div style="height: 60%;">
+
+					</div> -->
+					<div style="height: 60%;padding-top: 1%;">
+						<a href="#popover">
+							<p id="btn_choose" style="float: right;color: white;font-size: 16px;margin-top: 5px;margin-right: 8px;">切换银行卡 ></p>
+						</a>
+						<p style="color: white;font-size: 25px;margin-top: 9%;margin-left: 7%;" id='ipt_name'></p>
+					</div>
+					<div style="height: 40%;">
+						<p style="color: white;font-size: 23px;text-align: center;letter-spacing: 1.5px;" id="ipt_no"></p>
+					</div>
+				</div>
+			</div>
+			<div style="height: 150px;">
+				<div style="height: 30px;margin-top: 3px;margin-left: 20px;">
+					<p>提现金额</p>
+				</div>
+				<div style="height: 70px;">
+					<ul>
+						<li>
+							<!-- <img src="../../images/mobile.png" height="25px" /> -->
+							<span style="font-size: 30px;color: grey">¥ </span>
+							<input style="width: 170px;border: 0;background-color: #F0F0F0;margin-left: 10px;-webkit-user-select:text !important;font-size: 23px;"
+							 placeholder="输入提现金额" id="ipt_txje"  maxlength="11" type="number"/>
+							<span style="float: right;color: #13BA01;" id="btn_quanbu">全部提现</span>
+						</li>
+					</ul>
+					<span style="float: right;margin-right: 45px;color: #8f8f94;" id="ipt_tixian">您有0元可提现</span>
+				</div>
+			</div>
+			<div style="height: 220px;margin-top: 20px;">
+				<!-- <div style="height: 80px;background-color: white;margin-left: 30px;margin-right: 36px;border-radius: 5px;">
+					<p style="color: #000000;font-size: 17px;padding-top: 15px;margin-left: 15px;">手续费用</p>
+					<p style="margin-left: 15px;">0.2%的手续费用为<span>12</span>元</p>
+				</div> -->
+				<div style="height: 138px;background-color: white;margin-top: 5px;margin-left: 30px;margin-right: 36px;border-radius: 5px;display: none;" id="box_rule_one">
+					<!-- <p style="color: #000000;font-size: 17px;padding-top: 15px;margin-left: 15px;">到账时间</p> -->
+					<!-- <p style="margin-left: 15px;"><span>预计</span><span style="color: red;">2小时</span><span>内到账</span></p>
+					<p style="margin-left: 15px;"><span>提现时间为每天</span><span style="color: red;">早上7点到晚上8点</span></p> -->
+				</div>
+			</div>
+			<div class="mb2" id="div_login">
+				<a style="background-color: #0cd398; color: white;width: 280px;margin:0 auto;" class="act-but submit" id='btn_submit'>确认提现</a>
+			</div>
+			<!-- <ul class="mui-table-view" style="margin-left: 7px;margin-right: 7px;background-color: #F0F0F0;"> -->
+			<!-- <li style="height: 50px;padding-top:5px">
+					<span style="float: left;">提现金额</span>
+				</li> -->
+			<!-- <li style="height: 70px;text-align: center;margin-bottom: 1px;">
+					<input style="width: 30%;border: 0;border-radius: 0; border-bottom: 1px solid;text-align: center;font-size: 22px;"
+					 type="number" id="ipt_extract" />
+				</li> -->
+			<!-- <li>
+					<img src="../../images/mobile.png" height="25px" />
+					<input style="width: 200px;border: 0;background-color: #F0F0F0;margin-left: 26px;-webkit-user-select:text !important " placeholder="填写手机号"
+					 id="ipt-account"  oninput="value=value.replace(/[^\d]/g,'')" maxlength="11"/>
+				</li>
+				<li style="height: 70px;margin-bottom: 1px;padding-top:11px;background-color: white">
+					<div style="height: 100%;">
+					<p>手续费用</p>
+					<p>0.2%的手续费用为12元</p>
+					</div>
+				</li>
+				<li style="height: 70px;margin-bottom: 1px;padding-top:11px;background-color: white;">
+					<div>
+					<p>到账时间</p>
+					<p>预计2小时内到账,每日限额2万元</p>
+					</div>
+				</li> -->
+			<!-- <li style="height: 60px;padding-top:11px">
+					<a style="background-color: #f65c53; color: white;width: 280px;margin:0 auto" class="act-but submit" id='btn_extract'>立即提现</a>
+				</li> -->
+			<!-- </ul> -->
+		</div>
+		<div id="popover" class="box mui-popover mui-poppicker mui-popover-action mui-popover-bottom" style="height: 350px;background-color: white;">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<p><button class="mui-btn mui-btn-primary" style="float: right;margin-right: 20px;border-radius: 5px;" id="btn_pay">确认</button></p>
+					<ul id="bank-list" class="mui-table-view mui-table-view-radio" style="background-color: white;margin-top: 40px;">
+						<!-- <li class="mui-table-view-cell" style="color: #000000;" >
+					<a class="mui-navigate-right">农业银行(1234)</a>
+				</li>
+				<li class="mui-table-view-cell" style="color: #000000;">
+					<a class="mui-navigate-right">建设银行(1234)</a>
+				</li>
+				<li class="mui-table-view-cell" style="color: #000000;">
+					<a class="mui-navigate-right">工商银行(1234)</a>
+				</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../ui/bank/bank.js"></script>
+	<script type="text/javascript" src="../../server/my/my-server.js"></script>
+	<script type="text/javascript" src="../../server/wallet/wallet-server.js"></script>
+	<script type="text/javascript" src="../../server/bank/bank-server.js"></script>
+	<script type="text/javascript" src="tixian_bank_variable.js"></script>
+	<script type="text/javascript" src="tixian_bank_func.js"></script>
+	<script type="text/javascript" src="tixian_bank.js"></script>
+</html>

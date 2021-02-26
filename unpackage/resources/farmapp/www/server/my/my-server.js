@@ -11,6 +11,47 @@ var myServer = mui.extend(aServer || {}, {
 		}
 		aServer.executeActionOfServerGET(this.isDebug, "api/userinfo", "获取失败", data, success, error);
 	},
+	
+	//获取用户信息
+	getSpreadUser: function(page,limit,success, error) {
+		var data = {
+	      page:page,
+		  limit:limit
+		}
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/spreadUser", "获取失败", data, success, error);
+	},
+	
+	//获取用户协议
+	getAllXieyi: function(success, error) {
+		var data = {
+	
+		}
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/useLicense", "获取失败", data, success, error);
+	},
+	
+	//同意用户协议
+	Xieyi: function(success, error) {
+		var data = {
+	
+		}
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/agreeUseLicense", "同意失败", data, success, error);
+	},
+	
+	//获取会员协议
+	getVipXieyi: function(success, error) {
+		var data = {
+	
+		}
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/spreadLicense", "获取失败", data, success, error);
+	},
+	
+	//同意会员协议
+	XieyiVip: function(success, error) {
+		var data = {
+	
+		}
+		aServer.executeActionOfServerGET(this.isDebug, "api/my/agreeSpreadLicense", "同意失败", data, success, error);
+	},
 
 	//修改用户信息
 	updateUserInfo: function(name, phone, spread_code,success, error) {
@@ -83,5 +124,13 @@ var myServer = mui.extend(aServer || {}, {
 
 		}
 		aServer.executeActionOfServerGET(this.isDebug, "api/address/delete/" + id, "删除失败", data, success, error);
-	}
+	},
+	
+	//获取客服列表
+	 getCustomerService: function(success, error) {
+	  var data = {
+	 
+	  }
+	  aServer.executeActionOfServerGET(this.isDebug, "api/my/getCustomerService", "获取失败", data, success, error);
+	 }
 })
