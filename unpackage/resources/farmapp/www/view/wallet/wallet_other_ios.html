@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="wallet_other_ios.css" />
+	</head>
+
+	<body>
+		<head>
+			<header class="mui-bar  a-header" style="background-color: white;height: 176px;background-image: url(../../images/chongzhi/jfcz_3.png);background-size: 100%;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>
+				<h1 class="mui-title" id="ipt-header" style="color: white;font-size: 20px;">代付款</h1>
+				<!-- <a class="mui-icon mui-icon-right-nav mui-pull-right" style="color: black;font-size: 15px;line-height: 25px;" id="btn_record">账单记录</a> -->
+				<div style="height: 107px;width:100%;display: flex;align-items: center;justify-content: center;">
+					<p style="text-align: center;"><input type="number" placeholder="请输入代付款手机号" style="width: 100%;" id="ipt_phone"></p>
+				</div>
+			</header>
+		</head>
+		<div class="mui-content mui-scroll-wrapper" style="background-image: url(../../images/chongzhi/jfcz_2.png);background-size: 100% 100%;padding-top: 176px;background-position: center center;overflow: auto;padding-bottom: 20%;">
+			<div class="mui-scroll">
+			<ul class="mui-table-view ul-one" id="chongzhi-list" style="background:#F0F0F0;">
+				
+			</ul>
+			
+			</div>
+			<nav style="background-color: white;" class="mui-bar mui-bar-tab">
+				<img src="../../images/chongzhi/qian.png" style="float: left;height: 35px;margin-left: 30px;margin-top: 6px;"><span style="margin-left: 20px;font-size: 25px;color: #eb7b76;position: relative;top: 12px;" id="ipt_money"></span>
+				<!-- <img src="../../images/chongzhi/queding.png" style="width: 100px;height: auto;float: right;padding: 9px 9px 9px 9px;margin-right: 15px;" id="btn_pay"/> -->
+				<a href="#popover"><img src="../../images/chongzhi/queding.png" style="width: 100px;height: auto;float: right;padding: 9px 9px 9px 9px;margin-right: 15px;"/></a>
+			</nav>
+		</div>
+		<div id="popover" class="box mui-popover mui-poppicker mui-popover-action mui-popover-bottom" style="height: 350px;background-color: white;">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<p><button  class="mui-btn mui-btn-primary" style="float: right;margin-right: 20px;border-radius: 5px;" id="btn_pay">确认支付</button></p>
+			<ul id="bank-list" class="mui-table-view mui-table-view-radio" style="background-color: white;margin-top: 40px;" >
+				<li class="mui-table-view-cell" data-type='1' style="color: #000000;" >
+					<a class="mui-navigate-right">支付宝<span style="color: red;"></span></a>
+				</li>
+				<li class="mui-table-view-cell " data-type='2' style="color: #000000;" >
+					<a class="mui-navigate-right">微信<span style="color: red;"></a>
+				</li>
+				<!-- <li class="mui-table-view-cell " data-type='4' style="color: #000000;" >
+					<a class="mui-navigate-right">余额<span style="color: red;" id="user_yue"></a>
+				</li> -->
+<!-- 				<li class="mui-table-view-cell" data-type='5' style="color: #000000;" >
+					<a class="mui-navigate-right">微信</a>
+				</li> -->
+				<!-- <li class="mui-table-view-cell" data-type='4' style="color: #000000;" >
+					<a class="mui-navigate-right">+ 添加银行卡</a>
+				</li> -->
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" style="background-color: white;" id="btn_new">
+					<p style="text-align: center;padding-right: 8%;font-size: 17px;">+ 添加银行卡</p>
+				</li>
+			</ul>			
+			</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script type="text/javascript" src="../../a-core/util/log.js"></script>
+	<script type="text/javascript" src="../../a-core/util/local-storage.js"></script>
+	<script type="text/javascript" src="../../a-core/util/server.js"></script>
+	<script type="text/javascript" src="../../server/my/my-server.js"></script>
+	<script type="text/javascript" src="../../ui/bank/bank.js"></script>
+	<script type="text/javascript" src="../../ui/wallet/wallet.js"></script>
+	<script type="text/javascript" src="../../server/bank/bank-server.js"></script>
+	<script type="text/javascript" src="../../server/wallet/wallet-server.js"></script>
+	<script type="text/javascript" src="wallet_other_ios_variable.js"></script>
+	<script type="text/javascript" src="wallet_other_ios_func.js"></script>
+	<script type="text/javascript" src="wallet_other_ios.js"></script>
+</html>

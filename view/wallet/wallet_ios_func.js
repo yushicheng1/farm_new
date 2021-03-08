@@ -302,7 +302,7 @@ function pay_new() {
 			if (data.status == 200) {
 				order_id = data.data.order_id;
 				token_id = data.data.token;
-				plus.ios.invoke(intent, "launchPay", token);
+				plus.ios.invoke(backABC,"UseBack:",token_id);
 			}
 		}, function() {
 

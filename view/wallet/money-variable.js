@@ -14,6 +14,7 @@ var aVariable = {
 	},
 	ipt: {
         iptMoney:document.getElementById("ipt_money"),
+		iptYueOld:document.getElementById("ipt_yue_old"),
 		iptYue:document.getElementById("ipt_yue")
 	}
 };

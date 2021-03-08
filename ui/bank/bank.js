@@ -59,7 +59,7 @@ aUi.bank = {
 			'<a class="mui-navigate-right">微信<span style="color: red;"></a>' +
 			'</li>';
 		var html4 = '<li class="mui-table-view-cell " data-type="5" style="color: #000000;" >' +
-			'<a class="mui-navigate-right">ABC<span style="color: red;"></a>' +
+			'<a class="mui-navigate-right">农行支付<span style="color: red;"></a>' +
 			'</li>';
 		// if(rules.realmoney_open==1){
 		html += html1;

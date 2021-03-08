@@ -7,6 +7,7 @@ var aFunc = {
 			// }
 		myServer.getUserInfo(function(data) {
 			if (data.status == 200) {
+				aVariable.ipt.iptYueOld.innerHTML = data.data.old_real_money;
 				aVariable.ipt.iptYue.innerHTML = data.data.real_money;
 			} else {
 

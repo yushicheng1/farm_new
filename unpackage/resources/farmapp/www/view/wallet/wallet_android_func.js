@@ -4,11 +4,6 @@ var ALIPAYSERVER = aServer.ApiUrl + 'api/wallet/charge';
 var WXPAYSERVER = '';
 var total = 0;
 var level = 1;
-// var BackABC = plus.ios.importClass("BackABC");
-// var backABC = plus.ios.newObject("BackABC");
-var Intent = plus.android.importClass("io.yiqian.farmapp.util.LanuchUtil");
-	// 导入后可以使用new方法创建类的实例对象
-var intent=new Intent();
 var order_id = '';
 var aFunc = {
 	initData: function() {
@@ -379,11 +374,6 @@ function pay_new() {
 	} else if (type == 5) {
 		mui('#popover').popover('hide');
 		var token_id = '';
-		// if(mui.os.ios){
-
-		// 	}else{
-
-		// 	}
 		walletServer.charge(level, 'abc', '', function(data) {
 			if (data.status == '400') {
 				mui.toast(data.msg);
@@ -391,21 +381,36 @@ function pay_new() {
 			if (data.status == 200) {
 				order_id = data.data.order_id;
 				token_id = data.data.token;
-
-				// order_id='yq_pay_161414789046954263';
-				plus.ios.invoke(intent, "launchPay", token);
-				// walletServer.confirmABC(order_id,function(data1) {
-				// 	if (data1.status == '400') {
-				// 		mui.toast(data1.msg);
-				// 	}
-				// 	if (data1.status == '200') {
-				// 		// mui.toast(data.data)
-				// 		console.log(JSON.stringify(data1))
-
-				// 	}
-				// }, function() {
-
-				// });
+				var activity = plus.android.runtimeMainActivity();
+				var Intent = plus.android.importClass("io.yiqian.farmapp.LaunchUtil");
+				var intent = new Intent();
+				intent.launchPay(token_id, activity);
+				activity.onActivityResult = function(requestCode, resultCode, data) {
+					if (requestCode == 1111) {
+						walletServer.confirmABC(order_id, function(data) {
+							if (data.status == '400') {
+								mui.toast(data.msg);
+							}
+							if (data.status == '200') {
+								plus.nativeUI.alert("支付成功！", function() {
+									//刷新土地界面的积分
+									var plant = plus.webview.getWebviewById('plant');
+									mui.fire(plant, 'refreshJifen', {});
+									//刷新我的界面的积分
+									var my = plus.webview.getWebviewById('my');
+									mui.fire(my, 'refreshJf', {});
+									//刷新积分界面
+									var main = plus.webview.currentWebview().opener();
+									mui.fire(main, 'getMoney', {});
+									mui.back();
+								});
+						
+							}
+						}, function() {
+						
+						});						
+					}
+				};
 			}
 		}, function() {
 
